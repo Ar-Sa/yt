@@ -42,11 +42,11 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
     - name: Run  Script
       run: |
-          cd SMbot
+          cd SMbot/ytpy
           ls -l | grep '^d' | awk '{print $9}'
           #python ytpy/video-kids.py # Replace with the name of your PyTorch script
           python -c "with open('test1.txt', 'w') as f: f.write('This is a test file.')"
-          #python -c "with open('ytpy/test.txt', 'w') as f: f.write('This is a test file.')"
+          python -c "with open('temp/test.txt', 'w') as f: f.write('This is a test file.')"
 
     - name: Commit changes
       run: |
