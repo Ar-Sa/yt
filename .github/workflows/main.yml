@@ -18,7 +18,11 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2  # Checkout your repository's code
-
+    - name: Show Directories
+      run: |
+        echo "Current Working Directory: $PWD"
+        echo "Child Directories:"
+        ls -l | grep '^d' | awk '{print $9}'
     - name: Set up Python
       uses: actions/setup-python@v2  # Set up Python on the runner
       with:
@@ -31,10 +35,13 @@ jobs:
         token: ${{ secrets.SMBOTPAT }} # `GH_PAT` is a secret that contains your PAT
         path: SMbot
     
+    - name: Show Directories
+      run: |
+        echo "Current Working Directory: $PWD"
+        echo "Child Directories:"
+        ls -l | grep '^d' | awk '{print $9}'
     - name: Run  Script
       run: |
-          python -c "os.getcwd()"
-          python -c "[d for d in os.listdir(current_dir) if os.path.isdir(os.path.join(current_dir, d))]"
           #python ytpy/video-kids.py # Replace with the name of your PyTorch script
           python -c "with open('test1.txt', 'w') as f: f.write('This is a test file.')"
           #python -c "with open('ytpy/test.txt', 'w') as f: f.write('This is a test file.')"
