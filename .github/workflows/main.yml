@@ -42,6 +42,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
     - name: Run  Script
       run: |
+          cd SMbot
           #python ytpy/video-kids.py # Replace with the name of your PyTorch script
           python -c "with open('test1.txt', 'w') as f: f.write('This is a test file.')"
           #python -c "with open('ytpy/test.txt', 'w') as f: f.write('This is a test file.')"
