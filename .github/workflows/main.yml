@@ -27,12 +27,15 @@ jobs:
     - name: Install ImageMagick
       run: sudo apt-get update &&  sudo apt-get install -y --install-suggests imagemagick
 
+    - name: Checkout private tools
+      uses: actions/checkout@v3
+      with:
+        repository: Ar-Sa/SMbot
+        token: ${{ secrets.smbotpat }} # `GH_PAT` is a secret that contains your PAT
+        path: SMbot
     
     - name: Install Dependencies
       run: |
-        eval `ssh-agent -s`
-        ssh-add - <<< '${{ secrets.ssh }}'
-        git@github.com:Ar-Sa/SMbot.git
         python -m pip install --upgrade pip
         python -m pip install moviepy
         python -m pip install gtts
