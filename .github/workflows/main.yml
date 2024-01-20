@@ -1,4 +1,4 @@
-name: yt kids Workflow
+name: remote test Workflow
 
 on:
   #schedule:
