@@ -25,7 +25,7 @@ jobs:
         cd SMbot
         git checkout main
       env:
-        PAT: ${{ secrets.PAT }}
+        PAT: ${{ secrets.smbotpat }}
 
     - name: Set up Python
       uses: actions/setup-python@v2  # Set up Python on the runner
