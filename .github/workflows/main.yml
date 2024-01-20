@@ -22,7 +22,7 @@ jobs:
     - name: Checkout Another Repository
       uses: actions/checkout@v2
       with:
-        repository: username/another-repository
+        repository: Ar-Sa/SMbot
         ref: main
 
     - name: Set up Python
