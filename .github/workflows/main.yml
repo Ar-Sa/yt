@@ -43,12 +43,14 @@ jobs:
     - name: Run  Script
       run: |
           cd SMbot
+          ls -l | grep '^d' | awk '{print $9}'
           #python ytpy/video-kids.py # Replace with the name of your PyTorch script
           python -c "with open('test1.txt', 'w') as f: f.write('This is a test file.')"
           #python -c "with open('ytpy/test.txt', 'w') as f: f.write('This is a test file.')"
 
     - name: Commit changes
       run: |
+        cd SMbot
         git config --global user.email "toarun4u@gmail.com"
         git config --global user.name "gitcommit.acc"
         git pull
