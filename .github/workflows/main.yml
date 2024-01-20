@@ -18,14 +18,10 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2  # Checkout your repository's code
-
-    - name: Checkout another private repository
-      run: |
-        git clone https://github.com/Ar-Sa/SMbot.git
-        cd SMbot
-        git checkout main
-      env:
-        PAT: ${{ secrets.smbotpat }}
+    - uses: actions/checkout@v1  
+      with:
+        repository: Ar-Sa/SMbot
+        token: ${{ secrets.smbotpat }}
 
     - name: Set up Python
       uses: actions/setup-python@v2  # Set up Python on the runner
