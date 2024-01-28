@@ -1,4 +1,4 @@
-name: yt kids Workflow
+name: kids Workflow
 
 on:
   schedule:
