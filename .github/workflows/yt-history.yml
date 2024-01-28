@@ -1,4 +1,4 @@
-name: yt history Workflow
+name: history Workflow
 
 on:
   schedule:
