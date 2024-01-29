@@ -46,7 +46,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy
         ls -l | grep '^d' | awk '{print $9}'
-        ytpy/set-thumbnail.py
+        python set-thumbnail.py
 
     - name: Commit changes
       run: |
