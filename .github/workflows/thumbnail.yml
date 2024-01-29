@@ -30,6 +30,7 @@ jobs:
         python -m pip install google
         python -m pip install google_auth_oauthlib
         python -m pip install google-api-python-client
+        python -m pip install Pillow
 
 
     - name: Checkout private tools
