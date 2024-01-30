@@ -1,4 +1,4 @@
-name: health Workflow
+name: Th post Workflow
 
 on:
   schedule:
