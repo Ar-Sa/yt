@@ -2,7 +2,7 @@ name: kids Workflow
 
 on:
   schedule:
-    - cron: '31 */3 * * *'  # Runs every 4 hours
+    - cron: '31 */4 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
