@@ -1,4 +1,4 @@
-name: remove AI files Workflow
+name: remove AI files
 
 on:
   schedule:
