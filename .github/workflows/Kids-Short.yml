@@ -2,7 +2,7 @@ name: kids Short Workflow
 
 on:
   schedule:
-    - cron: '43 */5 * * *' 
+    - cron: '43 */7 * * *' 
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
