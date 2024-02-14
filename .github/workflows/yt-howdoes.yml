@@ -1,8 +1,8 @@
-name: HowDoes Workflow
+name: HowDoes
 
 on:
   schedule:
-    - cron: '4 */4 * * *'  # Runs every 4 hours
+    - cron: '42 */4 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
