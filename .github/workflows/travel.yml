@@ -1,8 +1,8 @@
-name: travel Workflow
+name: travel
 
 on:
   schedule:
-    - cron: '6 */7 * * *'  # Runs every 4 hours
+    - cron: '16 */5 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
