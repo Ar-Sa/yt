@@ -1,4 +1,4 @@
-name: kids Workflow
+name: kids
 
 on:
   schedule:
