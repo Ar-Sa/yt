@@ -1,4 +1,4 @@
-name: health Workflow
+name: health
 
 on:
   schedule:
