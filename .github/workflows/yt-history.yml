@@ -1,8 +1,8 @@
-name: history Workflow
+name: history
 
 on:
   schedule:
-    - cron: '6 */6 * * *'  # Runs every 4 hours
+    - cron: '21 */6 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
