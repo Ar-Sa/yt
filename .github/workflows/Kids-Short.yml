@@ -1,4 +1,4 @@
-name: kids Short Workflow
+name: kids Short
 
 on:
   schedule:
