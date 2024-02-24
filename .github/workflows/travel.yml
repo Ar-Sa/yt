@@ -48,6 +48,7 @@ jobs:
         python -m pip install matplotlib
         python -m pip install openai
         python -m pip install Pillow
+        python -m pip install azure-cognitiveservices-speech
 
     - name: Checkout private tools
       uses: actions/checkout@v3
