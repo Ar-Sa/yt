@@ -1,4 +1,4 @@
-name: kids
+name: test-vd
 
 on:
   schedule:
