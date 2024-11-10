@@ -20,7 +20,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-          pip install torch transformers  # Install core dependencies
+          pip install --upgrade pip  # Install core dependencies
           git clone https://github.com/Ar-Sa/Text2Video-Zero.git
           cd Text2Video-Zero
           pip install -r requirements.txt
