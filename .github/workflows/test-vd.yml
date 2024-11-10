@@ -24,27 +24,13 @@ jobs:
           git clone https://github.com/Ar-Sa/Text2Video-Zero.git
           cd Text2Video-Zero
           pip install -r requirements.txt
+          python test-vd.py
           
-    - name: Checkout private tools
-      uses: actions/checkout@v2
-      with:
-        repository: Ar-Sa/SMbot
-        token: ${{ secrets.SMBOTPAT }}
-        path: SMbot
-
-    - name: Run Script
-      run: |
-        echo "Current Working Directory: $PWD"
-        ls -l
-        cd SMbot/ytpy
-        ls -l
-        python test-vd.py 
-
     - name: Commit changes
       run: |
         echo "Current Working Directory: $PWD"
         ls -l
-        cd SMbot
+        cd Text2Video-Zero
         git config --global user.email "toarun4u@gmail.com"
         git config --global user.name "gitcommit.acc"
         git pull
