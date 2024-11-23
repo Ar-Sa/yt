@@ -16,9 +16,22 @@ jobs:
       with:
         python-version: '3.10'  # Specify a concrete version like 3.10 or 3.11 for compatibility
 
-    - name: Install dependencies
+    - name: Checkout private tools
+      uses: actions/checkout@v3
+      with:
+        repository: Ar-Sa/SMbot
+        token: ${{ secrets.SMBOTPAT }} # `GH_PAT` is a secret that contains your PAT
+        path: SMbot
+
+    - name: Run  Script
+      #run: python ytpy/test.py # Replace with the name of your PyTorch script
       run: |
-          python test-vd.py
+        echo "Current Working Directory: $PWD"
+        ls -l | grep '^d' | awk '{print $9}'
+        cd SMbot/ytpy
+        ls -l | grep '^d' | awk '{print $9}'
+        #python AI-get-content.py 
+        python test-vd.py
           
     - name: Commit changes
       run: |
