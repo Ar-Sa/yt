@@ -18,10 +18,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-          pip install --upgrade pip  # Install core dependencies
-          git clone https://github.com/Ar-Sa/Text2Video-Zero.git
-          cd Text2Video-Zero
-          pip install -r requirements.txt
           python test-vd.py
           
     - name: Commit changes
