@@ -34,6 +34,9 @@ jobs:
         cat "/etc/ImageMagick-6/policy.xml"
         sudo cp -f .github/policy.xml /etc/ImageMagick-6/policy.xml
         cat "/etc/ImageMagick-6/policy.xml"
+        mkdir -p ~/.fonts
+        cp .github/NotoSansDevanagari-Regular.ttf ~/.fonts/
+        fc-cache -fv
     
     - name: Install Dependencies
       run: |
