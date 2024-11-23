@@ -36,10 +36,9 @@ jobs:
         cat "/etc/ImageMagick-6/policy.xml"
         sudo cp -f .github/policy.xml /etc/ImageMagick-6/policy.xml
         cat "/etc/ImageMagick-6/policy.xml"
-    #- name: update ImageMagick installation2
-    #  run: sudo sed -i 's/domain=${DQT}path${DQT} rights=${DQT}none${DQT} pattern="@*"/domain="coder" rights="none" pattern="text"/g' /etc/ImageMagick-6/policy.xml
-    #- name: Verify ImageMagick installation
-    #  run: convert --version
+        mkdir -p ~/.fonts
+        cp .github/NotoSansDevanagari-Regular.ttf ~/.fonts/
+        fc-cache -fv
     
     - name: Install Dependencies
       run: |
@@ -55,9 +54,7 @@ jobs:
         python -m pip install openai
         python -m pip install Pillow
         python -m pip install azure-cognitiveservices-speech
-        # Install Hindi Fonts
-        sudo apt-get update
-        sudo apt-get install -y fonts-noto-devanagari fonts-lohit-deva
+
 
     - name: Checkout private tools
       uses: actions/checkout@v3
