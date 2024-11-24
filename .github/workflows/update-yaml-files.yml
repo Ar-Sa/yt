@@ -29,6 +29,6 @@ jobs:
         run: |
           git config --global user.email "toarun4u@gmail.com"
           git config --global user.name "gitcommit.acc"
-          git add .github/workflow/*.yaml
+          git add .
           git commit -m "Update YAML files with current date"
           git push
