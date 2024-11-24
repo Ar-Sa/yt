@@ -37,8 +37,6 @@ jobs:
     - name: Commit changes
       run: |
         echo "Current Working Directory: $PWD"
-        ls -l
-        cd Text2Video-Zero
         git config --global user.email "toarun4u@gmail.com"
         git config --global user.name "gitcommit.acc"
         git pull
