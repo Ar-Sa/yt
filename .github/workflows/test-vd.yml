@@ -38,9 +38,12 @@ jobs:
     - name: Commit changes
       run: |
         echo "Current Working Directory: $PWD"
+        ls -l | grep '^d' | awk '{print $9}'
+        cd SMbot
+        ls -l | grep '^d' | awk '{print $9}'
         git config --global user.email "toarun4u@gmail.com"
         git config --global user.name "gitcommit.acc"
         git pull
         git add .
-        git commit -m "AI-kids - Auto commit"
-        git push --force
+        git commit -m "AI-kids -Auto commit"
+        git push
