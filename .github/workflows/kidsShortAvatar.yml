@@ -2,7 +2,7 @@ name: kids short with avatar
 
 on:
   schedule:
-    - cron: '43 */10 * * *' 
+    - cron: '30 */10 * * *' 
   workflow_dispatch:
 
 jobs:
