@@ -2,7 +2,7 @@ name: kids Short
 
 on:
   schedule:
-    - cron: '43 */7 * * *' 
+    - cron: '43 */13 * * *' 
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
