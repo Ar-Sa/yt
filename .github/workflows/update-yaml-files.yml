@@ -25,6 +25,7 @@ jobs:
       # Step 2: Update YAML files with the current date
       - name: Update YAML files
         run: |
+          cd yt
           for file in .github/workflows/*.yml; do
             if [[ -f "$file" ]]; then
               # Append the current date as a comment
@@ -37,6 +38,7 @@ jobs:
         run: |
           git config --global user.email "toarun4u@gmail.com"
           git config --global user.name "gitcommit.acc"
+          cd yt
           git add .
           git commit -m "Update YAML files with current date"
           git push
