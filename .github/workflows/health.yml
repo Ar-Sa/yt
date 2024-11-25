@@ -2,7 +2,7 @@ name: health
 
 on:
   schedule:
-    - cron: '6 */3 * * *'  # Runs every 4 hours
+    - cron: '36 */3 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
