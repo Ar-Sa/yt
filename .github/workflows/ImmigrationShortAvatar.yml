@@ -1,16 +1,10 @@
-name: audio Workflow
+name: Immigration Short Avatar
 
 on:
-  #schedule:
-  #  - cron: '41 */3 * * *'  # Runs every 4 hours
-  #push:
-  #  branches:
-  #    - main  # Adjust the branch name as needed
-  #pull_request:
-  #  branches:
-  #    - main  # Adjust the branch name as needed
-  # Allows you to run this workflow manually from the Actions tab #
+  schedule:
+    - cron: '30 */10 * * *' 
   workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
@@ -27,7 +21,14 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install azure-cognitiveservices-speech
+        python -m pip install requests
+        python -m pip install moviepy==1.0.3
+        python -m pip install Pillow==9.0.0
+        python -m pip install google
+        python -m pip install google_auth_oauthlib
+        python -m pip install google-api-python-client
+        python -m pip install facebook-sdk 
+        python -m pip install matplotlib
 
 
     - name: Checkout private tools
@@ -43,7 +44,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy
         ls -l | grep '^d' | awk '{print $9}'
-        python old-py/audio.py
+        python video-ImmigrationShortAvatar.py
 
     - name: Commit changes
       run: |
