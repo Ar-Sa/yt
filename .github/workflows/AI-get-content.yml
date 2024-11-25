@@ -29,6 +29,7 @@ jobs:
         python -m pip install --upgrade pip
         #python -m pip install openai==0.28
         python -m pip install langdetect
+        python -m pip install matplotlib
 
     - name: Checkout private tools
       uses: actions/checkout@v3
