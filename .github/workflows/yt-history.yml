@@ -2,7 +2,7 @@ name: history
 
 on:
   schedule:
-    - cron: '21 */6 * * *'  # Runs every 4 hours
+    - cron: '54 */6 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
