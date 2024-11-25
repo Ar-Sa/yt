@@ -17,6 +17,10 @@ jobs:
       # Step 1: Check out the repository
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          repository: Ar-Sa/yt
+          token: ${{ secrets.SMBOTPAT }} # `GH_PAT` is a secret that contains your PAT
+          path: yt
 
       # Step 2: Update YAML files with the current date
       - name: Update YAML files
