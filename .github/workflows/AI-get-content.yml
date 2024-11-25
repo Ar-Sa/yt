@@ -27,9 +27,9 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        #python -m pip install openai==0.28
-        python -m pip install langdetect
-        python -m pip install matplotlib
+        python -m pip install openai==0.28
+        #python -m pip install langdetect
+        #python -m pip install matplotlib
 
     - name: Checkout private tools
       uses: actions/checkout@v3
@@ -45,8 +45,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy
         ls -l | grep '^d' | awk '{print $9}'
-        #python AI-get-content.py 
-        python test.py
+        python AI-get-content.py
     
     - name: Commit changes
       run: |
