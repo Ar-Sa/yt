@@ -46,7 +46,6 @@ jobs:
         python -m pip install moviepy==1.0.3
         python -m pip install langdetect
         python -m pip install gtts
-        python -m pip install langdetect
         #python -m pip install mutagen
         python -m pip install google
         python -m pip install google_auth_oauthlib
