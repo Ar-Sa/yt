@@ -80,6 +80,9 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         git config --global user.email "toarun4u@gmail.com"
         git config --global user.name "gitcommit.acc"
+        # Remove all .pyc files from the repository
+        git rm --cached -r *.pyc
+        git rm --cached -r __pycache__/
         git pull
         git add .
         git commit -m "AI-kids -Auto commit"
