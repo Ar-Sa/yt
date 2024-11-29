@@ -2,7 +2,7 @@ name: health
 
 on:
   schedule:
-    - cron: '36 */3 * * *'  # Runs every 4 hours
+    - cron: '36 */4 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
@@ -67,7 +67,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy
         ls -l | grep '^d' | awk '{print $9}'
-        python video-health.py
+        python video-health2.py
 
     - name: Commit changes
       run: |
