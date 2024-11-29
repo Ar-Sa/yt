@@ -69,7 +69,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy
         ls -l | grep '^d' | awk '{print $9}'
-        python video-book.py
+        python video-book2.py
 
     - name: Commit changes
       run: |
