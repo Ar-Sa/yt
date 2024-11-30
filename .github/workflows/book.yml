@@ -45,7 +45,7 @@ jobs:
         python -m pip install moviepy==1.0.3
         python -m pip install langdetect
         python -m pip install gtts
-        #python -m pip install mutagen
+        python -m pip install psutil
         python -m pip install google
         python -m pip install google_auth_oauthlib
         python -m pip install google-api-python-client
@@ -54,6 +54,7 @@ jobs:
         python -m pip install openai
         python -m pip install Pillow
         python -m pip install azure-cognitiveservices-speech
+        
 
     - name: Checkout private tools
       uses: actions/checkout@v3
