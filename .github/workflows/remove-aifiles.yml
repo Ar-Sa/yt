@@ -2,7 +2,7 @@ name: remove AI files
 
 on:
   schedule:
-    - cron: '04 */14 * * *'  # Runs every 4 hours
+    - cron: '54 */23 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
