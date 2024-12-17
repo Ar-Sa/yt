@@ -71,7 +71,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy
         ls -l | grep '^d' | awk '{print $9}'
-        python video-kids2.py 
+        python video-kids.py 
 
     - name: Commit changes
       run: |
