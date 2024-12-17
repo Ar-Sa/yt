@@ -58,15 +58,21 @@ jobs:
         token: ${{ secrets.SMBOTPAT }} # `GH_PAT` is a secret that contains your PAT
         path: SMbot
 
-    - name: Run  Script
-      #run: python ytpy/test.py # Replace with the name of your PyTorch script
+    - name: Run Script
       run: |
         echo "Current Working Directory: $PWD"
-        ls -l | grep '^d' | awk '{print $9}'
-        cd SMbot/ytpy
-        ls -l | grep '^d' | awk '{print $9}'
-        #python AI-get-content.py 
-        python test.py
+        ls -l
+        echo "Checking for SMbot directory..."
+        if [ -d "SMbot/ytpy" ]; then
+          cd SMbot/ytpy
+          echo "Changed to $(pwd)"
+          ls -l
+          echo "Running Python script..."
+          python test.py
+        else
+          echo "Directory SMbot/ytpy not found. Please check the path!"
+          exit 1
+        fi
     
     - name: Commit changes
       run: |
