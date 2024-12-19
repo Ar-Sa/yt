@@ -68,6 +68,8 @@ jobs:
           echo "Changed to $(pwd)"
           ls -l
           echo "Running Python script..."
+          export SDL_AUDIODRIVER=none
+          export AUDIODEV=null
           python test.py
         else
           echo "Directory SMbot/ytpy not found. Please check the path!"
