@@ -71,6 +71,8 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy
         ls -l | grep '^d' | awk '{print $9}'
+        export ALSA_LOG_PREFIX=/dev/null
+        export ALSA_LOG_LEVEL=none
         python video-immigration.py
 
     - name: Commit changes
