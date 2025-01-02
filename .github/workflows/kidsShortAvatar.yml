@@ -24,7 +24,16 @@ jobs:
         repository: Ar-Sa/SMbot
         token: ${{ secrets.SMBOTPAT }} # `GH_PAT` is a secret that contains your PAT
         path: SMbot
-
+    - name: Install ImageMagick1
+      run:  |
+        #sudo apt-get install libmagick++-dev
+        cat "/etc/ImageMagick-6/policy.xml"
+        sudo cp -f .github/policy.xml /etc/ImageMagick-6/policy.xml
+        cat "/etc/ImageMagick-6/policy.xml"
+        mkdir -p ~/.fonts
+        cp .github/NotoSansDevanagari-Regular.ttf ~/.fonts/
+        fc-cache -fv
+        
     - name: Run  Script
       #run: python ytpy/test.py # Replace with the name of your PyTorch script
       run: |
