@@ -2,7 +2,7 @@ name: Immigration Short Avatar
 
 on:
   schedule:
-    - cron: '33 */6 * * *' 
+    - cron: '33 */23 * * *' 
   workflow_dispatch:
   
 jobs:
