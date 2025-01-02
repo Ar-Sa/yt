@@ -37,6 +37,8 @@ jobs:
     - name: Run  Script
       #run: python ytpy/test.py # Replace with the name of your PyTorch script
       run: |
+        sudo apt-get update
+        sudo apt-get install -y libjpeg-dev zlib1g-dev
         python -m pip install requests
         python -m pip install moviepy==1.0.3
         python -m pip install Pillow==9.0.0
