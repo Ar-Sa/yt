@@ -67,7 +67,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy
         ls -l | grep '^d' | awk '{print $9}'
-        python video-health.py
+        python video-health2.py
 
     - name: Commit changes
       run: |
