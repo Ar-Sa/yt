@@ -2,7 +2,7 @@ name: kids short with avatar
 
 on:
   schedule:
-    - cron: '30 */10 * * *' 
+    - cron: '30 */3 2 * *' 
   workflow_dispatch:
 
 jobs:
@@ -24,10 +24,21 @@ jobs:
         repository: Ar-Sa/SMbot
         token: ${{ secrets.SMBOTPAT }} # `GH_PAT` is a secret that contains your PAT
         path: SMbot
-
+    - name: Install ImageMagick1
+      run:  |
+        #sudo apt-get install libmagick++-dev
+        cat "/etc/ImageMagick-6/policy.xml"
+        sudo cp -f .github/policy.xml /etc/ImageMagick-6/policy.xml
+        cat "/etc/ImageMagick-6/policy.xml"
+        mkdir -p ~/.fonts
+        cp .github/NotoSansDevanagari-Regular.ttf ~/.fonts/
+        fc-cache -fv
+        
     - name: Run  Script
       #run: python ytpy/test.py # Replace with the name of your PyTorch script
       run: |
+        sudo apt-get update
+        sudo apt-get install -y libjpeg-dev zlib1g-dev
         python -m pip install requests
         python -m pip install moviepy==1.0.3
         python -m pip install Pillow==9.0.0
