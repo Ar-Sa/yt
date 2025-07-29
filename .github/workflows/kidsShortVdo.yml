@@ -1,0 +1,57 @@
+name: kids short with avatar
+
+on:
+  schedule:
+    - cron: '30 */10 * * *' 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'  # Specify a concrete version like 3.10 or 3.11 for compatibility
+
+    - name: Checkout private tools
+      uses: actions/checkout@v3
+      with:
+        repository: Ar-Sa/SMbot
+        token: ${{ secrets.SMBOTPAT }} # `GH_PAT` is a secret that contains your PAT
+        path: SMbot
+
+    - name: Run  Script
+      #run: python ytpy/test.py # Replace with the name of your PyTorch script
+      run: |
+        python -m pip install requests
+        python -m pip install moviepy==1.0.3
+        python -m pip install Pillow==9.0.0
+        python -m pip install google
+        python -m pip install google_auth_oauthlib
+        python -m pip install google-api-python-client
+        python -m pip install facebook-sdk 
+        python -m pip install matplotlib
+        echo "Current Working Directory: $PWD"
+        ls -l | grep '^d' | awk '{print $9}'
+        cd SMbot/ytpy
+        ls -l | grep '^d' | awk '{print $9}'
+        #python AI-get-content.py 
+        python video-kidsShorts.py
+          
+    - name: Commit changes
+      run: |
+        echo "Current Working Directory: $PWD"
+        ls -l | grep '^d' | awk '{print $9}'
+        cd SMbot
+        ls -l | grep '^d' | awk '{print $9}'
+        git config --global user.email "toarun4u@gmail.com"
+        git config --global user.name "gitcommit.acc"
+        git pull
+        git add .
+        git commit -m "AI-kids -Auto commit"
+        git push
