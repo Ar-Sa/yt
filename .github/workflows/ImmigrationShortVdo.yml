@@ -21,14 +21,7 @@ jobs:
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install requests
-        python -m pip install moviepy==1.0.3
-        python -m pip install Pillow==9.0.0
-        python -m pip install google
-        python -m pip install google_auth_oauthlib
-        python -m pip install google-api-python-client
-        python -m pip install facebook-sdk 
-        python -m pip install matplotlib
+        python -m pip install requests google-auth google-auth-oauthlib google-api-python-client facebook-sdk
 
 
     - name: Checkout private tools
