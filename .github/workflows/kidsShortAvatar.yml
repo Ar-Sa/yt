@@ -41,7 +41,7 @@ jobs:
         sudo apt-get install -y libjpeg-dev zlib1g-dev
         python -m pip install requests
         python -m pip install moviepy==1.0.3
-        python -m pip install Pillow==9.0.0
+        python -m pip install Pillow
         python -m pip install google
         python -m pip install google_auth_oauthlib
         python -m pip install google-api-python-client
@@ -49,7 +49,7 @@ jobs:
         python -m pip install matplotlib
         echo "Current Working Directory: $PWD"
         ls -l | grep '^d' | awk '{print $9}'
-        cd SMbot/ytpy
+        cd SMbot/ytpy/py
         ls -l | grep '^d' | awk '{print $9}'
         #python AI-get-content.py 
         python video-kidsShortAvatar.py
