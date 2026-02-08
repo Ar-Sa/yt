@@ -43,7 +43,6 @@ jobs:
         python -m pip install moviepy==1.0.3
         python -m pip install Pillow
         python -m pip install google
-        python -m pip install openai
         python -m pip install google_auth_oauthlib
         python -m pip install google-api-python-client
         python -m pip install facebook-sdk 
