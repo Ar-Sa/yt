@@ -55,13 +55,21 @@ jobs:
           
     - name: Commit changes
       run: |
-        echo "Current Working Directory: $PWD"
-        ls -l | grep '^d' | awk '{print $9}'
         cd SMbot
-        ls -l | grep '^d' | awk '{print $9}'
         git config --global user.email "toarun4u@gmail.com"
         git config --global user.name "gitcommit.acc"
+        
+        # Pull latest to avoid conflicts
         git pull
+        
+        # Stage changes
         git add .
-        git commit -m "AI-kids -Auto commit"
-        git push
+        
+        # Check if there are actually any changes to commit
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "Changes detected. Proceeding with commit."
+          git commit -m "AI-kids -Auto commit"
+          git push
+        else
+          echo "No changes to commit. Skipping push."
+        fi
