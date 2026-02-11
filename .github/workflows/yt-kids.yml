@@ -69,11 +69,11 @@ jobs:
       run: |
         echo "Current Working Directory: $PWD"
         ls -l | grep '^d' | awk '{print $9}'
-        cd SMbot/ytpy
+        cd SMbot/ytpy/py
         ls -l | grep '^d' | awk '{print $9}'
         export ALSA_LOG_PREFIX=/dev/null
         export ALSA_LOG_LEVEL=none
-        python video-kids2.py 
+        python video-kids-final.py
 
     - name: Commit changes
       run: |
