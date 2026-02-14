@@ -37,7 +37,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy/py
         ls -l | grep '^d' | awk '{print $9}'
-        python video-ImmigrationShorts.py
+        python video-immigrationShorts.py
 
     - name: Commit changes
       run: |
