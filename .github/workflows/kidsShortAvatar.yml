@@ -51,7 +51,7 @@ jobs:
         cd SMbot/ytpy/py
         ls -l | grep '^d' | awk '{print $9}'
         #python AI-get-content.py 
-        python video-kidsShortAvatar1.py
+        python video-kidsShortAvatar-final.py
           
     - name: Commit changes
       run: |
