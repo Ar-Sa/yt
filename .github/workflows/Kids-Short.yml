@@ -2,7 +2,7 @@ name: kids Short
 
 on:
   schedule:
-    - cron: '12 */13 * * *' 
+    - cron: '12 */5 * * *' 
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
@@ -70,7 +70,7 @@ jobs:
       run: |
         echo "Current Working Directory: $PWD"
         ls -l | grep '^d' | awk '{print $9}'
-        cd SMbot/ytpy
+        cd SMbot/ytpy/py
         ls -l | grep '^d' | awk '{print $9}'
         python video-kidsShort.py 
 
