@@ -45,13 +45,25 @@ jobs:
           
     - name: Commit changes
       run: |
-        echo "Current Working Directory: $PWD"
-        ls -l | grep '^d' | awk '{print $9}'
         cd SMbot
-        ls -l | grep '^d' | awk '{print $9}'
+
         git config --global user.email "toarun4u@gmail.com"
         git config --global user.name "gitcommit.acc"
+
         git pull
-        git add .
-        git commit -m "AI-kids -Auto commit"
-        git push
+
+        FILES=$(find . -type f \( -name "*.txt" -o -name "*.csv" -o -name "*.json" \))
+
+        if [ -z "$FILES" ]; then
+          echo "No allowed files found"
+          exit 0
+        fi
+
+        git add $FILES
+
+        if git diff --cached --quiet; then
+          echo "No changes detected"
+        else
+          git commit -m "Auto commit-from git action"
+          git push
+        fi

@@ -56,20 +56,24 @@ jobs:
     - name: Commit changes
       run: |
         cd SMbot
+
         git config --global user.email "toarun4u@gmail.com"
         git config --global user.name "gitcommit.acc"
-        
-        # Pull latest to avoid conflicts
+
         git pull
-        
-        # Stage changes
-        git add .
-        
-        # Check if there are actually any changes to commit
-        if [ -n "$(git status --porcelain)" ]; then
-          echo "Changes detected. Proceeding with commit."
-          git commit -m "AI-kids -Auto commit"
-          git push
+
+        FILES=$(find . -type f \( -name "*.txt" -o -name "*.csv" -o -name "*.json" \))
+
+        if [ -z "$FILES" ]; then
+          echo "No allowed files found"
+          exit 0
+        fi
+
+        git add $FILES
+
+        if git diff --cached --quiet; then
+          echo "No changes detected"
         else
-          echo "No changes to commit. Skipping push."
+          git commit -m "Auto commit-from git action"
+          git push
         fi
