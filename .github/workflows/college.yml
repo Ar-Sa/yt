@@ -72,16 +72,19 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         python video-college.py
 
-    - name: Commit changes
+    - name: Commit and push only allowed files
       run: |
+        set -e
         echo "Current Working Directory: $PWD"
-        ls -l | grep '^d' | awk '{print $9}'
         cd SMbot
-        ls -l | grep '^d' | awk '{print $9}'
-        git config --global user.email "toarun4u@gmail.com"
-        git config --global user.name "gitcommit.acc"
-        # Remove all .pyc files from the repository
-        git pull
-        git add .
-        git commit -m "AI-kids -Auto commit"
-        git push
+        echo "Current Working Directory: $PWD"
+        git config user.email "toarun4u@gmail.com"
+        git config user.name "gitcommit.acc"
+        git pull --no-rebase
+        git add *.txt *.csv *.json *.log || true
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto commit from GitHub Actions"
+          git push
+        fi
