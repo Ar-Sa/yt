@@ -1,4 +1,4 @@
-name: English Learning short with avatar
+name: English Learning shorts with avatar
 
 on:
   schedule:
@@ -51,7 +51,7 @@ jobs:
         cd SMbot/ytpy/py
         ls -l | grep '^d' | awk '{print $9}'
         #python AI-get-content.py 
-        python video-kidsShortAvatar-final.py
+        python video-englishShortsAvatar.py
           
     - name: Commit and push only allowed files
       run: |
