@@ -2,7 +2,7 @@ name: Immigration Short
 
 on:
   schedule:
-    - cron: '33 */5 * * *' 
+    - cron: '33 */4 * * *' 
   workflow_dispatch:
   
 jobs:
