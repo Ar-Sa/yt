@@ -1,4 +1,4 @@
-name: English Learning Short
+name: English Learning Shorts
 
 on:
   schedule:
@@ -72,7 +72,7 @@ jobs:
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy/py
         ls -l | grep '^d' | awk '{print $9}'
-        python video-kidsShort.py 
+        python video-englishShorts.py 
 
     - name: Commit and push only allowed files
       run: |
