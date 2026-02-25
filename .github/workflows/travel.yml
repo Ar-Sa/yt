@@ -2,7 +2,7 @@ name: travel
 
 on:
   schedule:
-    - cron: '25 */5 * * *'  # Runs every 4 hours
+    - cron: '25 */6 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed

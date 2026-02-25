@@ -1,7 +1,7 @@
 name: book shorts
 on:
   schedule:
-    - cron: '31 */5 * * *'  # Runs every 4 hours
+    - cron: '31 */6 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
