@@ -2,7 +2,7 @@ name: English Learning Shorts
 
 on:
   schedule:
-    - cron: '1 */5 * * *' 
+    - cron: '1 */4 * * *' 
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed

@@ -1,7 +1,7 @@
 name: college
 on:
   schedule:
-    - cron: '10 */10 * * *'  # Runs every 4 hours
+    - cron: '10 */5 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed

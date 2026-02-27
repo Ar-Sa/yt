@@ -2,7 +2,7 @@ name: HowDoes
 
 on:
   schedule:
-    - cron: '59 */7 * * *'  # Runs every 4 hours
+    - cron: '59 */4 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed

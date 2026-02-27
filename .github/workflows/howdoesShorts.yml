@@ -1,8 +1,8 @@
-name: travel shorts
+name: HowDoes Shorts
 
 on:
   schedule:
-    - cron: '13 */4 * * *'  # Runs every 4 hours
+    - cron: '19 */4 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
@@ -27,7 +27,9 @@ jobs:
     - name: Install ImageMagick
       run: sudo apt-get update &&  sudo apt-get install -y imagemagick
 
-   
+    #- name: Install ImageMagick2
+    ## ImageMagicK Installation 
+    #  run: mkdir -p /tmp/distr && cd /tmp/distr && wget https://download.imagemagick.org/archive/releases/ImageMagick-7.1.1-25.tar.xz && tar xvf ImageMagick-7.1.1-25.tar.xz && cd ImageMagick-7.1.1-25 && ./configure --enable-shared=yes --disable-static --without-perl &&  make && sudo make install && sudo ldconfig /usr/local/lib
     - name: Install ImageMagick1
       run:  |
         #sudo apt-get install libmagick++-dev
@@ -63,12 +65,13 @@ jobs:
         path: SMbot
 
     - name: Run  Script
+      #run: python ytpy/test.py # Replace with the name of your PyTorch script
       run: |
         echo "Current Working Directory: $PWD"
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy/py
         ls -l | grep '^d' | awk '{print $9}'
-        python video-travelShorts.py
+        python video-howdoesShorts.py
 
     #- name: Commit and push only allowed files
       #run: |
@@ -86,3 +89,4 @@ jobs:
         #  git commit -m "Auto commit from GitHub Actions"
         #  git push
         #fi
+
