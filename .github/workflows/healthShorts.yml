@@ -2,7 +2,7 @@ name: health shorts
 
 on:
   schedule:
-    - cron: '20 */5 * * *'  # Runs every 4 hours
+    - cron: '50 */5 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
