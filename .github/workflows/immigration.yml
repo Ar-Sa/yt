@@ -59,10 +59,11 @@ jobs:
 
 
     - name: Checkout private tools
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: Ar-Sa/SMbot
-        token: ${{ secrets.SMBOTPAT }} # `GH_PAT` is a secret that contains your PAT
+        ref: yt-v1-images-major-changes
+        token: ${{ secrets.SMBOTPAT }}
         path: SMbot
 
     - name: Run  Script
