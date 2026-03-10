@@ -36,6 +36,10 @@ jobs:
         cat "/etc/ImageMagick-6/policy.xml"
         sudo cp -f .github/policy.xml /etc/ImageMagick-6/policy.xml
         cat "/etc/ImageMagick-6/policy.xml"
+        mkdir -p ~/.fonts
+        cp .github/NotoSansDevanagari-Regular.ttf ~/.fonts/
+        cp .github/NotoSans-Regular.ttf ~/.fonts/
+        fc-cache -fv
     #- name: update ImageMagick installation2
     #  run: sudo sed -i 's/domain=${DQT}path${DQT} rights=${DQT}none${DQT} pattern="@*"/domain="coder" rights="none" pattern="text"/g' /etc/ImageMagick-6/policy.xml
     #- name: Verify ImageMagick installation
