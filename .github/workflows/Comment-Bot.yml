@@ -33,6 +33,9 @@ jobs:
         token: ${{ secrets.SMBOTPAT }}
         path: SMbot
 
+    - name: Install dependencies
+      run: pip install requests google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client facebook-sdk openai azure-cognitiveservices-speech moviepy==1.0.3 Pillow numpy imageio imageio-ffmpeg decorator tqdm langdetect matplotlib
+    
     - name: Run  Script
       run: |
         echo "Current Working Directory: $PWD"
