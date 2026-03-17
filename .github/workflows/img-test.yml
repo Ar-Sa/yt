@@ -1,4 +1,4 @@
-name: Generate AI Image
+name: AI Image
 
 on:
   workflow_dispatch:   # manual trigger
