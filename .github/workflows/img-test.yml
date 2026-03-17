@@ -3,7 +3,7 @@ name: Generate AI Image
 on:
   workflow_dispatch:   # manual trigger
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours (optional)
+    - cron: "0 */6 * * *"   # every 6 hours
 
 jobs:
   generate-image:
@@ -21,6 +21,9 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      - name: Create images directory
+        run: mkdir -p images
+
       - name: Generate image
         run: |
           python <<EOF
@@ -29,27 +32,44 @@ jobs:
           import random
           import os
 
+          # Configuration
+          # It is safer to use secrets.POLLINATIONS_KEY in GitHub, 
+          # but using your provided key here for the fix:
+          api_key = "sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ"
           prompt = "A Pixar-style 3D educational illustration, glossy, slightly soft texture, no watermark, A vivid image of Dwarka's sacred temples with devotees"
           encoded_prompt = quote(prompt)
+          seed = random.randint(1, 1000000)
 
-          seed = random.randint(1, 100000)
-          key="sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ"
-
-          url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1080&height=1920&seed={seed}&nologo=true"
-
-          headers = {
-              "Authorization": f"Bearer {key}"
+          # Use the new Unified API Gateway
+          # Authentication works best via the 'key' parameter or 'Authorization' header at this endpoint
+          url = f"https://gen.pollinations.ai/image/{encoded_prompt}"
+          
+          params = {
+              "width": 1080,
+              "height": 1920,
+              "seed": seed,
+              "nologo": "true",
+              "model": "flux", # Flux is the highest quality model available on Pollinations
+              "key": api_key   # Passing key as param is often more reliable for GET requests
           }
 
-          response = requests.get(url, headers=headers, timeout=30)
-
-          if response.status_code == 200 and len(response.content) > 1000:
-              file_path = f"images/image_{seed}.jpg"
-              with open(file_path, "wb") as f:
-                  f.write(response.content)
-
-              print(f"Saved: {file_path}")
-              success = True
+          print(f"Generating image with seed {seed}...")
+          
+          try:
+              response = requests.get(url, params=params, timeout=60)
+              
+              if response.status_code == 200:
+                  file_path = f"images/image_{seed}.jpg"
+                  with open(file_path, "wb") as f:
+                      f.write(response.content)
+                  print(f"Successfully saved: {file_path}")
+              else:
+                  print(f"Error: Status code {response.status_code}")
+                  print(f"Response: {response.text}")
+                  exit(1)
+          except Exception as e:
+              print(f"Request failed: {e}")
+              exit(1)
           EOF
 
       - name: Commit & push image
@@ -57,5 +77,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add images/
-          git commit -m "Add generated image" || echo "No changes to commit"
+          git commit -m "Add generated image [skip ci]" || echo "No changes to commit"
           git push
