@@ -1,81 +1,51 @@
-name: AI Image
+name: AI Image 
 
 on:
-  workflow_dispatch:   # manual trigger
+  workflow_dispatch: # Manual run
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours
+    - cron: '0 * * * *' # Runs every hour
 
 jobs:
-  generate-image:
+  generate-and-save:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Needed to push changes
 
     steps:
-      - name: Checkout repo
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
+      - name: Create Images Directory
+        run: mkdir -p generated_images
 
-      - name: Install dependencies
-        run: pip install requests
-
-      - name: Create images directory
-        run: mkdir -p images
-
-      - name: Generate image
+      - name: Download AI Image
         run: |
-          python <<EOF
-          import requests
-          from urllib.parse import quote
-          import random
-          import os
-
-          # Configuration
-          # It is safer to use secrets.POLLINATIONS_KEY in GitHub, 
-          # but using your provided key here for the fix:
-          api_key = "sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ"
-          prompt = "A Pixar-style 3D educational illustration, glossy, slightly soft texture, no watermark, A vivid image of Dwarka's sacred temples with devotees"
-          encoded_prompt = quote(prompt)
-          seed = random.randint(1, 1000000)
-
-          # Use the new Unified API Gateway
-          # Authentication works best via the 'key' parameter or 'Authorization' header at this endpoint
-          url = f"https://gen.pollinations.ai/image/{encoded_prompt}"
+          # 1. Define prompt (encoded for URL)
+          # Use your specific style: Pixar 3D + high detail
+          PROMPT="Pixar style 3D illustration of a futuristic Indian temple, cinematic lighting, 8k"
+          ENCODED_PROMPT=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$PROMPT'))")
           
-          params = {
-              "width": 1080,
-              "height": 1920,
-              "seed": seed,
-              "nologo": "true",
-              "model": "flux", # Flux is the highest quality model available on Pollinations
-              "key": api_key   # Passing key as param is often more reliable for GET requests
-          }
-
-          print(f"Generating image with seed {seed}...")
+          # 2. Add random seed to ensure a new image every time
+          SEED=$RANDOM
           
-          try:
-              response = requests.get(url, params=params, timeout=60)
-              
-              if response.status_code == 200:
-                  file_path = f"images/image_{seed}.jpg"
-                  with open(file_path, "wb") as f:
-                      f.write(response.content)
-                  print(f"Successfully saved: {file_path}")
-              else:
-                  print(f"Error: Status code {response.status_code}")
-                  print(f"Response: {response.text}")
-                  exit(1)
-          except Exception as e:
-              print(f"Request failed: {e}")
-              exit(1)
-          EOF
+          # 3. Download using the public image.pollinations.ai endpoint
+          # No key needed here. 
+          # Parameters: nologo=true (removes watermark), flux (high quality model)
+          IMAGE_URL="https://image.pollinations.ai/prompt/${ENCODED_PROMPT}?seed=${SEED}&width=1024&height=1024&nologo=true&model=flux"
+          
+          echo "Generating: $IMAGE_URL"
+          curl -L -o "generated_images/image_${SEED}.jpg" "$IMAGE_URL"
 
-      - name: Commit & push image
+      - name: Commit and Push to Repo
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add images/
-          git commit -m "Add generated image [skip ci]" || echo "No changes to commit"
-          git push
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "actions@github.com"
+          git add generated_images/
+          
+          # Only commit if there are actual changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add new AI generated image (Seed $RANDOM) [skip ci]"
+            git push
+          fi
