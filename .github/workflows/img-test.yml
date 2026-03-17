@@ -33,18 +33,23 @@ jobs:
           encoded_prompt = quote(prompt)
 
           seed = random.randint(1, 100000)
+          key="sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ"
 
           url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1080&height=1920&seed={seed}&nologo=true"
 
-          response = requests.get(url)
+          headers = {
+              "Authorization": f"Bearer {key}"
+          }
 
-          os.makedirs("images", exist_ok=True)
+          response = requests.get(url, headers=headers, timeout=30)
 
-          file_path = f"images/image_{seed}.jpg"
-          with open(file_path, "wb") as f:
-              f.write(response.content)
+          if response.status_code == 200 and len(response.content) > 1000:
+              file_path = f"images/image_{seed}.jpg"
+              with open(file_path, "wb") as f:
+                  f.write(response.content)
 
-          print(f"Saved: {file_path}")
+              print(f"Saved: {file_path}")
+              success = True
           EOF
 
       - name: Commit & push image
