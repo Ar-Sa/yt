@@ -1,0 +1,56 @@
+name: Generate AI Image
+
+on:
+  workflow_dispatch:   # manual trigger
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours (optional)
+
+jobs:
+  generate-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generate image
+        run: |
+          python <<EOF
+          import requests
+          from urllib.parse import quote
+          import random
+          import os
+
+          prompt = "A Pixar-style 3D educational illustration, glossy, slightly soft texture, no watermark, A vivid image of Dwarka's sacred temples with devotees"
+          encoded_prompt = quote(prompt)
+
+          seed = random.randint(1, 100000)
+
+          url = f"https://image.pollinations.ai/prompt/{encoded_prompt}?width=1080&height=1920&seed={seed}&nologo=true"
+
+          response = requests.get(url)
+
+          os.makedirs("images", exist_ok=True)
+
+          file_path = f"images/image_{seed}.jpg"
+          with open(file_path, "wb") as f:
+              f.write(response.content)
+
+          print(f"Saved: {file_path}")
+          EOF
+
+      - name: Commit & push image
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add images/
+          git commit -m "Add generated image" || echo "No changes to commit"
+          git push
