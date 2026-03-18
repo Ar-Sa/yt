@@ -1,51 +1,98 @@
-name: AI Image 
+name: Gemini AI Image Generation
 
 on:
-  workflow_dispatch: # Manual run
+  workflow_dispatch: # Allows manual trigger
   #schedule:
-  #  - cron: '0 * * * *' # Runs every hour
+   # - cron: "0 0 * * *" # Optional: Runs daily at midnight
 
 jobs:
-  generate-and-save:
+  generate:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Needed to push changes
+      contents: write # Essential for pushing the image back to the repo
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: pip install google-genai
+
       - name: Create Images Directory
-        run: mkdir -p generated_images
+        run: mkdir -p images
 
-      - name: Download AI Image
+      - name: Generate Image
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} # Set this in GitHub Repo Settings > Secrets
         run: |
-          # 1. Define prompt (encoded for URL)
-          # Use your specific style: Pixar 3D + high detail
-          PROMPT="Pixar style 3D illustration of a futuristic Indian temple, cinematic lighting, 8k"
-          ENCODED_PROMPT=$(python3 -c "import urllib.parse; print(urllib.parse.quote('$PROMPT'))")
-          
-          # 2. Add random seed to ensure a new image every time
-          SEED=$RANDOM
-          
-          # 3. Download using the public image.pollinations.ai endpoint
-          # No key needed here. 
-          # Parameters: nologo=true (removes watermark), flux (high quality model)
-          IMAGE_URL="https://image.pollinations.ai/prompt/${ENCODED_PROMPT}?seed=${SEED}&width=1024&height=1024&nologo=true&model=flux"
-          
-          echo "Generating: $IMAGE_URL"
-          curl -L -o "generated_images/image_${SEED}.jpg" "$IMAGE_URL"
+          python <<EOF
+          import os
+          import mimetypes
+          import time
+          from google import genai
+          from google.genai import types
 
-      - name: Commit and Push to Repo
+          def save_binary_file(file_name, data):
+              with open(file_name, "wb") as f:
+                  f.write(data)
+              print(f"File saved to: {file_name}")
+
+          def generate():
+              client = genai.Client(api_key="AIzaSyBRiqEkzpS6dk-J3yLRKEeHq56M1yMFbhA")
+              
+              # Using the latest image-capable model
+              model = "gemini-2.5-flash-image" 
+              
+              prompt = "A Pixar-style 3D illustration of a vibrant Indian temple, 8k, high detail"
+              
+              contents = [
+                  types.Content(
+                      role="user",
+                      parts=[types.Part.from_text(text=prompt)],
+                  ),
+              ]
+              
+              generate_content_config = types.GenerateContentConfig(
+                  response_modalities=["IMAGE"],
+              )
+
+              print("Generating image...")
+              file_index = int(time.time()) # Unique filename using timestamp
+              
+              # Gemini generates images via stream
+              for chunk in client.models.generate_content_stream(
+                  model=model,
+                  contents=contents,
+                  config=generate_content_config,
+              ):
+                  if not chunk.parts:
+                      continue
+                      
+                  # Check if the part contains image data
+                  if chunk.parts[0].inline_data and chunk.parts[0].inline_data.data:
+                      inline_data = chunk.parts[0].inline_data
+                      data_buffer = inline_data.data
+                      file_extension = mimetypes.guess_extension(inline_data.mime_type) or ".png"
+                      
+                      file_path = f"images/gemini_gen_{file_index}{file_extension}"
+                      save_binary_file(file_path, data_buffer)
+                  else:
+                      if chunk.text:
+                          print(f"Text Response: {chunk.text}")
+
+          if __name__ == "__main__":
+              generate()
+          EOF
+
+      - name: Commit and Push
         run: |
-          git config --global user.name "GitHub Action Bot"
-          git config --global user.email "actions@github.com"
-          git add generated_images/
-          
-          # Only commit if there are actual changes
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Add new AI generated image (Seed $RANDOM) [skip ci]"
-            git push
-          fi
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add images/
+          git commit -m "Add Gemini generated image [skip ci]" || echo "No changes to commit"
+          git push
