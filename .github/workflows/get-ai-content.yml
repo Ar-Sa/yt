@@ -1,46 +1,20 @@
-name: AI Content
+name: AI Content Simple
 on:
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch:
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
       - name: Fetch and Print AI Content
         run: |
-          # Use a variable for the prompt to keep it clean
-          PROMPT="Generate ONE highly searched 'How does X work' question with detailed answer in json format. title, thumbnail_text, description, content_text must be in natural spoken hindi but keep medical terms, numbers, place/job/subject name in english (ex-H1B, oncologist, doctor, paris, cancer). also what is latest trending news in india?"
-
-          echo "### Sending Request to Pollinations Unified Gateway ###"
+          # The key must be passed as '?key=' at the end of the URL for the /text/ endpoint
+          # We use --data-urlencode for the prompt to handle the special characters
           
-          # 2026 Fix: Use POST to /v1/chat/completions to avoid 404 URL errors
-          # This works anonymously for the 'openai-fast' model
-          curl -X POST "https://gen.pollinations.ai/v1/chat/completions" \
-            -H "Content-Type: application/json" \
-            -d "{
-              \"model\": \"openai-fast\",
-              \"messages\": [
-                {\"role\": \"system\", \"content\": \"You are a professional content creator. Output ONLY valid JSON.\"},
-                {\"role\": \"user\", \"content\": \"$PROMPT\"}
-              ],
-              \"jsonMode\": true
-            }" -o ai_content.md
-
-          echo ""
-          echo "### AI Response: ###"
-          cat ai_content.md
-          echo ""
-          echo "### Generation Complete ###"
-
-      - name: Commit and Push
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f ai_content.md ]; then
-            git add ai_content.md
-            git commit -m "Add latest AI content" || echo "No changes"
-            git push
-          fi
+          echo "### Requesting Claude-Airforce via Text Endpoint ###"
+          
+          curl -G "https://gen.pollinations.ai/text/Generate%20ONE%20highly%20searched%20How%20does%20X%20work%20question%20with%20detailed%20answer%20in%20json%20format.%20title,%20thumbnail_text,%20description,%20content_text%20must%20in%20Hindi%20but%20keep%20medical%20terms%20in%20English." \
+            --data-urlencode "model=claude-airforce" \
+            --data-urlencode "key=sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ" \
+            --data-urlencode "json=true" \
+            --data-urlencode "seed=$RANDOM"
