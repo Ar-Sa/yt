@@ -11,20 +11,26 @@ jobs:
 
       - name: Fetch and Print AI Content
         run: |
-          # 1. No spaces around the = sign in Bash!
-          prompt="Generate ONE highly searched 'How does X work' question with detailed answer in json format. title, thumbnail_text, description, content_text must be in natural spoken hindi but keep medical terms, numbers, place/job/subject name in english (ex-H1B, oncologist, doctor, paris, cancer). also what is latest trending news in india?"
+          # Use a variable for the prompt to keep it clean
+          PROMPT="Generate ONE highly searched 'How does X work' question with detailed answer in json format. title, thumbnail_text, description, content_text must be in natural spoken hindi but keep medical terms, numbers, place/job/subject name in english (ex-H1B, oncologist, doctor, paris, cancer). also what is latest trending news in india?"
 
-          echo "### Querying AI for Content ###"
+          echo "### Sending Request to Pollinations Unified Gateway ###"
+          
+          # 2026 Fix: Use POST to /v1/chat/completions to avoid 404 URL errors
+          # This works anonymously for the 'openai-fast' model
+          curl -X POST "https://gen.pollinations.ai/v1/chat/completions" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"model\": \"openai-fast\",
+              \"messages\": [
+                {\"role\": \"system\", \"content\": \"You are a professional content creator. Output ONLY valid JSON.\"},
+                {\"role\": \"user\", \"content\": \"$PROMPT\"}
+              ],
+              \"jsonMode\": true
+            }" -o ai_content.md
+
           echo ""
-
-          # 2. We use 'openai-fast' for anonymous access (no token)
-          # We use sed to replace spaces with %20 for the URL
-          curl -G "https://gen.pollinations.ai/text/$(echo $prompt | sed 's/ /%20/g')" \
-            --data-urlencode "model=openai-fast" \
-            --data-urlencode "system=You are a professional content creator. Output ONLY a valid JSON object with the keys: title, thumbnail_text, description, content_text, and news." \
-            -o ai_content.md
-
-          # 3. Print the result to the console so you can see it
+          echo "### AI Response: ###"
           cat ai_content.md
           echo ""
           echo "### Generation Complete ###"
