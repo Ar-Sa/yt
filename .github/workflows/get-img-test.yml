@@ -1,4 +1,4 @@
-name: Gemini AI Image Generation
+name: AI Image Generation
 
 on:
   workflow_dispatch: # Allows manual trigger
