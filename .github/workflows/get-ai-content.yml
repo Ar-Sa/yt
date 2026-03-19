@@ -17,50 +17,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
         
-      - name: Fetch AI Content
-        run: |
-          python <<EOF
-          import requests
-          from urllib.parse import quote
-          import random
-          import os
-          # We use the 'claude' model via the simple text endpoint
-          # Content is URL-encoded automatically by using --get and --data-urlencode
-          # but using your provided key here for the fix:
-          api_key = "sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ"
-          prompt = "Generate ONE highly searched "How does X work" question with detailed answer in json format mentioned in instructions. title, thumbnail_text, description, content_text must be in natural spoken hindi but keep medical term, numbers, place/form/job/company/subject name etc in english (ex-H1B, oncologist, doctor, paris, cancer). also what is latest trending news in india?"
-          encoded_prompt = quote(prompt)
-          seed = random.randint(1, 1000000)
-
-          # Use the new Unified API Gateway
-          # Authentication works best via the 'key' parameter or 'Authorization' header at this endpoint
-          url = f"https://gen.pollinations.ai/text/{encoded_prompt}"
-          
-          params = {
-              "seed": seed,
-              "model": "claude-airforce",
-              "key": api_key,
-              "json": "true" # Forces the model to stick to JSON
-          }
-
-          print(f"### Querying Claude-Airforce with seed {seed} ###")
-          
-          response = requests.get(url, params=params)
-          
-          if response.status_code == 200:
-              content = response.text
-              print("### Content Received ###")
-              print(content)
-              
-              # Saving to ai_content.md so the next step can push it
-              with open("ai_content.md", "w", encoding="utf-8") as f:
-                  f.write(content)
-          else:
-              print(f"Error: {response.status_code}")
-              print(response.text)
-              exit(1)
-          EOF
-
+      
       - name: Fetch and Print AI Content
         run: |
           prompt = "Generate ONE highly searched "How does X work" question with detailed answer in json format mentioned in instructions. title, thumbnail_text, description, content_text must be in natural spoken hindi but keep medical term, numbers, place/form/job/company/subject name etc in english (ex-H1B, oncologist, doctor, paris, cancer). also what is latest trending news in india?"
