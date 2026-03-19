@@ -1,4 +1,4 @@
-name: AI Content
+name: AI Content Simple
 on:
   workflow_dispatch:
 
@@ -6,37 +6,15 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Fetch AI Content
+      - name: Fetch and Print AI Content
         run: |
-          # 1. Define the specific CA Career Prompt
-          # Using single quotes for the main string and double quotes for internal labels to avoid bash errors
-          PROMPT="Create a highly engaging educational video for this specific title: 'Chartered Accountant (CA) बनने का पूरा process क्या है?' STRICT HARD RULES: title, thumbnail_text, description, content_text must be in natural spoken hindi but keep numbers, place/form/job/company/subject name in english (ex-CA Foundation, Intermediate, Articleship). Explain EXACTLY ONE career option. Content length 900+ words. EXACTLY 4 content blocks. No intro, No outro, No headings. OUTPUT STRICT JSON FORMAT: {\"title\": \"curiosity+fear+number+benefit+question <60 chars\", \"thumbnail_text\": \"4-8 words ALL CAPS\", \"thumbnail_prompt\": \"image prompt\", \"description\": \"200+ words SEO + 10 hashtags\", \"tags\": [\"tag1-10\"], \"hook_text\": \"shocking question\", \"QuestionForViewer\": \"short YT question\", \"content\": [{\"content_text\": \"900+ words split in 4 blocks\", \"content_scene_names\": \"8-9 word chapter name\", \"image_prompt\": \"scene image prompt\"}]}"
-
-          echo "### Requesting Claude-Airforce for CA Career Guide ###"
-
-          # 2. Execute via the /text/ endpoint with the API Key as a query parameter
-          # Using -G to send as GET and --data-urlencode to safely handle the complex prompt
-          curl -L -G "https://gen.pollinations.ai/text/" \
-            --data-urlencode "prompt=$PROMPT" \
+          # The key must be passed as '?key=' at the end of the URL for the /text/ endpoint
+          # We use --data-urlencode for the prompt to handle the special characters
+          
+          echo "### Requesting Claude-Airforce via Text Endpoint ###"
+          
+          curl -G "https://gen.pollinations.ai/text/Generate%20ONE%20highly%20searched%20How%20does%20X%20work%20question%20with%20detailed%20answer%20in%20json%20format.%20title,%20thumbnail_text,%20description,%20content_text%20must%20in%20Hindi%20but%20keep%20medical%20terms%20in%20English.%20also%20what%20is%20current%20trending%20news%20in%20india" \
             --data-urlencode "model=claude-airforce" \
             --data-urlencode "key=sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ" \
             --data-urlencode "json=true" \
-            --data-urlencode "seed=$RANDOM" \
-            -o ai_content.md
-
-          echo ""
-          echo "### AI Response Generated ###"
-          cat ai_content.md
-
-      - name: Commit and Push
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -f ai_content.md ]; then
-            git add ai_content.md
-            git commit -m "Generated CA Career Guide JSON" || echo "No changes"
-            git push
-          fi
+            --data-urlencode "seed=$RANDOM"
