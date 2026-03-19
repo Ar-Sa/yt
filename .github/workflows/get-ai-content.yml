@@ -28,10 +28,23 @@ jobs:
               "height": 1920,
               "seed": seed,
               "nologo": "true",
-              "model": "flux", # Flux is the highest quality model available on Pollinations
+              "model": "claude-airforce", # Flux is the highest quality model available on Pollinations
               "key": api_key   # Passing key as param is often more reliable for GET requests
           }
 
+      - name: Fetch and Print AI Content
+        run: |
+          prompt = "Generate ONE highly searched "How does X work" question with detailed answer in json format mentioned in instructions. title, thumbnail_text, description, content_text must be in natural spoken hindi but keep medical term, numbers, place/form/job/company/subject name etc in english (ex-H1B, oncologist, doctor, paris, cancer). also what is latest trending news in india?"
+          echo "### Querying AI for: ###"
+          echo ""
+          # We use 'openai-fast' because 'claude-airforce' now requires a token.
+          # We remove the '-o' flag so it prints to the terminal instead of a file.
+          curl -G "https://gen.pollinations.ai/text/{prompt}" \
+            --data-urlencode "model=openai-fast" \
+            --data-urlencode "system=You are a professional Cloud Architect. Provide a concise technical summary."
+          echo ""
+          echo "### Generation Complete ###"
+        
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
