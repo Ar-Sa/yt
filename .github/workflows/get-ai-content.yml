@@ -13,8 +13,9 @@ jobs:
           
           echo "### Requesting Claude-Airforce via Text Endpoint ###"
           
-          curl -G "https://gen.pollinations.ai/text/Generate%20ONE%20highly%20searched%20How%20does%20X%20work%20question%20with%20detailed%20answer%20in%20json%20format.%20title,%20thumbnail_text,%20description,%20content_text%20must%20in%20Hindi%20but%20keep%20medical%20terms%20in%20English.%20also%20what%20is%20current%20trending%20news%20in%20india" \
+          curl -G "https://gen.pollinations.ai/text/" \
             --data-urlencode "model=claude-airforce" \
+            --data-urlencode "messages=hi" \
             --data-urlencode "key=sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ" \
             --data-urlencode "json=true" \
             --data-urlencode "seed=$RANDOM"
