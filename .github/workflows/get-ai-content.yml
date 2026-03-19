@@ -13,7 +13,7 @@ jobs:
         run: |
           # We use the 'claude' model via the simple text endpoint
           # Content is URL-encoded automatically by using --get and --data-urlencode
-           # but using your provided key here for the fix:
+          # but using your provided key here for the fix:
           api_key = "sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ"
           prompt = "Generate ONE highly searched "How does X work" question with detailed answer in json format mentioned in instructions. title, thumbnail_text, description, content_text must be in natural spoken hindi but keep medical term, numbers, place/form/job/company/subject name etc in english (ex-H1B, oncologist, doctor, paris, cancer). also what is latest trending news in india?"
           encoded_prompt = quote(prompt)
@@ -24,10 +24,7 @@ jobs:
           url = f"https://gen.pollinations.ai/text/{encoded_prompt}"
           
           params = {
-              "width": 1080,
-              "height": 1920,
               "seed": seed,
-              "nologo": "true",
               "model": "claude-airforce", # Flux is the highest quality model available on Pollinations
               "key": api_key   # Passing key as param is often more reliable for GET requests
           }
