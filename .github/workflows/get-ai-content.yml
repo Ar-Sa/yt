@@ -9,32 +9,32 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-
-      - name: Install dependencies
-        run: pip install requests
-        
-      
       - name: Fetch and Print AI Content
         run: |
-          prompt = "Generate ONE highly searched "How does X work" question with detailed answer in json format mentioned in instructions. title, thumbnail_text, description, content_text must be in natural spoken hindi but keep medical term, numbers, place/form/job/company/subject name etc in english (ex-H1B, oncologist, doctor, paris, cancer). also what is latest trending news in india?"
-          echo "### Querying AI for: ###"
+          # 1. No spaces around the = sign in Bash!
+          prompt="Generate ONE highly searched 'How does X work' question with detailed answer in json format. title, thumbnail_text, description, content_text must be in natural spoken hindi but keep medical terms, numbers, place/job/subject name in english (ex-H1B, oncologist, doctor, paris, cancer). also what is latest trending news in india?"
+
+          echo "### Querying AI for Content ###"
           echo ""
-          # We use 'openai-fast' because 'claude-airforce' now requires a token.
-          # We remove the '-o' flag so it prints to the terminal instead of a file.
+
+          # 2. We use 'openai-fast' for anonymous access (no token)
+          # We use sed to replace spaces with %20 for the URL
           curl -G "https://gen.pollinations.ai/text/$(echo $prompt | sed 's/ /%20/g')" \
             --data-urlencode "model=openai-fast" \
-            --data-urlencode "system=You are a professional Cloud Architect. Provide a concise technical summary."
+            --data-urlencode "system=You are a professional content creator. Output ONLY a valid JSON object with the keys: title, thumbnail_text, description, content_text, and news." \
+            -o ai_content.md
+
+          # 3. Print the result to the console so you can see it
+          cat ai_content.md
           echo ""
           echo "### Generation Complete ###"
-        
+
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add ai_content.md
-          git commit -m "Add latest AI generated content" || echo "No changes to commit"
-          git push
+          if [ -f ai_content.md ]; then
+            git add ai_content.md
+            git commit -m "Add latest AI content" || echo "No changes"
+            git push
+          fi
