@@ -1,0 +1,26 @@
+name: AI Content
+on:
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Fetch AI Content
+        run: |
+          # We use the 'claude' model via the simple text endpoint
+          # Content is URL-encoded automatically by using --get and --data-urlencode
+          curl -G "https://gen.pollinations.ai/text/write%20a%20technical%20summary%20of%20azure%20container%20apps" \
+            --data-urlencode "model=claude" \
+            --data-urlencode "system=You are a professional cloud architect." 
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add ai_content.md
+          git commit -m "Add latest AI generated content" || echo "No changes to commit"
+          git push
