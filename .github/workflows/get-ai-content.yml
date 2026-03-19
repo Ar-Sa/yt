@@ -38,9 +38,27 @@ jobs:
           
           params = {
               "seed": seed,
-              "model": "claude-airforce", # Flux is the highest quality model available on Pollinations
-              "key": api_key   # Passing key as param is often more reliable for GET requests
+              "model": "claude-airforce",
+              "key": api_key,
+              "json": "true" # Forces the model to stick to JSON
           }
+
+          print(f"### Querying Claude-Airforce with seed {seed} ###")
+          
+          response = requests.get(url, params=params)
+          
+          if response.status_code == 200:
+              content = response.text
+              print("### Content Received ###")
+              print(content)
+              
+              # Saving to ai_content.md so the next step can push it
+              with open("ai_content.md", "w", encoding="utf-8") as f:
+                  f.write(content)
+          else:
+              print(f"Error: {response.status_code}")
+              print(response.text)
+              exit(1)
           EOF
 
       - name: Fetch and Print AI Content
