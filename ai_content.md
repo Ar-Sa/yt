@@ -1,1 +1,1 @@
-{"success":false,"error":{"message":"Oh no, there's nothing here.","code":"NOT_FOUND","timestamp":"2026-03-19T12:51:00.798Z"},"status":404}
+{"success":false,"error":{"message":"Authentication required. Please provide an API key via Authorization header (Bearer token) or ?key= query parameter.","code":"UNAUTHORIZED","timestamp":"2026-03-19T12:54:20.372Z"},"status":401}
