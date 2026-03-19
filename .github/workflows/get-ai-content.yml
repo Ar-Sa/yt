@@ -25,7 +25,7 @@ jobs:
           echo ""
           # We use 'openai-fast' because 'claude-airforce' now requires a token.
           # We remove the '-o' flag so it prints to the terminal instead of a file.
-          curl -G "https://gen.pollinations.ai/text/{prompt}" \
+          curl -G "https://gen.pollinations.ai/text/$(echo $prompt | sed 's/ /%20/g')" \
             --data-urlencode "model=openai-fast" \
             --data-urlencode "system=You are a professional Cloud Architect. Provide a concise technical summary."
           echo ""
