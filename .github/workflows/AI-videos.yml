@@ -1,0 +1,44 @@
+name: Generate Iceland Travel Video
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate_and_push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: URL Encode Prompt and Call API
+        id: generate
+        env:
+          API_KEY: sk_jliUV8OHgrLOzMha6PHSZb42zQVtIyaQ
+        run: |
+          # Use Python to safely encode the prompt for the URL
+          PROMPT="Cinematic Iceland trip visuals: volcano, glacier, waterfall, northern lights, tourists exploring Golden Circle, Blue Lagoon, black sand beach, dramatic skies, realistic travel scenes, no text. Audio prompt- \"Iceland magical इसलिए है क्योंकि यहाँ volcano, glacier, waterfall और northern lights एक साथ मिलते हैं। Best time June–August या lights के लिए Sep–March। Indians को Schengen visa चाहिए—online apply, biometrics, hotel + flight proof जरूरी। Reykjavik से Golden Circle, Blue Lagoon, black sand beach must visit। 4–6 days itinerary enough है। Budget लगभग \$1500–\$2500 per person। Car rental best transport है। Safety high है लेकिन weather unpredictable—mistake मत करो, last minute booking avoid करो और layers में कपड़े लो।\""
+          
+          # Encode the prompt for a clean URL
+          ENCODED_PROMPT=$(python3 -c "import urllib.parse; print(urllib.parse.quote('''$PROMPT'''))")
+          
+          # Construct the full URL based on your syntax
+          API_URL="https://gen.pollinations.ai/video/${ENCODED_PROMPT}?model=grok-video&duration=10&aspectRatio=9%3A16&audio=true"
+          
+          echo "Requesting video from Pollinations..."
+          
+          # Download the video directly using the curl syntax provided
+          curl -L "$API_URL" \
+            --header "Accept: video/mp4" \
+            --header "Authorization: Bearer $API_KEY" \
+            -o iceland_travel.mp4
+
+      - name: Commit and Push Video
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add iceland_travel.mp4
+          git commit -m "Add generated Iceland travel video [skip ci]" || echo "No changes to commit"
+          git push
