@@ -1,4 +1,4 @@
-name: Generate Iceland Travel Video
+name: AI Video
 
 on:
   workflow_dispatch:
