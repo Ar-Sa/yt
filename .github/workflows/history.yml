@@ -1,8 +1,8 @@
 name: history
 
 on:
-  schedule:
-    - cron: '40 3,15 * * *'  # Runs every 4 hours
+  #schedule:
+    #- cron: '40 3,15 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed

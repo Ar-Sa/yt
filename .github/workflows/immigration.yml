@@ -1,8 +1,8 @@
 name: immigration
 
 on:
-  schedule:
-    - cron: '20 4,16 * * *'  # Runs every 4 hours
+  #schedule:
+    #- cron: '20 4,16 * * *'  # Runs every 4 hours
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
