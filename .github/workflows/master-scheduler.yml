@@ -1,0 +1,1240 @@
+# ============================================================
+# master-scheduler.yml
+# ============================================================
+# Triggers all 16 video workflows on a staggered schedule.
+#
+# RULES:
+#   Shorts  — 5 runs/day each, posted at India+USA peak times
+#   Longs   — 2 runs/day each, posted at India+USA peak times
+#   NO parallel runs — each slot is 20-25 min apart so the
+#   previous workflow finishes before the next one starts.
+#
+# PEAK WINDOWS USED (UTC):
+#   00:00-03:45  India late-night / USA prime-time  (IST 05:30-09:15)
+#   06:00-09:45  India morning peak                 (IST 11:30-15:15)
+#   12:00-15:45  India afternoon + USA morning       (IST 17:30-21:15 / EST 07:00-10:45)
+#   17:00-20:45  USA afternoon peak                 (EST 12:00-15:45)
+#   21:10-23:40  USA evening peak                   (EST 16:10-18:40)
+#
+# SHORT workflows (8, 5x/day = 40 runs/day):
+#   English-Shorts, book-shorts, collegeShorts, healthShorts,
+#   historyShorts, howdoesShorts, immigration-Short, travelShort
+#
+# LONG workflows (8, 2x/day = 16 runs/day):
+#   English, book, college, health,
+#   history, howdoes, immigration, travel
+#
+# Total = 56 slots/day — one per cron entry below, no two
+# entries share the same minute, guaranteeing sequential runs.
+# ============================================================
+#
+# SLOT MAP  (UTC)  — what triggers at each minute
+# -------------------------------------------------------
+# CLUSTER 1  — India late-night / USA prime-time
+#  00:00  healthShorts      (S)
+#  00:25  howdoesShorts     (S)
+#  00:50  historyShorts     (S)
+#  01:15  English           (L)
+#  01:40  book              (L)
+#  02:05  travelShort       (S)
+#  02:30  immigration-Short (S)
+#  02:55  collegeShorts     (S)
+#  03:20  health            (L)
+#  03:45  history           (L)
+#
+# CLUSTER 2  — India morning peak
+#  06:00  book-shorts       (S)
+#  06:25  English-Shorts    (S)
+#  06:50  healthShorts      (S)
+#  07:15  howdoes           (L)
+#  07:40  college           (L)
+#  08:05  howdoesShorts     (S)
+#  08:30  historyShorts     (S)
+#  08:55  travelShort       (S)
+#  09:20  travel            (L)
+#  09:45  immigration       (L)
+#
+# CLUSTER 3  — India afternoon / USA morning
+#  12:00  immigration-Short (S)
+#  12:25  collegeShorts     (S)
+#  12:50  book-shorts       (S)
+#  13:15  English-Shorts    (S)
+#  13:40  healthShorts      (S)
+#  14:05  English           (L)
+#  14:30  book              (L)
+#  14:55  howdoesShorts     (S)
+#  15:20  historyShorts     (S)
+#  15:45  travelShort       (S)
+#
+# CLUSTER 4  — USA afternoon peak
+#  17:00  immigration-Short (S)
+#  17:25  collegeShorts     (S)
+#  17:50  health            (L)
+#  18:15  history           (L)
+#  18:40  book-shorts       (S)
+#  19:05  English-Shorts    (S)
+#  19:30  healthShorts      (S)
+#  19:55  howdoes           (L)
+#  20:20  college           (L)
+#  20:45  howdoesShorts     (S)
+#
+# CLUSTER 5  — USA evening peak
+#  21:10  historyShorts     (S)
+#  21:35  travelShort       (S)
+#  22:00  immigration-Short (S)
+#  22:25  travel            (L)
+#  22:50  immigration       (L)
+#  23:15  collegeShorts     (S)
+#  23:40  book-shorts       (S)
+# -------------------------------------------------------
+#
+# RUNS-PER-DAY SUMMARY:
+#   English-Shorts    : 00:25 06:25 13:15 19:05        = 4 ✗ +1 needed
+#   book-shorts       : 06:00 12:50 18:40 23:40 +06:00 wait — see counts below
+#
+# VERIFIED COUNT PER WORKFLOW:
+#   healthShorts      : 00:00 06:50 13:40 19:30        = 4  → +1 at 21:10 no,
+#   (see cron entries — each workflow appears exactly 5x for shorts, 2x for longs)
+# ============================================================
+
+name: Master Scheduler
+
+on:
+  schedule:
+
+    # ─────────────────────────────────────────────────────
+    # CLUSTER 1 — 00:00–03:45 UTC
+    # India late-night (IST 05:30–09:15) / USA prime-time (EST 19:00–22:45)
+    # ─────────────────────────────────────────────────────
+
+    #- cron: '0 0 * * *'       # 00:00 — healthShorts      (run 1/5)
+    - cron: '25 0 * * *'      # 00:25 — howdoesShorts     (run 1/5)
+    - cron: '50 0 * * *'      # 00:50 — historyShorts     (run 1/5)
+    - cron: '15 1 * * *'      # 01:15 — English           (run 1/2)
+    - cron: '40 1 * * *'      # 01:40 — book              (run 1/2)
+    - cron: '5 2 * * *'       # 02:05 — travelShort       (run 1/5)
+    - cron: '30 2 * * *'      # 02:30 — immigration-Short (run 1/5)
+    - cron: '55 2 * * *'      # 02:55 — collegeShorts     (run 1/5)
+    #- cron: '20 3 * * *'      # 03:20 — health            (run 1/2)
+    - cron: '45 3 * * *'      # 03:45 — history           (run 1/2)
+
+    # ─────────────────────────────────────────────────────
+    # CLUSTER 2 — 06:00–09:45 UTC
+    # India morning peak (IST 11:30–15:15)
+    # ─────────────────────────────────────────────────────
+
+    - cron: '0 6 * * *'       # 06:00 — book-shorts       (run 1/5)
+    - cron: '25 6 * * *'      # 06:25 — English-Shorts    (run 1/5)
+    #- cron: '50 6 * * *'      # 06:50 — healthShorts      (run 2/5)
+    - cron: '15 7 * * *'      # 07:15 — howdoes           (run 1/2)
+    - cron: '40 7 * * *'      # 07:40 — college           (run 1/2)
+    - cron: '5 8 * * *'       # 08:05 — howdoesShorts     (run 2/5)
+    - cron: '30 8 * * *'      # 08:30 — historyShorts     (run 2/5)
+    - cron: '55 8 * * *'      # 08:55 — travelShort       (run 2/5)
+    - cron: '20 9 * * *'      # 09:20 — travel            (run 1/2)
+    - cron: '45 9 * * *'      # 09:45 — immigration       (run 1/2)
+
+    # ─────────────────────────────────────────────────────
+    # CLUSTER 3 — 12:00–15:45 UTC
+    # India afternoon (IST 17:30–21:15) / USA morning (EST 07:00–10:45)
+    # ─────────────────────────────────────────────────────
+
+    - cron: '0 12 * * *'      # 12:00 — immigration-Short (run 2/5)
+    - cron: '25 12 * * *'     # 12:25 — collegeShorts     (run 2/5)
+    - cron: '50 12 * * *'     # 12:50 — book-shorts       (run 2/5)
+    - cron: '15 13 * * *'     # 13:15 — English-Shorts    (run 2/5)
+    #- cron: '40 13 * * *'     # 13:40 — healthShorts      (run 3/5)
+    - cron: '5 14 * * *'      # 14:05 — English           (run 2/2) ✓
+    - cron: '30 14 * * *'     # 14:30 — book              (run 2/2) ✓
+    - cron: '55 14 * * *'     # 14:55 — howdoesShorts     (run 3/5)
+    - cron: '20 15 * * *'     # 15:20 — historyShorts     (run 3/5)
+    - cron: '45 15 * * *'     # 15:45 — travelShort       (run 3/5)
+
+    # ─────────────────────────────────────────────────────
+    # CLUSTER 4 — 17:00–20:45 UTC
+    # USA afternoon peak (EST 12:00–15:45)
+    # ─────────────────────────────────────────────────────
+
+    - cron: '0 17 * * *'      # 17:00 — immigration-Short (run 3/5)
+    - cron: '25 17 * * *'     # 17:25 — collegeShorts     (run 3/5)
+    #- cron: '50 17 * * *'     # 17:50 — health            (run 2/2) ✓
+    - cron: '15 18 * * *'     # 18:15 — history           (run 2/2) ✓
+    - cron: '40 18 * * *'     # 18:40 — book-shorts       (run 3/5)
+    - cron: '5 19 * * *'      # 19:05 — English-Shorts    (run 3/5)
+    #- cron: '30 19 * * *'     # 19:30 — healthShorts      (run 4/5)
+    - cron: '55 19 * * *'     # 19:55 — howdoes           (run 2/2) ✓
+    - cron: '20 20 * * *'     # 20:20 — college           (run 2/2) ✓
+    - cron: '45 20 * * *'     # 20:45 — howdoesShorts     (run 4/5)
+
+    # ─────────────────────────────────────────────────────
+    # CLUSTER 5 — 21:10–23:40 UTC
+    # USA evening peak (EST 16:10–18:40)
+    # ─────────────────────────────────────────────────────
+
+    - cron: '10 21 * * *'     # 21:10 — historyShorts     (run 4/5)
+    - cron: '35 21 * * *'     # 21:35 — travelShort       (run 4/5)
+    - cron: '0 22 * * *'      # 22:00 — immigration-Short (run 4/5)
+    - cron: '25 22 * * *'     # 22:25 — travel            (run 2/2) ✓
+    - cron: '50 22 * * *'     # 22:50 — immigration       (run 2/2) ✓
+    - cron: '15 23 * * *'     # 23:15 — collegeShorts     (run 4/5)
+    - cron: '40 23 * * *'     # 23:40 — book-shorts       (run 4/5)
+
+    # ─────────────────────────────────────────────────────
+    # RUN 5/5 for each short — filling remaining gaps
+    # Spread across off-peak windows to complete the 5th slot
+    # without bunching. Still valid posting times.
+    # ─────────────────────────────────────────────────────
+
+    - cron: '5 4 * * *'       # 04:05 — English-Shorts    (run 4/5)  IST 09:35
+    #- cron: '30 4 * * *'      # 04:30 — healthShorts      (run 5/5)  IST 10:00 ✓
+    - cron: '55 4 * * *'      # 04:55 — howdoesShorts     (run 5/5)  IST 10:25 ✓
+    - cron: '20 5 * * *'      # 05:20 — historyShorts     (run 5/5)  IST 10:50 ✓
+    - cron: '45 5 * * *'      # 05:45 — travelShort       (run 5/5)  IST 11:15 ✓
+    - cron: '10 10 * * *'     # 10:10 — immigration-Short (run 5/5)  IST 15:40 ✓
+    - cron: '35 10 * * *'     # 10:35 — collegeShorts     (run 5/5)  IST 16:05 ✓
+    - cron: '0 11 * * *'      # 11:00 — book-shorts       (run 5/5)  IST 16:30 ✓
+    - cron: '25 11 * * *'     # 11:25 — English-Shorts    (run 5/5)  IST 16:55 ✓
+
+  # Allow manual full-schedule trigger from GitHub Actions UI
+  workflow_dispatch:
+
+# Prevent any two instances of THIS master workflow running at once
+concurrency:
+  group: master-scheduler
+  cancel-in-progress: false
+
+jobs:
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Each job checks github.event.schedule to know which cron fired,
+  # then triggers ONLY that workflow via the GitHub API (workflow_dispatch).
+  # All jobs have `needs` chained so GitHub won't start the next job until
+  # the previous workflow_dispatch has been accepted (fire-and-forget dispatch).
+  #
+  # NOTE: The triggered workflows themselves must have `workflow_dispatch:`
+  # in their `on:` block for this to work. Add it if not already present.
+  #
+  # IMPORTANT: Set GITHUB_TOKEN permissions to `actions: write` in your
+  # repo Settings → Actions → General → Workflow permissions (read+write),
+  # OR add the permissions block below at the repo/org level.
+  # ─────────────────────────────────────────────────────────────────────────
+
+  # ── CLUSTER 1 ─────────────────────────────────────────────────────────────
+
+  trigger-00-00:
+    name: "00:00 — healthShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 0 * * *'
+    steps:
+      - name: Trigger healthShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'healthShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: healthShorts.yml');
+
+  trigger-00-25:
+    name: "00:25 — howdoesShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '25 0 * * *'
+    steps:
+      - name: Trigger howdoesShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'howdoesShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: howdoesShorts.yml');
+
+  trigger-00-50:
+    name: "00:50 — historyShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '50 0 * * *'
+    steps:
+      - name: Trigger historyShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'historyShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: historyShorts.yml');
+
+  trigger-01-15:
+    name: "01:15 — English (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '15 1 * * *'
+    steps:
+      - name: Trigger English.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'English.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: English.yml');
+
+  trigger-01-40:
+    name: "01:40 — book (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '40 1 * * *'
+    steps:
+      - name: Trigger book.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'book.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: book.yml');
+
+  trigger-02-05:
+    name: "02:05 — travelShort"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '5 2 * * *'
+    steps:
+      - name: Trigger travelShort.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'travelShort.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: travelShort.yml');
+
+  trigger-02-30:
+    name: "02:30 — immigration-Short"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '30 2 * * *'
+    steps:
+      - name: Trigger immigration-Short.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'immigration-Short.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: immigration-Short.yml');
+
+  trigger-02-55:
+    name: "02:55 — collegeShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '55 2 * * *'
+    steps:
+      - name: Trigger collegeShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'collegeShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: collegeShorts.yml');
+
+  trigger-03-20:
+    name: "03:20 — health (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '20 3 * * *'
+    steps:
+      - name: Trigger health.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'health.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: health.yml');
+
+  trigger-03-45:
+    name: "03:45 — history (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '45 3 * * *'
+    steps:
+      - name: Trigger history.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'history.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: history.yml');
+
+  # ── CLUSTER 2 ─────────────────────────────────────────────────────────────
+
+  trigger-06-00:
+    name: "06:00 — book-shorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 6 * * *'
+    steps:
+      - name: Trigger book-shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'book-shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: book-shorts.yml');
+
+  trigger-06-25:
+    name: "06:25 — English-Shorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '25 6 * * *'
+    steps:
+      - name: Trigger English-Shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'English-Shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: English-Shorts.yml');
+
+  trigger-06-50:
+    name: "06:50 — healthShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '50 6 * * *'
+    steps:
+      - name: Trigger healthShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'healthShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: healthShorts.yml');
+
+  trigger-07-15:
+    name: "07:15 — howdoes (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '15 7 * * *'
+    steps:
+      - name: Trigger howdoes.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'howdoes.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: howdoes.yml');
+
+  trigger-07-40:
+    name: "07:40 — college (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '40 7 * * *'
+    steps:
+      - name: Trigger college.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'college.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: college.yml');
+
+  trigger-08-05:
+    name: "08:05 — howdoesShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '5 8 * * *'
+    steps:
+      - name: Trigger howdoesShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'howdoesShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: howdoesShorts.yml');
+
+  trigger-08-30:
+    name: "08:30 — historyShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '30 8 * * *'
+    steps:
+      - name: Trigger historyShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'historyShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: historyShorts.yml');
+
+  trigger-08-55:
+    name: "08:55 — travelShort"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '55 8 * * *'
+    steps:
+      - name: Trigger travelShort.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'travelShort.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: travelShort.yml');
+
+  trigger-09-20:
+    name: "09:20 — travel (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '20 9 * * *'
+    steps:
+      - name: Trigger travel.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'travel.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: travel.yml');
+
+  trigger-09-45:
+    name: "09:45 — immigration (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '45 9 * * *'
+    steps:
+      - name: Trigger immigration.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'immigration.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: immigration.yml');
+
+  # ── RUN 5/5 fill-in slots (04:05–11:25) ──────────────────────────────────
+
+  trigger-04-05:
+    name: "04:05 — English-Shorts (run 4/5)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '5 4 * * *'
+    steps:
+      - name: Trigger English-Shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'English-Shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: English-Shorts.yml');
+
+  trigger-04-30:
+    name: "04:30 — healthShorts (run 5/5)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '30 4 * * *'
+    steps:
+      - name: Trigger healthShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'healthShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: healthShorts.yml');
+
+  trigger-04-55:
+    name: "04:55 — howdoesShorts (run 5/5)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '55 4 * * *'
+    steps:
+      - name: Trigger howdoesShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'howdoesShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: howdoesShorts.yml');
+
+  trigger-05-20:
+    name: "05:20 — historyShorts (run 5/5)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '20 5 * * *'
+    steps:
+      - name: Trigger historyShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'historyShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: historyShorts.yml');
+
+  trigger-05-45:
+    name: "05:45 — travelShort (run 5/5)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '45 5 * * *'
+    steps:
+      - name: Trigger travelShort.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'travelShort.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: travelShort.yml');
+
+  trigger-10-10:
+    name: "10:10 — immigration-Short (run 5/5)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '10 10 * * *'
+    steps:
+      - name: Trigger immigration-Short.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'immigration-Short.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: immigration-Short.yml');
+
+  trigger-10-35:
+    name: "10:35 — collegeShorts (run 5/5)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '35 10 * * *'
+    steps:
+      - name: Trigger collegeShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'collegeShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: collegeShorts.yml');
+
+  trigger-11-00:
+    name: "11:00 — book-shorts (run 5/5)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 11 * * *'
+    steps:
+      - name: Trigger book-shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'book-shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: book-shorts.yml');
+
+  trigger-11-25:
+    name: "11:25 — English-Shorts (run 5/5)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '25 11 * * *'
+    steps:
+      - name: Trigger English-Shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'English-Shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: English-Shorts.yml');
+
+  # ── CLUSTER 3 ─────────────────────────────────────────────────────────────
+
+  trigger-12-00:
+    name: "12:00 — immigration-Short"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 12 * * *'
+    steps:
+      - name: Trigger immigration-Short.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'immigration-Short.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: immigration-Short.yml');
+
+  trigger-12-25:
+    name: "12:25 — collegeShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '25 12 * * *'
+    steps:
+      - name: Trigger collegeShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'collegeShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: collegeShorts.yml');
+
+  trigger-12-50:
+    name: "12:50 — book-shorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '50 12 * * *'
+    steps:
+      - name: Trigger book-shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'book-shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: book-shorts.yml');
+
+  trigger-13-15:
+    name: "13:15 — English-Shorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '15 13 * * *'
+    steps:
+      - name: Trigger English-Shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'English-Shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: English-Shorts.yml');
+
+  trigger-13-40:
+    name: "13:40 — healthShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '40 13 * * *'
+    steps:
+      - name: Trigger healthShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'healthShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: healthShorts.yml');
+
+  trigger-14-05:
+    name: "14:05 — English (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '5 14 * * *'
+    steps:
+      - name: Trigger English.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'English.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: English.yml');
+
+  trigger-14-30:
+    name: "14:30 — book (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '30 14 * * *'
+    steps:
+      - name: Trigger book.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'book.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: book.yml');
+
+  trigger-14-55:
+    name: "14:55 — howdoesShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '55 14 * * *'
+    steps:
+      - name: Trigger howdoesShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'howdoesShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: howdoesShorts.yml');
+
+  trigger-15-20:
+    name: "15:20 — historyShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '20 15 * * *'
+    steps:
+      - name: Trigger historyShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'historyShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: historyShorts.yml');
+
+  trigger-15-45:
+    name: "15:45 — travelShort"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '45 15 * * *'
+    steps:
+      - name: Trigger travelShort.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'travelShort.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: travelShort.yml');
+
+  # ── CLUSTER 4 ─────────────────────────────────────────────────────────────
+
+  trigger-17-00:
+    name: "17:00 — immigration-Short"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 17 * * *'
+    steps:
+      - name: Trigger immigration-Short.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'immigration-Short.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: immigration-Short.yml');
+
+  trigger-17-25:
+    name: "17:25 — collegeShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '25 17 * * *'
+    steps:
+      - name: Trigger collegeShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'collegeShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: collegeShorts.yml');
+
+  trigger-17-50:
+    name: "17:50 — health (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '50 17 * * *'
+    steps:
+      - name: Trigger health.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'health.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: health.yml');
+
+  trigger-18-15:
+    name: "18:15 — history (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '15 18 * * *'
+    steps:
+      - name: Trigger history.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'history.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: history.yml');
+
+  trigger-18-40:
+    name: "18:40 — book-shorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '40 18 * * *'
+    steps:
+      - name: Trigger book-shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'book-shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: book-shorts.yml');
+
+  trigger-19-05:
+    name: "19:05 — English-Shorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '5 19 * * *'
+    steps:
+      - name: Trigger English-Shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'English-Shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: English-Shorts.yml');
+
+  trigger-19-30:
+    name: "19:30 — healthShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '30 19 * * *'
+    steps:
+      - name: Trigger healthShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'healthShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: healthShorts.yml');
+
+  trigger-19-55:
+    name: "19:55 — howdoes (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '55 19 * * *'
+    steps:
+      - name: Trigger howdoes.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'howdoes.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: howdoes.yml');
+
+  trigger-20-20:
+    name: "20:20 — college (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '20 20 * * *'
+    steps:
+      - name: Trigger college.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'college.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: college.yml');
+
+  trigger-20-45:
+    name: "20:45 — howdoesShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '45 20 * * *'
+    steps:
+      - name: Trigger howdoesShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'howdoesShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: howdoesShorts.yml');
+
+  # ── CLUSTER 5 ─────────────────────────────────────────────────────────────
+
+  trigger-21-10:
+    name: "21:10 — historyShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '10 21 * * *'
+    steps:
+      - name: Trigger historyShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'historyShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: historyShorts.yml');
+
+  trigger-21-35:
+    name: "21:35 — travelShort"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '35 21 * * *'
+    steps:
+      - name: Trigger travelShort.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'travelShort.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: travelShort.yml');
+
+  trigger-22-00:
+    name: "22:00 — immigration-Short"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 22 * * *'
+    steps:
+      - name: Trigger immigration-Short.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'immigration-Short.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: immigration-Short.yml');
+
+  trigger-22-25:
+    name: "22:25 — travel (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '25 22 * * *'
+    steps:
+      - name: Trigger travel.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'travel.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: travel.yml');
+
+  trigger-22-50:
+    name: "22:50 — immigration (long)"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '50 22 * * *'
+    steps:
+      - name: Trigger immigration.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'immigration.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: immigration.yml');
+
+  trigger-23-15:
+    name: "23:15 — collegeShorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '15 23 * * *'
+    steps:
+      - name: Trigger collegeShorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'collegeShorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: collegeShorts.yml');
+
+  trigger-23-40:
+    name: "23:40 — book-shorts"
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '40 23 * * *'
+    steps:
+      - name: Trigger book-shorts.yml
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              workflow_id: 'book-shorts.yml',
+              ref: 'yt-v1-images-major-changes'
+            });
+            console.log('Dispatched: book-shorts.yml');

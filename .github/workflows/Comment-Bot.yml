@@ -1,9 +1,9 @@
 # Updated: 2026-03-11
-name: health
+name: Comment Bot
 
 on:
-  #schedule:
-    #- cron: '20 3,15 * * *'  # Runs every 4 hours
+  schedule:
+    - cron: '0 5 * * *'  
   #push:
   #  branches:
   #    - main  # Adjust the branch name as needed
@@ -24,37 +24,6 @@ jobs:
       uses: actions/setup-python@v2  # Set up Python on the runner
       with:
         python-version: '3.x'  # Specify the Python version (e.g., 3.6, 3.7, etc.)
-    
-    - name: Install ImageMagick
-      run: sudo apt-get update &&  sudo apt-get install -y imagemagick
-
-   
-    - name: Install ImageMagick1
-      run:  |
-        #sudo apt-get install libmagick++-dev
-        cat "/etc/ImageMagick-6/policy.xml"
-        sudo cp -f .github/policy.xml /etc/ImageMagick-6/policy.xml
-        cat "/etc/ImageMagick-6/policy.xml"
-        mkdir -p ~/.fonts
-        cp .github/NotoSansDevanagari-Regular.ttf ~/.fonts/
-        cp .github/NotoSans-Regular.ttf ~/.fonts/
-        fc-cache -fv
-    
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install moviepy==1.0.3
-        python -m pip install langdetect
-        python -m pip install gtts
-        #python -m pip install mutagen
-        python -m pip install google
-        python -m pip install google_auth_oauthlib
-        python -m pip install google-api-python-client
-        python -m pip install facebook-sdk 
-        python -m pip install matplotlib
-        python -m pip install openai
-        python -m pip install Pillow
-        python -m pip install azure-cognitiveservices-speech
 
     - name: Checkout private tools
       uses: actions/checkout@v4
@@ -64,13 +33,16 @@ jobs:
         token: ${{ secrets.SMBOTPAT }}
         path: SMbot
 
+    - name: Install dependencies
+      run: pip install requests google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client facebook-sdk openai azure-cognitiveservices-speech moviepy==1.0.3 Pillow numpy imageio imageio-ffmpeg decorator tqdm langdetect matplotlib
+    
     - name: Run  Script
       run: |
         echo "Current Working Directory: $PWD"
         ls -l | grep '^d' | awk '{print $9}'
         cd SMbot/ytpy/py
         ls -l | grep '^d' | awk '{print $9}'
-        python video-health.py
+        python comment_bot.py
 
     #- name: Commit and push only allowed files
       #run: |
@@ -88,4 +60,3 @@ jobs:
         #  git commit -m "Auto commit from GitHub Actions"
         #  git push
         #fi
-
