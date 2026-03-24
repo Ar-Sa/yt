@@ -234,8 +234,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'healthShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'healthShorts.yml'
+              
             });
             console.log('Dispatched: healthShorts.yml');
 
@@ -252,8 +252,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'howdoesShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'howdoesShorts.yml'
+              
             });
             console.log('Dispatched: howdoesShorts.yml');
 
@@ -270,8 +270,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'historyShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'historyShorts.yml'
+              
             });
             console.log('Dispatched: historyShorts.yml');
 
@@ -288,8 +288,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'English.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'English.yml'
+              
             });
             console.log('Dispatched: English.yml');
 
@@ -306,8 +306,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'book.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'book.yml'
+              
             });
             console.log('Dispatched: book.yml');
 
@@ -324,8 +324,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'travelShort.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'travelShort.yml'
+              
             });
             console.log('Dispatched: travelShort.yml');
 
@@ -342,8 +342,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'immigration-Short.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'immigration-Short.yml'
+              
             });
             console.log('Dispatched: immigration-Short.yml');
 
@@ -360,8 +360,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'collegeShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'collegeShorts.yml'
+              
             });
             console.log('Dispatched: collegeShorts.yml');
 
@@ -378,8 +378,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'health.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'health.yml'
+              
             });
             console.log('Dispatched: health.yml');
 
@@ -396,8 +396,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'history.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'history.yml'
+              
             });
             console.log('Dispatched: history.yml');
 
@@ -416,8 +416,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'book-shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'book-shorts.yml'
+              
             });
             console.log('Dispatched: book-shorts.yml');
 
@@ -434,8 +434,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'English-Shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'English-Shorts.yml'
+              
             });
             console.log('Dispatched: English-Shorts.yml');
 
@@ -452,8 +452,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'healthShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'healthShorts.yml'
+              
             });
             console.log('Dispatched: healthShorts.yml');
 
@@ -470,8 +470,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'howdoes.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'howdoes.yml'
+              
             });
             console.log('Dispatched: howdoes.yml');
 
@@ -488,8 +488,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'college.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'college.yml'
+              
             });
             console.log('Dispatched: college.yml');
 
@@ -506,8 +506,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'howdoesShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'howdoesShorts.yml'
+              
             });
             console.log('Dispatched: howdoesShorts.yml');
 
@@ -524,8 +524,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'historyShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'historyShorts.yml'
+              
             });
             console.log('Dispatched: historyShorts.yml');
 
@@ -542,8 +542,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'travelShort.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'travelShort.yml'
+              
             });
             console.log('Dispatched: travelShort.yml');
 
@@ -560,8 +560,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'travel.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'travel.yml'
+              
             });
             console.log('Dispatched: travel.yml');
 
@@ -578,8 +578,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'immigration.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'immigration.yml'
+              
             });
             console.log('Dispatched: immigration.yml');
 
@@ -598,8 +598,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'English-Shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'English-Shorts.yml'
+              
             });
             console.log('Dispatched: English-Shorts.yml');
 
@@ -616,8 +616,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'healthShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'healthShorts.yml'
+              
             });
             console.log('Dispatched: healthShorts.yml');
 
@@ -634,8 +634,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'howdoesShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'howdoesShorts.yml'
+              
             });
             console.log('Dispatched: howdoesShorts.yml');
 
@@ -652,8 +652,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'historyShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'historyShorts.yml'
+              
             });
             console.log('Dispatched: historyShorts.yml');
 
@@ -670,8 +670,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'travelShort.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'travelShort.yml'
+              
             });
             console.log('Dispatched: travelShort.yml');
 
@@ -688,8 +688,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'immigration-Short.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'immigration-Short.yml'
+              
             });
             console.log('Dispatched: immigration-Short.yml');
 
@@ -706,8 +706,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'collegeShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'collegeShorts.yml'
+              
             });
             console.log('Dispatched: collegeShorts.yml');
 
@@ -724,8 +724,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'book-shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'book-shorts.yml'
+              
             });
             console.log('Dispatched: book-shorts.yml');
 
@@ -742,8 +742,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'English-Shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'English-Shorts.yml'
+              
             });
             console.log('Dispatched: English-Shorts.yml');
 
@@ -762,8 +762,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'immigration-Short.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'immigration-Short.yml'
+              
             });
             console.log('Dispatched: immigration-Short.yml');
 
@@ -780,8 +780,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'collegeShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'collegeShorts.yml'
+              
             });
             console.log('Dispatched: collegeShorts.yml');
 
@@ -798,8 +798,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'book-shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'book-shorts.yml'
+              
             });
             console.log('Dispatched: book-shorts.yml');
 
@@ -816,8 +816,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'English-Shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'English-Shorts.yml'
+              
             });
             console.log('Dispatched: English-Shorts.yml');
 
@@ -834,8 +834,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'healthShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'healthShorts.yml'
+              
             });
             console.log('Dispatched: healthShorts.yml');
 
@@ -852,8 +852,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'English.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'English.yml'
+              
             });
             console.log('Dispatched: English.yml');
 
@@ -870,8 +870,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'book.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'book.yml'
+              
             });
             console.log('Dispatched: book.yml');
 
@@ -888,8 +888,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'howdoesShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'howdoesShorts.yml'
+              
             });
             console.log('Dispatched: howdoesShorts.yml');
 
@@ -906,8 +906,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'historyShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'historyShorts.yml'
+              
             });
             console.log('Dispatched: historyShorts.yml');
 
@@ -924,8 +924,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'travelShort.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'travelShort.yml'
+              
             });
             console.log('Dispatched: travelShort.yml');
 
@@ -944,8 +944,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'immigration-Short.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'immigration-Short.yml'
+              
             });
             console.log('Dispatched: immigration-Short.yml');
 
@@ -962,8 +962,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'collegeShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'collegeShorts.yml'
+              
             });
             console.log('Dispatched: collegeShorts.yml');
 
@@ -980,8 +980,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'health.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'health.yml'
+              
             });
             console.log('Dispatched: health.yml');
 
@@ -998,8 +998,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'history.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'history.yml'
+              
             });
             console.log('Dispatched: history.yml');
 
@@ -1016,8 +1016,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'book-shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'book-shorts.yml'
+              
             });
             console.log('Dispatched: book-shorts.yml');
 
@@ -1034,8 +1034,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'English-Shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'English-Shorts.yml'
+              
             });
             console.log('Dispatched: English-Shorts.yml');
 
@@ -1052,8 +1052,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'healthShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'healthShorts.yml'
+              
             });
             console.log('Dispatched: healthShorts.yml');
 
@@ -1070,8 +1070,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'howdoes.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'howdoes.yml'
+              
             });
             console.log('Dispatched: howdoes.yml');
 
@@ -1088,8 +1088,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'college.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'college.yml'
+              
             });
             console.log('Dispatched: college.yml');
 
@@ -1106,8 +1106,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'howdoesShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'howdoesShorts.yml'
+              
             });
             console.log('Dispatched: howdoesShorts.yml');
 
@@ -1126,8 +1126,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'historyShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'historyShorts.yml'
+              
             });
             console.log('Dispatched: historyShorts.yml');
 
@@ -1144,8 +1144,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'travelShort.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'travelShort.yml'
+              
             });
             console.log('Dispatched: travelShort.yml');
 
@@ -1162,8 +1162,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'immigration-Short.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'immigration-Short.yml'
+              
             });
             console.log('Dispatched: immigration-Short.yml');
 
@@ -1180,8 +1180,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'travel.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'travel.yml'
+              
             });
             console.log('Dispatched: travel.yml');
 
@@ -1198,8 +1198,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'immigration.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'immigration.yml'
+              
             });
             console.log('Dispatched: immigration.yml');
 
@@ -1216,8 +1216,8 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'collegeShorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'collegeShorts.yml'
+              
             });
             console.log('Dispatched: collegeShorts.yml');
 
@@ -1234,7 +1234,7 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo:  context.repo.repo,
-              workflow_id: 'book-shorts.yml',
-              ref: 'yt-v1-images-major-changes'
+              workflow_id: 'book-shorts.yml'
+              
             });
             console.log('Dispatched: book-shorts.yml');
