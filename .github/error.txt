@@ -1,18 +1,13 @@
-Error: 
-  x Unexpected token `div`. Expected jsx identifier
-      ,-[/vercel/path0/components/admin/AdminConsole.tsx:1048:1]
- 1048 |   // ── Render ───────────────────────────────────────────────────────────────────
- 1049 | 
- 1050 |   return (
- 1051 |     <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
-      :      ^^^
- 1052 |       <ToastStack toasts={toasts} remove={removeToast} />
- 1053 |       {showPwModal && <PasswordModal onClose={() => setShowPwModal(false)} onToast={addToast} />}
-      `----
-Caused by:
-    Syntax Error
-Import trace for requested module:
-./components/admin/AdminConsole.tsx
-./app/admin/page.tsx
-> Build failed because of webpack errors
+Failed to compile.
+./app/layoff-predictor/[slug]/page.tsx:151:5
+Type error: Type 'unknown[]' is not assignable to type 'string[]'.
+  Type 'unknown' is not assignable to type 'string'.
+  149 |     company_slug: company.company_slug,
+  150 |     industry: company.industry,
+> 151 |     locations,
+      |     ^
+  152 |     risk_score: riskScore,
+  153 |     risk_band: riskBand,
+  154 |     past_layoffs: events.length,
+Next.js build worker exited with code: 1 and signal: null
 Error: Command "npm run build" exited with 1
