@@ -1,15 +1,12 @@
-previous_response_id = read_last_response(bot_name, category)
-        if previous_response_id:
-            logger.info(f"[AI-AZURE] Continuing thread {category}: {previous_response_id}")
-        payload = {
-            "model":        "gpt-4o",
-            "user":         bot_name,
-            "temperature":  0.85,
-            "instructions": enhanced_instruction,
-            "input":        [{"role": "user", "content": prompt_text}],
-        }
-        if previous_response_id:
-            payload["previous_response_id"] = previous_response_id
-        headers = {"Content-Type": "application/json", "api-key": api_key}
-        logger.info(f"[AI-AZURE] Sending to {ai_endpoint} | prompt_chars={len(prompt_text)} | prompt={prompt_text}")
-        response = requests.post(ai_endpoint, headers=headers, json=payload, timeout=60)
+Failed to compile.
+./pages/api/admin/logs.ts:50:28
+Type error: Parameter 'l' implicitly has an 'any' type.
+  48 |     const stats = {
+  49 |       total: data?.length ?? 0,
+> 50 |       errors: data?.filter(l => l.level === 'error').length ?? 0,
+     |                            ^
+  51 |       warns:  data?.filter(l => l.level === 'warn').length  ?? 0,
+  52 |     }
+  53 |
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1
