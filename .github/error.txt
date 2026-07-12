@@ -1,13 +1,12 @@
 Failed to compile.
-./app/layoff-predictor/[slug]/page.tsx:151:5
-Type error: Type 'unknown[]' is not assignable to type 'string[]'.
-  Type 'unknown' is not assignable to type 'string'.
-  149 |     company_slug: company.company_slug,
-  150 |     industry: company.industry,
-> 151 |     locations,
-      |     ^
-  152 |     risk_score: riskScore,
-  153 |     risk_band: riskBand,
-  154 |     past_layoffs: events.length,
+./app/layoff-predictor/[slug]/page.tsx:100:84
+Type error: Parameter 'l' implicitly has an 'any' type.
+   98 |   const riskScore = computeRiskScore(events.length, totalEmployees, daysSince, industryCount)
+   99 |   const riskBand = getRiskBand(riskScore)
+> 100 |   const locations = [...new Set(events.map((e: LayoffEvent) => e.location).filter((l): l is string => !!l))]
+      |                                                                                    ^
+  101 |
+  102 |   const signals: string[] = []
+  103 |   if (events.length >= 5) signals.push(`${events.length} layoff rounds recorded — pattern of repeated reductions`)
 Next.js build worker exited with code: 1 and signal: null
 Error: Command "npm run build" exited with 1
