@@ -1,4 +1,3 @@
-./components/admin/AdminConsole.tsx
 Error: 
   x Unexpected token `div`. Expected jsx identifier
       ,-[/vercel/path0/components/admin/AdminConsole.tsx:1048:1]
@@ -10,3 +9,10 @@ Error:
  1052 |       <ToastStack toasts={toasts} remove={removeToast} />
  1053 |       {showPwModal && <PasswordModal onClose={() => setShowPwModal(false)} onToast={addToast} />}
       `----
+Caused by:
+    Syntax Error
+Import trace for requested module:
+./components/admin/AdminConsole.tsx
+./app/admin/page.tsx
+> Build failed because of webpack errors
+Error: Command "npm run build" exited with 1
