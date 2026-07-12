@@ -1,0 +1,123 @@
+name: Sync Azure Blob to Branch
+
+on:
+  schedule:
+    # GitHub's minimum interval is 5 minutes, but actual runs can be
+    # delayed further during high load — GitHub does not guarantee exact timing.
+    - cron: "*/5 * * * *"
+  workflow_dispatch: {}   # lets you trigger it manually from the Actions tab too
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  TARGET_BRANCH: feature-claude-code-v1
+  BASE_BRANCH: main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # need full history so we can fetch/create the target branch
+          persist-credentials: true  # keeps GITHUB_TOKEN wired into the git remote for push
+
+      - name: Sync blob content, commit, push, and open PR
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BLOB_URL: "https://gstestvmstorageacc001.blob.core.windows.net/testc001/testc002/SkillOS-main.txt"   # store the blob URL (esp. if it has a SAS token) as a repo secret
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          # ==========================================
+          # Configuration Variables
+          # ==========================================
+          $BlobUrl       = $env:BLOB_URL
+          $txtPath       = "SkillOS-main.txt"
+          $ZipPath       = "SkillOS-main.zip"
+          $TargetBranch  = $env:TARGET_BRANCH
+          $BaseBranch    = $env:BASE_BRANCH
+          $date          = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+
+          # ==========================================
+          # 1. Prepare Git identity + target branch
+          # ==========================================
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          Write-Host "Fetching branches..."
+          git fetch origin $TargetBranch 2>$null
+          if ($LASTEXITCODE -eq 0) {
+              Write-Host "Branch '$TargetBranch' exists remotely — checking it out."
+              git checkout -B $TargetBranch "origin/$TargetBranch"
+          } else {
+              Write-Host "Branch '$TargetBranch' does not exist remotely — creating it from $BaseBranch."
+              git checkout -B $TargetBranch "origin/$BaseBranch"
+          }
+
+          # ==========================================
+          # 2. Download Base64 content and convert to Zip
+          # ==========================================
+          Write-Host "Reading Base64 content from Azure Blob..."
+          Invoke-RestMethod -Uri $BlobUrl -OutFile $txtPath
+
+          $lines      = Get-Content -Path $txtPath
+          $commitmsg  = ($lines | Select-Object -First 1) -join ""
+          $BlobContent = ($lines | Select-Object -Skip 1) -join ""
+
+          Write-Host "Converting Base64 to Zip file..."
+          $Bytes = [System.Convert]::FromBase64String($BlobContent)
+          [System.IO.File]::WriteAllBytes($ZipPath, $Bytes)
+          Write-Host "Saved zip to $ZipPath"
+
+          # ==========================================
+          # 3. Clean working directory & extract zip
+          # ==========================================
+          Write-Host "Cleaning up existing files (keeping .git)..."
+          Get-ChildItem -Path . -Force |
+              Where-Object { $_.Name -ne ".git" -and $_.Name -ne $ZipPath -and $_.Name -ne $txtPath } |
+              Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+
+          Write-Host "Extracting new zip contents..."
+          Expand-Archive -Path $ZipPath -DestinationPath . -Force
+
+          # ==========================================
+          # 4. Commit and push changes (only if something changed)
+          # ==========================================
+          git add -A
+          $changes = git status --porcelain
+          if ([string]::IsNullOrWhiteSpace($changes)) {
+              Write-Host "No changes detected — skipping commit/push/PR."
+          } else {
+              Write-Host "Staging files and committing to Git..."
+              git commit -m "Automated update: on $date - $commitmsg"
+              git push origin $TargetBranch --force
+
+              # ==========================================
+              # 5. Create Pull Request (skip if one is already open)
+              # ==========================================
+              Write-Host "Checking for an existing open PR..."
+              $existing = gh pr list --base $BaseBranch --head $TargetBranch --state open --json number | ConvertFrom-Json
+
+              if ($existing.Count -gt 0) {
+                  Write-Host "PR already open (#$($existing[0].number)) — skipping creation."
+              } else {
+                  Write-Host "Generating Pull Request..."
+                  gh pr create `
+                      --title "Automated Update from Azure Blob - $commitmsg" `
+                      --body "This PR was automatically created by the sync workflow." `
+                      --base $BaseBranch `
+                      --head $TargetBranch
+              }
+          }
+
+          # ==========================================
+          # Cleanup local temp files
+          # ==========================================
+          Remove-Item $ZipPath -Force -ErrorAction SilentlyContinue
+          Remove-Item $txtPath -Force -ErrorAction SilentlyContinue
+          Write-Host "Process fully completed!"
