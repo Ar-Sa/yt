@@ -1,13 +1,15 @@
-Failed to compile.
-./app/layoff-predictor/[slug]/page.tsx:100:9
-Type error: Type 'unknown[]' is not assignable to type 'string[]'.
-  Type 'unknown' is not assignable to type 'string'.
-   98 |   const riskScore = computeRiskScore(events.length, totalEmployees, daysSince, industryCount)
-   99 |   const riskBand = getRiskBand(riskScore)
-> 100 |   const locations: string[] = [...new Set(events.map((e: LayoffEvent) => e.location as string | null).filter((l: string | null): l is string => !!l))]
-      |         ^
-  101 |
-  102 |   const signals: string[] = []
-  103 |   if (events.length >= 5) signals.push(`${events.length} layoff rounds recorded — pattern of repeated reductions`)
-Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
+previous_response_id = read_last_response(bot_name, category)
+        if previous_response_id:
+            logger.info(f"[AI-AZURE] Continuing thread {category}: {previous_response_id}")
+        payload = {
+            "model":        "gpt-4o",
+            "user":         bot_name,
+            "temperature":  0.85,
+            "instructions": enhanced_instruction,
+            "input":        [{"role": "user", "content": prompt_text}],
+        }
+        if previous_response_id:
+            payload["previous_response_id"] = previous_response_id
+        headers = {"Content-Type": "application/json", "api-key": api_key}
+        logger.info(f"[AI-AZURE] Sending to {ai_endpoint} | prompt_chars={len(prompt_text)} | prompt={prompt_text}")
+        response = requests.post(ai_endpoint, headers=headers, json=payload, timeout=60)
