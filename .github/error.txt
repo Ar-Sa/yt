@@ -1,10 +1,11 @@
 Failed to compile.
-./app/layoff-predictor/[slug]/page.tsx:100:84
-Type error: Parameter 'l' implicitly has an 'any' type.
+./app/layoff-predictor/[slug]/page.tsx:100:9
+Type error: Type 'unknown[]' is not assignable to type 'string[]'.
+  Type 'unknown' is not assignable to type 'string'.
    98 |   const riskScore = computeRiskScore(events.length, totalEmployees, daysSince, industryCount)
    99 |   const riskBand = getRiskBand(riskScore)
-> 100 |   const locations = [...new Set(events.map((e: LayoffEvent) => e.location).filter((l): l is string => !!l))]
-      |                                                                                    ^
+> 100 |   const locations: string[] = [...new Set(events.map((e: LayoffEvent) => e.location as string | null).filter((l: string | null): l is string => !!l))]
+      |         ^
   101 |
   102 |   const signals: string[] = []
   103 |   if (events.length >= 5) signals.push(`${events.length} layoff rounds recorded — pattern of repeated reductions`)
