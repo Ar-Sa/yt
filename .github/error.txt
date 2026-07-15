@@ -1,7 +1,13 @@
-AI Provider Test
-
-Sends a minimal “Say ok” call to the configured provider. Costs <1 token.
-
-Test AI Connection
-AI connection failed
-Invalid 'max_output_tokens': integer below minimum value. Expected a value >= 16, but got 10 instead.
+./app/og/scan/[token]/route.ts
+Error: 
+  x Expected '>', got 'style'
+    ,-[/vercel/path0/app/og/scan/[token]/route.ts:35:1]
+ 35 |   return new ImageResponse(
+ 36 |     (
+ 37 |       <div
+ 38 |         style={{
+    :         ^^^^^
+ 39 |           width: 1200,
+ 40 |           height: 630,
+ 41 |           background: 'linear-gradient(135deg, #0f0f1a 0%, #1a1033 60%, #0d1220 100%)',
+    `----
