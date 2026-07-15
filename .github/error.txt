@@ -1,13 +1,12 @@
-Error occurred prerendering page "/opengraph-image". Read more: https://nextjs.org/docs/messages/prerender-error
-Error: Expected <div> to have explicit "display: flex" or "display: none" if it has more than one child node.
-    at qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16210:13)
-    at qt.next (<anonymous>)
-    at qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16214:20)
-    at async wl (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:17122:12)
+   Generating static pages (29/119) 
+Error occurred prerendering page "/twitter-image". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Invalid value for CSS property "display". Allowed values: "flex" | "block" | "none" | "-webkit-box". Received: "inline-flex".
+    at ve (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:14771:13)
+    at Pn (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:15285:23)
+    at async qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16185:16)
+    at async qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16193:21)
+    at async qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16193:21)
+    at async wl (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:17111:14)
     at async render (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:18774:15)
     at async Object.start (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:19010:25)
-Error occurred prerendering page "/twitter-image". Read more: https://nextjs.org/docs/messages/prerender-error
-Error: Invalid value fit-content for setWidth
-    at ny.<anonymous> (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:17225:15)
-    at E2.<computed> [as setWidth] (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:17212:17)
-    at Pn (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:15285:3356)
+   Generating static pages (59/119) 
