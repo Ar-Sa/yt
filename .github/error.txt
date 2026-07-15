@@ -1,13 +1,13 @@
-./app/og/scan/[token]/route.ts
-Error: 
-  x Expected '>', got 'style'
-    ,-[/vercel/path0/app/og/scan/[token]/route.ts:35:1]
- 35 |   return new ImageResponse(
- 36 |     (
- 37 |       <div
- 38 |         style={{
-    :         ^^^^^
- 39 |           width: 1200,
- 40 |           height: 630,
- 41 |           background: 'linear-gradient(135deg, #0f0f1a 0%, #1a1033 60%, #0d1220 100%)',
-    `----
+Error occurred prerendering page "/opengraph-image". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Expected <div> to have explicit "display: flex" or "display: none" if it has more than one child node.
+    at qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16210:13)
+    at qt.next (<anonymous>)
+    at qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16214:20)
+    at async wl (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:17122:12)
+    at async render (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:18774:15)
+    at async Object.start (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:19010:25)
+Error occurred prerendering page "/twitter-image". Read more: https://nextjs.org/docs/messages/prerender-error
+Error: Invalid value fit-content for setWidth
+    at ny.<anonymous> (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:17225:15)
+    at E2.<computed> [as setWidth] (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:17212:17)
+    at Pn (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:15285:3356)
