@@ -8,4 +8,3 @@ Type error: Cannot find name 'GRADIENTS'.
   194 |
   195 | // Render plain-text content with paragraph breaks
 Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
