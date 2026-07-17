@@ -1,14 +1,2 @@
-./app/skills/[slug]/page.tsx
-Error: 
-  x Unexpected token `main`. Expected jsx identifier
-     ,-[/vercel/path0/app/skills/[slug]/page.tsx:162:1]
- 162 |   ]
- 163 | 
- 164 |   return (
- 165 |     <main className="min-h-screen bg-[color:var(--bg)] p-4 sm:p-6">
-     :      ^^^^
- 166 |       <JsonLd data={skillSchema} />
- 167 |       <JsonLd data={breadcrumb} />
-     `----
-Caused by:
-    Syntax Error
+./app/layoff-predictor/page.tsx
+428:22  Error: 'CartesianGrid' is not defined.  react/jsx-no-undef
