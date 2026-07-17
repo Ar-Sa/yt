@@ -1,19 +1,14 @@
-  Collecting page data ...
-Error: supabaseUrl is required.
-    at new tC (/vercel/path0/.next/server/chunks/9400.js:34:52823)
-    at tP (/vercel/path0/.next/server/chunks/9400.js:34:56198)
-    at 95228 (/vercel/path0/.next/server/app/api/contact/route.js:17:2275)
-    at t (/vercel/path0/.next/server/webpack-runtime.js:1:143)
-    at 35863 (/vercel/path0/.next/server/app/api/contact/route.js:17:1367)
-    at t (/vercel/path0/.next/server/webpack-runtime.js:1:143)
-    at 86770 (/vercel/path0/.next/server/app/api/contact/route.js:1:721)
-    at t (/vercel/path0/.next/server/webpack-runtime.js:1:143)
-    at r (/vercel/path0/.next/server/app/api/contact/route.js:17:2344)
-    at /vercel/path0/.next/server/app/api/contact/route.js:17:2382
-> Build error occurred
-Error: Failed to collect page data for /api/contact
-    at /vercel/path0/node_modules/next/dist/build/utils.js:1269:15
-    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
-  type: 'Error'
-}
-Error: Command "npm run build" exited with 1
+./app/skills/[slug]/page.tsx
+Error: 
+  x Unexpected token `main`. Expected jsx identifier
+     ,-[/vercel/path0/app/skills/[slug]/page.tsx:162:1]
+ 162 |   ]
+ 163 | 
+ 164 |   return (
+ 165 |     <main className="min-h-screen bg-[color:var(--bg)] p-4 sm:p-6">
+     :      ^^^^
+ 166 |       <JsonLd data={skillSchema} />
+ 167 |       <JsonLd data={breadcrumb} />
+     `----
+Caused by:
+    Syntax Error
