@@ -1,2 +1,2 @@
-./app/layoff-predictor/page.tsx
-428:22  Error: 'CartesianGrid' is not defined.  react/jsx-no-undef
+./components/HomePage.tsx
+601:16  Error: 'Link' is not defined.  react/jsx-no-undef
