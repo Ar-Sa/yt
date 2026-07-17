@@ -1,12 +1,11 @@
-   Generating static pages (29/119) 
-Error occurred prerendering page "/twitter-image". Read more: https://nextjs.org/docs/messages/prerender-error
-Error: Invalid value for CSS property "display". Allowed values: "flex" | "block" | "none" | "-webkit-box". Received: "inline-flex".
-    at ve (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:14771:13)
-    at Pn (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:15285:23)
-    at async qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16185:16)
-    at async qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16193:21)
-    at async qt (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:16193:21)
-    at async wl (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:17111:14)
-    at async render (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:18774:15)
-    at async Object.start (file:///vercel/path0/node_modules/next/dist/compiled/@vercel/og/index.node.js:19010:25)
-   Generating static pages (59/119) 
+./app/settings/page.tsx:65:22
+Type error: Property 'user' does not exist on type 'Promise<SessionData | null>'.
+  63 |     const session = requireClientSession()
+  64 |     if (!session) return
+> 65 |     setEmail(session.user.email)
+     |                      ^
+  66 |
+  67 |     Promise.all([
+  68 |       fetch('/api/user/profile').then(r => r.json()),
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1
