@@ -1,11 +1,19 @@
-./app/settings/page.tsx:65:22
-Type error: Property 'user' does not exist on type 'Promise<SessionData | null>'.
-  63 |     const session = requireClientSession()
-  64 |     if (!session) return
-> 65 |     setEmail(session.user.email)
-     |                      ^
-  66 |
-  67 |     Promise.all([
-  68 |       fetch('/api/user/profile').then(r => r.json()),
-Next.js build worker exited with code: 1 and signal: null
+  Collecting page data ...
+Error: supabaseUrl is required.
+    at new tC (/vercel/path0/.next/server/chunks/9400.js:34:52823)
+    at tP (/vercel/path0/.next/server/chunks/9400.js:34:56198)
+    at 95228 (/vercel/path0/.next/server/app/api/contact/route.js:17:2275)
+    at t (/vercel/path0/.next/server/webpack-runtime.js:1:143)
+    at 35863 (/vercel/path0/.next/server/app/api/contact/route.js:17:1367)
+    at t (/vercel/path0/.next/server/webpack-runtime.js:1:143)
+    at 86770 (/vercel/path0/.next/server/app/api/contact/route.js:1:721)
+    at t (/vercel/path0/.next/server/webpack-runtime.js:1:143)
+    at r (/vercel/path0/.next/server/app/api/contact/route.js:17:2344)
+    at /vercel/path0/.next/server/app/api/contact/route.js:17:2382
+> Build error occurred
+Error: Failed to collect page data for /api/contact
+    at /vercel/path0/node_modules/next/dist/build/utils.js:1269:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  type: 'Error'
+}
 Error: Command "npm run build" exited with 1
