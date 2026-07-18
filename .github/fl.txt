@@ -1,0 +1,904 @@
+# Master Prompt – Create the Ultimate Florida Family Vacation Guide (First-Time Visitor)
+
+You are an expert Florida vacation planner, Disney & Universal touring strategist, travel optimizer, road-trip planner, budget planner, and theme park expert.
+
+Create the **most comprehensive, practical, and beginner-friendly Florida travel guide** possible for a **family of 4 (2 adults, 1 child age 15, 1 child age 8)**.
+
+Do NOT assume I know anything.
+
+Think like a professional Disney planner combined with a travel agent and project manager.
+
+The guide should be organized into chapters and tables so it is easy to read and print.
+
+Always explain WHY you recommend something.
+
+Whenever possible, include pros, cons, alternatives, approximate costs, money-saving tips, common mistakes, expert tricks, and recommendations based on reviews from experienced travelers.
+
+Do NOT skip small details.
+
+---
+
+# Trip Details
+
+Origin: New Jersey
+
+Travel Mode: Own family vehicle (road trip)
+
+Trip Dates: Aug 14 night or Aug 15 early morning, Drive from NJ
+
+Aug 15: Overnight stay during drive
+
+Aug 16: 
+Arrive Orlando
+Disney Springs
+Explore Disney property
+Check Disney parking, transportation and layout
+
+Disney (3 days)
+
+Aug 17:
+Magic Kingdom
+
+Aug 18:
+Hollywood Studios
+
+Aug 19:  EPCOT (skip it or do it ? is it worth to  spend 1 day and $400 or do universal valcano bay instead since i am buying 3+2 days promo)
+
+Universal (3-day + 2-day promotional ticket)
+
+Aug 20: Universal Islands of Adventure
+
+Aug 21:Universal Studios Florida
+
+Aug 22: Epic Universe
+
+Aug 23 morning :Drive to Miami
+
+Aug 23 : Miami beach
+
+Aug 23 night: Stay in Miami
+
+Aug 24: Explore Florida Keys
+Glass Bottom Boat
+Aug 24 night: Stay in Miami (or should i stay in key?)
+
+Aug 25 morning: Miami beach
+
+Aug 25 night: stay Kennedy Space Center
+
+Aug 26:
+Kennedy Space Center
+Drive north
+
+Aug 26 night:
+Overnight stay during drive
+
+Aug 27:
+Arrive New Jersey late evening
+
+---
+
+# Main Objective
+
+Optimize the trip for:
+
+* First-time visitors
+* Family with kids (8 and 15)
+* Minimum waiting
+* Minimum confusion
+* Maximum attractions completed
+* Best value
+* Best use of time
+* Lower crowds
+* Mid-August weather
+* Lower cost
+* Comfortable pace
+* Practicality
+
+---
+
+# Required Sections
+
+## 1. Executive Summary
+
+Include:
+
+* Overall trip rating
+* Budget estimate
+* Total driving distance
+* Total hotel nights
+* Total park days
+* Total estimated walking
+* Weather expectations
+* Crowd expectations
+* Overall recommendations
+
+---
+
+## 2. Budget Breakdown
+
+Estimate:
+
+Hotels
+
+Theme park tickets
+
+Parking
+
+Food
+
+Gas
+
+Tolls
+
+Beach rentals
+
+Lightning Lane
+
+Express Pass
+
+Souvenirs
+
+NASA
+
+Miami attractions
+
+Florida Keys
+
+Emergency buffer
+
+Total
+
+---
+
+## 3. Complete Packing List
+
+Create categorized packing lists.
+
+Include EVERYTHING.
+
+Examples:
+
+Documents
+
+Medicine
+
+Car supplies
+
+Electronics
+
+Chargers
+
+Power bank
+
+Cooling towel
+
+Ponchos
+
+Umbrella
+
+Water bottle
+
+Snacks
+
+Beach supplies
+
+Theme park essentials
+
+Sunscreen
+
+Hat
+
+Shoes
+
+Swimming clothes
+
+Laundry items
+
+Emergency items
+
+Kids items
+
+Portable fan
+
+Ziplock bags
+
+Extra phone battery
+
+Car emergency kit
+
+First aid
+
+Etc.
+
+---
+
+## 4. Hotel Recommendations
+
+Recommend 3–4 hotels for every destination.
+
+Orlando
+
+Miami
+
+Florida Keys
+
+Kennedy Space Center
+
+Include:
+
+Hotel name
+
+Star rating
+
+Approximate August nightly cost
+
+Parking cost
+
+Breakfast included?
+
+Mini fridge?
+
+Microwave?
+
+Kitchen?
+
+Oven?
+
+Pool?
+
+Laundry?
+
+Resort fee?
+
+Distance to attractions
+
+Google Maps location
+
+Pros
+
+Cons
+
+Who it is best for
+
+Money-saving tips
+
+Reasons for recommendation
+
+---
+
+## 5. Driving Guide
+
+For every driving day include:
+
+Distance
+
+Driving hours
+
+Fuel stops
+
+Rest stops
+
+Recommended lunch stop
+
+Road conditions
+
+Toll roads
+
+Recommended departure time
+
+Arrival time
+
+Google Maps route
+
+Tips
+
+---
+
+## 6. Disney Section
+
+Separate chapter for EACH park.
+
+Magic Kingdom
+
+Hollywood Studios
+
+EPCOT
+
+For EACH park include:
+
+General overview
+
+History
+
+Park map explanation
+
+How to enter
+
+Parking fee
+
+Exact parking location
+
+Google Maps parking location
+
+Where to pay parking
+
+Parking tips
+
+Parking tram
+
+Transportation to entrance
+
+Walking distance
+
+Security process
+
+Bag policy
+
+What to carry
+
+What NOT to carry
+
+Locker information
+
+Mobile ordering
+
+Disney app setup
+
+Recommended arrival time
+
+Recommended departure time
+
+Weather strategy
+
+Rain strategy
+
+Heat strategy
+
+Night strategy
+
+---
+
+## 7. Optimized Walking Route
+
+Do NOT list rides alphabetically.
+
+Create the BEST walking route.
+
+Avoid backtracking.
+
+Minimize walking.
+
+Visit every important attraction.
+
+Explain WHY this route is best.
+
+Create:
+
+Clockwise route
+
+Counterclockwise route (if better)
+
+Walking map explanation
+
+Walking distance
+
+Walking time between rides
+
+Decision tree if ride is temporarily closed.
+
+---
+
+## 8. Every Ride / Attraction
+
+For EVERY attraction include:
+
+Ride name
+
+Land
+
+Priority
+
+Must do / Recommended / Optional / Skip
+
+Indoor
+
+Outdoor
+
+Ride duration
+
+Average total time
+
+Height restriction
+
+Age suitability (8 & 15)
+
+Scary level
+
+Motion sickness
+
+Rain impact
+
+Lightning impact
+
+Typical August waiting time
+
+Morning waiting time
+
+Afternoon waiting time
+
+Evening waiting time
+
+Best time to ride
+
+Additional reservation?
+
+Lightning Lane?
+
+Individual Lightning Lane?
+
+Virtual Queue?
+
+Extra fee?
+
+Nearby restroom
+
+Nearby restaurant
+
+Nearby snack
+
+Walking time to next attraction
+
+Should do before lunch?
+
+Should do after lunch?
+
+Skip if running behind?
+
+Photo opportunity?
+
+Worth it?
+
+Overall rating
+
+---
+
+## 9. Shows
+
+Same level of detail.
+
+---
+
+## 10. Restaurants
+
+Best:
+
+Breakfast
+
+Lunch
+
+Dinner
+
+Snacks
+
+Ice cream
+
+Coffee
+
+Quick service
+
+Table service
+
+Budget
+
+Vegetarian
+
+Indian food
+
+Healthy food
+
+Kids meals
+
+Most popular
+
+Hidden gems
+
+Include:
+
+Approximate price
+
+Reservation required?
+
+Mobile ordering?
+
+Best dishes
+
+Reviews
+
+---
+
+## 11. Universal
+
+Create identical level of detail.
+
+Universal Studios
+
+Islands of Adventure
+
+Epic Universe
+
+Include Express Pass recommendations.
+
+---
+
+## 12. Transportation
+
+Include EVERYTHING.
+
+Transportation between:
+
+Hotels
+
+Disney parks
+
+Universal parks
+
+Parking
+
+Transportation inside Disney property
+
+Transportation inside Universal property
+
+Clarify that there is NO transportation between rides inside parks.
+
+Include:
+
+Monorail
+
+Skyliner
+
+Boat
+
+Train
+
+Bus
+
+Parking Tram
+
+Walking
+
+Hogwarts Express
+
+Schedule
+
+Reservation?
+
+Additional ticket?
+
+Extra fee?
+
+Who should use it?
+
+---
+
+## 13. Miami
+
+Include exact attractions.
+
+Not just place names.
+
+Examples:
+
+South Beach, anything else relaxing ?
+
+Boat tours
+
+Sunset
+
+Parking
+
+Restaurants
+
+Beach chair rental
+
+Umbrella rental
+
+Cabana
+
+Food
+
+Beer
+
+Restrooms
+
+Parking
+
+Google Maps
+
+Costs
+
+Reservations
+
+Walking route
+
+Time required
+
+---
+
+## 14. Florida Keys
+
+Include:
+
+Key Largo
+
+Islamorada
+
+Marathon
+
+Seven Mile Bridge
+
+Bahia Honda
+
+Key West
+
+Southernmost Point
+
+Duval Street
+
+Mallory Square
+
+Glass Bottom Boat
+
+Snorkeling
+
+Sunset
+
+Restaurants
+
+Parking
+
+Time
+
+Google Maps
+
+Reservations
+
+Costs
+
+Hidden gems
+
+Scenic viewpoints
+
+---
+
+## 15. Kennedy Space Center
+
+Create complete guide.
+
+Parking
+
+Arrival
+
+Bus tour
+
+Rocket Garden
+
+Atlantis
+
+Saturn V
+
+Gateway
+
+IMAX
+
+Astronaut Encounter
+
+Restaurants
+
+Walking route
+
+Time required
+
+Reservations
+
+Parking
+
+Google Maps
+
+---
+
+## 16. Tickets
+
+Recommend:
+
+Cheapest authorized sellers
+
+Official websites
+
+Membership discounts
+
+AAA
+
+Costco
+
+Sam's Club
+
+BJ's
+
+Undercover Tourist
+
+Packages
+
+Military discounts
+
+Employer discounts
+
+Credit card offers
+
+Cancellation policy
+
+Refund policy
+
+When to buy
+
+When NOT to buy
+
+---
+
+## 17. Lightning Lane / Express Pass
+
+Explain:
+
+Do I need them in mid aug on weekdays?
+
+Which parks?
+
+Which rides?
+
+Approximate August cost
+
+Worth it?
+
+When to buy
+
+Alternatives
+
+Money-saving tips
+
+---
+
+## 18. Daily Hour-by-Hour Itinerary
+
+Create hour-by-hour schedule.
+
+Include:
+
+Wake up
+
+Breakfast
+
+Leave hotel
+
+Parking
+
+Security
+
+Every attraction
+
+Lunch
+
+Shows
+
+Shopping
+
+Dinner
+
+Fireworks
+
+Return to hotel
+
+---
+
+## 19. Google Maps
+
+Provide Google Maps search names for:
+
+Hotels
+
+Parking lots
+
+Park entrances
+
+Restaurants
+
+Rest stops
+
+Gas stations
+
+Beach parking
+
+NASA
+
+Everything.
+
+---
+
+## 20. Tips & Tricks
+
+Provide at least 300 practical tips.
+
+Include:
+
+recommendation for driving to park vs taking shuttel?
+
+recommendation on staying key vs staying in miami
+
+First-time mistakes
+
+Money-saving
+
+Walking reduction
+
+Best photo spots
+
+Rain strategy
+
+Heat strategy
+
+August weather
+
+Crowd avoidance
+
+Mobile ordering
+
+Free water
+
+Charging phones
+
+Restrooms
+
+Souvenirs
+
+Shopping
+
+Apps
+
+Safety
+
+Kids
+
+Driving
+
+Parking
+
+Beach
+
+Hidden gems
+
+Things most people don't know
+
+Things to avoid
+
+Things worth paying extra for
+
+Things NOT worth paying extra for
+
+---
+
+# Output Requirements
+
+Use tables wherever appropriate.
+
+Use checklists.
+
+Use icons.
+
+Use priority labels.
+
+Provide approximate costs in USD.
+
+Always explain WHY something is recommended.
+
+Use practical advice over marketing language.
+
+Optimize the entire guide for a first-time visitor who wants to maximize value, minimize walking, minimize waiting, and avoid confusion while seeing as much as possible during a mid-August Florida road trip.
