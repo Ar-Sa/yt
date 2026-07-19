@@ -1,10 +1,28 @@
-./app/blog/[slug]/page.tsx:192:10
-Type error: Cannot find name 'GRADIENTS'.
-  190 |   let h = 0
-  191 |   for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) >>> 0
-> 192 |   return GRADIENTS[h % GRADIENTS.length]
-      |          ^
-  193 | }
-  194 |
-  195 | // Render plain-text content with paragraph breaks
-Next.js build worker exited with code: 1 and signal: null
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# SkillOS â€” azure-deploy.ps1
+# Run AFTER azure-setup.ps1. Automates:
+#   1. GitHub secrets (via gh CLI or prints commands if gh not found)
+#   2. git push â†’ triggers GitHub Actions deploy
+#   3. Waits for GitHub Actions workflow to complete
+#   4. Waits for Container App health check to pass
+#   5. Smoke tests the live app
+#   6. Updates Stripe webhook endpoint (optional â€” needs STRIPE_SECRET_KEY)
+#   7. Prints OAuth redirect URIs for manual update (can't automate provider consoles)
+#
+# Prerequisites: run azure-setup.ps1 first (creates azure-config.json)
+# â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+$ErrorActionPreference = "Stop"
+
+# â”€â”€ Optional: Stripe secret key to auto-update webhook endpoint
+# Leave blank to skip Stripe step (you'll get a reminder to do it manually)
+$STRIPE_SECRET_KEY = ""   # sk_live_... or sk_test_...
+
+# â”€â”€ Stripe webhook events SkillOS listens to
+$STRIPE_EVENTS = @(
+    "checkout.session.completed",
+    "customer.subscription.updated",
+    "customer.subscription.deleted",
+    "customer.subscription.created",
+    "invoice.payment_failed",
+    "invoice.payment_succeeded"
+)
