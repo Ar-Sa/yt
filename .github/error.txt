@@ -1,16 +1,49 @@
-Run npm run lint
-
-> skillbridge-v2@0.1.0 lint
-> next lint
-
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
-
-./lib/dbClient.ts
-293:5  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-Error: Process completed with exit code 1.
+Run npx tsc --noEmit
+Error: app/api/og/scan/[token]/route.tsx(2,32): error TS2307: Cannot find module '../../../../lib/dbClient' or its corresponding type declarations.
+Error: app/forum/[id]/page.tsx(93,27): error TS2339: Property 'title' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(94,30): error TS2339: Property 'body' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(104,41): error TS2339: Property 'category' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(119,21): error TS2339: Property 'category' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(121,19): error TS2339: Property 'is_pinned' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(126,19): error TS2339: Property 'is_locked' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(132,59): error TS2339: Property 'created_at' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(136,96): error TS2339: Property 'title' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(153,19): error TS2339: Property 'body' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(156,31): error TS2339: Property 'tags' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(156,45): error TS2339: Property 'tags' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(158,22): error TS2339: Property 'tags' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(167,98): error TS2339: Property 'upvotes' does not exist on type '{ profiles: Row | null; }'.
+Error: app/forum/[id]/page.tsx(210,16): error TS2339: Property 'is_locked' does not exist on type '{ profiles: Row | null; }'.
+Error: app/layoffs/[slug]/page.tsx(43,3): error TS2322: Type 'Row[]' is not assignable to type 'LayoffEvent[]'.
+  Type 'Row' is missing the following properties from type 'LayoffEvent': id, company_name, company_slug, employee_count, and 16 more.
+Error: app/layoffs/[slug]/page.tsx(76,55): error TS2345: Argument of type '(r: {    company_slug: string;}) => string' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => string'.
+  Types of parameters 'r' and 'value' are incompatible.
+    Property 'company_slug' is missing in type 'Row' but required in type '{ company_slug: string; }'.
+Error: app/password-reset/update/page.tsx(33,73): error TS7006: Parameter 'event' implicitly has an 'any' type.
+Error: app/skills/[slug]/page.tsx(37,13): error TS2740: Type 'Row' is missing the following properties from type 'SkillRow': skill_name, skill_slug, category, demand_score, and 17 more.
+Error: app/skills/[slug]/page.tsx(57,36): error TS2345: Argument of type '(row: {    skill_slug: string;}) => string' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => string'.
+  Types of parameters 'row' and 'value' are incompatible.
+    Property 'skill_slug' is missing in type 'Row' but required in type '{ skill_slug: string; }'.
+Error: pages/api/referral-stats.ts(29,37): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(predicate: (value: Row, index: number, array: Row[]) => value is Row, thisArg?: any): Row[]', gave the following error.
+    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => value is Row'.
+      Types of parameters 'r' and 'value' are incompatible.
+        Property 'status' is missing in type 'Row' but required in type '{ status: string; }'.
+  Overload 2 of 2, '(predicate: (value: Row, index: number, array: Row[]) => unknown, thisArg?: any): Row[]', gave the following error.
+    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => unknown'.
+      Types of parameters 'r' and 'value' are incompatible.
+        Type 'Row' is not assignable to type '{ status: string; }'.
+Error: pages/api/referral-stats.ts(30,39): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(predicate: (value: Row, index: number, array: Row[]) => value is Row, thisArg?: any): Row[]', gave the following error.
+    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => value is Row'.
+      Types of parameters 'r' and 'value' are incompatible.
+        Property 'status' is missing in type 'Row' but required in type '{ status: string; }'.
+  Overload 2 of 2, '(predicate: (value: Row, index: number, array: Row[]) => unknown, thisArg?: any): Row[]', gave the following error.
+    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => unknown'.
+      Types of parameters 'r' and 'value' are incompatible.
+        Type 'Row' is not assignable to type '{ status: string; }'.
+Error: pages/api/scan.ts(109,11): error TS2353: Object literal may only specify known properties, and 'message' does not exist in type 'ScanResponse'.
+Error: pages/api/skills-demand.ts(467,9): error TS2322: Type 'Row[] | SkillRow[]' is not assignable to type 'SkillRow[]'.
+  Type 'Row[]' is not assignable to type 'SkillRow[]'.
+    Type 'Row' is missing the following properties from type 'SkillRow': skill_name, skill_slug, category, demand_score, and 7 more.
+Error: Process completed with exit code 2.
