@@ -1,18 +1,37 @@
-Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
-Run azure/login@v2
-Running Azure CLI Login.
-[command]/usr/bin/az cloud set -n azurecloud
-Done setting cloud: "azurecloud"
-Federated token details:
- issuer - https://token.actions.githubusercontent.com
- subject claim - repo:Ar-Sa/SkillOS:environment:dev
- audience - api://AzureADTokenExchange
- job_workflow_ref - Ar-Sa/SkillOS/.github/workflows/deploy-azure.yml@refs/heads/feature-claude-code-v1
-Attempting Azure CLI login by using OIDC...
-Error: AADSTS700213: No matching federated identity record found for presented assertion subject 'repo:Ar-Sa/SkillOS:environment:dev'. Check your federated identity credential Subject, Audience and Issuer against the presented assertion. https://learn.microsoft.com/entra/workload-id/workload-identity-federation Trace ID: 2e3c98a2-7a32-4db4-bf2d-2cdc94961a00 Correlation ID: 831f40af-a471-4117-9f35-ca1840cae435 Timestamp: 2026-07-24 03:11:06Z
+================================================
+  SkillOS - Azure Infrastructure (idempotent)  
+================================================
+  App region : eastus2
+  DB  region : centralus
 
-Error: Run the command below to authenticate interactively; additional arguments may be added as needed:
-az logout
-az login
+[1/9] Subscription...
+    Tenant: 4ffee480-5705-4e8b-b423-3394174d28b0
 
-Error: Login failed with Error: The process '/usr/bin/az' failed with exit code 1. Double check if the 'auth-type' is correct. Refer to https://github.com/Azure/login#readme for more information.
+[2/9] Resource Group...
+    [OK] Already exists - skipping: skillos-eus2-rg
+
+[3/9] Azure Container Registry (Basic tier, ~$5/mo)...
+    [OK] Already exists - skipping: ACR: skillosacr
+    ACR: skillosacr.azurecr.io
+
+[4/9] PostgreSQL Flexible Server (Standard_B1ms, ~$16/mo, region: centralus)...
+    [OK] Already exists - skipping: PostgreSQL server: skillos-db
+    [+] Creating: Database: skillos
+    DB host: skillos-db.postgres.database.azure.com
+
+[5/9] Container Apps Environment...
+    [OK] Already exists - skipping: Container Apps Environment: skillos-env  (LAW not touched)
+
+[6/9] OIDC Service Principal for GitHub Actions...
+    [OK] Already exists - skipping: App registration: skillos-github-actions (cc9f8794-5155-41db-ab02-0f512959447e)
+    [OK] Already exists - skipping: Service principal
+    [OK] Already exists - skipping: Role 'Contributor' already assigned to 4cdfd4c8...
+    [OK] Already exists - skipping: Role 'AcrPush' already assigned to 4cdfd4c8...
+    [OK] Already exists - skipping: Federated credential: github-main
+    [+] Creating: Federated credential: github-env-prod (GitHub Environment: prod)
+az : ERROR: Failed to parse string as JSON:
+At C:\Temp\Docker\workspace\SkillOS\azure-setup.ps1:280 char:5
++     az ad app federated-credential create `
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: Failed to parse string as JSON::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
