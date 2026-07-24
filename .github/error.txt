@@ -1,11 +1,4 @@
-[6/9] OIDC Service Principal for GitHub Actions...
-    [OK] Already exists - skipping: App registration: skillos-github-actions (cc9f8794-5155-41db-ab02-0f512959447e)
-    [OK] Already exists - skipping: Service principal
-    [OK] Already exists - skipping: Role 'Contributor' already assigned to 4cdfd4c8...
-    [OK] Already exists - skipping: Role 'AcrPush' already assigned to 4cdfd4c8...
-az : ERROR: The command failed with an unexpected error. Here is the traceback:
-At C:\Temp\Docker\workspace\SkillOS\azure-setup.ps1:303 char:17
-+     $existing = az role assignment list `
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (ERROR: The comm... the traceback::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
+Run npx tsc --noEmit
+Error: pages/api/cron/newsletter-digest.ts(57,92): error TS2345: Argument of type 'Row[]' is not assignable to parameter of type 'DigestLayoffItem[]'.
+  Type 'Row' is missing the following properties from type 'DigestLayoffItem': company_name, employee_count, industry, company_slug
+Error: Process completed with exit code 2.
