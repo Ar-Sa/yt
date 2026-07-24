@@ -1,3 +1,11 @@
-1 error
-Invalid workflow file: .github/workflows/deploy-azure.yml#L1
-(Line: 60, Col: 11): The expression is not closed. An unescaped ${{ sequence was found, but the closing }} sequence was not found.
+Run azure/login@v2
+Running Azure CLI Login.
+[command]/usr/bin/az cloud set -n azurecloud
+Done setting cloud: "azurecloud"
+Federated token details:
+ issuer - https://token.actions.githubusercontent.com
+ subject claim - repo:Ar-Sa/SkillOS:pull_request
+ audience - api://AzureADTokenExchange
+ job_workflow_ref - Ar-Sa/SkillOS/.github/workflows/deploy-azure.yml@refs/pull/52/merge
+Attempting Azure CLI login by using OIDC...
+Error: AADSTS700213: No matching federated identity record found for presented assertion subject 'repo:Ar-Sa/SkillOS:pull_request'. Check your federated identity credential Subject, Audience and Issuer against the presented assertion. https://learn.microsoft.com/entra/workload-id/workload-identity-federation Trace ID: bdb47ff1-1f5a-4475-86e5-13db0d392300 Correlation ID: 4502178b-4ba6-418c-9cf3-0d3d7ac9b524 Timestamp: 2026-07-24 00:27:56Z
