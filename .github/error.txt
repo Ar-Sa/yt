@@ -1,9 +1,11 @@
-7b/9] Dev Container App (skillos-dev - min-replicas=0, costs  when idle)...
-    [OK] Already exists - skipping: Dev Container App: skillos-dev
-    [+] Creating: System managed identity on Dev Container App
-az : 
-At line:43 char:1
-+ az containerapp identity assign `
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+[6/9] OIDC Service Principal for GitHub Actions...
+    [OK] Already exists - skipping: App registration: skillos-github-actions (cc9f8794-5155-41db-ab02-0f512959447e)
+    [OK] Already exists - skipping: Service principal
+    [OK] Already exists - skipping: Role 'Contributor' already assigned to 4cdfd4c8...
+    [OK] Already exists - skipping: Role 'AcrPush' already assigned to 4cdfd4c8...
+az : ERROR: The command failed with an unexpected error. Here is the traceback:
+At C:\Temp\Docker\workspace\SkillOS\azure-setup.ps1:303 char:17
++     $existing = az role assignment list `
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: The comm... the traceback::String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
