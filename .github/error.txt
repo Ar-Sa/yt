@@ -1,33 +1,3 @@
-./app/password-reset/page.tsx
-./node_modules/pg/lib/stream.js
-Module not found: Can't resolve 'net'
-https://nextjs.org/docs/messages/module-not-found
-Import trace for requested module:
-./node_modules/pg/lib/connection.js
-./node_modules/pg/lib/index.js
-./node_modules/pg/esm/index.mjs
-./lib/db.ts
-./lib/dbClient.ts
-./app/password-reset/page.tsx
-./node_modules/pg/lib/stream.js
-Module not found: Can't resolve 'tls'
-https://nextjs.org/docs/messages/module-not-found
-Import trace for requested module:
-./node_modules/pg/lib/connection.js
-./node_modules/pg/lib/index.js
-./node_modules/pg/esm/index.mjs
-./lib/db.ts
-./lib/dbClient.ts
-./app/password-reset/page.tsx
-> Build failed because of webpack errors
-npm notice
-npm notice New major version of npm available! 10.8.2 -> 12.0.1
-npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.1
-npm notice To update run: npm install -g npm@12.0.1
-npm notice
-The command '/bin/sh -c npm run build' returned a non-zero code: 1
-2026/07/24 04:02:13 Container failed during run: build. No retries remaining.
-failed to run step ID: build: exit status 1
-Run ID: ch3 failed after 3m6s. Error: failed during run, err: exit status 1
-ERROR: Run failed
-Error: Process completed with exit code 1.
+Run npx tsc --noEmit
+Error: app/password-reset/update/page.tsx(30,17): error TS18047: 'searchParams' is possibly 'null'.
+Error: Process completed with exit code 2.
