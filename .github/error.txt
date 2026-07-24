@@ -1,49 +1,18 @@
-Run npx tsc --noEmit
-Error: app/api/og/scan/[token]/route.tsx(2,32): error TS2307: Cannot find module '../../../../lib/dbClient' or its corresponding type declarations.
-Error: app/forum/[id]/page.tsx(93,27): error TS2339: Property 'title' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(94,30): error TS2339: Property 'body' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(104,41): error TS2339: Property 'category' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(119,21): error TS2339: Property 'category' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(121,19): error TS2339: Property 'is_pinned' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(126,19): error TS2339: Property 'is_locked' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(132,59): error TS2339: Property 'created_at' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(136,96): error TS2339: Property 'title' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(153,19): error TS2339: Property 'body' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(156,31): error TS2339: Property 'tags' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(156,45): error TS2339: Property 'tags' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(158,22): error TS2339: Property 'tags' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(167,98): error TS2339: Property 'upvotes' does not exist on type '{ profiles: Row | null; }'.
-Error: app/forum/[id]/page.tsx(210,16): error TS2339: Property 'is_locked' does not exist on type '{ profiles: Row | null; }'.
-Error: app/layoffs/[slug]/page.tsx(43,3): error TS2322: Type 'Row[]' is not assignable to type 'LayoffEvent[]'.
-  Type 'Row' is missing the following properties from type 'LayoffEvent': id, company_name, company_slug, employee_count, and 16 more.
-Error: app/layoffs/[slug]/page.tsx(76,55): error TS2345: Argument of type '(r: {    company_slug: string;}) => string' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => string'.
-  Types of parameters 'r' and 'value' are incompatible.
-    Property 'company_slug' is missing in type 'Row' but required in type '{ company_slug: string; }'.
-Error: app/password-reset/update/page.tsx(33,73): error TS7006: Parameter 'event' implicitly has an 'any' type.
-Error: app/skills/[slug]/page.tsx(37,13): error TS2740: Type 'Row' is missing the following properties from type 'SkillRow': skill_name, skill_slug, category, demand_score, and 17 more.
-Error: app/skills/[slug]/page.tsx(57,36): error TS2345: Argument of type '(row: {    skill_slug: string;}) => string' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => string'.
-  Types of parameters 'row' and 'value' are incompatible.
-    Property 'skill_slug' is missing in type 'Row' but required in type '{ skill_slug: string; }'.
-Error: pages/api/referral-stats.ts(29,37): error TS2769: No overload matches this call.
-  Overload 1 of 2, '(predicate: (value: Row, index: number, array: Row[]) => value is Row, thisArg?: any): Row[]', gave the following error.
-    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => value is Row'.
-      Types of parameters 'r' and 'value' are incompatible.
-        Property 'status' is missing in type 'Row' but required in type '{ status: string; }'.
-  Overload 2 of 2, '(predicate: (value: Row, index: number, array: Row[]) => unknown, thisArg?: any): Row[]', gave the following error.
-    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => unknown'.
-      Types of parameters 'r' and 'value' are incompatible.
-        Type 'Row' is not assignable to type '{ status: string; }'.
-Error: pages/api/referral-stats.ts(30,39): error TS2769: No overload matches this call.
-  Overload 1 of 2, '(predicate: (value: Row, index: number, array: Row[]) => value is Row, thisArg?: any): Row[]', gave the following error.
-    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => value is Row'.
-      Types of parameters 'r' and 'value' are incompatible.
-        Property 'status' is missing in type 'Row' but required in type '{ status: string; }'.
-  Overload 2 of 2, '(predicate: (value: Row, index: number, array: Row[]) => unknown, thisArg?: any): Row[]', gave the following error.
-    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => unknown'.
-      Types of parameters 'r' and 'value' are incompatible.
-        Type 'Row' is not assignable to type '{ status: string; }'.
-Error: pages/api/scan.ts(109,11): error TS2353: Object literal may only specify known properties, and 'message' does not exist in type 'ScanResponse'.
-Error: pages/api/skills-demand.ts(467,9): error TS2322: Type 'Row[] | SkillRow[]' is not assignable to type 'SkillRow[]'.
-  Type 'Row[]' is not assignable to type 'SkillRow[]'.
-    Type 'Row' is missing the following properties from type 'SkillRow': skill_name, skill_slug, category, demand_score, and 7 more.
-Error: Process completed with exit code 2.
+Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Run azure/login@v2
+Running Azure CLI Login.
+[command]/usr/bin/az cloud set -n azurecloud
+Done setting cloud: "azurecloud"
+Federated token details:
+ issuer - https://token.actions.githubusercontent.com
+ subject claim - repo:Ar-Sa/SkillOS:environment:dev
+ audience - api://AzureADTokenExchange
+ job_workflow_ref - Ar-Sa/SkillOS/.github/workflows/deploy-azure.yml@refs/heads/feature-claude-code-v1
+Attempting Azure CLI login by using OIDC...
+Error: AADSTS700213: No matching federated identity record found for presented assertion subject 'repo:Ar-Sa/SkillOS:environment:dev'. Check your federated identity credential Subject, Audience and Issuer against the presented assertion. https://learn.microsoft.com/entra/workload-id/workload-identity-federation Trace ID: 2e3c98a2-7a32-4db4-bf2d-2cdc94961a00 Correlation ID: 831f40af-a471-4117-9f35-ca1840cae435 Timestamp: 2026-07-24 03:11:06Z
+
+Error: Run the command below to authenticate interactively; additional arguments may be added as needed:
+az logout
+az login
+
+Error: Login failed with Error: The process '/usr/bin/az' failed with exit code 1. Double check if the 'auth-type' is correct. Refer to https://github.com/Azure/login#readme for more information.
