@@ -1,7 +1,9 @@
-run az containerapp update \
-
-/ Running ..
-| Running ..
-\ Running ..
-- Running ..ERROR: Failed to provision revision for container app 'skillos-dev'. Error details: The following field(s) are either invalid or missing. Field 'template.containers.skillos-dev.image' is invalid with details: 'Invalid value: "***/skillos:c1803126fe3d6fb934ab999d97beee8762a2e6e6": GET https:?scope=repository%3Askillos%3Apull&service=***: UNAUTHORIZED: authentication required, visit https://aka.ms/acr/authorization for more information. CorrelationId: b39ca8ca-3bb9-41a2-a52f-7817bdcc03fb';..
-Error: Process completed with exit code 1.
+7b/9] Dev Container App (skillos-dev - min-replicas=0, costs  when idle)...
+    [OK] Already exists - skipping: Dev Container App: skillos-dev
+    [+] Creating: System managed identity on Dev Container App
+az : 
+At line:43 char:1
++ az containerapp identity assign `
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
