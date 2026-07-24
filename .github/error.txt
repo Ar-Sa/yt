@@ -1,12 +1,27 @@
-> Build failed because of webpack errors
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+ ⚠ Using edge runtime on a page currently disables static generation for that page
+Error: No PostgreSQL connection string available for pool.
+    at /app/.next/server/app/api/contact/route.js:17:1327
+    at a (/app/.next/server/app/api/contact/route.js:17:1398)
+    at l._run (/app/.next/server/app/api/og/scan/[token]/route.js:1:7407)
+    at l.then (/app/.next/server/app/api/og/scan/[token]/route.js:1:7098)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+> Build error occurred
+Error: Failed to collect page data for /layoffs/[slug]
+    at /app/node_modules/next/dist/build/utils.js:1269:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  type: 'Error'
+}
 npm notice
 npm notice New major version of npm available! 10.8.2 -> 12.0.1
 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.1
 npm notice To update run: npm install -g npm@12.0.1
 npm notice
 The command '/bin/sh -c npm run build' returned a non-zero code: 1
-2026/07/24 19:14:24 Container failed during run: build. No retries remaining.
+2026/07/24 19:30:08 Container failed during run: build. No retries remaining.
 failed to run step ID: build: exit status 1
-Run ID: ch5 failed after 2m57s. Error: failed during run, err: exit status 1
+Run ID: ch6 failed after 3m35s. Error: failed during run, err: exit status 1
 ERROR: Run failed
 Error: Process completed with exit code 1.
