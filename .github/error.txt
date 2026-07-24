@@ -1,3 +1,5 @@
+Run npm run lint
+
 > skillbridge-v2@0.1.0 lint
 > next lint
 
@@ -7,25 +9,8 @@ You can learn more, including how to opt-out if you'd not like to participate in
 https://nextjs.org/telemetry
 
 
-./app/forum/[id]/page.tsx
-107:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-151:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./app/settings/page.tsx
-203:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-264:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/Navbar.tsx
-28:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./components/admin/AdminConsole.tsx
-1000:95  Warning: React Hook useEffect has missing dependencies: 'loadLogs' and 'logSearch'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
-1001:75  Warning: React Hook useEffect has a missing dependency: 'loadInbox'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-1002:68  Warning: React Hook useEffect has a missing dependency: 'loadUsers'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-1267:6  Warning: React Hook useCallback has a missing dependency: 'addToast'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
 ./lib/dbClient.ts
-110:34  Error: Parsing error: ',' expected.
+293:5  Error: Definition for rule '@typescript-eslint/no-explicit-any' was not found.  @typescript-eslint/no-explicit-any
 
 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
 Error: Process completed with exit code 1.
