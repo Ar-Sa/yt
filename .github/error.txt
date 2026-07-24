@@ -1,166 +1,31 @@
-Run npx tsc --noEmit
-Error: app/forum/[id]/page.tsx(61,18): error TS18046: 'result.post.body' is of type 'unknown'.
-Error: app/forum/[id]/page.tsx(71,36): error TS2538: Type 'unknown' cannot be used as an index type.
-Error: app/forum/[id]/page.tsx(86,15): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/forum/[id]/page.tsx(88,13): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/forum/[id]/page.tsx(93,13): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/forum/[id]/page.tsx(99,54): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'string'.
-Error: app/forum/[id]/page.tsx(103,90): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/forum/[id]/page.tsx(120,13): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/forum/[id]/page.tsx(134,92): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/layoff-predictor/[slug]/page.tsx(106,19): error TS2554: Expected 0-1 arguments, but got 2.
-Error: app/layoffs/[slug]/page.tsx(43,3): error TS2322: Type 'Row[]' is not assignable to type 'LayoffEvent[]'.
-  Type 'Row' is missing the following properties from type 'LayoffEvent': id, company_name, company_slug, employee_count, and 16 more.
-Error: app/layoffs/[slug]/page.tsx(76,55): error TS2345: Argument of type '(r: {    company_slug: string;}) => string' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => string'.
-  Types of parameters 'r' and 'value' are incompatible.
-    Property 'company_slug' is missing in type 'Row' but required in type '{ company_slug: string; }'.
-Error: app/login/page.tsx(120,38): error TS2339: Property 'auth' does not exist on type '{ from: <T = Row>(table: string) => QueryBuilder<T>; }'.
-Error: app/password-reset/page.tsx(21,43): error TS2339: Property 'auth' does not exist on type '{ from: <T = Row>(table: string) => QueryBuilder<T>; }'.
-Error: app/password-reset/update/page.tsx(33,49): error TS2339: Property 'auth' does not exist on type '{ from: <T = Row>(table: string) => QueryBuilder<T>; }'.
-Error: app/password-reset/update/page.tsx(33,73): error TS7006: Parameter 'event' implicitly has an 'any' type.
-Error: app/password-reset/update/page.tsx(50,43): error TS2339: Property 'auth' does not exist on type '{ from: <T = Row>(table: string) => QueryBuilder<T>; }'.
-Error: app/scan/[token]/page.tsx(32,37): error TS2769: No overload matches this call.
-  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
-    Argument of type '{}' is not assignable to parameter of type 'string | number | Date'.
-  Overload 2 of 4, '(value: string | number): Date', gave the following error.
-    Argument of type '{}' is not assignable to parameter of type 'string | number'.
-Error: app/scan/[token]/page.tsx(49,5): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: app/scan/[token]/page.tsx(52,7): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: app/scan/[token]/page.tsx(55,102): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: app/scan/[token]/page.tsx(229,30): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'number'.
-Error: app/scan/[token]/page.tsx(231,30): error TS2538: Type '{}' cannot be used as an index type.
-Error: app/scan/[token]/page.tsx(255,21): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: app/scan/[token]/page.tsx(257,34): error TS2554: Expected 0-1 arguments, but got 2.
-Error: app/scan/[token]/page.tsx(319,29): error TS2322: Type 'unknown' is not assignable to type 'number'.
-Error: app/scan/[token]/page.tsx(323,23): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(331,15): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(342,68): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(343,31): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(347,51): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'number'.
-Error: app/scan/[token]/page.tsx(349,50): error TS2345: Argument of type '{}' is not assignable to parameter of type 'number'.
-Error: app/scan/[token]/page.tsx(358,31): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(368,17): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(370,21): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(373,17): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(375,21): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(381,15): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(382,17): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(387,17): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(389,67): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(394,64): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(406,22): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(413,71): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(418,83): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(444,78): error TS2322: Type 'unknown' is not assignable to type 'ReactNode'.
-Error: app/scan/[token]/page.tsx(449,96): error TS2339: Property 'replaceAll' does not exist on type '{}'.
-Error: app/scan/[token]/page.tsx(691,41): error TS2322: Type '{}' is not assignable to type 'ReactNode'.
-Error: app/signup/page.tsx(107,38): error TS2339: Property 'auth' does not exist on type '{ from: <T = Row>(table: string) => QueryBuilder<T>; }'.
-Error: app/skills/[slug]/page.tsx(37,13): error TS2740: Type 'Row' is missing the following properties from type 'SkillRow': skill_name, skill_slug, category, demand_score, and 17 more.
-Error: app/skills/[slug]/page.tsx(57,36): error TS2345: Argument of type '(row: {    skill_slug: string;}) => string' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => string'.
-  Types of parameters 'row' and 'value' are incompatible.
-    Property 'skill_slug' is missing in type 'Row' but required in type '{ skill_slug: string; }'.
-Error: pages/api/admin/audit-log.ts(40,17): error TS2339: Property 'code' does not exist on type 'Error'.
-Error: pages/api/admin/blog.ts(35,141): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/blog.ts(38,26): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/admin/change-password.ts(67,56): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'string'.
-Error: pages/api/admin/login.ts(51,8): error TS2339: Property 'or' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/logs.ts(63,21): error TS2339: Property 'or' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/logs.ts(69,17): error TS2339: Property 'code' does not exist on type 'Error'.
-Error: pages/api/admin/seed.ts(61,52): error TS2353: Object literal may only specify known properties, and 'ignoreDuplicates' does not exist in type '{ onConflict?: string | undefined; }'.
-Error: pages/api/admin/seed.ts(65,13): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/admin/seed.ts(65,72): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/seed.ts(83,22): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/admin/stats.ts(42,39): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/stats.ts(42,71): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/stats.ts(43,39): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/stats.ts(43,103): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/stats.ts(44,36): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/stats.ts(44,68): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/stats.ts(45,36): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/stats.ts(45,100): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/stats.ts(46,39): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/stats.ts(46,112): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/stats.ts(47,50): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/stats.ts(47,102): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/stats.ts(48,46): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/stats.ts(48,102): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/stats.ts(49,42): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/stats.ts(49,134): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/users.ts(154,35): error TS2339: Property 'or' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/users.ts(171,61): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/admin/users.ts(172,39): error TS2339: Property 'or' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/admin/users.ts(174,13): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/alerts/subscribe.ts(22,7): error TS2322: Type '{} | null' is not assignable to type 'string | null'.
-  Type '{}' is not assignable to type 'string'.
-Error: pages/api/auth/login.ts(44,11): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/auth/login.ts(46,18): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/auth/login.ts(62,6): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/auth/login.ts(81,33): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
-Error: pages/api/auth/login.ts(86,5): error TS2322: Type 'unknown' is not assignable to type 'string | undefined'.
-Error: pages/api/auth/oauth-callback.ts(219,5): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: pages/api/auth/register.ts(44,11): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/auth/register.ts(46,18): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/auth/register.ts(62,6): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/auth/register.ts(108,5): error TS2322: Type 'unknown' is not assignable to type 'string | undefined'.
-Error: pages/api/auth/register.ts(130,30): error TS2322: Type 'unknown' is not assignable to type 'string'.
-Error: pages/api/auth/register.ts(130,70): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
-Error: pages/api/auth/stripe-portal.ts(32,7): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: pages/api/checkout.ts(108,7): error TS2322: Type 'unknown' is not assignable to type 'string | undefined'.
-Error: pages/api/cron/layoffs.ts(451,51): error TS2353: Object literal may only specify known properties, and 'ignoreDuplicates' does not exist in type '{ onConflict?: string | undefined; }'.
-Error: pages/api/cron/layoffs.ts(456,13): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/cron/layoffs.ts(456,72): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/cron/skills.ts(95,20): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/cron/skills.ts(97,66): error TS2353: Object literal may only specify known properties, and 'count' does not exist in type '{ onConflict?: string | undefined; }'.
-Error: pages/api/forum-stats.ts(11,46): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/forum-stats.ts(12,43): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/forum-stats.ts(13,53): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/forum-stats.ts(16,33): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/forum-stats.ts(17,30): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/forum-stats.ts(18,35): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/forum/posts.ts(105,26): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/forum/question.ts(59,17): error TS2339: Property 'code' does not exist on type 'Error'.
-Error: pages/api/layoff-predict.ts(116,21): error TS2339: Property 'or' does not exist on type 'QueryBuilder<Row>'.
-Error: pages/api/layoff-predict.ts(146,39): error TS2339: Property 'toLowerCase' does not exist on type '{}'.
-Error: pages/api/layoff-predict.ts(149,79): error TS2339: Property 'toLowerCase' does not exist on type '{}'.
-Error: pages/api/layoff-predict.ts(158,7): error TS2365: Operator '+=' cannot be applied to types 'number' and '{}'.
-Error: pages/api/layoff-predict.ts(159,50): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
-Error: pages/api/layoff-predict.ts(161,9): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: pages/api/layoff-predict.ts(164,27): error TS2345: Argument of type '{ company_name: string; company_slug: string; industry: string; locations: Set<string>; pastLayoffs: number; totalEmployees: number; lastLayoffDate: string | null; } | { company_name: {}; ... 5 more ...; lastLayoffDate: null; }' is not assignable to parameter of type '{ company_name: string; company_slug: string; industry: string; locations: Set<string>; pastLayoffs: number; totalEmployees: number; lastLayoffDate: string | null; }'.
-  Type '{ company_name: {}; company_slug: any; industry: {}; locations: Set<string>; pastLayoffs: number; totalEmployees: number; lastLayoffDate: null; }' is not assignable to type '{ company_name: string; company_slug: string; industry: string; locations: Set<string>; pastLayoffs: number; totalEmployees: number; lastLayoffDate: string | null; }'.
-    Types of property 'company_name' are incompatible.
-      Type '{}' is not assignable to type 'string'.
-Error: pages/api/layoff-predict.ts(167,38): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
-Error: pages/api/layoff-predict.ts(169,7): error TS2365: Operator '+=' cannot be applied to types 'number' and '{}'.
-Error: pages/api/layoff-predict.ts(170,26): error TS2345: Argument of type '{}' is not assignable to parameter of type 'string'.
-Error: pages/api/referral-stats.ts(29,37): error TS2769: No overload matches this call.
-  Overload 1 of 2, '(predicate: (value: Row, index: number, array: Row[]) => value is Row, thisArg?: any): Row[]', gave the following error.
-    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => value is Row'.
-      Types of parameters 'r' and 'value' are incompatible.
-        Property 'status' is missing in type 'Row' but required in type '{ status: string; }'.
-  Overload 2 of 2, '(predicate: (value: Row, index: number, array: Row[]) => unknown, thisArg?: any): Row[]', gave the following error.
-    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => unknown'.
-      Types of parameters 'r' and 'value' are incompatible.
-        Type 'Row' is not assignable to type '{ status: string; }'.
-Error: pages/api/referral-stats.ts(30,39): error TS2769: No overload matches this call.
-  Overload 1 of 2, '(predicate: (value: Row, index: number, array: Row[]) => value is Row, thisArg?: any): Row[]', gave the following error.
-    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => value is Row'.
-      Types of parameters 'r' and 'value' are incompatible.
-        Property 'status' is missing in type 'Row' but required in type '{ status: string; }'.
-  Overload 2 of 2, '(predicate: (value: Row, index: number, array: Row[]) => unknown, thisArg?: any): Row[]', gave the following error.
-    Argument of type '(r: {    status: string;}) => boolean' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => unknown'.
-      Types of parameters 'r' and 'value' are incompatible.
-        Type 'Row' is not assignable to type '{ status: string; }'.
-Error: pages/api/reviews.ts(22,3): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: pages/api/scan.ts(84,11): error TS2339: Property 'count' does not exist on type '{ data: Row[] | null; error: Error | null; }'.
-Error: pages/api/scan.ts(86,18): error TS2554: Expected 0-1 arguments, but got 2.
-Error: pages/api/scan.ts(232,29): error TS2339: Property 'code' does not exist on type 'Error'.
-Error: pages/api/scan.ts(253,23): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: pages/api/skills-demand.ts(467,9): error TS2322: Type 'Row[] | SkillRow[]' is not assignable to type 'SkillRow[]'.
-  Type 'Row[]' is not assignable to type 'SkillRow[]'.
-    Type 'Row' is missing the following properties from type 'SkillRow': skill_name, skill_slug, category, demand_score, and 7 more.
-Error: pages/api/user-scans.ts(45,9): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: pages/api/user-scans.ts(53,23): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: pages/api/user-scans.ts(64,24): error TS2322: Type '{}' is not assignable to type 'string'.
-Error: pages/api/user/preferences.ts(34,24): error TS2339: Property 'code' does not exist on type 'Error'.
-Error: pages/api/webhooks/stripe.ts(55,80): error TS2339: Property 'catch' does not exist on type 'QueryBuilder<Row>'.
-Error: Process completed with exit code 2.
+> skillbridge-v2@0.1.0 lint
+> next lint
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+./app/forum/[id]/page.tsx
+107:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+151:23  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/settings/page.tsx
+203:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+264:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/Navbar.tsx
+28:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/admin/AdminConsole.tsx
+1000:95  Warning: React Hook useEffect has missing dependencies: 'loadLogs' and 'logSearch'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+1001:75  Warning: React Hook useEffect has a missing dependency: 'loadInbox'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+1002:68  Warning: React Hook useEffect has a missing dependency: 'loadUsers'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+1267:6  Warning: React Hook useCallback has a missing dependency: 'addToast'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./lib/dbClient.ts
+110:34  Error: Parsing error: ',' expected.
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+Error: Process completed with exit code 1.
