@@ -1,37 +1,33 @@
-================================================
-  SkillOS - Azure Infrastructure (idempotent)  
-================================================
-  App region : eastus2
-  DB  region : centralus
-
-[1/9] Subscription...
-    Tenant: 4ffee480-5705-4e8b-b423-3394174d28b0
-
-[2/9] Resource Group...
-    [OK] Already exists - skipping: skillos-eus2-rg
-
-[3/9] Azure Container Registry (Basic tier, ~$5/mo)...
-    [OK] Already exists - skipping: ACR: skillosacr
-    ACR: skillosacr.azurecr.io
-
-[4/9] PostgreSQL Flexible Server (Standard_B1ms, ~$16/mo, region: centralus)...
-    [OK] Already exists - skipping: PostgreSQL server: skillos-db
-    [+] Creating: Database: skillos
-    DB host: skillos-db.postgres.database.azure.com
-
-[5/9] Container Apps Environment...
-    [OK] Already exists - skipping: Container Apps Environment: skillos-env  (LAW not touched)
-
-[6/9] OIDC Service Principal for GitHub Actions...
-    [OK] Already exists - skipping: App registration: skillos-github-actions (cc9f8794-5155-41db-ab02-0f512959447e)
-    [OK] Already exists - skipping: Service principal
-    [OK] Already exists - skipping: Role 'Contributor' already assigned to 4cdfd4c8...
-    [OK] Already exists - skipping: Role 'AcrPush' already assigned to 4cdfd4c8...
-    [OK] Already exists - skipping: Federated credential: github-main
-    [+] Creating: Federated credential: github-env-prod (GitHub Environment: prod)
-az : ERROR: Failed to parse string as JSON:
-At C:\Temp\Docker\workspace\SkillOS\azure-setup.ps1:280 char:5
-+     az ad app federated-credential create `
-+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (ERROR: Failed to parse string as JSON::String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
+./app/password-reset/page.tsx
+./node_modules/pg/lib/stream.js
+Module not found: Can't resolve 'net'
+https://nextjs.org/docs/messages/module-not-found
+Import trace for requested module:
+./node_modules/pg/lib/connection.js
+./node_modules/pg/lib/index.js
+./node_modules/pg/esm/index.mjs
+./lib/db.ts
+./lib/dbClient.ts
+./app/password-reset/page.tsx
+./node_modules/pg/lib/stream.js
+Module not found: Can't resolve 'tls'
+https://nextjs.org/docs/messages/module-not-found
+Import trace for requested module:
+./node_modules/pg/lib/connection.js
+./node_modules/pg/lib/index.js
+./node_modules/pg/esm/index.mjs
+./lib/db.ts
+./lib/dbClient.ts
+./app/password-reset/page.tsx
+> Build failed because of webpack errors
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.0.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.1
+npm notice To update run: npm install -g npm@12.0.1
+npm notice
+The command '/bin/sh -c npm run build' returned a non-zero code: 1
+2026/07/24 04:02:13 Container failed during run: build. No retries remaining.
+failed to run step ID: build: exit status 1
+Run ID: ch3 failed after 3m6s. Error: failed during run, err: exit status 1
+ERROR: Run failed
+Error: Process completed with exit code 1.
