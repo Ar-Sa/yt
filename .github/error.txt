@@ -1,1 +1,6 @@
-SUPABASE_SERVICE_ROLE_KEY is required
+
+Failed to compile.
+./components/admin/AdminConsole.tsx
+1559:15  Error: Do not use an `<a>` element to navigate to `/api/admin/logout/`. Use `<Link />` from `next/link` instead. See: https://nextjs.org/docs/messages/no-html-link-for-pages  @next/next/no-html-link-for-pages
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+Error: Command "npm run build" exited with 1
