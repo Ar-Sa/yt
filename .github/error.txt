@@ -1,1 +1,1 @@
-connect ETIMEDOUT 20.29.112.112:5432
+Migration 004 (row_level_security) failed: schema "auth" does not exist
