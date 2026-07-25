@@ -1,11 +1,1 @@
-running https://skillos.greenfield-8b83aef6.eastus2.azurecontainerapps.io/admin/setup ut getting below 
-
-Database & Schema
-Connect your database — schema is applied automatically
-
-Database detected via environment variables
-PostgreSQL connection detected via environment variables.
-
-Applying schema automatically…
-
-relation "public.app_logs" does not exist
+SUPABASE_SERVICE_ROLE_KEY is required
