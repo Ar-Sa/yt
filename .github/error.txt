@@ -1,4 +1,1 @@
-Run npx tsc --noEmit
-Error: pages/api/cron/newsletter-digest.ts(57,92): error TS2345: Argument of type 'Row[]' is not assignable to parameter of type 'DigestLayoffItem[]'.
-  Type 'Row' is missing the following properties from type 'DigestLayoffItem': company_name, employee_count, industry, company_slug
-Error: Process completed with exit code 2.
+connect ETIMEDOUT 20.29.112.112:5432
