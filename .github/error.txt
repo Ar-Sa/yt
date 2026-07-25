@@ -1,3 +1,4 @@
 Run npx tsc --noEmit
-Error: pages/api/admin/login.ts(58,50): error TS7006: Parameter 'ch' implicitly has an 'any' type.
+Error: app/status/StatusPageClient.tsx(233,12): error TS2304: Cannot find name 'incidents'.
+Error: app/status/StatusPageClient.tsx(233,27): error TS7006: Parameter 'inc' implicitly has an 'any' type.
 Error: Process completed with exit code 2.
