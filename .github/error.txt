@@ -1,9 +1,4 @@
-[4/9] PostgreSQL Flexible Server (Standard_B1ms, ~$16/mo, region: centralus)...
-    [OK] Already exists - skipping: PostgreSQL server: skillos-db
-    Ensuring public network access is enabled on skillos-db...
-az : ERROR: unrecognized arguments: --public-network-access Enabled
-At C:\Temp\Docker\workspace\SkillOS\azure-setup.ps1:305 char:1
-+ az postgres flexible-server update `
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (ERROR: unrecogn...-access Enabled:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
+Environment details
+/opt/hostedtoolcache/node/20.20.2/x64/bin/npm config get cache
+/home/runner/.npm
+Error: Dependencies lock file is not found in /home/runner/work/SkillOS/SkillOS. Supported file patterns: package-lock.json,npm-shrinkwrap.json,yarn.lock
