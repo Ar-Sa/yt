@@ -1,4 +1,11 @@
-Run npx tsc --noEmit
-Error: app/status/StatusPageClient.tsx(233,12): error TS2304: Cannot find name 'incidents'.
-Error: app/status/StatusPageClient.tsx(233,27): error TS7006: Parameter 'inc' implicitly has an 'any' type.
-Error: Process completed with exit code 2.
+running https://skillos.greenfield-8b83aef6.eastus2.azurecontainerapps.io/admin/setup ut getting below 
+
+Database & Schema
+Connect your database — schema is applied automatically
+
+Database detected via environment variables
+PostgreSQL connection detected via environment variables.
+
+Applying schema automatically…
+
+relation "public.app_logs" does not exist
