@@ -1,1 +1,3 @@
-Migration 004 (row_level_security) failed: schema "auth" does not exist
+Run npx tsc --noEmit
+Error: pages/api/admin/login.ts(58,50): error TS7006: Parameter 'ch' implicitly has an 'any' type.
+Error: Process completed with exit code 2.
