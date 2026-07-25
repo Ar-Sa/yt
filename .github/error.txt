@@ -1,1 +1,9 @@
-AUTH_SECRET is required
+[4/9] PostgreSQL Flexible Server (Standard_B1ms, ~$16/mo, region: centralus)...
+    [OK] Already exists - skipping: PostgreSQL server: skillos-db
+    Ensuring public network access is enabled on skillos-db...
+az : ERROR: unrecognized arguments: --public-network-access Enabled
+At C:\Temp\Docker\workspace\SkillOS\azure-setup.ps1:305 char:1
++ az postgres flexible-server update `
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ERROR: unrecogn...-access Enabled:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
