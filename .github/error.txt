@@ -2,3 +2,31 @@ Environment details
 /opt/hostedtoolcache/node/20.20.2/x64/bin/npm config get cache
 /home/runner/.npm
 Error: Dependencies lock file is not found in /home/runner/work/SkillOS/SkillOS. Supported file patterns: package-lock.json,npm-shrinkwrap.json,yarn.lock
+
+
+azure_setup.ps1 error - [4/9] PostgreSQL Flexible Server (Standard_B1ms, ~$16/mo, region: centralus)...
+    [OK] Already exists - skipping: PostgreSQL server: skillos-db
+    Ensuring public network access is enabled on skillos-db...
+    [+] Creating: Firewall rule: AllowAllAzureServicesAndResourcesWithinAzureIps (allow Azure services)
+Failed: create firewall rule AllowAllAzureServicesAndResourcesWithinAzureIps (exit 2)
+ERROR: the following arguments are required: --server-name/-s System.Management.Automation.RemoteException Examples from command's help: az postgres 
+flexible-server firewall-rule create --resource-group testGroup --server-name testserver --name allowiprange --start-ip-address 107.46.14.0 --end-ip-address 
+107.46.14.221 Create a firewall rule allowing connections from an IP address range. System.Management.Automation.RemoteException 
+System.Management.Automation.RemoteException az postgres flexible-server firewall-rule create --resource-group testGroup --server-name testserver --name allowip 
+--start-ip-address 107.46.14.221 Create a firewall rule allowing connections from a specific IP address. System.Management.Automation.RemoteException 
+System.Management.Automation.RemoteException az postgres flexible-server firewall-rule create --resource-group testGroup --server-name testserver --name 
+allowazureservices --start-ip-address 0.0.0.0 Create a firewall rule allowing connections to all Azure services System.Management.Automation.RemoteException 
+System.Management.Automation.RemoteException https://aka.ms/cli_ref Read more about the command in reference docs
+At C:\Temp\Docker\workspace\SkillOS\azure-setup.ps1:86 char:9
++         throw "Failed: $description (exit $exitCode)`n$output"
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Failed: create ... reference docs:String) [], RuntimeException
+    + FullyQualifiedErrorId : Failed: create firewall rule AllowAllAzureServicesAndResourcesWithinAzureIps (exit 2)
+    ERROR: the following arguments are required: --server-name/-s System.Management.Automation.RemoteException Examples from command's help: az postgres flexible-s 
+   erver firewall-rule create --resource-group testGroup --server-name testserver --name allowiprange --start-ip-address 107.46.14.0 --end-ip-address 107.46.14.22  
+  1 Create a firewall rule allowing connections from an IP address range. System.Management.Automation.RemoteException System.Management.Automation.RemoteExcepti   
+ on az postgres flexible-server firewall-rule create --resource-group testGroup --server-name testserver --name allowip --start-ip-address 107.46.14.221 Create     
+a firewall rule allowing connections from a specific IP address. System.Management.Automation.RemoteException System.Management.Automation.RemoteException az p    
+ostgres flexible-server firewall-rule create --resource-group testGroup --server-name testserver --name allowazureservices --start-ip-address 0.0.0.0 Create a     
+firewall rule allowing connections to all Azure services System.Management.Automation.RemoteException System.Management.Automation.RemoteException https://aka.    
+ms/cli_ref Read more about the command in reference docs
