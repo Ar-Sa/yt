@@ -1,13 +1,15 @@
-Run npx tsc --noEmit
-  npx tsc --noEmit
-  shell: /usr/bin/bash -e {0}
-  env:
-    RESOURCE_GROUP: skillos-eus2-rg
-    CONTAINER_APP_NAME: skillos
-    IMAGE_NAME: skillos
-Error: components/InstallPrompt.tsx(69,9): error TS2322: Type 'Uint8Array<ArrayBufferLike>' is not assignable to type 'string | BufferSource | null | undefined'.
-  Type 'Uint8Array<ArrayBufferLike>' is not assignable to type 'ArrayBufferView<ArrayBuffer>'.
-    Types of property 'buffer' are incompatible.
-      Type 'ArrayBufferLike' is not assignable to type 'ArrayBuffer'.
-        Type 'SharedArrayBuffer' is missing the following properties from type 'ArrayBuffer': resizable, resize, detached, transfer, transferToFixedLength
-Error: Process completed with exit code 2.
+65.84 npm notice New major version of npm available! 11.16.0 -> 12.0.1
+65.84 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.1
+65.84 npm notice To update run: npm install -g npm@12.0.1
+65.84 npm notice
+------
+Dockerfile:60
+--------------------
+  58 |         NODE_ENV=production
+  59 |     
+  60 | >>> RUN npm run build
+  61 |     
+  62 |     # ─────────────────────────────────────────────────────────────────────────────
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+Error: buildx failed with: ERROR: failed to build: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
