@@ -1,31 +1,12 @@
-error while running sample scan -⚠ Failed to save scan results.
-
-error while db connection test - Failed — see error below, No PostgreSQL connection string available for pool.
-
-system test -> 24/36 checks passed · 11 skipped · 1 failed
-7:44:19 PM
-Database
-No PostgreSQL connection string available for pool.
-
-Stripe API
-not configured in Admin Central
-
-AI Provider
-not configured in Admin Central
-
-Layoff Radar API
-1049ms
-Payments API
-429ms
-Email
-EMAIL_API_KEY not configured. Set it in Admin Central → Email.
-
-Auth Secret (JWT signing)
-google_oauth
-Google Client ID not set in Admin Central → Auth
-
-github_oauth
-GitHub Client ID not set in Admin Central → Auth
-
-linkedin_oauth
-LinkedIn Client ID not set in Admin Central → Auth
+Failed to compile.
+./lib/smtpClient.ts:123:17
+Type error: 't' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
+  121 |
+  122 |         const upgraded = await new Promise<tls.TLSSocket>((res, rej) => {
+> 123 |           const t = tls.connect({ socket: sock, servername: opts.host }, () => res(t))
+      |                 ^
+  124 |           t.once('error', rej)
+  125 |         })
+  126 |         sock = upgraded
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1
