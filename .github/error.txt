@@ -1,12 +1,13 @@
-Failed to compile.
-./lib/smtpClient.ts:123:17
-Type error: 't' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
-  121 |
-  122 |         const upgraded = await new Promise<tls.TLSSocket>((res, rej) => {
-> 123 |           const t = tls.connect({ socket: sock, servername: opts.host }, () => res(t))
-      |                 ^
-  124 |           t.once('error', rej)
-  125 |         })
-  126 |         sock = upgraded
-Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
+Federated token details:
+ issuer - https://token.actions.githubusercontent.com
+ subject claim - repo:Ar-Sa/SkillOS:environment:prod
+ audience - api://AzureADTokenExchange
+ job_workflow_ref - Ar-Sa/SkillOS/.github/workflows/deploy-azure.yml@refs/heads/main
+Attempting Azure CLI login by using OIDC...
+Error: AADSTS700016: Application with identifier '***' was not found in the directory '***'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You may have sent your authentication request to the wrong tenant. Trace ID: a5d66755-4415-4907-804c-fa33c91e0c00 Correlation ID: a8532209-8c22-4e59-a52a-b24282116d4f Timestamp: 2026-07-26 14:50:21Z
+
+Error: Run the command below to authenticate interactively; additional arguments may be added as needed:
+az logout
+az login
+
+Error: Login failed with Error: The process '/usr/bin/az' failed with exit code 1. Double check if the 'auth-type' is correct. Refer to https://github.com/Azure/login#readme for more information.
