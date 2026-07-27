@@ -1,4 +1,14 @@
-  Linting and checking validity of types ...
+Error: components/admin/AdminConsole.tsx(1584,21): error TS2339: Property 'name' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
+Error: components/admin/AdminConsole.tsx(1584,39): error TS2339: Property 'email' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
+Error: components/admin/AdminConsole.tsx(1587,27): error TS2339: Property 'name' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
+Error: components/admin/AdminConsole.tsx(1587,45): error TS2339: Property 'email' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
+Error: components/admin/AdminConsole.tsx(1590,26): error TS2339: Property 'name' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
+Error: components/admin/AdminConsole.tsx(1590,107): error TS2339: Property 'name' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
+Error: components/admin/AdminConsole.tsx(1591,26): error TS2339: Property 'email' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
+Error: components/admin/AdminConsole.tsx(1591,98): error TS2339: Property 'email' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
+Error: Process completed with exit code 2.
+
+vercel error just for referance ) - Linting and checking validity of types ...
 Failed to compile.
 ./components/admin/AdminConsole.tsx:1584:21
 Type error: Property 'name' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
