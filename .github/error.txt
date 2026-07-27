@@ -1,13 +1,13 @@
- Linting and checking validity of types ...
+  Linting and checking validity of types ...
 Failed to compile.
-./lib/smtpClient.ts:123:17
-Type error: 't' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer.
-  121 |
-  122 |         const upgraded = await new Promise<tls.TLSSocket>((res, rej) => {
-> 123 |           const t = tls.connect({ socket: sock, servername: opts.host }, () => res(t))
-      |                 ^
-  124 |           t.once('error', rej)
-  125 |         })
-  126 |         sock = upgraded
+./components/admin/AdminConsole.tsx:1584:21
+Type error: Property 'name' does not exist on type '{ directCallbackUrl?: string | undefined; }'.
+  1582 |
+  1583 |         {/* Logged-in admin identity */}
+> 1584 |         {(authInfo?.name || authInfo?.email) && (
+       |                     ^
+  1585 |           <div className="flex items-center gap-2 pl-3 ml-1 border-l border-zinc-800">
+  1586 |             <div className="w-7 h-7 rounded-full bg-violet-600/20 border border-violet-500/40 flex items-center justify-center text-[11px] font-bold text-violet-300 shrink-0 select-none">
+  1587 |               {(authInfo?.name || authInfo?.email || '?').slice(0, 1).toUpperCase()}
 Next.js build worker exited with code: 1 and signal: null
 Error: Command "npm run build" exited with 1
