@@ -1,1 +1,386 @@
-Could not connect to the sign-in provider. Check your redirect URL is registered correctly.
+Simplify to: first card gets `lg:col-span-2` on a 3-col grid. Others remain 1 col.
+
+D) PRICING SECTION — Add annual/monthly toggle. Add state: `const [annual, setAnnual] = useState(false)`
+Add toggle above pricing grid:
+```tsx
+<div className="flex items-center justify-center gap-3 mb-10">
+  <span className={`text-sm font-medium transition-colors ${!annual ? 'text-[color:var(--text)]' : 'text-[color:var(--muted)]'}`}>Monthly</span>
+  <button
+    onClick={() => setAnnual(v => !v)}
+    className={`relative w-11 h-6 rounded-full transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[color:var(--primary)] focus-visible:ring-offset-2 ${annual ? 'bg-[color:var(--primary)]' : 'bg-[color:var(--border)]'}`}
+    role="switch" aria-checked={annual} aria-label="Toggle annual billing"
+  >
+    <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-xs transition-transform duration-200 ${annual ? 'translate-x-5' : ''}`} />
+  </button>
+  <span className={`text-sm font-medium transition-colors ${annual ? 'text-[color:var(--text)]' : 'text-[color:var(--muted)]'}`}>
+    Annual <span className="ml-1 text-xs font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded-full">Save 20%</span>
+  </span>
+</div>
+```
+In the tier map price display:
+```tsx
+const price = annual && tier.price !== '$0'
+  ? `$${(parseFloat(tier.price.replace('$','')) * 0.8).toFixed(2)}`
+  : tier.price
+const period = annual && tier.price !== '$0' ? '/mo, billed annually' : tier.period
+```
+
+E) FINAL CTA SECTION — Upgrade the flat purple section. Add gradient mesh orbs:
+```tsx
+{/* inside the section, before the RevealSection */}
+<div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+  <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-96 h-64 bg-violet-500/25 rounded-full blur-[80px]" />
+  <div className="absolute top-1/2 right-1/3 -translate-y-1/2 w-96 h-64 bg-cyan-400/15 rounded-full blur-[80px]" />
+</div>
+```
+Add `relative z-10` to the inner RevealSection div.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 5 — app/dashboard/page.tsx: Executive summary first
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+The dashboard currently shows a list of scans. Restructure the LAYOUT ONLY — keep all data fetching, state, and rendering logic intact.
+
+A) Page wrapper — wrap in `<div className="page-section py-8 sm:py-12">` 
+
+B) Page header — if there's a bare h1/h2 at the top, replace with a compact inline header (not a full PageHero — dashboard should feel like an app, not a marketing page):
+```tsx
+<div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+  <div>
+    <h1 className="text-2xl font-bold text-[color:var(--text)]">
+      {email ? `Welcome back${email.split('@')[0] ? `, ${email.split('@')[0]}` : ''}` : 'Your Dashboard'}
+    </h1>
+    <p className="text-sm text-[color:var(--muted)] mt-0.5">Here's your career intelligence at a glance</p>
+  </div>
+  <div className="flex items-center gap-2">
+    {/* existing refresh button and any other header actions */}
+  </div>
+</div>
+```
+
+C) KPI row — Add a metric card row BEFORE the scans list, showing the most recent scan's data (if scans.length > 0):
+```tsx
+{scans.length > 0 && (
+  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 stagger">
+    <div className="metric-card">
+      <div className={`metric-card-value ${riskColor(scans[0].overall_risk)}`}>{scans[0].overall_risk}%</div>
+      <div className="metric-card-label">AI Risk Score</div>
+      <div className="metric-card-delta flat">Latest scan</div>
+    </div>
+    <div className="metric-card">
+      <div className="metric-card-value">{scans.length}</div>
+      <div className="metric-card-label">Total Scans</div>
+      <div className="metric-card-delta flat">All time</div>
+    </div>
+    <div className="metric-card">
+      <div className="metric-card-value">{scans[0].detected_title ? scans[0].detected_title.split(' ').slice(0,2).join(' ') : '—'}</div>
+      <div className="metric-card-label">Detected Role</div>
+      <div className="metric-card-delta flat">From last scan</div>
+    </div>
+    <div className="metric-card">
+      <div className={`metric-card-value text-base font-semibold`}>
+        {scans[0].overall_risk <= 30 ? <span className="status-safe">Safe Zone</span>
+          : scans[0].overall_risk <= 60 ? <span className="status-monitor">Monitor</span>
+          : scans[0].overall_risk <= 80 ? <span className="status-high">Act Now</span>
+          : <span className="status-critical">Urgent</span>}
+      </div>
+      <div className="metric-card-label">Risk Band</div>
+      <div className="metric-card-delta flat">Current status</div>
+    </div>
+  </div>
+)}
+```
+
+D) Empty state — if scans.length === 0, replace whatever is currently shown with:
+```tsx
+<EmptyState
+  icon={<ScanLine className="w-7 h-7" />}
+  title="Run your first career scan"
+  description="Upload your resume to get your AI displacement risk score, skill-by-skill breakdown, and a personalized reskilling plan in 30 seconds."
+  ctaLabel="Start Free Scan"
+  ctaHref="/"
+/>
+```
+
+E) Scan history cards — keep existing card JSX but ensure each card:
+- Uses the `card card-hover` classes
+- Shows risk as a `<Progress>` component with correct color
+- Uses the appropriate `status-*` class for the risk band badge instead of inline color strings
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 6 — app/scan/[token]/page.tsx: AI result hierarchy
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This is the most important page in the product. Read the full file before touching it.
+
+The page currently renders sections in an order that isn't optimized for the user's mental model. Restructure the VISUAL LAYOUT as follows — keep all data parsing, safeJson calls, and rendering logic exactly as-is, just reorganize which sections appear where:
+
+REQUIRED SECTION ORDER:
+1. Risk Summary (already exists — the big dial/score) → keep at top ✓
+2. Executive Summary (one-sentence "what this means for you") → add this right below the dial:
+```tsx
+{scan.actionable_recommendation && (
+  <div className="card p-5 mb-6 border-l-4 border-l-[color:var(--primary)] bg-[color:var(--primary)]/5">
+    <div className="flex items-start gap-3">
+      <Lightbulb className="w-5 h-5 text-[color:var(--primary)] shrink-0 mt-0.5" />
+      <div>
+        <p className="text-xs font-bold text-[color:var(--primary)] uppercase tracking-wider mb-1">AI Recommendation</p>
+        <p className="text-sm text-[color:var(--text)] leading-relaxed">{scan.actionable_recommendation}</p>
+        <div className="data-attribution mt-2">
+          <Clock className="w-3 h-3" />
+          Updated {new Date(scan.created_at).toLocaleDateString()}
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+```
+
+3. Skills at risk (already exists) → keep
+4. Safe skills (already exists) → keep  
+5. Quick wins / recommended next (already exists) → keep
+6. Timeline / urgency (already exists) → keep
+7. Actions + Resources (already exists) → keep
+8. Share + Download (keep at bottom)
+
+For EVERY section that currently uses `SectionHeader`, ensure it uses the `ai-section` + `ai-section-header` CSS classes on its wrapper.
+
+For the skill cards that show risk_percent — replace any custom progress bar with the `<Progress>` component:
+```tsx
+import { Progress } from '../../../components/ui/Progress'
+// ...
+<Progress 
+  value={skill.risk_percent} 
+  color={skill.risk_percent > 70 ? 'danger' : skill.risk_percent > 40 ? 'warning' : 'success'}
+  label={skill.name}
+  size="sm"
+/>
+```
+
+Add a data attribution line at the bottom of the page:
+```tsx
+<div className="flex items-center justify-center gap-4 py-6 border-t border-[color:var(--border)] mt-8">
+  <span className="data-attribution">
+    <Shield className="w-3 h-3" />
+    AI-generated · Use for guidance only
+  </span>
+  <span className="data-attribution">
+    <BarChart2 className="w-3 h-3" />
+    2.1M+ jobs analyzed
+  </span>
+  <span className="data-attribution">
+    <Clock className="w-3 h-3" />
+    Scanned {new Date(scan.created_at).toLocaleDateString()}
+  </span>
+</div>
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 7 — app/settings/page.tsx: unified inputs
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+The settings page defines its own `INPUT_CLS` constant. Replace all usages with the unified `input-field` CSS class.
+
+Find: `const INPUT_CLS = 'w-full px-3.5 py-3 rounded-xl border...'`
+Delete this constant entirely.
+
+Find every: `className={INPUT_CLS}` or `className={`${INPUT_CLS} ...`}`
+Replace with: `className="input-field"` (add any additional classes after a space)
+
+The settings tabs (Profile / Subscription / Notifications / Security) — check if they use the Tabs component from components/ui/Tabs.tsx. If they use a custom implementation, replace with the shared Tabs component:
+```tsx
+import { Tabs } from '../../components/ui/Tabs'
+
+<Tabs
+  defaultTabId={tab}
+  tabs={TABS.map(t => ({
+    id: t.id,
+    label: t.label,
+    icon: <t.Icon className="h-4 w-4" />,
+    content: <>{/* existing tab content for t.id */}</>
+  }))}
+/>
+```
+Keep all existing state and handlers — just wrap the content in the Tabs component.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 8 — app/layoff-radar/page.tsx: table + filter polish
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Keep all data fetching, sorting, filtering logic unchanged. Visual changes only:
+
+A) Page header — replace the existing PageBanner or bare heading with PageHero:
+```tsx
+<PageHero
+  eyebrow="Live Data"
+  title="Layoff Radar"
+  subtitle="Real-time layoff tracking across 500+ companies — updated daily from public filings, news, and WARN Act data."
+  accent="red"
+  align="left"
+  size="md"
+  icon={<TrendingDown size={24} />}
+/>
+```
+
+B) Search input — apply `input-field` class and add icon prefix:
+```tsx
+<div className="relative">
+  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[color:var(--muted)] pointer-events-none" />
+  <input className="input-field pl-9" placeholder="Search companies..." value={...} onChange={...} />
+</div>
+```
+
+C) Filter selects — apply `input-field` class, remove the SELECT_CLS constant
+
+D) Table wrapper — wrap the existing table in the Table component from components/ui/Table.tsx if it isn't already. If the table is a raw <table> tag, convert to:
+```tsx
+<Table>
+  <TableHead>
+    <tr>
+      <TableHeaderCell>Company</TableHeaderCell>
+      <TableHeaderCell>Employees</TableHeaderCell>
+      {/* etc */}
+    </tr>
+  </TableHead>
+  <TableBody>
+    {items.map(item => (
+      <TableRow key={item.id}>
+        <TableCell>{item.company}</TableCell>
+        {/* etc */}
+      </TableRow>
+    ))}
+  </TableBody>
+</Table>
+```
+
+E) Severity badges — replace the `color` and `dot` strings with status classes:
+```tsx
+const statusClass = (count: number) =>
+  count >= 5000 ? 'status-critical' :
+  count >= 1000 ? 'status-high' :
+  count >= 100  ? 'status-monitor' :
+  'status-safe'
+
+// Usage:
+<span className={statusClass(item.employees)}>{item.severity_label}</span>
+```
+
+F) Empty state — if no results after filtering, show:
+```tsx
+<EmptyState
+  icon={<AlertTriangle className="w-7 h-7" />}
+  title="No layoffs match your filters"
+  description="Try adjusting your industry or country filter, or clear filters to see all events."
+  ctaLabel="Clear Filters"
+  onCtaClick={() => { setSearch(''); setCountry(''); setIndustry('') }}
+/>
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 9 — app/login/page.tsx + app/signup/page.tsx
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Both files: replace all custom input className strings with `input-field`.
+
+Login page — wrap in centered layout:
+```tsx
+<div className="min-h-screen flex items-center justify-center bg-[color:var(--bg)] px-4 py-16 relative overflow-hidden">
+  <div className="hero-glow-bg" aria-hidden="true" />
+  <div className="relative z-10 w-full max-w-[420px]">
+    {/* Logo */}
+    <div className="text-center mb-8">
+      <Link href="/" className="inline-flex items-center gap-2.5 group">
+        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[color:var(--primary)] to-violet-600 flex items-center justify-center shadow-card mx-auto">
+          <svg width="16" height="16" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+            <path d="M2 7.5h11M7.5 2l5.5 5.5-5.5 5.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </Link>
+      <h1 className="text-2xl font-bold text-[color:var(--text)] mt-4 mb-1">Welcome back</h1>
+      <p className="text-sm text-[color:var(--muted)]">Sign in to your career dashboard</p>
+    </div>
+    {/* existing form content wrapped in: */}
+    <div className="card p-8 shadow-elevated">
+      {/* all existing form content */}
+    </div>
+    {/* existing below-form links */}
+  </div>
+</div>
+```
+
+Signup page — same layout, change heading to "Create your account" and subtitle to "Free forever · No credit card required."
+
+OAuth provider buttons in both files — replace the `color` prop string (which has inline hex colors that don't work with CSS variables) with a unified class:
+```tsx
+className="w-full flex items-center justify-center gap-3 h-11 px-4 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] hover:bg-[color:var(--surface-hover)] text-[color:var(--text)] text-sm font-medium transition-all duration-150 hover:border-[color:var(--primary)]/30"
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 10 — app/pricing/page.tsx: visual upgrades
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Page already has billing toggle (monthly/annual). Verify it renders correctly, then:
+
+A) Highlighted plan card — add subtle gradient top accent line:
+```tsx
+{plan.highlight && (
+  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[color:var(--primary)] to-transparent" />
+)}
+```
+
+B) Feature list — replace CheckCircle2 with the richer pattern:
+```tsx
+<li className="flex items-start gap-2.5">
+  {f.icon
+    ? <span className="mt-0.5 w-4 h-4 rounded-full bg-emerald-500/15 flex items-center justify-center shrink-0">
+        <CheckCircle2 size={10} className="text-emerald-500" />
+      </span>
+    : <span className="mt-0.5 w-4 h-4 rounded-full bg-[color:var(--border)] flex items-center justify-center shrink-0">
+        <XCircle size={10} className="text-[color:var(--muted)]" />
+      </span>
+  }
+  <span className="text-sm text-[color:var(--text-secondary)]">{f.text}</span>
+</li>
+```
+
+C) Trust line below cards:
+```tsx
+<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-10 text-sm text-[color:var(--muted)]">
+  {['7-day free trial', 'No credit card required', 'Cancel anytime', 'Instant access'].map(t => (
+    <span key={t} className="flex items-center gap-1.5">
+      <CheckCircle2 size={13} className="text-emerald-500" />{t}
+    </span>
+  ))}
+</div>
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 11 — components/Footer.tsx: fix newsletter + social
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+A) Wire the newsletter to the real API:
+```tsx
+async function handleSubscribe(e: React.FormEvent) {
+  e.preventDefault()
+  if (!email.trim()) return
+  try {
+    await fetch('/api/newsletter/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email.trim() }),
+    })
+  } catch { /* graceful — show success regardless */ }
+  setSubscribed(true)
+  setEmail('')
+}
+```
+
+B) Newsletter input — apply `input-field` class
+
+C) Footer top — update the brand tagline to: "AI-powered career resilience for professionals worldwide"
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 12 — components/PageHero.tsx: dot grid addition
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Inside the component, add a dot grid overlay before the existing orb divs:
+```tsx
+<div className="absolute inset-0 dot-grid opacity-[0.35] pointer-events-none" aria-hidden="true" />
+```
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STEP 13 — components/ui/Button.tsx: glow + size
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Update primary variant to include btn-glow:
