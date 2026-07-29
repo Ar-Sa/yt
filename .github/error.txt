@@ -1,332 +1,64 @@
-You are a world-class UI designer and frontend engineer. Your only job is to make SkillosAI look and feel like a $200M SaaS product. Do NOT change any logic, API calls, state management, data fetching, or business functionality. Change ONLY: colors, typography, spacing, shadows, borders, animations, layout proportions, and visual presentation of existing content.
+PATIENT PROFILE
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STRICT RULES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Touch ZERO files under /app/api/, /lib/, /middleware.ts
-- Do NOT install any npm packages
-- Do NOT change variable names, function signatures, props, or data structures
-- Do NOT remove any existing JSX elements — only restyle them
-- Do NOT change dark/light mode system — only enhance it
-- Return COMPLETE file content for every file changed
-- Run `npx tsc --noEmit` at the end and fix all errors
+41-year-old male
+Congenital horseshoe kidney
+Prediabetes (managed with Dexcom Stelo CGM)
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-DESIGN REFERENCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Target aesthetic: Vercel + Linear + Stripe
-- Clean, confident, minimal
-- Strong typographic hierarchy
-- Generous whitespace
-- Subtle depth (soft shadows, not harsh)
-- Smooth micro-animations
-- Every page feels designed, not coded
-- One design language across ALL pages
-- Anxious users must feel SAFE and IN CONTROL
+DIAGNOSIS NOTE: Two source records conflict on histology — one states Mixed Germ Cell Tumor (65% Seminoma / 35% Embryonal Carcinoma); the other states Mixed Non-Seminomatous Germ Cell Tumor. Marker elevations (AFP, β-hCG) at diagnosis are more consistent with non-seminomatous disease. This should be confirmed against the original pathology report.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL RULES — APPLY EVERYWHERE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TIMELINE
 
-TYPOGRAPHY
-- Display headings: font-bold tracking-tight leading-[1.08]
-- Hero h1: text-[clamp(2rem,5vw,3.75rem)]
-- Section h2: text-3xl font-bold
-- Card titles: text-lg font-semibold
-- Body: text-base leading-relaxed text-[color:var(--text-secondary)]
-- Labels: text-xs font-semibold uppercase tracking-wider text-[color:var(--muted)]
-- Numbers/stats: font-bold tabular-nums
-- Max 3 text sizes per section — never more
+Sept–Oct 2025 — Developed right testicular swelling/mass; evaluated by urologist
 
-SPACING (8px grid only)
-- Section vertical padding: py-20 sm:py-28
-- Card internal padding: p-6
-- Grid gaps: gap-4 or gap-6
-- Between heading and body: mb-4
-- Between body and CTA: mt-8
+Oct 22, 2025 — First urology consultation; workup initiated
 
-COLORS — use CSS variables, not hardcoded hex
-- Headings: text-[color:var(--text)]
-- Body: text-[color:var(--text-secondary)]
-- Subtle: text-[color:var(--muted)]
-- Borders: border-[color:var(--border)]
-- Card backgrounds: bg-[color:var(--surface)]
-- Page background: bg-[color:var(--bg)]
-- Brand: bg-[color:var(--primary)] text-white
+Late Oct/Early Nov 2025 — Pre-op bloodwork; testicular ultrasound confirms suspicious mass
 
-CARDS — one style only
-- className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm hover:shadow-md transition-shadow duration-200"
-- Never mix different card styles on the same page
-- No harsh box shadows
+Nov 24, 2025 — AFP 435.8 | β-hCG 653
 
-BUTTONS — two styles only
-- Primary: "inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[color:var(--primary)] text-white text-sm font-semibold hover:opacity-90 transition-all duration-150 shadow-sm hover:shadow-md hover:-translate-y-px active:translate-y-0"
-- Secondary: "inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--text)] text-sm font-semibold hover:border-[color:var(--primary)]/40 transition-all duration-150"
-- Remove ALL other button variants that look different from these two
+Dec 4, 2025 — AFP 455.6 | β-hCG 755
 
-INPUTS — one style only
-- className="w-full h-11 px-4 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] text-[color:var(--text)] placeholder:text-[color:var(--muted)] text-sm focus:outline-none focus:border-[color:var(--primary)] focus:ring-2 focus:ring-[color:var(--primary)]/10 transition-all"
-- Apply this to EVERY input, textarea, select on every page
+Dec 5, 2025 — Right Radical Orchiectomy (pathology per above discrepancy)
 
-STATUS BADGES — four styles only, use these exact classNames:
-- Safe/Low:    "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
-- Monitor/Med: "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
-- High:        "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20"
-- Critical:    "inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20"
+Dec 18, 2025 — β-hCG 819
 
-ANIMATIONS — subtle only
-- All interactive elements: transition-all duration-150
-- Cards on hover: hover:shadow-md hover:-translate-y-0.5
-- Buttons on hover: hover:-translate-y-px
-- Page sections: opacity-0 → opacity-1 + translateY(16px) → 0 on scroll via IntersectionObserver
-- Loading states: animate-pulse on skeleton divs
-- Zero animations that delay content
+Dec 26, 2025 — CT Abd/Pelvis: retroperitoneal node ~3.2cm (metastatic), small pulmonary nodules | β-hCG 932
 
-REMOVE VISUAL NOISE
-- Remove all horizontal <hr> dividers — use spacing instead
-- Remove any element with more than 2 nested border+shadow+rounded combinations
-- Remove any rainbow or neon gradient that isn't a single brand-color gradient
-- Remove all inline style={{ color: '#hex' }} — convert to Tailwind/CSS var
-- Maximum 2 different border-radius values per page (rounded-xl and rounded-2xl)
+Post-op staging (general) — Confirmed retroperitoneal lymph node involvement
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PAGE-BY-PAGE INSTRUCTIONS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Jan 6, 2026 — First medical oncology visit; AFP 670.0 | β-hCG 1108; staged as metastatic GCT with retroperitoneal + likely pulmonary mets
 
-── styles/globals.css ──
-Add ONLY at the end, change nothing else:
+Jan 21, 2026 — AFP 546.3 | β-hCG 1148
 
-```css
-/* Hero ambient glow */
-.hero-glow::before {
-  content: '';
-  position: absolute;
-  top: -100px; left: 50%;
-  transform: translateX(-50%);
-  width: 700px; height: 400px;
-  background: radial-gradient(ellipse, rgba(99,102,241,0.10) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-.dark .hero-glow::before {
-  background: radial-gradient(ellipse, rgba(99,102,241,0.16) 0%, transparent 70%);
-}
+Jan 26, 2026 — Chemo Cycle 1 starts (EP: Cisplatin 37mg/day + Etoposide 180mg/day, 5 days, 4 cycles planned; WBC growth factor after each cycle)
 
-/* Dot grid for empty/hero sections */
-.dot-grid-bg {
-  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
-  background-size: 22px 22px;
-}
+Feb 4, 2026 — β-hCG 284 (strong early response)
 
-/* Gradient text for hero headline accent */
-.text-gradient {
-  background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 60%, #06b6d4 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+Feb 11, 2026 — β-hCG 9 (near normalization)
 
-/* Scroll reveal */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.45s ease, transform 0.45s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+Feb 16, 2026 — Cycle 2 starts
 
-/* Metric card */
-.metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
-.metric-value { font-size: 2rem; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; color: var(--text); }
-.metric-label { font-size: 0.8125rem; color: var(--muted); margin-top: 4px; }
+Mar 2, 2026 — Platelets 97,000 (expected chemo-induced thrombocytopenia)
 
-/* Eyebrow badge */
-.eyebrow { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; background: rgba(99,102,241,0.10); border: 1px solid rgba(99,102,241,0.20); color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+Mar 9, 2026 — Cycle 3 starts; AFP 5.2 | β-hCG <5 (normalized)
 
-/* Page content wrapper */
-.page-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-.page-wrap-sm { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 24px; }
+Mar 30, 2026 — Cycle 4 starts
 
-/* Thin scrollbar */
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
-html { scroll-behavior: smooth; }
-h1, h2, h3 { text-wrap: balance; }
+Apr 3, 2026 — Final chemo infusion completed
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-}
-```
+Post-chemo baseline CT — Retroperitoneal node 3.2cm → 7mm; lung nodules decreased; markers normal (AFP/β-hCG normal)
 
-── components/AppLayout.tsx ──
-Find the <main> tag. Remove px-4, py-8, sm:px-8, lg:px-0, max-w-7xl from it.
-Change to: <main id="main-content" className="flex-1 w-full">
-This is the most impactful change — it unlocks full-bleed sections on every page.
+Apr–Jul 2026 (Recovery phase) — Hair regrowth, constipation/slow digestion, excess saliva, fatigue, weight recovery to ~70kg, increasing abdominal fat, occasional knee pain, prediabetes monitored via CGM, ~3L/day hydration goal (horseshoe kidney)
 
-── components/Navbar.tsx ──
-1. Add scroll detection:
-   const [scrolled, setScrolled] = useState(false)
-   useEffect(() => {
-     const fn = () => setScrolled(window.scrollY > 8)
-     window.addEventListener('scroll', fn, { passive: true })
-     return () => window.removeEventListener('scroll', fn)
-   }, [])
-2. Nav outer className: add `${scrolled ? 'shadow-sm' : ''}` and `backdrop-blur-md transition-shadow duration-200`
-3. Logo — replace letter-box with gradient icon mark:
-   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[color:var(--primary)] to-violet-600 flex items-center justify-center">
-     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-       <path d="M1.5 7h11M7 1.5l5.5 5.5L7 12.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-     </svg>
-   </div>
-4. Brand text: Skill<span className="text-[color:var(--primary)] font-extrabold">OS</span><span className="text-[color:var(--muted)] font-medium text-sm">·AI</span>
-5. "Get Started" button — apply primary button style from above + add Zap icon
+Jul 2026 — Surveillance CT — Retroperitoneal node regrown 7mm → ~3cm (exact size pending oncologist confirmation); one new enlarged retroperitoneal node identified
 
-── components/HomePage.tsx ──
-1. HERO: Add `relative overflow-hidden hero-glow` to the section tag
-   Add ABOVE the scan card:
-   <div className="relative z-10 text-center mb-10 px-4 pt-10">
-     <div className="eyebrow"><span className="w-1.5 h-1.5 rounded-full bg-[color:var(--primary)] animate-pulse" />AI Career Transition Engine</div>
-     <h1 className="text-[clamp(2.2rem,5vw,3.75rem)] font-bold tracking-tight leading-[1.08] text-[color:var(--text)] mb-4 max-w-2xl mx-auto">
-       Know if AI will take <span className="text-gradient">your job</span> before it does
-     </h1>
-     <p className="text-lg text-[color:var(--text-secondary)] max-w-xl mx-auto leading-relaxed">
-       Upload your resume. Get a skill-by-skill AI risk score, layoff early warning, and a reskilling plan — in 30 seconds, free.
-     </p>
-   </div>
-   Add `relative z-10` to the scan card wrapper div
+Jul 27, 2026 — Comprehensive marker panel drawn (AFP, β-hCG, LDH) to differentiate active recurrence vs. teratoma transformation; also new stomach fullness/slow digestion symptoms reported around this time
 
-2. FEATURES: Add to the grid wrapper: `stagger-children`
-   First feature card: change to span 2 columns on desktop: add `lg:col-span-2` 
-   (requires grid to be `grid sm:grid-cols-2 lg:grid-cols-3` — change first card only)
+Jul 28, 2026 — Results:
 
-3. PRICING: Add annual toggle state `const [annual, setAnnual] = useState(false)`
-   Add toggle above cards:
-   <div className="flex items-center justify-center gap-3 mb-10">
-     <span className={`text-sm font-medium ${!annual ? 'text-[color:var(--text)]' : 'text-[color:var(--muted)]'}`}>Monthly</span>
-     <button onClick={() => setAnnual(v => !v)}
-       className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${annual ? 'bg-[color:var(--primary)]' : 'bg-[color:var(--border)]'}`}
-       role="switch" aria-checked={annual} aria-label="Toggle annual billing">
-       <span className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-200 ${annual ? 'translate-x-5' : ''}`} />
-     </button>
-     <span className={`text-sm font-medium ${annual ? 'text-[color:var(--text)]' : 'text-[color:var(--muted)]'}`}>
-       Annual <span className="ml-1 text-xs font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded-full">Save 20%</span>
-     </span>
-   </div>
-   In tier price display: show price * 0.8 when annual is true and price !== '$0'
+β-hCG: 47 mIU/mL (normal <5) — elevated
+AFP: 18.3 ng/mL (normal <6.1) — elevated
+LDH: normal
+CBC/CMP notable values: Glucose 126 (high), Lymphocyte% 41.3 (slightly high), Hemoglobin 13.0 (slightly low), Hematocrit 38.8% (slightly low), Platelets 129K (slightly low), RBC 4.31 (slightly low), RDW 9.9% (low), AST 11 (slightly low), Globulin 2.1 (slightly low)
 
-4. FINAL CTA section: add inside the section (as first child):
-   <div className="absolute inset-0 pointer-events-none overflow-hidden">
-     <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-80 h-60 bg-violet-500/25 rounded-full blur-[70px]" />
-     <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-60 bg-cyan-400/15 rounded-full blur-[70px]" />
-   </div>
-   Add `relative overflow-hidden` to the section className
-   Add `relative z-10` to the inner content div
-
-── components/Footer.tsx ──
-1. Wire newsletter: replace handleSubscribe to actually call /api/newsletter/subscribe
-2. Newsletter input: apply unified input className above
-3. Change tagline to: "AI-powered career resilience for the modern professional"
-
-── app/login/page.tsx + app/signup/page.tsx ──
-1. Wrap entire page in centered auth layout:
-   <div className="min-h-screen flex items-center justify-center bg-[color:var(--bg)] px-4 py-16 relative overflow-hidden">
-     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[color:var(--primary)]/8 blur-[90px] pointer-events-none" />
-     <div className="relative z-10 w-full max-w-[420px]">
-       <div className="text-center mb-8">
-         [gradient logo icon same as navbar]
-         <h1 className="text-2xl font-bold text-[color:var(--text)] mt-5 mb-1">[Welcome back / Create your account]</h1>
-         <p className="text-sm text-[color:var(--muted)]">[Sign in to your dashboard / Free forever · No credit card]</p>
-       </div>
-       <div className="rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] p-8 shadow-sm">
-         [existing form content]
-       </div>
-       [existing below-card links]
-     </div>
-   </div>
-2. Every input: apply unified input className
-3. OAuth buttons: apply secondary button style
-
-── app/dashboard/page.tsx ──
-1. Wrap content in: <div className="page-wrap py-8 sm:py-12">
-2. Replace bare h1/h2 page header with:
-   <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
-     <div>
-       <h1 className="text-2xl font-bold text-[color:var(--text)]">Your Dashboard</h1>
-       <p className="text-sm text-[color:var(--muted)] mt-0.5">Career intelligence at a glance</p>
-     </div>
-     [existing action buttons]
-   </div>
-3. If scans exist, add metric row ABOVE scan list:
-   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-     <div className="metric-card"><div className="metric-value [risk color]">{scans[0].overall_risk}%</div><div className="metric-label">AI Risk Score</div></div>
-     <div className="metric-card"><div className="metric-value">{scans.length}</div><div className="metric-label">Total Scans</div></div>
-     <div className="metric-card"><div className="metric-value text-lg">{scans[0].detected_title?.split(' ').slice(0,2).join(' ') || '—'}</div><div className="metric-label">Detected Role</div></div>
-     <div className="metric-card"><div className="metric-value text-sm mt-1">[status badge]</div><div className="metric-label">Risk Band</div></div>
-   </div>
-4. All scan history cards: apply unified card className
-5. Risk scores: show as colored percentage with a thin progress bar below
-
-── app/scan/[token]/page.tsx ──
-1. Wrap full page in: <div className="page-wrap py-8 sm:py-12">
-2. After the risk dial, add the actionable_recommendation in a highlighted card:
-   <div className="rounded-2xl border-l-4 border-[color:var(--primary)] bg-[color:var(--primary)]/5 p-5 mb-8">
-     <p className="text-xs font-bold text-[color:var(--primary)] uppercase tracking-wider mb-2">AI Recommendation</p>
-     <p className="text-sm text-[color:var(--text)] leading-relaxed">{scan.actionable_recommendation}</p>
-   </div>
-3. Every section wrapper: add `mb-10 pb-10 border-b border-[color:var(--border)] last:border-0`
-4. Section headers (SectionHeader component): keep as-is, just ensure consistent spacing
-5. Skill progress bars: use consistent height h-1.5 with rounded-full and brand/risk colors
-6. All status chips (TrendChip): ensure they use rounded-full and the 4 status color system
-7. Add at page bottom before ShareBar:
-   <div className="flex flex-wrap items-center justify-center gap-3 py-6 mt-8 border-t border-[color:var(--border)]">
-     <span className="text-xs text-[color:var(--muted)] bg-[color:var(--surface)] border border-[color:var(--border)] rounded-full px-3 py-1">🤖 AI-generated · for guidance only</span>
-     <span className="text-xs text-[color:var(--muted)] bg-[color:var(--surface)] border border-[color:var(--border)] rounded-full px-3 py-1">📊 Based on 2M+ job postings</span>
-     <span className="text-xs text-[color:var(--muted)] bg-[color:var(--surface)] border border-[color:var(--border)] rounded-full px-3 py-1">🕐 Scanned {new Date(scan.created_at).toLocaleDateString()}</span>
-   </div>
-
-── app/layoff-radar/page.tsx ──
-1. Wrap content in: <div className="page-wrap py-8">
-2. Search input: add search icon prefix + apply unified input className
-3. All filter selects: apply unified input className (h-11 px-4)
-4. Table rows: add `hover:bg-[color:var(--primary)]/4 transition-colors` to every row
-5. Severity indicators: apply the 4 status badge styles above
-6. Empty/no-results state: centered message with icon, not blank space
-
-── app/settings/page.tsx ──
-1. Wrap in: <div className="page-wrap py-8 sm:py-12">
-2. Delete the INPUT_CLS constant. Replace every usage with unified input className
-3. All card sections: apply unified card className
-4. Tab buttons: ensure active tab has `text-[color:var(--primary)] border-b-2 border-[color:var(--primary)]`
-
-── app/pricing/page.tsx ──
-1. Highlighted plan card: add `<div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[color:var(--primary)] to-transparent rounded-t-2xl" />` inside card
-2. Feature checkmarks: wrap in `<span className="w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">`
-3. Add trust line below cards:
-   <div className="flex flex-wrap justify-center gap-6 mt-10 text-sm text-[color:var(--muted)]">
-     {['No credit card required','Cancel anytime','7-day free trial','Instant access'].map(t => (
-       <span key={t} className="flex items-center gap-1.5">✓ {t}</span>
-     ))}
-   </div>
-
-── components/PageHero.tsx ──
-Add dot grid inside: <div className="absolute inset-0 dot-grid-bg opacity-30 pointer-events-none" />
-
-── components/ui/EmptyState.tsx ──
-Update icon container: change w-14 h-14 to w-16 h-16, add shadow-sm
-Wrap entire return in relative div with dot-grid-bg background at 20% opacity
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-RETURN THESE FILES (complete content):
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1.  styles/globals.css
-2.  components/AppLayout.tsx
-3.  components/Navbar.tsx
-4.  components/HomePage.tsx
-5.  components/Footer.tsx
-6.  components/PageHero.tsx
-7.  components/ui/EmptyState.tsx
-8.  app/login/page.tsx
-9.  app/signup/page.tsx
-10. app/dashboard/page.tsx
-11. app/scan/[token]/page.tsx
-12. app/layoff-radar/page.tsx
-13. app/settings/page.tsx
-14. app/pricing/page.tsx
-
-Then run `npx tsc --noEmit` and fix every error shown.
+Jul 29, 2026 (today's date) — Oncologist appointment scheduled to review CT findings, confirmed marker elevation, and determine next steps (likely salvage chemo: TIP or VeIP, vs. high-dose chemo/stem cell transplant given early relapse ~4 months post first-line treatment)
