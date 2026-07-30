@@ -1,64 +1,13 @@
-PATIENT PROFILE
-
-41-year-old male
-Congenital horseshoe kidney
-Prediabetes (managed with Dexcom Stelo CGM)
-
-DIAGNOSIS NOTE: Two source records conflict on histology — one states Mixed Germ Cell Tumor (65% Seminoma / 35% Embryonal Carcinoma); the other states Mixed Non-Seminomatous Germ Cell Tumor. Marker elevations (AFP, β-hCG) at diagnosis are more consistent with non-seminomatous disease. This should be confirmed against the original pathology report.
-
-TIMELINE
-
-Sept–Oct 2025 — Developed right testicular swelling/mass; evaluated by urologist
-
-Oct 22, 2025 — First urology consultation; workup initiated
-
-Late Oct/Early Nov 2025 — Pre-op bloodwork; testicular ultrasound confirms suspicious mass
-
-Nov 24, 2025 — AFP 435.8 | β-hCG 653
-
-Dec 4, 2025 — AFP 455.6 | β-hCG 755
-
-Dec 5, 2025 — Right Radical Orchiectomy (pathology per above discrepancy)
-
-Dec 18, 2025 — β-hCG 819
-
-Dec 26, 2025 — CT Abd/Pelvis: retroperitoneal node ~3.2cm (metastatic), small pulmonary nodules | β-hCG 932
-
-Post-op staging (general) — Confirmed retroperitoneal lymph node involvement
-
-Jan 6, 2026 — First medical oncology visit; AFP 670.0 | β-hCG 1108; staged as metastatic GCT with retroperitoneal + likely pulmonary mets
-
-Jan 21, 2026 — AFP 546.3 | β-hCG 1148
-
-Jan 26, 2026 — Chemo Cycle 1 starts (EP: Cisplatin 37mg/day + Etoposide 180mg/day, 5 days, 4 cycles planned; WBC growth factor after each cycle)
-
-Feb 4, 2026 — β-hCG 284 (strong early response)
-
-Feb 11, 2026 — β-hCG 9 (near normalization)
-
-Feb 16, 2026 — Cycle 2 starts
-
-Mar 2, 2026 — Platelets 97,000 (expected chemo-induced thrombocytopenia)
-
-Mar 9, 2026 — Cycle 3 starts; AFP 5.2 | β-hCG <5 (normalized)
-
-Mar 30, 2026 — Cycle 4 starts
-
-Apr 3, 2026 — Final chemo infusion completed
-
-Post-chemo baseline CT — Retroperitoneal node 3.2cm → 7mm; lung nodules decreased; markers normal (AFP/β-hCG normal)
-
-Apr–Jul 2026 (Recovery phase) — Hair regrowth, constipation/slow digestion, excess saliva, fatigue, weight recovery to ~70kg, increasing abdominal fat, occasional knee pain, prediabetes monitored via CGM, ~3L/day hydration goal (horseshoe kidney)
-
-Jul 2026 — Surveillance CT — Retroperitoneal node regrown 7mm → ~3cm (exact size pending oncologist confirmation); one new enlarged retroperitoneal node identified
-
-Jul 27, 2026 — Comprehensive marker panel drawn (AFP, β-hCG, LDH) to differentiate active recurrence vs. teratoma transformation; also new stomach fullness/slow digestion symptoms reported around this time
-
-Jul 28, 2026 — Results:
-
-β-hCG: 47 mIU/mL (normal <5) — elevated
-AFP: 18.3 ng/mL (normal <6.1) — elevated
-LDH: normal
-CBC/CMP notable values: Glucose 126 (high), Lymphocyte% 41.3 (slightly high), Hemoglobin 13.0 (slightly low), Hematocrit 38.8% (slightly low), Platelets 129K (slightly low), RBC 4.31 (slightly low), RDW 9.9% (low), AST 11 (slightly low), Globulin 2.1 (slightly low)
-
-Jul 29, 2026 (today's date) — Oncologist appointment scheduled to review CT findings, confirmed marker elevation, and determine next steps (likely salvage chemo: TIP or VeIP, vs. high-dose chemo/stem cell transplant given early relapse ~4 months post first-line treatment)
+   Linting and checking validity of types ...
+Failed to compile.
+./pages/api/auth/oauth-callback.ts:209:19
+Type error: Property 'emailVerified' does not exist on type '{ id: string; email: string; name?: string | undefined; avatar?: string | undefined; }'.
+  207 |     // you in" (intended) and "anyone who can get a provider to *claim* your
+  208 |     // email address can sign in as you" (account takeover).
+> 209 |     if (!userInfo.emailVerified) {
+      |                   ^
+  210 |       console.error('oauth-callback: unverified email rejected', { provider, email: userInfo.email })
+  211 |       return res.redirect('/login?error=oauth_email_not_verified')
+  212 |     }
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1
