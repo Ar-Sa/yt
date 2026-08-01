@@ -1,13 +1,8 @@
-   Linting and checking validity of types ...
-Failed to compile.
-./pages/api/auth/oauth-callback.ts:209:19
-Type error: Property 'emailVerified' does not exist on type '{ id: string; email: string; name?: string | undefined; avatar?: string | undefined; }'.
-  207 |     // you in" (intended) and "anyone who can get a provider to *claim* your
-  208 |     // email address can sign in as you" (account takeover).
-> 209 |     if (!userInfo.emailVerified) {
-      |                   ^
-  210 |       console.error('oauth-callback: unverified email rejected', { provider, email: userInfo.email })
-  211 |       return res.redirect('/login?error=oauth_email_not_verified')
-  212 |     }
-Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
+  64 |         NODE_ENV=production
+  65 |     
+  66 | >>> RUN npm run build
+  67 |     
+  68 |     # ─────────────────────────────────────────────────────────────────────────────
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
+Error: buildx failed with: ERROR: failed to build: failed to solve: process "/bin/sh -c npm run build" did not complete successfully: exit code: 1
