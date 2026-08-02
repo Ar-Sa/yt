@@ -1,3 +1,5 @@
+Work on all suggestions/improvements above before MVP lunch and update todo.md, roadmap.md (specifically MVP release steps) accordingly at the end.
+
 now my email communication verification work is working fine so I want to have a crown job which can send in email newsletters notifications every week to all user looks like there is some limit from other site on how many emails we can send per day per week so is there a way we can add all the users in one group and then sent an email to all the user using that group? also post those newsletters on LinkedIn and all the social platform as well. Unfortunately the LinkedIn posting auto posting is still not working so can you try to fix that as well?
 
 looks like Azure I found a API called does not have web search option building. The web search option is only for the Playground ui so what options we have to to get the web search on AI found remodels.? I am trying to create being grounding for my model, but I’m getting the court so I might have to contact Microsoft Support and it’s gonna take time so meanwhile I just wanted to check if we have any Quick options, do not modify the code as of now just give me options.
@@ -26,7 +28,6 @@ add crown Job to post new blog post every day with the relevant/attractive topic
 
 change log page should have only high-level changes /bug fix and major  release instead of all the low level changes.
 
-
 in career page, there are some rules posted and there is a apply button that apply button is linked to the email address which I don’t want. I need a crown job which can post the job openings in the career page as well as LinkedIn and the career page should be linked to LinkedIn Job posting so the remove the existing job openings from career page and let the Crown Job to the work once we have LinkedIn Auto posting enabled, but keep the code ready.
 
 there are different different email addresses mentioned or hardcoded on different different pages so remove all those hardcoded email and point everything to contact us page.
@@ -34,6 +35,10 @@ there are different different email addresses mentioned or hardcoded on differen
 Review all the extra pages like refund policy, privacy terms, cookies policy, cookie, preference, data, or request disclaimer copyright and make sure we don’t have any duplicate stuff and try to reduce the pages as much as possible to avoid complexity for example cookies policy and cookies. Preferences can be together data request can go under privacy and turn page even disclaimer can go under privacy and term even copyright if possible can go under privacy and term but decision based on the industry standards.
 
 can you post some relevant questions in the forum and also answers but questions should be with the random username and answer should be with the siteadmin or random username so that it can get populated to search engine and other AI model which is good for organic traffic, but the questions in the foreign needs to be relevant to our side and our goal and also to attract people. The question also needs to be relevant to what people are thinking about and what people are looking for for example somebody working in emphasis might gonna ask question come back emphasis is laying off people in 2026 or if someone working in Microsoft might gonna ask is Microsoft hiring or firing people in 2027, the question like is our job in a risk in Microsoft and there needs to be multiple answers by other users as well
+
+Add our exact current tech stack in roadmap.md to make me understand what frontend/backend/middleware code language, api we are using
+
+work parallelly on all items and keep the todo.md updated and generate chunk file at the end.
 
 
 
