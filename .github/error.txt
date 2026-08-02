@@ -1,46 +1,13 @@
-Work on all suggestions/improvements above before MVP lunch and update todo.md, roadmap.md (specifically MVP release steps) accordingly at the end.
-
-now my email communication verification work is working fine so I want to have a crown job which can send in email newsletters notifications every week to all user looks like there is some limit from other site on how many emails we can send per day per week so is there a way we can add all the users in one group and then sent an email to all the user using that group? also post those newsletters on LinkedIn and all the social platform as well. Unfortunately the LinkedIn posting auto posting is still not working so can you try to fix that as well?
-
-looks like Azure I found a API called does not have web search option building. The web search option is only for the Playground ui so what options we have to to get the web search on AI found remodels.? I am trying to create being grounding for my model, but I’m getting the court so I might have to contact Microsoft Support and it’s gonna take time so meanwhile I just wanted to check if we have any Quick options, do not modify the code as of now just give me options.
-
-run pending migration button in admin center should be only clickable when there is a migration pending so whenever we load the admin center page it should verify if there are any changes in the data whiskey khema that needs to be deployed and then database pending migration button should be activated.
-
-in the footer page, we have two skill gap links one is called skill gap another is called skill, gap checker, and one of them is broken so remove the broken link.
-
-i’m still struggling to get Web grounding for my AI found remodels but meanwhile, please make sure that layoff radar layoff predictor ski Math and all the crown jobs are ready for the web search and and it should work once we have Web search ready.
-
-all the sealed and armor features should be locked and read out for example severance negotiation. Coach is fully visible for free users as well, which should not so verify all the paid features and make sure those are locked for paid users only.
-
-Page interlining make sure all the pages are interlinked to each other, so that user will get to know all the features we have on our website, no matter whether it’s paid feature or unpaid it should be linked to other pages wherever possible and relevant.
-
-All external links needs to be open in another tab always across the full site.
-
-remove seven days moneybag guarantee from everywhere and also remove the refund policy which says seven days money back guarantee.
-
-Remove the contact Email support email support@skillosai.com from everywhere the only way to contact us should be the contact Us form.
-
-in the contact Us form there are boxes for technical billing support, productive back general queries they should be clickable and once somebody click on that box, it should fill out the Relevant topic as well and also add sub topics drop-down box where user can select appropriate sub topics under the main topic. also add validation for Email ID and contact number in the contact form. Also add validation for bad words in the subject or Msg body.
-
-all the social media handles should be pulled from admin center only and not hard-core in the code anywhere.
-
-add crown Job to post new blog post every day with the relevant/attractive topics or real issues/real news topics/ scary but true topics.
-
-change log page should have only high-level changes /bug fix and major  release instead of all the low level changes.
-
-in career page, there are some rules posted and there is a apply button that apply button is linked to the email address which I don’t want. I need a crown job which can post the job openings in the career page as well as LinkedIn and the career page should be linked to LinkedIn Job posting so the remove the existing job openings from career page and let the Crown Job to the work once we have LinkedIn Auto posting enabled, but keep the code ready.
-
-there are different different email addresses mentioned or hardcoded on different different pages so remove all those hardcoded email and point everything to contact us page.
-
-Review all the extra pages like refund policy, privacy terms, cookies policy, cookie, preference, data, or request disclaimer copyright and make sure we don’t have any duplicate stuff and try to reduce the pages as much as possible to avoid complexity for example cookies policy and cookies. Preferences can be together data request can go under privacy and turn page even disclaimer can go under privacy and term even copyright if possible can go under privacy and term but decision based on the industry standards.
-
-can you post some relevant questions in the forum and also answers but questions should be with the random username and answer should be with the siteadmin or random username so that it can get populated to search engine and other AI model which is good for organic traffic, but the questions in the foreign needs to be relevant to our side and our goal and also to attract people. The question also needs to be relevant to what people are thinking about and what people are looking for for example somebody working in emphasis might gonna ask question come back emphasis is laying off people in 2026 or if someone working in Microsoft might gonna ask is Microsoft hiring or firing people in 2027, the question like is our job in a risk in Microsoft and there needs to be multiple answers by other users as well
-
-Add our exact current tech stack in roadmap.md to make me understand what frontend/backend/middleware code language, api we are using
-
-work parallelly on all items and keep the todo.md updated and generate chunk file at the end.
-
-
-
-
-
+Run npx tsc --noEmit
+Error: pages/api/admin/linkedin-auth.ts(84,5): error TS2322: Type 'Row | null' is not assignable to type '{ status: string; http_status: number | null; message: string | null; post_id: string | null; feature: string | null; created_at: string; } | null'.
+  Type 'Row' is missing the following properties from type '{ status: string; http_status: number | null; message: string | null; post_id: string | null; feature: string | null; created_at: string; }': status, http_status, message, post_id, and 2 more.
+Error: pages/api/cron/blog-autopost.ts(182,69): error TS18047: 'data' is possibly 'null'.
+Error: pages/api/cron/blog-autopost.ts(210,67): error TS18047: 'data' is possibly 'null'.
+Error: pages/api/cron/blog-autopost.ts(228,19): error TS18047: 'data' is possibly 'null'.
+Error: pages/api/cron/blog-autopost.ts(228,34): error TS18047: 'data' is possibly 'null'.
+Error: pages/api/cron/careers-linkedin-post.ts(125,39): error TS2345: Argument of type 'Row' is not assignable to parameter of type '{ title: string; department: string | null; location: string | null; description: string | null; linkedin_job_url: string | null; }'.
+  Type 'Row' is missing the following properties from type '{ title: string; department: string | null; location: string | null; description: string | null; linkedin_job_url: string | null; }': title, department, location, description, linkedin_job_url
+Error: pages/api/cron/newsletter-digest.ts(82,25): error TS2345: Argument of type '(sub: { email: string; }) => { issue_key: string; email: string; status: string; }' is not assignable to parameter of type '(value: Row, index: number, array: Row[]) => { issue_key: string; email: string; status: string; }'.
+  Types of parameters 'sub' and 'value' are incompatible.
+    Property 'email' is missing in type 'Row' but required in type '{ email: string; }'.
+Error: Process completed with exit code 2.
