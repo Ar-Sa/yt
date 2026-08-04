@@ -1,56 +1,6 @@
-lint check error-> 
-Run npm run lint
-
-> skillbridge-v2@0.1.0 lint
-> next lint
-
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
-
-./app/skills/[slug]/page.tsx
-418:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-./lib/configCatalog.ts
-533:300  Error: Parsing error: ',' expected.
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-Error: Process completed with exit code 1.
-
-
-
-Deployment error- > 
-
-
-./lib/configCatalog.ts
-14:33:37 
-Error: 
-14:33:37 
-  x Expected ',', got 's'
-14:33:37 
-     ,-[/vercel/path0/lib/configCatalog.ts:530:1]
-14:33:37 
- 530 |       { key: 'MAINTENANCE_MODE', label: 'Maintenance Mode', kind: 'boolean', storage: 'db', required: false, description: 'Show maintenance page to all public visitors. Admin routes remain accessible.', help: 'Set true to enable maintenance mode.' },
-14:33:37 
- 531 |       { key: 'FEATURE_FLAGS', label: 'Feature Flags',   kind: 'textarea', storage: 'db', required: false, description: 'JSON key-value feature toggle map.', help: '{"disable_forum": true, "beta_dashboard": false}' },
-14:33:37 
- 532 |       { key: 'GRADIENT_EFFECTS_ENABLED', label: 'Shiny Gradient Effects (Page Background, Cards, Tables)', kind: 'boolean', storage: 'db', required: false, description: 'One master switch for every animated shimmer effect site-wide: the slow pale page-background layer, the shiny fill on every card/box, and the gradient frame on every table. All effects are theme-aware (separate light/dark palettes), GPU-friendly (animate only background-position), and respect prefers-reduced-motion automatically. Turning this off instantly reverts every card/table/background to its plain pre-effect appearance from this one toggle — nothing needs to be re-deployed.', help: 'Recommended: true. Set false for instant site-wide rollback.', group: 'onboarding_ui', groupLabel: 'Onboarding & Page Effects', groupColor: 'sky' },
-14:33:37 
- 533 |       { key: 'AURORA_TOP_EFFECT_ENABLED', label: 'Aurora Top Glow (Aurora Light Theme Only)', kind: 'boolean', storage: 'db', required: false, description: 'A premium, slow-moving glow anchored to the top 40% of the viewport, built for the Aurora Light site template specifically — reuses that theme's existing aurora blob colors, blurred and faded to fully transparent by the bottom of its height so it blends into the normal page background. GPU-friendly (animates only background-position/transform/opacity), and freezes to a static soft glow under prefers-reduced-motion. Has zero effect on any other site template — the CSS is scoped entirely to when Aurora Light is the active template, so this toggle only matters while that template is selected.', help: 'Recommended: true. Only visible when the active site template is Aurora Light.', group: 'onboarding_ui', groupLabel: 'Onboarding & Page Effects', groupColor: 'sky' },
-14:33:37 
-     :                                                                                                                                                                                                                                                                                                               ^
-14:33:37 
- 534 |       { key: 'ONBOARDING_WIZARD_ENABLED', label: 'First-Time Visitor Onboarding Wizard', kind: 'boolean', storage: 'db', required: false, description: 'Shows a skippable 6-step guided tour (welcome, CV scan, optional signup, results, top skill, next steps) to first-time visitors only — persisted via localStorage so it never nags a returning visitor. Re-triggerable any time from the header help menu.', help: 'Recommended: true.', group: 'onboarding_ui' },
-14:33:37 
- 535 |     ],
-14:33:37 
- 536 |   },
-14:33:37 
-     `----
-14:33:37 
-14:33:37 
-Caused by:
-14:33:37 
-    Syntax Error
+Could not reach the server: Unexpected token 'T', "The page c"... is not valid
+JSON
+• DATABASE_URL
+Checking...
+• Database connection
+Checking...
