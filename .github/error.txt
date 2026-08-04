@@ -1,6 +1,10 @@
-Could not reach the server: Unexpected token 'T', "The page c"... is not valid
-JSON
-• DATABASE_URL
-Checking...
-• Database connection
-Checking...
+Database connection string found via POSTGRES_URL.
+Database env var (POSTGRES_URL)
+Checking…
+A database connection string is set but the database is not reachable: Unsupported auth method: 10
+Database connection
+Checking…
+No admin account exists yet — ready to create the first one.
+Admin account
+Checking…
+↻ Re-check
