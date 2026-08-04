@@ -1,15 +1,4 @@
-./app/skills/[slug]/page.tsx
-418:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-Failed to compile.
-./lib/templateCatalog.ts:650:51
-Type error: Type '"#ffffff"' is not assignable to type 'keyof TemplateTokenSet'.
-  648 |   { name: 'text-secondary on surface', fg: '--text-secondary', bg: '--surface', minRatio: 3 },
-  649 |   { name: 'primary on bg (links/buttons)', fg: '--primary', bg: '--bg', minRatio: 3 },
-> 650 |   { name: 'white on primary (btn-gradient text)', fg: '#ffffff', bg: '--primary', minRatio: 4.5 },
-      |                                                   ^
-  651 | ]
-  652 |
-  653 | /**
-Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
+Run npx tsc --noEmit
+Error: components/admin/sections/UsersSection.tsx(230,43): error TS2345: Argument of type 'string | null | undefined' is not assignable to parameter of type 'string | undefined'.
+  Type 'null' is not assignable to type 'string | undefined'.
+Error: Process completed with exit code 2.
