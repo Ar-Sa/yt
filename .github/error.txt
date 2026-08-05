@@ -1,10 +1,22 @@
-Database connection string found via POSTGRES_URL.
-Database env var (POSTGRES_URL)
-Checking…
-A database connection string is set but the database is not reachable: Unsupported auth method: 10
-Database connection
-Checking…
-No admin account exists yet — ready to create the first one.
-Admin account
-Checking…
-↻ Re-check
+typescript error - Run npx tsc --noEmit
+Error: components/PricingInteractive.tsx(189,23): error TS2339: Property 'badge' does not exist on type '{ readonly name: "Free"; readonly period: "forever"; readonly description: "Perfect for getting started"; readonly features: readonly [{ readonly text: "AI Risk Score — see how likely AI is to affect your job"; }, ... 5 more ..., { ...; }]; readonly cta: "Start Free Scan"; readonly id: "free"; readonly highlight: fa...'.
+  Property 'badge' does not exist on type '{ readonly name: "Free"; readonly period: "forever"; readonly description: "Perfect for getting started"; readonly features: readonly [{ readonly text: "AI Risk Score — see how likely AI is to affect your job"; }, ... 5 more ..., { ...; }]; readonly cta: "Start Free Scan"; readonly id: "free"; readonly highlight: fa...'.
+Error: components/PricingInteractive.tsx(192,29): error TS2339: Property 'badge' does not exist on type '{ readonly name: "Free"; readonly period: "forever"; readonly description: "Perfect for getting started"; readonly features: readonly [{ readonly text: "AI Risk Score — see how likely AI is to affect your job"; }, ... 5 more ..., { ...; }]; readonly cta: "Start Free Scan"; readonly id: "free"; readonly highlight: fa...'.
+  Property 'badge' does not exist on type '{ readonly name: "Free"; readonly period: "forever"; readonly description: "Perfect for getting started"; readonly features: readonly [{ readonly text: "AI Risk Score — see how likely AI is to affect your job"; }, ... 5 more ..., { ...; }]; readonly cta: "Start Free Scan"; readonly id: "free"; readonly highlight: fa...'.
+Error: components/PricingInteractive.tsx(217,25): error TS2339: Property 'trial' does not exist on type '{ readonly name: "Free"; readonly period: "forever"; readonly description: "Perfect for getting started"; readonly features: readonly [{ readonly text: "AI Risk Score — see how likely AI is to affect your job"; }, ... 5 more ..., { ...; }]; readonly cta: "Start Free Scan"; readonly id: "free"; readonly highlight: fa...'.
+  Property 'trial' does not exist on type '{ readonly name: "Free"; readonly period: "forever"; readonly description: "Perfect for getting started"; readonly features: readonly [{ readonly text: "AI Risk Score — see how likely AI is to affect your job"; }, ... 5 more ..., { ...; }]; readonly cta: "Start Free Scan"; readonly id: "free"; readonly highlight: fa...'.
+Error: Process completed with exit code 2.
+
+
+deployment error - ./components/PricingInteractive.tsx:189:23
+Type error: Property 'badge' does not exist on type '{ readonly name: "Free"; readonly period: "forever"; readonly description: "Perfect for getting started"; readonly features: readonly [{ readonly text: "AI Risk Score — see how likely AI is to affect your job"; }, ... 5 more ..., { ...; }]; readonly cta: "Start Free Scan"; readonly id: "free"; readonly highlight: fa...'.
+  Property 'badge' does not exist on type '{ readonly name: "Free"; readonly period: "forever"; readonly description: "Perfect for getting started"; readonly features: readonly [{ readonly text: "AI Risk Score — see how likely AI is to affect your job"; }, ... 5 more ..., { ...; }]; readonly cta: "Start Free Scan"; readonly id: "free"; readonly highlight: fa...'.
+  187 |                 )}
+  188 |                 {/* Badge */}
+> 189 |                 {plan.badge && (
+      |                       ^
+  190 |                   <div className="absolute top-0 right-0">
+  191 |                     <div className="bg-[color:var(--primary)] text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl rounded-tr-2xl tracking-wide">
+  192 |                       {plan.badge}
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1
