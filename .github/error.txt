@@ -1,8 +1,32 @@
-frequent error while accessing /admin page (specially cron job)->
+typescript check error - Run npx tsc --noEmit
+  
+Error: app/saved/page.tsx(8,20): error TS2724: '"lucide-react"' has no exported member named 'BookmarkCheck'. Did you mean 'BookMarked'?
+Error: components/ResumeKeywordUpgrade.tsx(263,30): error TS2322: Type 'Uint8Array<ArrayBufferLike>' is not assignable to type 'BlobPart'.
+  Type 'Uint8Array<ArrayBufferLike>' is not assignable to type 'ArrayBufferView<ArrayBuffer>'.
+    Types of property 'buffer' are incompatible.
+      Type 'ArrayBufferLike' is not assignable to type 'ArrayBuffer'.
+        Type 'SharedArrayBuffer' is missing the following properties from type 'ArrayBuffer': resizable, resize, detached, transfer, transferToFixedLength
+Error: components/SaveButton.tsx(4,20): error TS2724: '"lucide-react"' has no exported member named 'BookmarkCheck'. Did you mean 'BookMarked'?
+Error: lib/adminAuth.ts(38,25): error TS2352: Conversion of type 'Row' to type 'null' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+Error: lib/adminAuth.ts(47,25): error TS2352: Conversion of type 'Row' to type 'null' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+Error: lib/adminAuth.ts(50,28): error TS2339: Property 'is_admin' does not exist on type 'never'.
+Error: lib/adminAuth.ts(51,24): error TS2339: Property 'id' does not exist on type 'never'.
+Error: lib/adminAuth.ts(51,43): error TS2339: Property 'email' does not exist on type 'never'.
+Error: pages/api/cron/stealth-job-monitor.ts(83,54): error TS2345: Argument of type '{ criteriaChecked: number; newHits: number; errors: string[]; }' is not assignable to parameter of type 'string'.
+Error: pages/api/cron/stealth-job-monitor.ts(86,53): error TS2345: Argument of type '{ error: any; }' is not assignable to parameter of type 'string'.
+Error: Process completed with exit code 2.
 
-Something went wrong
-An unexpected error occurred. Our team has been notified. Please try again or return home.
 
-weekly newsletter error -
-HTTP 500
-Failed to create draft: relation "public.newsletter_drafts" does not exist
+deployment error- info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+Failed to compile.
+./app/saved/page.tsx:8:20
+Type error: '"lucide-react"' has no exported member named 'BookmarkCheck'. Did you mean 'BookMarked'?
+   6 | import PageHero from '../../components/PageHero'
+   7 | import SkillLink from '../../components/SkillLink'
+>  8 | import { Bookmark, BookmarkCheck, Briefcase, Building2, FileText } from 'lucide-react'
+     |                    ^
+   9 | import type { SavedItem } from '../../pages/api/saved-items'
+  10 |
+  11 | const TYPE_META: Record<SavedItem['item_type'], { label: string; icon: React.ReactNode; href: (ref: string) => string }> = {
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1
