@@ -1,19 +1,292 @@
-Run npm run lint
+name: Build and Deploy
 
-> skillbridge-v2@0.1.0 lint
-> next lint
+# =============================================================================
+# DEPLOYMENT FLOW:
+#   Push to any branch except main  ->  lint + typecheck only (PR gate, no deploy)
+#   Push to main (after PR merge)   ->  build image, deploy directly to PROD
+#
+# No dev environment/Container App: this repo's actual usage is a single
+# perpetual feature branch (see copy-blob.yml — force-pushed as a full
+# snapshot each sync, PR'd into main). The code already lint/tsc-checked on
+# that branch push is bit-for-bit what lands on main after merge, so main's
+# push does NOT re-run lint/tsc — it goes straight to build+deploy. If your
+# workflow ever changes to allow direct pushes to main outside a PR, add the
+# check back for main too.
+#
+# HOW AZURE AUTH WORKS (OIDC - no stored passwords):
+#   The deploy job sets the "prod" GitHub Environment.
+#   GitHub signs the OIDC token with subject = "repo:OWNER/REPO:environment:prod".
+#   Azure AD has a federated credential that trusts that exact subject.
+#   `az acr login` (after azure/login) reuses that same OIDC session to fetch a
+#   short-lived ACR token — no ACR admin password stored anywhere.
+#
+# CONFIGURE: change these env vars if your Azure resource names differ.
+# =============================================================================
 
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
 
+permissions:
+  id-token: write
+  contents: read
 
-./app/hr/certs/page.tsx
-18:17  Error: Parsing error: ')' expected.
+env:
+  RESOURCE_GROUP:     skillos-eus2-rg
+  CONTAINER_APP_NAME: skillos
+  IMAGE_NAME:         skillos
 
-./app/hr/retraining/page.tsx
-60:130  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+# Required GitHub Secrets (Settings -> Secrets -> Actions):
+#   AZURE_CLIENT_ID        AZURE_TENANT_ID        AZURE_SUBSCRIPTION_ID
+#   ACR_NAME               ACR_LOGIN_SERVER
+#   DATABASE_URL           AUTH_SECRET            CONFIG_ENCRYPTION_KEY
+#   NEXT_PUBLIC_SENTRY_DSN (optional)
+#
+# Note: DATABASE_URL/AUTH_SECRET/CONFIG_ENCRYPTION_KEY are pushed here as
+# GitHub secrets by `azure-setup.ps1 -Deploy` for reference/redundancy only -
+# this workflow does not itself set them as Container App env vars on every
+# deploy (that's a one-time azure-setup.ps1 step, see CLAUDE.md).
+#
+# Also required by .github/workflows/cron-scheduler.yml (not this workflow):
+#   SITE_URL     — the deployed site's own base URL, used to build the cron
+#                  endpoint URLs (e.g. https://your-domain.com). Renamed from
+#                  NEXT_PUBLIC_SITE_URL (2026-08) — it was never actually
+#                  consumed client-side (that prefix triggers Next.js to bake
+#                  a var into the browser bundle, which nothing here needed);
+#                  it only fed a GitHub Actions curl target and a couple of
+#                  server-only Node fallback chains, so the NEXT_PUBLIC_
+#                  prefix was a stale, misleading name for a plain secret.
+#   CRON_SECRET  — must match the CRON_SECRET value set in Admin Central
+#                  (Cron Jobs section) — see lib/configCatalog.ts.
 
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-Error: Process completed with exit code 1.
+jobs:
+
+  # ---------------------------------------------------------------------------
+  # Runs only for pull requests targeting main — the PR gate. No Azure login,
+  # no deploy.
+  # ---------------------------------------------------------------------------
+  check:
+    name: Lint and TypeCheck
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # Output suppressed unless it fails — install success/failure is all that
+      # matters here; Lint/TypeScript check below stay fully verbose since
+      # every violation they report is exactly what this job exists to surface.
+      - name: Install dependencies
+        run: |
+          npm install > /tmp/install.log 2>&1 && \
+            echo "Finished: npm install OK ($(wc -l < /tmp/install.log) lines of output suppressed)" || \
+            (echo "FAILED: npm install — full output below"; cat /tmp/install.log; exit 1)
+
+      - name: Lint
+        run: npm run lint
+
+      - name: TypeScript check
+        run: npx tsc --noEmit
+
+      # 2026-09-17 fix: no dependency vulnerability scanning existed anywhere
+      # in CI. Deliberately non-blocking (`|| true`) for now — this repo has
+      # no committed lockfile yet (a separate, already-tracked gap), so
+      # `npm audit` here runs against whatever versions `npm install` above
+      # happened to resolve, not a pinned/reviewed set. Surfacing findings is
+      # useful immediately; failing the build on them isn't safe to turn on
+      # until a lockfile exists and someone's triaged the current baseline.
+      - name: Dependency vulnerability scan (advisory only)
+        run: npm audit --audit-level=high || true
+
+  # ---------------------------------------------------------------------------
+  # Runs only when a PR into main is merged. Build (cached) + push +
+  # deploy straight to PROD.
+  # ---------------------------------------------------------------------------
+  deploy:
+    name: Build & Deploy to PROD
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment:
+      name: prod
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id:       ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id:       ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: ACR login (OIDC session — no stored ACR password)
+        run: az acr login --name ${{ secrets.ACR_NAME }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push image (cached)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+            ${{ secrets.ACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:latest
+          build-args: |
+            NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Self-healing: the Container App's managed identity needs AcrPull on the
+      # registry or every image pull fails with an opaque UNAUTHORIZED error.
+      # azure-setup.ps1 grants this at creation time, but the identity lookup
+      # immediately after `containerapp identity assign` can race Azure's
+      # control plane and silently miss the grant (see azure-setup.ps1's
+      # EnsureAcrPullAccess comment for the full root cause). Running this
+      # idempotent check on every deploy means it self-heals automatically
+      # instead of requiring a manual azure-setup.ps1 re-run.
+      - name: Ensure ACR pull access for Container App
+        shell: bash
+        run: |
+          set -e
+          APP="${{ env.CONTAINER_APP_NAME }}"
+          RG="${{ env.RESOURCE_GROUP }}"
+          ACR_NAME="${{ secrets.ACR_NAME }}"
+
+          ACR_ID=$(az acr show --name "$ACR_NAME" --resource-group "$RG" --query id --output tsv)
+
+          PRINCIPAL_ID=""
+          for i in $(seq 1 6); do
+            PRINCIPAL_ID=$(az containerapp show --name "$APP" --resource-group "$RG" --query "identity.principalId" --output tsv 2>/dev/null || true)
+            if [ -n "$PRINCIPAL_ID" ] && [ "$PRINCIPAL_ID" != "None" ]; then break; fi
+            echo "Waiting for managed identity to propagate ($APP, attempt $i/6)..."
+            sleep 10
+          done
+
+          if [ -z "$PRINCIPAL_ID" ] || [ "$PRINCIPAL_ID" = "None" ]; then
+            echo "::warning::Could not retrieve managed identity for $APP - AcrPull may be missing. Deploy will likely fail to provision."
+          else
+            EXISTING=$(az role assignment list --assignee "$PRINCIPAL_ID" --role AcrPull --scope "$ACR_ID" --query "[0].id" --output tsv 2>/dev/null || true)
+            if [ -z "$EXISTING" ]; then
+              echo "Granting AcrPull to $APP's managed identity..."
+              az role assignment create --assignee "$PRINCIPAL_ID" --role AcrPull --scope "$ACR_ID" --output none
+            else
+              echo "AcrPull already granted to $APP's managed identity."
+            fi
+
+            REGISTRY_SET=$(az containerapp registry list --name "$APP" --resource-group "$RG" --query "[?server=='${{ secrets.ACR_LOGIN_SERVER }}'].server" --output tsv 2>/dev/null || true)
+            if [ -z "$REGISTRY_SET" ]; then
+              echo "Attaching registry via system identity..."
+              az containerapp registry set --name "$APP" --resource-group "$RG" --server "${{ secrets.ACR_LOGIN_SERVER }}" --identity system --output none
+            fi
+          fi
+
+      # 2026-09-17 fix: captured BEFORE deploying so a failed post-deploy
+      # health check below has something concrete to roll back to. Read-only
+      # (az containerapp show), so this cannot itself affect the running app —
+      # worst case on a query-syntax mismatch is an empty/missing output,
+      # which the rollback step below explicitly checks for before acting.
+      - name: Capture currently-deployed image (for rollback)
+        id: previous_image
+        shell: bash
+        run: |
+          PREV=$(az containerapp show \
+            --name           "${{ env.CONTAINER_APP_NAME }}" \
+            --resource-group "${{ env.RESOURCE_GROUP }}" \
+            --query          "properties.template.containers[0].image" \
+            --output         tsv 2>/dev/null || true)
+          echo "image=$PREV" >> "$GITHUB_OUTPUT"
+          echo "Previously-deployed image: ${PREV:-<none found>}"
+
+      - name: Deploy image
+        shell: bash
+        run: |
+          az containerapp update \
+            --name           "${{ env.CONTAINER_APP_NAME }}" \
+            --resource-group "${{ env.RESOURCE_GROUP }}" \
+            --image          "${{ secrets.ACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}" \
+            --output         none
+
+      # The Container App is first created (azure-setup.ps1) pointing ingress at
+      # the placeholder image, which listens on port 80 - not the real app's
+      # port 3000. Idempotent: no-op once target-port is already 3000.
+      - name: Sync ingress target-port to app's real listening port (3000)
+        shell: bash
+        run: |
+          az containerapp ingress update \
+            --name           "${{ env.CONTAINER_APP_NAME }}" \
+            --resource-group "${{ env.RESOURCE_GROUP }}" \
+            --target-port    3000 \
+            --output         none
+
+      - name: Show deployed URL
+        id: deployed_url
+        shell: bash
+        run: |
+          FQDN=$(az containerapp show \
+            --name           "${{ env.CONTAINER_APP_NAME }}" \
+            --resource-group "${{ env.RESOURCE_GROUP }}" \
+            --query          "properties.configuration.ingress.fqdn" \
+            --output         tsv)
+          echo "$FQDN"
+          echo "fqdn=$FQDN" >> "$GITHUB_OUTPUT"
+
+      # 2026-09-17 fix: previously nothing verified the new revision actually
+      # came up healthy before the workflow reported success — a deploy that
+      # succeeded at the Azure API level but crashed the app on boot (bad
+      # migration, missing env var, runtime exception) shipped straight to
+      # 100% of traffic with no automated detection. Retries with a delay
+      # since a fresh revision needs time to start serving. Hits the
+      # container's own FQDN directly (not a custom domain/CDN in front of
+      # it), so this reflects the new revision specifically.
+      - name: Post-deploy health check
+        id: health_check
+        shell: bash
+        run: |
+          FQDN="${{ steps.deployed_url.outputs.fqdn }}"
+          if [ -z "$FQDN" ]; then
+            echo "::warning::No FQDN captured — skipping health check."
+            echo "healthy=unknown" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          for i in $(seq 1 6); do
+            BODY=$(curl -fsS --max-time 15 "https://$FQDN/api/status" 2>/dev/null || true)
+            if echo "$BODY" | grep -q '"overall":"operational"'; then
+              echo "Health check passed (attempt $i/6)."
+              echo "healthy=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "Health check attempt $i/6 not operational yet, retrying in 15s..."
+            sleep 15
+          done
+          echo "::warning::Post-deploy health check did not report operational after 6 attempts."
+          echo "healthy=false" >> "$GITHUB_OUTPUT"
+
+      # Best-effort automatic rollback. Deliberately does NOT fail the
+      # workflow (no `exit 1`) even if this step itself errors — a rollback
+      # attempt that fails leaves the app exactly as broken as it already
+      # was, never worse, and a hard workflow failure here wouldn't undo the
+      # bad deploy anyway. Treat any ::warning:: from this job as "go check
+      # the app manually," same as before this step existed.
+      - name: Roll back to previous image on failed health check
+        if: steps.health_check.outputs.healthy == 'false'
+        shell: bash
+        run: |
+          PREV="${{ steps.previous_image.outputs.image }}"
+          if [ -z "$PREV" ]; then
+            echo "::warning::Health check failed and no previous image was captured — manual rollback required. Check the Container App and Sentry now."
+            exit 0
+          fi
+          echo "::warning::Health check failed — rolling back to previous image: $PREV"
+          az containerapp update \
+            --name           "${{ env.CONTAINER_APP_NAME }}" \
+            --resource-group "${{ env.RESOURCE_GROUP }}" \
+            --image          "$PREV" \
+            --output         none || echo "::warning::Automatic rollback command failed — manual rollback required. Check the Container App and Sentry now."
