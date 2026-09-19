@@ -1,37 +1,22 @@
-Run npm run lint
+Run npx tsc --noEmit
+Error: lib/jobsData/__tests__/adapters.test.ts(176,40): error TS2554: Expected 1 arguments, but got 0.
+Error: lib/jobsData/__tests__/adapters.test.ts(203,40): error TS2554: Expected 1 arguments, but got 0.
+Error: lib/jobsData/__tests__/adapters.test.ts(211,40): error TS2554: Expected 1 arguments, but got 0.
+Error: lib/jobsData/__tests__/adapters.test.ts(217,40): error TS2554: Expected 1 arguments, but got 0.
+Error: lib/jobsData/skillTagging.ts(62,13): error TS2322: Type 'Row[]' is not assignable to type 'SkillTaxonomyRow[]'.
+  Type 'Row' is missing the following properties from type 'SkillTaxonomyRow': id, canonical_name, slug
+Error: lib/jobsData/skillTagging.ts(62,35): error TS2322: Type 'Row[]' is not assignable to type 'SkillTaxonomyAliasRow[]'.
+  Type 'Row' is missing the following properties from type 'SkillTaxonomyAliasRow': skill_id, alias
+Error: lib/jobsData/skillTagging.ts(63,3): error TS2322: Type '{ skills: SkillTaxonomyRow[]; aliases: SkillTaxonomyAliasRow[]; ts: number; } | null' is not assignable to type '{ skills: SkillTaxonomyRow[]; aliases: SkillTaxonomyAliasRow[]; }'.
+  Type 'null' is not assignable to type '{ skills: SkillTaxonomyRow[]; aliases: SkillTaxonomyAliasRow[]; }'.
+Error: pages/api/cron/job-sync.ts(192,31): error TS2339: Property 'id' does not exist on type 'Row[]'.
+Error: pages/api/cron/job-sync.ts(197,82): error TS2339: Property 'id' does not exist on type 'Row[]'.
+Error: pages/api/cron/job-sync.ts(200,55): error TS2339: Property 'id' does not exist on type 'Row[]'.
+Error: pages/api/cron/job-sync.ts(205,22): error TS2339: Property 'id' does not exist on type 'Row[]'.
+Error: pages/api/cron/job-sync.ts(326,56): error TS2345: Argument of type '{ skills: Row[]; aliases: Row[]; }' is not assignable to parameter of type '{ skills: SkillTaxonomyRow[]; aliases: SkillTaxonomyAliasRow[]; }'.
+  Types of property 'skills' are incompatible.
+    Type 'Row[]' is not assignable to type 'SkillTaxonomyRow[]'.
+      Type 'Row' is missing the following properties from type 'SkillTaxonomyRow': id, canonical_name, slug
+Error: Process completed with exit code 2.
 
-> skillbridge-v2@0.1.0 lint
-> next lint
 
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
-
-./app/burnout-check/page.tsx
-226:23  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-272:79  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-
-./app/corp/employed/roadmap/page.tsx
-159:6  Warning: React Hook useEffect has a missing dependency: 'nextSkillStep'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
-
-./app/layoff-predictor/[slug]/error.tsx
-20:20  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-
-./app/layoffs/[slug]/error.tsx
-20:20  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-20:40  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-
-./app/scan/[token]/error.tsx
-20:20  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-
-./app/skills/[slug]/error.tsx
-20:20  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-20:38  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-
-./components/ScanJobsSection.tsx
-93:18  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-Error: Process completed with exit code 1.
