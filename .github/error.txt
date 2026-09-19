@@ -9,136 +9,29 @@ You can learn more, including how to opt-out if you'd not like to participate in
 https://nextjs.org/telemetry
 
 
-./app/corp/displaced/page.tsx
-72:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/corp/employed/page.tsx
-93:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+./app/burnout-check/page.tsx
+226:23  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+272:79  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
 
 ./app/corp/employed/roadmap/page.tsx
-207:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+159:6  Warning: React Hook useEffect has a missing dependency: 'nextSkillStep'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
 
-./app/corp/page.tsx
-70:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+./app/layoff-predictor/[slug]/error.tsx
+20:20  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
 
-./app/dashboard/page.tsx
-281:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+./app/layoffs/[slug]/error.tsx
+20:20  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+20:40  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
 
-./app/deadline-guard/page.tsx
-131:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+./app/scan/[token]/error.tsx
+20:20  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
 
-./app/emergency/page.tsx
-395:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+./app/skills/[slug]/error.tsx
+20:20  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+20:38  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
 
-./app/forum/new/page.tsx
-165:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hire-odds/page.tsx
-128:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/hr/ai-impact/page.tsx
-58:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/hr/alerts/page.tsx
-78:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/api-settings/page.tsx
-190:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/board-deck/page.tsx
-103:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/certs/page.tsx
-74:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/hr/comms/page.tsx
-55:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/gaps/page.tsx
-84:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/grants/page.tsx
-48:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/legal-layoff/page.tsx
-48:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/hr/mobility/page.tsx
-117:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/morale/page.tsx
-177:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/page.tsx
-160:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/placement/page.tsx
-57:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/retraining/page.tsx
-56:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/hr/rival-benchmark/page.tsx
-57:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/hr/team-skills/page.tsx
-124:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-156:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-205:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/hr/top-talent/page.tsx
-56:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/hr/urgent-gaps/page.tsx
-76:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/insider-signals/page.tsx
-86:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/job-search-doctor/page.tsx
-125:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/know-your-rights/page.tsx
-122:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/linkedin-makeover/page.tsx
-157:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/offer-comparer/page.tsx
-118:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/outreach-writer/page.tsx
-90:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/pay-raise-coach/page.tsx
-117:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/portfolio/page.tsx
-279:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/referral-finder/page.tsx
-112:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/referrals/page.tsx
-159:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/roadmap/page.tsx
-148:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/settings/page.tsx
-384:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/severance/page.tsx
-356:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/severance-booster/page.tsx
-117:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
-
-./app/skills/page.tsx
-205:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
-
-./app/voice-coach/page.tsx
-219:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+./components/ScanJobsSection.tsx
+93:18  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
 
 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
 Error: Process completed with exit code 1.
