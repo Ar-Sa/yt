@@ -1,61 +1,144 @@
-#16 0.034 Starting: npm run build
-#16 40.42 FAILED: npm run build — full output below
-#16 40.42 
-#16 40.42 > skillbridge-v2@0.1.0 build
-#16 40.42 > next build
-#16 40.42 
-#16 40.42   ▲ Next.js 14.2.25
-#16 40.42   - Experiments (use with caution):
-#16 40.42     · instrumentationHook
-#16 40.42 
-#16 40.42    Creating an optimized production build ...
-#16 40.42 Failed to compile.
-#16 40.42 
-#16 40.42 ./lib/configEncryption.ts:27:1
-#16 40.42 Module not found: Can't resolve 'crypto'
-#16 40.42   25 |  * saves it, once CONFIG_ENCRYPTION_KEY is set on the live app.
-#16 40.42   26 |  */
-#16 40.42 > 27 | import { createCipheriv, createDecipheriv, createHash, randomBytes } from 'crypto'
-#16 40.42      | ^
-#16 40.42   28 | import * as Sentry from '@sentry/nextjs'
-#16 40.42   29 |
-#16 40.42   30 | const PREFIX = 'enc:v1:'
-#16 40.42 
-#16 40.42 https://nextjs.org/docs/messages/module-not-found
-#16 40.42 
-#16 40.42 Import trace for requested module:
-#16 40.42 ./lib/getConfig.ts
-#16 40.42 ./instrumentation.ts
-#16 40.42 
-#16 40.42 
-#16 40.42 > Build failed because of webpack errors
-#16 40.42 npm notice
-#16 40.42 npm notice New major version of npm available! 10.9.8 -> 12.0.2
-#16 40.42 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
-#16 40.42 npm notice To update run: npm install -g npm@12.0.2
-#16 40.42 npm notice
-#16 ERROR: process "/bin/sh -c echo \"Starting: npm run build\" &&     npm run build > /tmp/build.log 2>&1 &&     echo \"Finished: npm run build OK ($(wc -l < /tmp/build.log) lines of output suppressed)\" ||     (echo \"FAILED: npm run build — full output below\"; cat /tmp/build.log; exit 1)" did not complete successfully: exit code: 1
-------
- > [builder 5/5] RUN echo "Starting: npm run build" &&     npm run build > /tmp/build.log 2>&1 &&     echo "Finished: npm run build OK ($(wc -l < /tmp/build.log) lines of output suppressed)" ||     (echo "FAILED: npm run build — full output below"; cat /tmp/build.log; exit 1):
-40.42 ./lib/getConfig.ts
-40.42 ./instrumentation.ts
-40.42 
-40.42 
-40.42 > Build failed because of webpack errors
-40.42 npm notice
-40.42 npm notice New major version of npm available! 10.9.8 -> 12.0.2
-40.42 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
-40.42 npm notice To update run: npm install -g npm@12.0.2
-40.42 npm notice
-------
-Dockerfile:78
---------------------
-  77 |     # the pass/fail summary matters unless something actually broke.
-  78 | >>> RUN echo "Starting: npm run build" && \
-  79 | >>>     npm run build > /tmp/build.log 2>&1 && \
-  80 | >>>     echo "Finished: npm run build OK ($(wc -l < /tmp/build.log) lines of output suppressed)" || \
-  81 | >>>     (echo "FAILED: npm run build — full output below"; cat /tmp/build.log; exit 1)
-  82 |     
---------------------
-ERROR: failed to build: failed to solve: process "/bin/sh -c echo \"Starting: npm run build\" &&     npm run build > /tmp/build.log 2>&1 &&     echo \"Finished: npm run build OK ($(wc -l < /tmp/build.log) lines of output suppressed)\" ||     (echo \"FAILED: npm run build — full output below\"; cat /tmp/build.log; exit 1)" did not complete successfully: exit code: 1
-Error: buildx failed with: ERROR: failed to build: failed to solve: process "/bin/sh -c echo \"Starting: npm run build\" &&     npm run build > /tmp/build.log 2>&1 &&     echo \"Finished: npm run build OK ($(wc -l < /tmp/build.log) lines of output suppressed)\" ||     (echo \"FAILED: npm run build — full output below\"; cat /tmp/build.log; exit 1)" did not complete successfully: exit code: 1
+Run npm run lint
+
+> skillbridge-v2@0.1.0 lint
+> next lint
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+./app/corp/displaced/page.tsx
+72:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/corp/employed/page.tsx
+93:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/corp/employed/roadmap/page.tsx
+207:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/corp/page.tsx
+70:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/dashboard/page.tsx
+281:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/deadline-guard/page.tsx
+131:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/emergency/page.tsx
+395:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/forum/new/page.tsx
+165:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hire-odds/page.tsx
+128:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/hr/ai-impact/page.tsx
+58:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/hr/alerts/page.tsx
+78:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/api-settings/page.tsx
+190:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/board-deck/page.tsx
+103:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/certs/page.tsx
+74:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/hr/comms/page.tsx
+55:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/gaps/page.tsx
+84:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/grants/page.tsx
+48:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/legal-layoff/page.tsx
+48:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/hr/mobility/page.tsx
+117:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/morale/page.tsx
+177:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/page.tsx
+160:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/placement/page.tsx
+57:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/retraining/page.tsx
+56:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/hr/rival-benchmark/page.tsx
+57:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/hr/team-skills/page.tsx
+124:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+156:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+205:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/hr/top-talent/page.tsx
+56:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/hr/urgent-gaps/page.tsx
+76:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/insider-signals/page.tsx
+86:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/job-search-doctor/page.tsx
+125:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/know-your-rights/page.tsx
+122:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/linkedin-makeover/page.tsx
+157:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/offer-comparer/page.tsx
+118:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/outreach-writer/page.tsx
+90:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/pay-raise-coach/page.tsx
+117:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/portfolio/page.tsx
+279:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/referral-finder/page.tsx
+112:21  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/referrals/page.tsx
+159:23  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/roadmap/page.tsx
+148:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/settings/page.tsx
+384:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/severance/page.tsx
+356:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/severance-booster/page.tsx
+117:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+./app/skills/page.tsx
+205:31  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render. Did you accidentally call a React Hook after an early return?  react-hooks/rules-of-hooks
+
+./app/voice-coach/page.tsx
+219:29  Error: React Hook "useClientOrigin" is called conditionally. React Hooks must be called in the exact same order in every component render.  react-hooks/rules-of-hooks
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+Error: Process completed with exit code 1.
