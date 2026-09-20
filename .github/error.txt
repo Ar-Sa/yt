@@ -1,28 +1,38 @@
+Run npm run lint
 
-﻿
-layout-90c5d292551bc10d.js:1 Creating a worker from 'https://skillosai.com/sw.js' violates the following Content Security Policy directive: "worker-src blob:". The action has been blocked.
+> skillbridge-v2@0.1.0 lint
+> next lint
 
-(index):1 Loading the script 'https://static.cloudflareinsights.com/beacon.min.js/v31edd6d…' violates the following Content Security Policy directive: "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://js.stripe.com". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.
-(index):1 <meta name="apple-mobile-web-app-capable" content="yes"> is deprecated. Please include <meta name="mobile-web-app-capable" content="yes">
-js?id=G-VZLZGDRG1G:280 Connecting to 'https://analytics.google.com/g/collect?v=2&tid=G-VZLZGDRG1G&gtm=45je69g1v92…tem%20for%20Your%20Career&en=page_view&_ee=1&ep.anonymize_ip=true&tfd=5549' violates the following Content Security Policy directive: "connect-src 'self' https://api.anthropic.com https://api.stripe.com https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com". The action has been blocked.
-js?id=G-VZLZGDRG1G:280 Fetch API cannot load https://analytics.google.com/g/collect?v=2&tid=G-VZLZGDRG1G&gtm=45je69g1v92…tem%20for%20Your%20Career&en=page_view&_ee=1&ep.anonymize_ip=true&tfd=5549. Refused to connect because it violates the document's Content Security Policy.
-js?id=G-VZLZGDRG1G:280 Connecting to 'https://www.google.com/g/collect?v=2&tid=G-VZLZGDRG1G&gtm=45je69g1v92600382…tem%20for%20Your%20Career&en=page_view&_ee=1&ep.anonymize_ip=true&tfd=5549' violates the following Content Security Policy directive: "connect-src 'self' https://api.anthropic.com https://api.stripe.com https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com". The action has been blocked.
-js?id=G-VZLZGDRG1G:280 Fetch API cannot load https://www.google.com/g/collect?v=2&tid=G-VZLZGDRG1G&gtm=45je69g1v92600382…tem%20for%20Your%20Career&en=page_view&_ee=1&ep.anonymize_ip=true&tfd=5549. Refused to connect because it violates the document's Content Security Policy.
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
 
-issues section->
-Content Security Policy of your site blocks some resources
-Some resources are blocked because their origin isn’t listed in your site’s Content Security Policy (CSP). Your site’s CSP is allowlist-based, so resources must be listed in the allowlist to be accessed.
 
-A site’s Content Security Policy is set either via an HTTP header (recommended), or via a meta HTML tag.
+./app/data-privacy/page.tsx
+52:268  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+52:319  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+52:457  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+52:476  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+57:56  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+57:76  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+57:81  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+57:104  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+57:124  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+57:428  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+57:503  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+65:35  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+72:27  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
 
-To fix this issue do one of the following:
+./app/security/page.tsx
+56:255  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+56:268  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+56:343  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+79:78  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+80:105  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
 
-(Recommended) If you’re using an allowlist for 'script-src', consider switching from an allowlist CSP to a strict CSP, because strict CSPs are more robust against XSS. See how to set a strict CSP.
-Or carefully check that all of the blocked resources are trustworthy; if they are, include their sources in the CSP of your site. ⚠️Never add a source you don’t trust to your site’s CSP. If you don’t trust the source, consider hosting resources on your own site instead.
-4 directives
-Resource	Status	Directive	Source location
-https://skillosai.com/sw.js	Blocked	worker-src	layout-90c5d292551bc10d.js:1
-https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495	Blocked	script-src-elem	(index):0
-https://analytics.google.com/g/collect?v=2&tid=G-VZLZGDRG1G&gtm=45je69g1v9260038255za200zd9260038255xf1&_p=1789869649547&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAGQ&cid=1324584371.1789609304&frm=0&pscdl=noapi&rcb=4&sr=1470x956&uaa=arm&uab=64&uafvl=Google%2520Chrome%3B153.0.8010.48%7CNot_A%2520Brand%3B8.0.0.0%7CChromium%3B153.0.8010.48&uam=&uamb=0&uap=macOS&uapv=26.5.1&uaw=0&ul=en-us&gaf=2&_s=1&tag_exp=115616986~115938465~115938468~118897920~118897930~120213116~120385422~120469145~120469153&sid=1789867884&sct=15&seg=1&dl=https%3A%2F%2Fskillosai.com%2F&dr=https%3A%2F%2Fskillosai.com%2Flayoffs%2Fbitcoin-suisse&dt=SkillOS%20%E2%80%93%20The%20Operating%20System%20for%20Your%20Career&en=page_view&_ee=1&ep.anonymize_ip=true&tfd=5549	Blocked	connect-src	js?id=G-VZLZGDRG1G:280
-https://www.google.com/g/collect?v=2&tid=G-VZLZGDRG1G&gtm=45je69g1v9260038255za200zd9260038255xf1&_p=1789869649547&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAGQ&cid=1324584371.1789609304&frm=0&pscdl=noapi&rcb=4&sr=1470x956&uaa=arm&uab=64&uafvl=Google%2520Chrome%3B153.0.8010.48%7CNot_A%2520Brand%3B8.0.0.0%7CChromium%3B153.0.8010.48&uam=&uamb=0&uap=macOS&uapv=26.5.1&uaw=0&ul=en-us&gaf=3&_s=1&tag_exp=115616986~115938465~115938468~118897920~118897930~120213116~120385422~120469145~120469153&sid=1789867884&sct=15&seg=1&dl=https%3A%2F%2Fskillosai.com%2F&dr=https%3A%2F%2Fskillosai.com%2Flayoffs%2Fbitcoin-suisse&dt=SkillOS%20%E2%80%93%20The%20Operating%20System%20for%20Your%20Career&en=page_view&_ee=1&ep.anonymize_ip=true&tfd=5549	Blocked	connect-src	js?id=G-VZLZGDRG1G:280
-Learn more: Content Security Policy - Source allowlists
+./app/whats-new/page.tsx
+120:51  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+Error: Process completed with exit code 1.
