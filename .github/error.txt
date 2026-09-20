@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import {
@@ -14,6 +13,7 @@ import SearchModal from './SearchModal'
 import NotificationBell from './NotificationBell'
 import { openOnboardingWizard } from './OnboardingWizard'
 import { getFeaturesByCategory, type FeatureCategory } from '../lib/featuresCatalog'
+import { Avatar as AvatarPrimitive } from './ui/Avatar'
 
 // Icons for the Tools mega-menu tabs. lib/featuresCatalog.ts's
 // FEATURE_CATEGORIES only defines `label` (no icon field), so these are
@@ -37,33 +37,19 @@ type SessionUser = {
 }
 
 function Avatar({ user, size = 32 }: { user: SessionUser; size?: number }) {
-  const [imgErr, setImgErr] = useState(false)
   const initials = (user.name || user.email || '?')
     .split(/[\s@]+/)[0]
     .slice(0, 2)
     .toUpperCase()
-  const sz = `${size}px`
-
-  if (user.avatar && !imgErr) {
-    return (
-      <Image
-        unoptimized
-        src={user.avatar}
-        alt={user.name || user.email}
-        width={size}
-        height={size}
-        onError={() => setImgErr(true)}
-        className="rounded-full object-cover ring-2 ring-[color:var(--primary)]/30"
-      />
-    )
-  }
   return (
-    <div
-      style={{ width: sz, height: sz }}
-      className="rounded-full bg-[color:var(--primary)] flex items-center justify-center text-white font-bold text-xs ring-2 ring-[color:var(--primary)]/30 select-none"
-    >
-      {initials}
-    </div>
+    <AvatarPrimitive
+      src={user.avatar}
+      alt={user.name || user.email}
+      initials={initials}
+      size={size}
+      unoptimized
+      ringClassName="ring-2 ring-[color:var(--primary)]/30"
+    />
   )
 }
 
@@ -127,13 +113,21 @@ function NavDropdown({ label, items, pathname }: { label: string; items: NavItem
   const current = pathname ?? ''
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     function onClick(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
     }
+    // Returning focus to the trigger on Escape (WCAG 2.4.3) only when focus
+    // was actually inside this dropdown — otherwise pressing Escape anywhere
+    // else on the page would unexpectedly yank focus into the nav.
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpen(false)
+      if (e.key === 'Escape') {
+        const hadFocusInside = !!ref.current?.contains(document.activeElement)
+        setOpen(false)
+        if (hadFocusInside) buttonRef.current?.focus()
+      }
     }
     document.addEventListener('mousedown', onClick)
     document.addEventListener('keydown', onKey)
@@ -148,6 +142,7 @@ function NavDropdown({ label, items, pathname }: { label: string; items: NavItem
   return (
     <div className="relative" ref={ref}>
       <button
+        ref={buttonRef}
         type="button"
         onClick={() => setOpen(v => !v)}
         aria-expanded={open}
@@ -157,7 +152,7 @@ function NavDropdown({ label, items, pathname }: { label: string; items: NavItem
         }`}
       >
         {label}
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown aria-hidden="true" className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
         <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-60 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-premium py-2 z-50 animate-scale-in">
@@ -196,6 +191,7 @@ function CategorizedDropdown({ label, categories, pathname }: { label: string; c
   const [open, setOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState<FeatureCategory | undefined>(categories[0]?.category)
   const ref = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
   // ROADMAP item 41: the tool-list pane below the tab row scrolls
   // independently of the tab row (see overflow-y-auto below); without
   // resetting it on tab switch, switching from a long scrolled-down category
@@ -207,8 +203,14 @@ function CategorizedDropdown({ label, categories, pathname }: { label: string; c
     function onClick(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
     }
+    // Returning focus to the trigger on Escape (WCAG 2.4.3) only when focus
+    // was actually inside this dropdown — see NavDropdown's identical guard.
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') setOpen(false)
+      if (e.key === 'Escape') {
+        const hadFocusInside = !!ref.current?.contains(document.activeElement)
+        setOpen(false)
+        if (hadFocusInside) buttonRef.current?.focus()
+      }
     }
     document.addEventListener('mousedown', onClick)
     document.addEventListener('keydown', onKey)
@@ -234,6 +236,7 @@ function CategorizedDropdown({ label, categories, pathname }: { label: string; c
   return (
     <div className="relative" ref={ref}>
       <button
+        ref={buttonRef}
         type="button"
         onClick={() => setOpen(v => !v)}
         aria-expanded={open}
@@ -243,7 +246,7 @@ function CategorizedDropdown({ label, categories, pathname }: { label: string; c
         }`}
       >
         {label}
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown aria-hidden="true" className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && activeCat && (
         // Tools mega-menu, tabbed layout (Monday.com "Platform"-style): a row
@@ -319,6 +322,8 @@ export default function Navbar({ onboardingEnabled = true }: { onboardingEnabled
   const pathname = usePathname()
   const dropdownRef = useRef<HTMLDivElement>(null)
   const mobileRef = useRef<HTMLDivElement>(null)
+  const accountButtonRef = useRef<HTMLButtonElement>(null)
+  const hamburgerButtonRef = useRef<HTMLButtonElement>(null)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -355,8 +360,15 @@ export default function Navbar({ onboardingEnabled = true }: { onboardingEnabled
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
+        // Return focus to whichever trigger was open (WCAG 2.4.3) — guarded
+        // by "was focus actually inside that menu" so Escape elsewhere on
+        // the page never unexpectedly steals focus into the nav.
+        const hadFocusInAccountMenu = !!dropdownRef.current?.contains(document.activeElement)
+        const hadFocusInMobileMenu = !!mobileRef.current?.contains(document.activeElement)
         setMobileOpen(false)
         setMenuOpen(false)
+        if (hadFocusInAccountMenu) accountButtonRef.current?.focus()
+        else if (hadFocusInMobileMenu) hamburgerButtonRef.current?.focus()
       }
     }
     window.addEventListener('keydown', onKeyDown)
@@ -436,7 +448,7 @@ export default function Navbar({ onboardingEnabled = true }: { onboardingEnabled
 
   return (
     <nav className={`sticky top-0 z-50 border-b border-[color:var(--border)] bg-[color:var(--bg)]/95 backdrop-blur-lg shadow-xs transition-shadow duration-200 ${scrolled ? 'shadow-card' : ''}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <div className="page-section h-16 flex items-center justify-between gap-4">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
@@ -521,14 +533,18 @@ export default function Navbar({ onboardingEnabled = true }: { onboardingEnabled
             {user ? (
               <div className="relative" ref={dropdownRef}>
                 <button
+                  ref={accountButtonRef}
                   onClick={() => setMenuOpen(v => !v)}
+                  aria-haspopup="true"
+                  aria-expanded={menuOpen}
+                  aria-label={`Account menu for ${displayName}`}
                   className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] hover:border-[color:var(--primary)]/40 transition"
                 >
                   <Avatar user={user} size={28} />
                   <span className="text-sm font-medium text-[color:var(--text)] max-w-[100px] truncate">
                     {displayName}
                   </span>
-                  <ChevronDown className={`h-3.5 w-3.5 text-[color:var(--muted)] transition-transform ${menuOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown aria-hidden="true" className={`h-3.5 w-3.5 text-[color:var(--muted)] transition-transform ${menuOpen ? 'rotate-180' : ''}`} />
                 </button>
 
                 {menuOpen && (
@@ -581,6 +597,7 @@ export default function Navbar({ onboardingEnabled = true }: { onboardingEnabled
 
           {/* Mobile hamburger */}
           <button
+            ref={hamburgerButtonRef}
             onClick={() => setMobileOpen(v => !v)}
             className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-[color:var(--border)] text-[color:var(--text)] hover:bg-[color:var(--surface)] transition"
             aria-label="Toggle menu"
@@ -621,7 +638,7 @@ export default function Navbar({ onboardingEnabled = true }: { onboardingEnabled
             {navLinks.map(l => (
               <Link key={l.href} href={l.href}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center px-3 py-2.5 rounded-lg text-[13px] font-bold uppercase tracking-wider transition-colors ${
+                className={`flex items-center min-h-[var(--control-height)] px-3 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${
                   pathname === l.href
                     ? 'bg-[color:var(--primary)]/10 text-[color:var(--primary)]'
                     : 'text-[color:var(--text)] hover:bg-[color:var(--surface)]'
@@ -650,25 +667,25 @@ export default function Navbar({ onboardingEnabled = true }: { onboardingEnabled
                   {accountLinks.map(l => (
                     <Link key={l.href} href={l.href}
                       onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[color:var(--text)] hover:bg-[color:var(--surface)] transition">
+                      className="flex items-center gap-3 min-h-[var(--control-height)] px-3 py-2.5 rounded-lg text-sm text-[color:var(--text)] hover:bg-[color:var(--surface)] transition">
                       <span className="text-[color:var(--muted)]">{l.icon}</span>
                       {l.label}
                     </Link>
                   ))}
 
                   <button onClick={handleLogout}
-                    className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[color:var(--danger)] hover:bg-[color:var(--danger)]/8 transition mt-1">
+                    className="flex w-full items-center gap-3 min-h-[var(--control-height)] px-3 py-2.5 rounded-lg text-sm text-[color:var(--danger)] hover:bg-[color:var(--danger)]/8 transition mt-1">
                     <LogOut className="h-4 w-4" /> Sign Out
                   </button>
                 </>
               ) : (
                 <div className="flex gap-2 py-1">
                   <Link href="/login" onClick={() => setMobileOpen(false)}
-                    className="flex-1 text-center py-2.5 rounded-lg border border-[color:var(--border)] text-sm font-medium text-[color:var(--text)] hover:bg-[color:var(--surface)] transition">
+                    className="flex-1 flex items-center justify-center text-center min-h-[var(--control-height)] py-2.5 rounded-lg border border-[color:var(--border)] text-sm font-medium text-[color:var(--text)] hover:bg-[color:var(--surface)] transition">
                     Sign In
                   </Link>
                   <Link href="/" onClick={() => setMobileOpen(false)}
-                    className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[color:var(--primary)] text-white text-sm font-semibold hover:opacity-90 transition btn-glow">
+                    className="flex-1 flex items-center justify-center gap-1.5 min-h-[var(--control-height)] py-2.5 rounded-lg bg-[color:var(--primary)] text-white text-sm font-semibold hover:opacity-90 transition btn-glow">
                     <Zap className="h-3.5 w-3.5" /> Free Scan
                   </Link>
                 </div>
