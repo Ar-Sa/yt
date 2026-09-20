@@ -1,2 +1,7 @@
-⚠
-This request is already being processed — please wait a moment.
+Database Migrations
+Retry Migration
+Apply pending schema migrations. Required for scan result panels (quick wins, skill trends, global demand) to save data. Run this once after deployment.
+
+Migration failed
+
+Paste a PostgreSQL connection URI below (any host — Supabase, RDS, Neon, etc.), then click Retry.
