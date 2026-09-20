@@ -1,16 +1,17 @@
-Run npm run lint
-
-> skillbridge-v2@0.1.0 lint
-> next lint
-
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
 
 
-./app/interview/page.tsx
-444:54  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
 
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-Error: Process completed with exit code 1.
+ Linting and checking validity of types ...
+Failed to compile.
+./lib/lastSeen.ts:81:11
+Type error: Type 'Row[]' is not assignable to type '{ surface_key: string; last_seen_at: string; }[]'.
+  Type 'Row' is missing the following properties from type '{ surface_key: string; last_seen_at: string; }': surface_key, last_seen_at
+  79 |       .select('surface_key, last_seen_at')
+  80 |       .eq('user_id', userId)
+> 81 |     const rows: Array<{ surface_key: string; last_seen_at: string }> = Array.isArray(data) ? data : []
+     |           ^
+  82 |     const result: Record<string, Date> = {}
+  83 |     for (const row of rows) {
+  84 |       if (row?.surface_key && row?.last_seen_at) {
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1
