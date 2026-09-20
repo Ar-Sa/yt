@@ -1,7 +1,33 @@
-Database Migrations
-Retry Migration
-Apply pending schema migrations. Required for scan result panels (quick wins, skill trends, global demand) to save data. Run this once after deployment.
+Run npm run lint
 
-Migration failed
+> skillbridge-v2@0.1.0 lint
+> next lint
 
-Paste a PostgreSQL connection URI below (any host — Supabase, RDS, Neon, etc.), then click Retry.
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+./lib/migrations.ts
+4231:28  Error: Parsing error: ',' expected.
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+Error: Process completed with exit code 1.
+
+
+ 4229 | -- third-party endpoint.
+ 4230 | --
+ 4231 | -- Fix is an atomic claim: `update ... set status = 'sending' where id = $1
+      :                             ^^^^^^
+ 4232 | -- and status = 'pending' returning *` before the POST. Only the invocation
+ 4233 | -- whose UPDATE actually returns a row "wins" the claim; a losing concurrent
+ 4234 | -- invocation sees zero rows affected and skips. This requires 'sending' to
+      `----
+Caused by:
+    Syntax Error
+Import trace for requested module:
+./lib/migrations.ts
+./pages/api/admin/bootstrap.ts
+> Build failed because of webpack errors
+Error: Command "npm run build" exited with 1
