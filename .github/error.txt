@@ -9,8 +9,11 @@ You can learn more, including how to opt-out if you'd not like to participate in
 https://nextjs.org/telemetry
 
 
-./components/scan/ScanPrintButton.tsx
-178:9  Error: Parsing error: ',' expected.
+./app/passport/page.tsx
+486:23  Error: Parsing error: ')' expected.
+
+./components/ui/Radio.tsx
+75:7  Warning: The attribute aria-invalid is not supported by the role radio. This role is implicit on the element input.  jsx-a11y/role-supports-aria-props
 
 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
 Error: Process completed with exit code 1.
