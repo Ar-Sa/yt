@@ -1,17 +1,6 @@
-
-
-
- Linting and checking validity of types ...
-Failed to compile.
-./lib/lastSeen.ts:81:11
-Type error: Type 'Row[]' is not assignable to type '{ surface_key: string; last_seen_at: string; }[]'.
-  Type 'Row' is missing the following properties from type '{ surface_key: string; last_seen_at: string; }': surface_key, last_seen_at
-  79 |       .select('surface_key, last_seen_at')
-  80 |       .eq('user_id', userId)
-> 81 |     const rows: Array<{ surface_key: string; last_seen_at: string }> = Array.isArray(data) ? data : []
-     |           ^
-  82 |     const result: Record<string, Date> = {}
-  83 |     for (const row of rows) {
-  84 |       if (row?.surface_key && row?.last_seen_at) {
-Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
+Run npx tsc --noEmit
+Error: app/linkedin/page.tsx(313,11): error TS2322: Type 'Dispatch<SetStateAction<string>>' is not assignable to type '(message: string | null) => void'.
+  Types of parameters 'value' and 'message' are incompatible.
+    Type 'string | null' is not assignable to type 'SetStateAction<string>'.
+      Type 'null' is not assignable to type 'SetStateAction<string>'.
+Error: Process completed with exit code 2.
