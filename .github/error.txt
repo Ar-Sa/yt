@@ -1,7 +1,683 @@
-Run npx tsc --noEmit
-Error: lib/templateCatalog.ts(542,7): error TS2740: Type '{ '--bg': string; '--surface': string; '--surface-2': string; '--surface-hover': string; '--border': string; '--primary': string; '--primary-rgb': string; '--primary-hover': string; '--primary-dark': string; ... 78 more ...; '--risk-critical-bg': string; }' is missing the following properties from type 'TemplateTokenSet': '--container-width', '--container-width-sm', '--container-width-lg', '--section-padding-y', and 13 more.
-Error: lib/templateCatalog.ts(685,7): error TS2740: Type '{ '--bg': string; '--surface': string; '--surface-2': string; '--surface-hover': string; '--border': string; '--primary': string; '--primary-rgb': string; '--primary-hover': string; '--primary-dark': string; ... 78 more ...; '--risk-critical-bg': string; }' is missing the following properties from type 'TemplateTokenSet': '--container-width', '--container-width-sm', '--container-width-lg', '--section-padding-y', and 13 more.
-Error: lib/templateCatalog.ts(850,7): error TS2740: Type '{ '--bg': string; '--surface': string; '--surface-2': string; '--surface-hover': string; '--border': string; '--primary': string; '--primary-rgb': string; '--primary-hover': string; '--primary-dark': string; ... 78 more ...; '--risk-critical-bg': string; }' is missing the following properties from type 'TemplateTokenSet': '--container-width', '--container-width-sm', '--container-width-lg', '--section-padding-y', and 13 more.
-Error: lib/templateCatalog.ts(1062,7): error TS2740: Type '{ '--font-sans': string; '--font-serif': string; '--text-xs': string; '--text-sm': string; '--text-base': string; '--text-lg': string; '--text-xl': string; '--text-2xl': string; '--text-3xl': string; '--text-4xl': string; ... 77 more ...; '--gradient-primary': string; }' is missing the following properties from type 'TemplateTokenSet': '--container-width', '--container-width-sm', '--container-width-lg', '--section-padding-y', and 13 more.
-Error: lib/templateCatalog.ts(1229,7): error TS2740: Type '{ '--bg': string; '--surface': string; '--surface-2': string; '--surface-hover': string; '--border': string; '--primary': string; '--primary-rgb': string; '--primary-hover': string; '--primary-dark': string; ... 78 more ...; '--risk-critical-bg': string; }' is missing the following properties from type 'TemplateTokenSet': '--container-width', '--container-width-sm', '--container-width-lg', '--section-padding-y', and 13 more.
-Error: Process completed with exit code 2.
+'use client'
+import React, { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import {
+  LogOut, LayoutDashboard, ChevronDown, Menu, X,
+  Zap, Settings, BookOpen, TrendingUp, Shield, Search, HelpCircle,
+  Bookmark, Award, ClipboardList, Sparkles,
+  Target, Radar, Map, LifeBuoy, Share2,
+} from 'lucide-react'
+import ThemeToggle from './ThemeToggle'
+import SearchModal from './SearchModal'
+import NotificationBell from './NotificationBell'
+import { openOnboardingWizard } from './OnboardingWizard'
+import { getFeaturesByCategory, type FeatureCategory } from '../lib/featuresCatalog'
+
+// Icons for the Tools mega-menu tabs. lib/featuresCatalog.ts's
+// FEATURE_CATEGORIES only defines `label` (no icon field), so these are
+// chosen here to visually represent each category; the labels themselves
+// still come straight from the catalog so they can't drift.
+const CATEGORY_ICONS: Record<FeatureCategory, React.ComponentType<{ className?: string }>> = {
+  assess: Target,
+  monitor: Radar,
+  plan: Map,
+  protect: LifeBuoy,
+  connect: Share2,
+  corporate: Shield,
+}
+
+type SessionUser = {
+  id: string
+  email: string
+  name?: string | null
+  avatar?: string | null
+  provider?: string
+}
+
+function Avatar({ user, size = 32 }: { user: SessionUser; size?: number }) {
+  const [imgErr, setImgErr] = useState(false)
+  const initials = (user.name || user.email || '?')
+    .split(/[\s@]+/)[0]
+    .slice(0, 2)
+    .toUpperCase()
+  const sz = `${size}px`
+
+  if (user.avatar && !imgErr) {
+    return (
+      <Image
+        unoptimized
+        src={user.avatar}
+        alt={user.name || user.email}
+        width={size}
+        height={size}
+        onError={() => setImgErr(true)}
+        className="rounded-full object-cover ring-2 ring-[color:var(--primary)]/30"
+      />
+    )
+  }
+  return (
+    <div
+      style={{ width: sz, height: sz }}
+      className="rounded-full bg-[color:var(--primary)] flex items-center justify-center text-white font-bold text-xs ring-2 ring-[color:var(--primary)]/30 select-none"
+    >
+      {initials}
+    </div>
+  )
+}
+
+// Lightweight "is there anything new" check for the What's New nav entry
+// (ROADMAP item 6, "Return Reasons"). Mirrors NotificationBell's own
+// fetch-after-mount + background-poll pattern (see ./NotificationBell.tsx)
+// so this never blocks or slows down initial page render, but calls
+// /api/whats-new?countOnly=true (pages/api/whats-new.ts) instead of
+// /api/notifications — that flag short-circuits the full aggregation (jobs/
+// blog/badges/market-movement queries) server-side and returns only a
+// boolean, and deliberately does NOT stamp the user's whats_new watermark,
+// so a background nav check never consumes items before the user actually
+// opens the page. Polls far less aggressively than notifications (10 min vs
+// 1 min) since "what's new" content changes at most a few times a day.
+const WHATS_NEW_POLL_MS = 10 * 60_000
+
+function WhatsNewNavItem() {
+  const [hasNew, setHasNew] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+    function check() {
+      fetch('/api/whats-new?countOnly=true')
+        .then((r) => (r.ok ? r.json() : null))
+        .then((data) => {
+          if (!cancelled && data) setHasNew(!!data.hasNew)
+        })
+        .catch(() => {})
+    }
+    check()
+    const interval = setInterval(check, WHATS_NEW_POLL_MS)
+    return () => {
+      cancelled = true
+      clearInterval(interval)
+    }
+  }, [])
+
+  return (
+    <Link
+      href="/whats-new"
+      aria-label={hasNew ? "What's new for you (new items available)" : "What's new for you"}
+      title="What's new for you"
+      className="relative flex items-center justify-center w-9 h-9 rounded-lg border border-[color:var(--border)] text-[color:var(--text)] hover:bg-[color:var(--surface)] transition"
+    >
+      <Sparkles className="h-4 w-4" />
+      {hasNew && (
+        <span
+          className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[color:var(--primary)] ring-2 ring-[color:var(--bg)]"
+          aria-hidden="true"
+        />
+      )}
+    </Link>
+  )
+}
+
+type NavItem = { href: string; label: string; desc?: string }
+
+type NavCategory = { category: FeatureCategory; title: string; items: NavItem[] }
+
+function NavDropdown({ label, items, pathname }: { label: string; items: NavItem[]; pathname: string | null }) {
+  const current = pathname ?? ''
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function onClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('mousedown', onClick)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('mousedown', onClick)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [])
+
+  const hasActive = items.some(i => current === i.href || current.startsWith(i.href + '/'))
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        type="button"
+        onClick={() => setOpen(v => !v)}
+        aria-expanded={open}
+        aria-haspopup="true"
+        className={`group relative flex items-center gap-1 px-3 py-1.5 rounded-lg text-[12.5px] font-bold uppercase tracking-wider transition-colors ${
+          hasActive ? 'text-[color:var(--primary)]' : 'text-[color:var(--text-secondary)] hover:text-[color:var(--text)]'
+        }`}
+      >
+        {label}
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-60 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-premium py-2 z-50 animate-scale-in">
+          {items.map(l => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className={`block px-4 py-2.5 text-sm font-medium transition-colors ${
+                pathname === l.href
+                  ? 'text-[color:var(--primary)] bg-[color:var(--primary)]/5'
+                  : 'text-[color:var(--text)] hover:bg-[color:var(--bg)] hover:text-[color:var(--primary)]'
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// Categories with more tools than this feel cramped as a single column in a
+// 900px-wide panel (their per-tool rows carry a name + a description line,
+// so a single column of >8 of them runs noticeably tall even after tabbing
+// cuts the list down from "all categories" to "one category"). Checked
+// against the real counts in lib/featuresCatalog.ts (excluding Corporate &
+// HR, which the Tools dropdown never shows): Assess & Scan 5, Monitor &
+// Predict 8, Plan & Grow 14, Protect & Recover 15, Share & Connect 11.
+// Plan/Protect/Connect get a 2-column grid; Assess/Monitor stay single-column.
+const TWO_COLUMN_THRESHOLD = 8
+
+function CategorizedDropdown({ label, categories, pathname }: { label: string; categories: NavCategory[]; pathname: string | null }) {
+  const current = pathname ?? ''
+  const [open, setOpen] = useState(false)
+  const [activeCategory, setActiveCategory] = useState<FeatureCategory | undefined>(categories[0]?.category)
+  const ref = useRef<HTMLDivElement>(null)
+  // ROADMAP item 41: the tool-list pane below the tab row scrolls
+  // independently of the tab row (see overflow-y-auto below); without
+  // resetting it on tab switch, switching from a long scrolled-down category
+  // to a short one renders the short list's tail (or blank space) until the
+  // user manually scrolls back up. Reset scrollTop whenever a tab is clicked.
+  const toolListRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function onClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    document.addEventListener('mousedown', onClick)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('mousedown', onClick)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [])
+
+  // Reset to the first tab every time the menu is (re)opened, per spec —
+  // otherwise a user who tabbed to "Protect & Recover" last time would find
+  // it still selected (and possibly stale/empty) next time they open it.
+  useEffect(() => {
+    if (open) setActiveCategory(categories[0]?.category)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open])
+
+  const allItems = categories.flatMap(c => c.items)
+  const hasActive = allItems.some(i => current === i.href || current.startsWith(i.href + '/'))
+  const activeCat = categories.find(c => c.category === activeCategory) ?? categories[0]
+  const useTwoColumns = (activeCat?.items.length ?? 0) > TWO_COLUMN_THRESHOLD
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        type="button"
+        onClick={() => setOpen(v => !v)}
+        aria-expanded={open}
+        aria-haspopup="true"
+        className={`group relative flex items-center gap-1 px-3 py-1.5 rounded-lg text-[12.5px] font-bold uppercase tracking-wider transition-colors ${
+          hasActive ? 'text-[color:var(--primary)]' : 'text-[color:var(--text-secondary)] hover:text-[color:var(--text)]'
+        }`}
+      >
+        {label}
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && activeCat && (
+        // Tools mega-menu, tabbed layout (Monday.com "Platform"-style): a row
+        // of category tabs across the top, only the active tab's tools shown
+        // below. Each category now shows far fewer tools than all categories
+        // combined, so most fit comfortably; the flex-col + inner
+        // overflow-y-auto keeps the tab row always visible while the tool
+        // list scrolls, and the max-height cap is kept as an explicit
+        // scroll-safety net (founder's instruction) so a category with a lot
+        // of tools is never cut off with no way to reach the rest.
+        <div
+          className="absolute left-1/2 -translate-x-1/2 mt-2 z-50 animate-scale-in rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-premium flex flex-col overflow-hidden"
+          style={{ width: 'min(900px, calc(100vw - 2rem))', maxHeight: 'min(75vh, calc(100vh - 5rem))' }}
+        >
+          {/* Tab row */}
+          <div className="flex flex-wrap gap-1 px-3 pt-3 pb-2 border-b border-[color:var(--border)] shrink-0">
+            {categories.map(cat => {
+              const Icon = CATEGORY_ICONS[cat.category] ?? Shield
+              const isActive = cat.category === activeCat.category
+              return (
+                <button
+                  key={cat.category}
+                  type="button"
+                  onClick={() => {
+                    setActiveCategory(cat.category)
+                    if (toolListRef.current) toolListRef.current.scrollTop = 0
+                  }}
+                  aria-pressed={isActive}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors ${
+                    isActive
+                      ? 'bg-[color:var(--primary)]/10 text-[color:var(--primary)]'
+                      : 'text-[color:var(--text-secondary)] hover:bg-[color:var(--bg)] hover:text-[color:var(--text)]'
+                  }`}
+                >
+                  <Icon className="w-3.5 h-3.5" />
+                  {cat.title}
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Active tab's tools — scrolls independently of the tab row */}
+          <div ref={toolListRef} className="overflow-y-auto overscroll-contain py-2 px-3">
+            <div className={`grid gap-x-3 gap-y-1 ${useTwoColumns ? 'sm:grid-cols-2' : 'grid-cols-1'}`}>
+              {activeCat.items.map(l => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className={`block px-2 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                    pathname === l.href
+                      ? 'text-[color:var(--primary)] bg-[color:var(--primary)]/5'
+                      : 'text-[color:var(--text)] hover:bg-[color:var(--bg)] hover:text-[color:var(--primary)]'
+                  }`}
+                >
+                  <span className="block">{l.label}</span>
+                  {l.desc && <span className="block text-xs text-[color:var(--muted)]">{l.desc}</span>}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default function Navbar({ onboardingEnabled = true }: { onboardingEnabled?: boolean } = {}) {
+  const [user, setUser] = useState<SessionUser | null>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const pathname = usePathname()
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  const mobileRef = useRef<HTMLDivElement>(null)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 8)
+    window.addEventListener('scroll', fn, { passive: true })
+    fn()
+    return () => window.removeEventListener('scroll', fn)
+  }, [])
+
+  useEffect(() => {
+    fetch('/api/auth/me', { credentials: 'same-origin' })
+      .then(r => r.json())
+      .then(d => {
+        const user = d?.user
+        if (user?.id || user?.email) setUser(user as SessionUser)
+      })
+      .catch(() => {})
+  }, [pathname])
+
+  useEffect(() => { setMobileOpen(false); setMenuOpen(false) }, [pathname])
+
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) setMenuOpen(false)
+      if (mobileRef.current && !mobileRef.current.contains(e.target as Node)) setMobileOpen(false)
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [])
+
+  // Escape closes the mobile menu and the account dropdown (WCAG 2.1.1) —
+  // without it, a keyboard user who opens the mobile menu has no way to
+  // dismiss it except tabbing all the way back to the hamburger.
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setMobileOpen(false)
+        setMenuOpen(false)
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
+  // Cmd+K / Ctrl+K opens the search modal from anywhere on the page. The bare
+  // "/" shortcut is deliberately not bound globally — it would fire while a
+  // user is typing "/" into an unrelated text input elsewhere on the page.
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setSearchOpen(true)
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
+  async function handleLogout() {
+    await fetch('/api/auth/logout')
+    setUser(null)
+    window.location.href = '/'
+  }
+
+  // The Tools dropdown groups are derived from the unified features catalog
+  // (lib/featuresCatalog.ts, SKIA-110) — the single source of truth for every
+  // user-facing feature — so the header always shows the same categorized
+  // feature list as pricing, the dashboard, and the home/scan page and the
+  // lists can never drift apart. Corporate & HR tools stay out of the header
+  // dropdown (they live behind the HR gate), matching SKIA-110's intent.
+  const toolCategories: NavCategory[] = getFeaturesByCategory()
+    .filter(group => group.category !== 'corporate')
+    .map(group => ({
+      category: group.category,
+      title: group.label,
+      items: group.features
+        .filter(f => f.href)
+        .map(f => ({ href: f.href!, label: f.name, desc: f.description })),
+    }))
+    .filter(cat => cat.items.length > 0)
+
+  const resourceLinks = [
+    { href: '/blog',    label: 'Blog' },
+    { href: '/forum',   label: 'Forum' },
+    { href: '/faq',     label: 'FAQ' },
+    { href: '/contact', label: 'Contact' },
+    { href: '/enterprise', label: 'For Teams' },
+    { href: '/reviews', label: 'Reviews' },
+  ]
+
+  const mobileToolLinks = toolCategories.flatMap(c => c.items)
+
+  const navLinks = [
+    { href: '/', label: 'Scan' },
+    ...mobileToolLinks,
+    ...resourceLinks,
+  ]
+
+  const accountLinks = [
+    { href: '/dashboard', label: 'Dashboard',    icon: <LayoutDashboard className="h-4 w-4" /> },
+    { href: '/skills',    label: 'My Skills',    icon: <BookOpen className="h-4 w-4" /> },
+    { href: '/roadmap',   label: 'Roadmap',      icon: <TrendingUp className="h-4 w-4" /> },
+    { href: '/passport',  label: 'Verified Skill Card',  icon: <Shield className="h-4 w-4" /> },
+    // 2026-09-20 (ROADMAP item 110): /job-tracker was unreachable — no href
+    // anywhere in app/ or components/. It belongs here rather than in the
+    // Tools catalog: it is a login-only personal workspace with no tier gate
+    // (same class as Saved Items and My Badges), not a tier-gated tool.
+    { href: '/job-tracker', label: 'Job Tracker', icon: <ClipboardList className="h-4 w-4" /> },
+    { href: '/saved',     label: 'Saved Items',  icon: <Bookmark className="h-4 w-4" /> },
+    { href: '/badges',    label: 'My Badges',    icon: <Award className="h-4 w-4" /> },
+    { href: '/settings',  label: 'Settings',     icon: <Settings className="h-4 w-4" /> },
+  ]
+
+  const displayName = user?.name?.split(' ')[0] || user?.email?.split('@')[0] || ''
+
+  return (
+    <nav className={`sticky top-0 z-50 border-b border-[color:var(--border)] bg-[color:var(--bg)]/95 backdrop-blur-lg shadow-xs transition-shadow duration-200 ${scrolled ? 'shadow-card' : ''}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[color:var(--primary)] to-violet-600 flex items-center justify-center shadow-soft group-hover:opacity-90 transition">
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+              <path d="M2 7.5h11M7.5 2l5.5 5.5-5.5 5.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+          <span className="font-extrabold text-lg tracking-tight text-[color:var(--text)] leading-none flex items-baseline">
+            Skill<span className="text-[color:var(--primary)] font-extrabold">OS</span><span className="text-xs font-semibold tracking-wide text-[color:var(--muted)]">&middot;AI</span>
+          </span>
+        </Link>
+
+        {/* Desktop nav — Scan is the primary action, placed first; the core AI
+            tools are grouped under a categorized dropdown driven by the
+            unified features catalog (SKIA-110). */}
+        <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
+          <Link href="/"
+            className={`group relative px-3 py-1.5 rounded-lg text-[12.5px] font-bold uppercase tracking-wider transition-colors ${
+              pathname === '/' ? 'text-[color:var(--primary)]' : 'text-[color:var(--text-secondary)] hover:text-[color:var(--text)]'
+            }`}>
+            Scan
+            <span
+              aria-hidden="true"
+              className={`pointer-events-none absolute left-3 right-3 -bottom-0.5 h-[2px] rounded-full transition-transform duration-200 ease-out ${
+                pathname === '/' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+              }`}
+              style={{ background: 'var(--gradient-primary)' }}
+            />
+          </Link>
+          <CategorizedDropdown label="Tools" categories={toolCategories} pathname={pathname} />
+          <NavDropdown label="Resources" items={resourceLinks} pathname={pathname} />
+        </div>
+
+        {/* Right: Auth + mobile toggle */}
+        <div className="flex items-center gap-2 shrink-0">
+
+          {/* Help — re-opens the first-time onboarding guide any time, per its
+              "allow re-triggering from a Help/menu option" requirement. No
+              new shared state needed: OnboardingWizard listens for this same
+              custom event site-wide (see lib/onboardingSteps.ts).
+              ROADMAP item 42: when an admin turns the ONBOARDING_WIZARD_ENABLED
+              flag off site-wide, OnboardingWizard (components/OnboardingWizard.tsx)
+              never mounts its event listener, so this button used to stay
+              visible/clickable and silently do nothing. onboardingEnabled is
+              threaded down from app/layout.tsx -> AppLayout -> Navbar (same
+              flag/prop AppLayout already passes to OnboardingWizard), and the
+              button is simply hidden when the tour is unavailable. */}
+          {onboardingEnabled && (
+            <button
+              onClick={() => openOnboardingWizard()}
+              className="hidden sm:flex items-center justify-center w-9 h-9 rounded-lg border border-[color:var(--border)] text-[color:var(--text)] hover:bg-[color:var(--surface)] transition"
+              aria-label="Show onboarding guide"
+              title="Show guided tour"
+            >
+              <HelpCircle className="h-4 w-4" />
+            </button>
+          )}
+
+          {/* Search */}
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="flex items-center justify-center w-9 h-9 rounded-lg border border-[color:var(--border)] text-[color:var(--text)] hover:bg-[color:var(--surface)] transition"
+            aria-label="Search"
+            title="Search"
+          >
+            <Search className="h-4 w-4" />
+          </button>
+
+          {/* What's new — only meaningful once we know who's signed in, same
+              gating as NotificationBell right below it */}
+          {user && <WhatsNewNavItem />}
+
+          {/* Notifications — only meaningful once we know who's signed in */}
+          {user && <NotificationBell />}
+
+          {/* Theme toggle */}
+          <ThemeToggle className="hidden sm:flex" />
+
+          {/* Desktop auth */}
+          <div className="hidden md:block">
+            {user ? (
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setMenuOpen(v => !v)}
+                  className="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] hover:border-[color:var(--primary)]/40 transition"
+                >
+                  <Avatar user={user} size={28} />
+                  <span className="text-sm font-medium text-[color:var(--text)] max-w-[100px] truncate">
+                    {displayName}
+                  </span>
+                  <ChevronDown className={`h-3.5 w-3.5 text-[color:var(--muted)] transition-transform ${menuOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {menuOpen && (
+                  <div className="absolute right-0 mt-2 w-60 rounded-2xl border border-[color:var(--border)] bg-[color:var(--surface)] shadow-premium py-2 z-50 animate-scale-in">
+                    {/* User info */}
+                    <div className="flex items-center gap-3 px-4 py-3 border-b border-[color:var(--border)] mb-1">
+                      <Avatar user={user} size={36} />
+                      <div className="min-w-0">
+                        {user.name && <p className="text-sm font-semibold text-[color:var(--text)] truncate">{user.name}</p>}
+                        <p className="text-xs text-[color:var(--muted)] truncate">{user.email}</p>
+                      </div>
+                    </div>
+
+                    {/* Menu items */}
+                    {accountLinks.map(l => (
+                      <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-[color:var(--text)] hover:bg-[color:var(--bg)] hover:text-[color:var(--primary)] transition rounded-lg mx-1 group">
+                        <span className="text-[color:var(--muted)] group-hover:text-[color:var(--primary)] transition">{l.icon}</span>
+                        {l.label}
+                      </Link>
+                    ))}
+
+                    <div className="border-t border-[color:var(--border)] mt-1 pt-1 mx-1">
+                      <button onClick={handleLogout}
+                        className="flex w-full items-center gap-3 px-3 py-2.5 text-sm text-[color:var(--danger)] hover:bg-[color:var(--danger)]/8 transition rounded-lg">
+                        <LogOut className="h-4 w-4" />
+                        Sign Out
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link href="/login"
+                  className="px-3 py-1.5 text-sm font-medium text-[color:var(--muted)] hover:text-[color:var(--text)] transition">
+                  Sign In
+                </Link>
+                {/* Points at the free, no-signup scan (same destination as the "Scan" nav link
+                    above) rather than /signup — the old "Get Started Free" → /signup button was
+                    the loudest CTA in the nav bar, sending first-time visitors straight to account
+                    creation and contradicting the hero's own "no signup needed" promise. */}
+                <Link href="/"
+                  className="flex items-center gap-1.5 px-4 py-2 text-sm font-semibold rounded-lg bg-[color:var(--primary)] text-white hover:opacity-90 transition shadow-sm btn-glow">
+                  <Zap className="h-3.5 w-3.5" /> Free Scan
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(v => !v)}
+            className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-[color:var(--border)] text-[color:var(--text)] hover:bg-[color:var(--surface)] transition"
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-nav-menu"
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu with transition. `invisible pointer-events-none` when
+          closed keeps keyboard tab order out of the collapsed links (WCAG
+          2.4.3) — max-h-0 alone still leaves every link focusable by Tab
+          while invisible, so a keyboard user would tab into the hidden
+          menu. rendered content stays mounted so the expand/collapse
+          animation remains smooth.
+
+          Bug fix: this used `overflow-hidden` unconditionally with
+          `max-h-screen` when open. Because the wrapper is a flat list of the
+          Scan link + every tools-catalog item (~50+) + resource links +
+          account links, its natural height regularly exceeds 100vh — and
+          with `overflow-hidden` (not `overflow-y-auto`) that excess content
+          was silently clipped and completely unreachable, with no
+          scrollbar. Now: capped to the viewport minus the sticky header
+          (h-16 = 4rem) so it never runs under/behind the header, and
+          switches to `overflow-y-auto` only while open so the collapse
+          animation (which needs overflow-hidden to clip max-h-0) still
+          works. */}
+      <div
+        ref={mobileRef}
+        id="mobile-nav-menu"
+        className={`md:hidden border-t border-[color:var(--border)] bg-[color:var(--bg)] shadow-elevated transition-all duration-200 ease-in-out ${mobileOpen ? 'max-h-[calc(100vh-4rem)] opacity-100 overflow-y-auto overscroll-contain' : 'max-h-0 opacity-0 invisible pointer-events-none overflow-hidden'}`}
+      >
+          <div className="px-4 py-3 space-y-0.5">
+
+            {/* Nav links */}
+            {navLinks.map(l => (
+              <Link key={l.href} href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center px-3 py-2.5 rounded-lg text-[13px] font-bold uppercase tracking-wider transition-colors ${
+                  pathname === l.href
+                    ? 'bg-[color:var(--primary)]/10 text-[color:var(--primary)]'
+                    : 'text-[color:var(--text)] hover:bg-[color:var(--surface)]'
+                }`}>
+                {l.label}
+              </Link>
+            ))}
+
+            <div className="flex items-center justify-between px-3 py-2.5 sm:hidden">
+              <span className="text-sm font-medium text-[color:var(--muted)]">Theme</span>
+              <ThemeToggle />
+            </div>
+
+            <div className="border-t border-[color:var(--border)] pt-2 mt-2">
+              {user ? (
+                <>
+                  {/* User info strip */}
+                  <div className="flex items-center gap-3 px-3 py-2.5 mb-1 rounded-lg bg-[color:var(--surface)]">
+                    <Avatar user={user} size={32} />
+                    <div className="min-w-0">
+                      {user.name && <p className="text-sm font-semibold text-[color:var(--text)] truncate">{user.name}</p>}
+                      <p className="text-xs text-[color:var(--muted)] truncate">{user.email}</p>
+                    </div>
+                  </div>
+
+                  {accountLinks.map(l => (
+                    <Link key={l.href} href={l.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[color:var(--text)] hover:bg-[color:var(--surface)] transition">
+                      <span className="text-[color:var(--muted)]">{l.icon}</span>
+                      {l.label}
+                    </Link>
+                  ))}
+
+                  <button onClick={handleLogout}
+                    className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[color:var(--danger)] hover:bg-[color:var(--danger)]/8 transition mt-1">
+                    <LogOut className="h-4 w-4" /> Sign Out
+                  </button>
+                </>
+              ) : (
+                <div className="flex gap-2 py-1">
+                  <Link href="/login" onClick={() => setMobileOpen(false)}
+                    className="flex-1 text-center py-2.5 rounded-lg border border-[color:var(--border)] text-sm font-medium text-[color:var(--text)] hover:bg-[color:var(--surface)] transition">
+                    Sign In
+                  </Link>
+                  <Link href="/" onClick={() => setMobileOpen(false)}
+                    className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-lg bg-[color:var(--primary)] text-white text-sm font-semibold hover:opacity-90 transition btn-glow">
+                    <Zap className="h-3.5 w-3.5" /> Free Scan
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+      </div>
+
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+    </nav>
+  )
+}
