@@ -1,25 +1,14 @@
-Run npx tsc --noEmit
-  npx tsc --noEmit
-  shell: /usr/bin/bash -e {0}
-  env:
-    RESOURCE_GROUP: skillos-eus2-rg
-    CONTAINER_APP_NAME: skillos
-    IMAGE_NAME: skillos
-Error: app/api/status/route.ts(185,9): error TS2322: Type 'Row[]' is not assignable to type '{ id: string; name: string; error: string; }[]'.
-  Type 'Row' is missing the following properties from type '{ id: string; name: string; error: string; }': id, name, error
-Error: Process completed with exit code 2.
-
-
+   Linting and checking validity of types ...
 Failed to compile.
-./app/api/status/route.ts:185:9
-Type error: Type 'Row[]' is not assignable to type '{ id: string; name: string; error: string; }[]'.
-  Type 'Row' is missing the following properties from type '{ id: string; name: string; error: string; }': id, name, error
-  183 |           .select('id, name, error')
-  184 |           .order('failed_at', { ascending: false })
-> 185 |         failures = failureRows || []
-      |         ^
-  186 |       } catch { /* table doesn't exist yet on this DB — no known failures */ }
-  187 |
-  188 |       return { count: count ?? 0, failures }
+./components/Navbar.tsx:312:58
+Type error: Type '{ className: string; style: { color: string; }; }' is not assignable to type 'IntrinsicAttributes & { className?: string | undefined; }'.
+  Property 'style' does not exist on type 'IntrinsicAttributes & { className?: string | undefined; }'.
+  310 |                   style={isActive ? { backgroundColor: `color-mix(in srgb, ${color} 14%, transparent)` } : undefined}
+  311 |                 >
+> 312 |                   <Icon className="w-3.5 h-3.5 shrink-0" style={{ color }} />
+      |                                                          ^
+  313 |                   {cat.title}
+  314 |                 </button>
+  315 |               )
 Next.js build worker exited with code: 1 and signal: null
 Error: Command "npm run build" exited with 1
