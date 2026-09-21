@@ -8,3 +8,18 @@ Run npx tsc --noEmit
 Error: app/api/status/route.ts(185,9): error TS2322: Type 'Row[]' is not assignable to type '{ id: string; name: string; error: string; }[]'.
   Type 'Row' is missing the following properties from type '{ id: string; name: string; error: string; }': id, name, error
 Error: Process completed with exit code 2.
+
+
+Failed to compile.
+./app/api/status/route.ts:185:9
+Type error: Type 'Row[]' is not assignable to type '{ id: string; name: string; error: string; }[]'.
+  Type 'Row' is missing the following properties from type '{ id: string; name: string; error: string; }': id, name, error
+  183 |           .select('id, name, error')
+  184 |           .order('failed_at', { ascending: false })
+> 185 |         failures = failureRows || []
+      |         ^
+  186 |       } catch { /* table doesn't exist yet on this DB — no known failures */ }
+  187 |
+  188 |       return { count: count ?? 0, failures }
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1
