@@ -1,11 +1,12 @@
-Database Migrations
-Retry Migration
-Apply pending schema migrations. Required for scan result panels (quick wins, skill trends, global demand) to save data. Run this once after deployment.
+-blog autopost not working anymore- Failed: blog-autopost already ran today (or the run-lock could not be checked). Pass { "force": true } to re-run it anyway.
 
-No new migrations — schema already current.
+-tried running new scan and see below error why we wnat to show end user that we have $70.00 cap so remove the number from error msg. and how you are calculating it as when i checked azure ai billing we have not even used $8 so far so fix your calculation- 
+AI features are temporarily paused: this month's AI spend cap of $70.00 has been reached. An admin can raise the cap in Admin Central → AI Model Config, or it resets automatically at the start of next month.
 
-Skipped (already applied): 116
+-admin cente- payments -> Display Pricing (Homepage + Pricing Page) -> pricing changes under this doesnt reflect on live pages (home/scan/pricing pages) and should be sync with admin center as well. fix it
 
-0 migration(s) applied, but 2 failed: 102 (fk_lookup_indexes): relation "public.company_portal_settings" does not exist; 124 (interview_sessions): column "user_id" does not exist
+-why /pricing not linked in navbar-> resources? do it.
+-why can use user have different roles? like one user can be hr admin as well as corporate employee? lets add that.
+-Hr admin dashboard shoes nothing - fix the error or add some dummy data option for demos - Failed to load overview data, We couldn't load your HR overview. This is usually temporary.
 
-This retries against the site's own configured database — the one every other feature here already uses — so no connection string is needed. If this keeps failing, the error above is a real migration problem (a bad statement, a locked table, or a transient database blip) rather than a connection issue.
+
