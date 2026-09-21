@@ -1,14 +1,11 @@
-   Linting and checking validity of types ...
-Failed to compile.
-./components/Navbar.tsx:312:58
-Type error: Type '{ className: string; style: { color: string; }; }' is not assignable to type 'IntrinsicAttributes & { className?: string | undefined; }'.
-  Property 'style' does not exist on type 'IntrinsicAttributes & { className?: string | undefined; }'.
-  310 |                   style={isActive ? { backgroundColor: `color-mix(in srgb, ${color} 14%, transparent)` } : undefined}
-  311 |                 >
-> 312 |                   <Icon className="w-3.5 h-3.5 shrink-0" style={{ color }} />
-      |                                                          ^
-  313 |                   {cat.title}
-  314 |                 </button>
-  315 |               )
-Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
+Database Migrations
+Retry Migration
+Apply pending schema migrations. Required for scan result panels (quick wins, skill trends, global demand) to save data. Run this once after deployment.
+
+No new migrations — schema already current.
+
+Skipped (already applied): 116
+
+0 migration(s) applied, but 2 failed: 102 (fk_lookup_indexes): relation "public.company_portal_settings" does not exist; 124 (interview_sessions): column "user_id" does not exist
+
+This retries against the site's own configured database — the one every other feature here already uses — so no connection string is needed. If this keeps failing, the error above is a real migration problem (a bad statement, a locked table, or a transient database blip) rather than a connection issue.
