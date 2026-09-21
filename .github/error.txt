@@ -9,4 +9,11 @@ AI features are temporarily paused: this month's AI spend cap of $70.00 has been
 -why can use user have different roles? like one user can be hr admin as well as corporate employee? lets add that.
 -Hr admin dashboard shoes nothing - fix the error or add some dummy data option for demos - Failed to load overview data, We couldn't load your HR overview. This is usually temporary.
 
+-tools-> tagged menu bar popup box is still aligned right and some of the portion is outside of the screen so change box alignment to center.
+scan page - get my skill risk score button gradient color was much better then current just blue. what do u think? can we revert button color? make it same for all buttons.
+
+-guided onboarding is pretty basic n need lots of logic/ improvements to make it really prod ready, take a look n see what u can do (one of the example i like is aiapply.com onboarding.)
+-all taglines on all pages needs to be managable from admin center and needs to have array of options to pick from n not single static line all the time.
+
+
 
