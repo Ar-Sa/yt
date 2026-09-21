@@ -1,15 +1,10 @@
-Run FQDN=$(az containerapp show \
-  
-skillos.kindcoast-ec5fb3ce.eastus2.azurecontainerapps.io
-46s
-Run FQDN="skillos.kindcoast-ec5fb3ce.eastus2.azurecontainerapps.io"
-  
-Health check attempt 1/6 not operational (curl exit 0, HTTP 200):
-  response body (first 2000 chars): {"overall":"degraded","summary":{"total":6,"passed":4,"failed":1,"skipped":1},"checks":[{"name":"Database","status":"pass","latency_ms":44},{"name":"Schema migrations","status":"fail","latency_ms":39,"error":"72/91 applied — a migration is stuck; check container boot logs"},{"name":"Stripe API","status":"skip","latency_ms":0,"error":"not configured in Admin Central"},{"name":"AI Provider","status":"pass","latency_ms":1762},{"name":"Layoff Radar API","status":"pass","latency_ms":1768},{"name":"Payments API","status":"pass","latency_ms":1030}],"timestamp":"2026-09-21T14:16:00.426Z"}
-  retrying in 15s...
-Health check attempt 2/6 not operational (curl exit 0, HTTP 200):
-  response body (first 2000 chars): {"overall":"degraded","summary":{"total":6,"passed":4,"failed":1,"skipped":1},"checks":[{"name":"Database","status":"pass","latency_ms":39},{"name":"Schema migrations","status":"fail","latency_ms":43,"error":"72/118 applied — a migration is stuck; check container boot logs"},{"name":"Stripe API","status":"skip","latency_ms":0,"error":"not configured in Admin Central"},{"name":"AI Provider","status":"pass","latency_ms":2116},{"name":"Layoff Radar API","status":"pass","latency_ms":747},{"name":"Payments API","status":"pass","latency_ms":654}],"timestamp":"2026-09-21T14:16:17.648Z"}
-  retrying in 15s...
-Health check attempt 3/6 not operational (curl exit 0, HTTP 200):
-  response body (first 2000 chars): {"overall":"degraded","summary":{"total":6,"passed":4,"failed":1,"skipped":1},"checks":[{"name":"Database","status":"pass","latency_ms":41},{"name":"Schema migrations","status":"fail","latency_ms":38,"error":"72/118 applied — a migration is stuck; check container boot logs"},{"name":"Stripe API","status":"skip","latency_ms":0,"error":"not configured in Admin Central"},{"name":"AI Provider","status":"pass","latency_ms":4},{"name":"Layoff Radar API","status":"pass","latency_ms":3},{"name":"Payments API","status":"pass","latency_ms":145}],"timestamp":"2026-09-21T14:16:32.894Z"}
-  retrying in 15s...
+Run npx tsc --noEmit
+  npx tsc --noEmit
+  shell: /usr/bin/bash -e {0}
+  env:
+    RESOURCE_GROUP: skillos-eus2-rg
+    CONTAINER_APP_NAME: skillos
+    IMAGE_NAME: skillos
+Error: app/api/status/route.ts(185,9): error TS2322: Type 'Row[]' is not assignable to type '{ id: string; name: string; error: string; }[]'.
+  Type 'Row' is missing the following properties from type '{ id: string; name: string; error: string; }': id, name, error
+Error: Process completed with exit code 2.
