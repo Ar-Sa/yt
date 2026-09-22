@@ -1,6 +1,6 @@
 general changes for whole site ->
 -guided onboarding is pretty basic n need lots of smart logic/better user experience/improvements to make it really prod ready, take a look n see what u can do (one of the example i like is aiapply.com onboarding.)
--all taglines on all pages needs to be managable from admin center and needs to have array of options to pick from n not single static line all the time.
+-all hooklines/taglines on all pages needs to be managable from admin center and needs to have array of options to pick from n not single static line all the time.
 - individual skill - each skill mentioned anywhere on whole site/app needs to be link to skill slug page.
 - review all meta tag, descriptions, taglines and make sure those are user and seo friendly and help achiving 50K active and 1K paid users in 3 months and not to scare users.
 -do we have logo? if not generate one and use it in website, logo, fevicon  and banner all of them.
