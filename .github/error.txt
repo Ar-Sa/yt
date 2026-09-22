@@ -1,19 +1,39 @@
--blog autopost not working anymore- Failed: blog-autopost already ran today (or the run-lock could not be checked). Pass { "force": true } to re-run it anyway.
-
--tried running new scan and see below error why we wnat to show end user that we have $70.00 cap so remove the number from error msg. and how you are calculating it as when i checked azure ai billing we have not even used $8 so far so fix your calculation- 
-AI features are temporarily paused: this month's AI spend cap of $70.00 has been reached. An admin can raise the cap in Admin Central → AI Model Config, or it resets automatically at the start of next month.
-
--admin cente- payments -> Display Pricing (Homepage + Pricing Page) -> pricing changes under this doesnt reflect on live pages (home/scan/pricing pages) and should be sync with admin center as well. fix it
-
--why /pricing not linked in navbar-> resources? do it.
--why can use user have different roles? like one user can be hr admin as well as corporate employee? lets add that.
--Hr admin dashboard shoes nothing - fix the error or add some dummy data option for demos - Failed to load overview data, We couldn't load your HR overview. This is usually temporary.
-
--tools-> tagged menu bar popup box is still aligned right and some of the portion is outside of the screen so change box alignment to center.
-scan page - get my skill risk score button gradient color was much better then current just blue. what do u think? can we revert button color? make it same for all buttons.
-
+general changes for whole site ->
 -guided onboarding is pretty basic n need lots of logic/ improvements to make it really prod ready, take a look n see what u can do (one of the example i like is aiapply.com onboarding.)
 -all taglines on all pages needs to be managable from admin center and needs to have array of options to pick from n not single static line all the time.
+- individual skill - each skill mentioned anywhere on whole site/app needs to be link to skill slug page.
+- review all meta tag, descriptions, taglines and make sure those are user and seo friendly and help achiving 50K active and 1K paid users in 3 months and not to scare users.
+-do we have logo? if not generate one and use it in website, logo, fevicon  and banner all of them.
+- all admin center config needs to be both way sync (if there is some value in page then show that in admin center OR if i update something in admin center then update it to pages) with pages in app whereever applicable and not just dummy boxes.
+- do admin center comprehensive review and fix all issues.
+- scan result page -> check Globally Rising in Your Domain section in scan result page and see the colorfull gradiant line representing risk score, why cant we use same style/color for all lines representing risk score on all pages and also make the risk score numbers colorfull and gradiant.
+
+feature's specific fix ->
+
+-blog autopost not working anymore- Failed: blog-autopost already ran today (or the run-lock could not be checked). Pass { "force": true } to re-run it anyway.
+-tried running new scan and see below error why we wnat to show end user that we have $70.00 cap so remove the number from error msg. and how you are calculating it as when i checked azure ai billing we have not even used $8 so far so fix your calculation- 
+AI features are temporarily paused: this month's AI spend cap of $70.00 has been reached. An admin can raise the cap in Admin Central → AI Model Config, or it resets automatically at the start of next month.
+-admin cente- payments -> Display Pricing (Homepage + Pricing Page) -> pricing changes under this doesnt reflect on live pages (home/scan/pricing pages) and should be sync with admin center as well. fix it
+-why /pricing not linked anywhere or not even in navbar-> resources? do it.
+-why can use user have different roles? like one user can be hr admin as well as corporate employee? lets add that.
+-Hr admin dashboard shoes nothing - fix the error or add some dummy data option for demos - Failed to load overview data, We couldn't load your HR overview. This is usually temporary.
+-tools-> tagged menu bar popup box is still aligned right and some of the portion is outside of the screen so change box alignment to center.
+scan page - get my skill risk score button gradient color was much better then current just blue. what do u think? can we revert button color? make it same for all buttons.
+- top right profile icon -> my skill -  this my skills suppos to be personilised individual skills (same format as /skill) and not pointing to generic /skill, fix it 
+- skill gap analysis - it doesnt store last (last 1) Gap Analysis and show when next time person visit the gap analysis page, also doesnt show last uploaded jd.
+- skill gap analysis -  Rising Skills and Declining Skills, Recommended Next Skills, Skills Trajectory Timeline all needs to be updated and made personalized once the skill gap analysis is done (before skill gap analysis we can show generic stuff).
+- AI fluency score - is pointing to home page same as AI risk scan and i told you to remove this 
+-/burnout-check - its good but i dont like the wizard stype, make it premium style and layout.
+-/trending-skills - no data,how we are going to get the data?
+/career-forecast - dont see any attractive and informative information, lets make it best.
+/layoff-radar - there r company with 0 affected people, if there are 0 affected ppl then how come there was layoff? if it really 0 affected ppl then remove/filterout those entries or if the cron is not able to get affected ppl but there was layoff in that company then mark it unknow affected ppl but dont mark it 0.
+-Layoff Predictor - last updated Data - as of: September 11, 2026 but we have cron running daily night i believe, if not then make it daily night running on container.
+-/opportunity-radar - isnt it suppose to show opportunities and  
 
 
+Admin center ->
+-Seo & metadata - Organization Structured Data (JSON-LD) - why its empty? i told you that i need actual json-ld content implementsed and synced with pages and not just dummy text box.
+-Admin center -> Application Logs - should have all logs and not only login logs, including but not limited to cron logs, db schema migration logs, all app logs, all other logs.
+- Seo & metadata - when we already have "Company LinkedIn Page" then why we need seperate textbox for Company "LinkedIn Jobs Page" as its always gonna be <Company LinkedIn Page>/jobs so please use this kiid of smart logic whereever applicable.
+- Seo & metadata - Company X / Twitter Profile and Twitter / X Handle both are same then why do we have 2 text boxes for that?
 
