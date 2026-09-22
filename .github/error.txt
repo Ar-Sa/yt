@@ -1,5 +1,5 @@
 general changes for whole site ->
--guided onboarding is pretty basic n need lots of logic/ improvements to make it really prod ready, take a look n see what u can do (one of the example i like is aiapply.com onboarding.)
+-guided onboarding is pretty basic n need lots of smart logic/better user experience/improvements to make it really prod ready, take a look n see what u can do (one of the example i like is aiapply.com onboarding.)
 -all taglines on all pages needs to be managable from admin center and needs to have array of options to pick from n not single static line all the time.
 - individual skill - each skill mentioned anywhere on whole site/app needs to be link to skill slug page.
 - review all meta tag, descriptions, taglines and make sure those are user and seo friendly and help achiving 50K active and 1K paid users in 3 months and not to scare users.
@@ -34,6 +34,6 @@ scan page - get my skill risk score button gradient color was much better then c
 Admin center ->
 -Seo & metadata - Organization Structured Data (JSON-LD) - why its empty? i told you that i need actual json-ld content implementsed and synced with pages and not just dummy text box.
 -Admin center -> Application Logs - should have all logs and not only login logs, including but not limited to cron logs, db schema migration logs, all app logs, all other logs.
-- Seo & metadata - when we already have "Company LinkedIn Page" then why we need seperate textbox for Company "LinkedIn Jobs Page" as its always gonna be <Company LinkedIn Page>/jobs so please use this kiid of smart logic whereever applicable.
+- Seo & metadata - when we already have "Company LinkedIn Page" then why we need seperate textbox for Company "LinkedIn Jobs Page" as its always gonna be <Company LinkedIn Page>/jobs so please use this kiid of smart logic and better user experience whereever applicable.
 - Seo & metadata - Company X / Twitter Profile and Twitter / X Handle both are same then why do we have 2 text boxes for that?
-
+-blog - why there is no autogenerate blog post (which will trigger cron) option on blog page ? smart logic and better user experience.
