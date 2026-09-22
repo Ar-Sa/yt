@@ -43,8 +43,11 @@ Admin center ->
 -scan result- add user name from cv in scan result title and result page and update legal notice accordingly.
 -
 
-
+ orrect colorful gradient score bars ->
 <div class="h-1.5 rounded-full bg-[color:var(--chart-line-5)]/15 overflow-hidden"><div class="h-1.5 rounded-full" style="width: 98%; background: linear-gradient(to right, var(--primary), var(--secondary));"></div>
 </div>
+
+single color bar ->
+<div class="w-full h-2 rounded-full bg-[color:var(--border)] overflow-hidden"><div class="h-2 rounded-full transition-all" style="width: 20%; background: linear-gradient(to right, color-mix(in srgb, var(--risk-low) 20%, transparent), var(--risk-low));"></div></div>
 
 
