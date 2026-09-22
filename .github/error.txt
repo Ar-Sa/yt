@@ -44,17 +44,7 @@ Admin center ->
 -
 
 
-Linting and checking validity of types ...
-Failed to compile.
-./app/jobs/page.tsx:210:18
-Type error: Cannot find name 'tagline'.
-  208 |           icon={<Briefcase className="w-6 h-6" />}
-  209 |           eyebrow="JOB MATCHING"
-> 210 |           title={tagline.title}
-      |                  ^
-  211 |           subtitle={tagline.subtitle}
-  212 |           accent="primary"
-  213 |           align="left"
-Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
+<div class="h-1.5 rounded-full bg-[color:var(--chart-line-5)]/15 overflow-hidden"><div class="h-1.5 rounded-full" style="width: 98%; background: linear-gradient(to right, var(--primary), var(--secondary));"></div>
+</div>
+
 
