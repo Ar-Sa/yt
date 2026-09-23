@@ -42,11 +42,11 @@ Admin center ->
 
 
 - skill gap analysis - it doesnt store last (last 1) full Gap Analysis report and show when next time person visit the gap analysis page, also doesnt show last uploaded jd.
+- guided onboarding - 1st step should be beautiful wizard version of our scan box with tagline and bottom stuff from scan page, second step- tell if user is in witch zone, 3rd step - show actual scan result - beiutiful wizard version of our scan result page, 4th step - ask for signup to store scan result and expolorer all other features -> once login 5th step - show all free , shield, armor features (beiutiful wizard version of pricing page). keep in mind to keep color, theam, design, layout consistency. 
 
- orrect colorful gradient score bars ->
+correct colorful gradient score bars ->
 <div class="h-1.5 rounded-full bg-[color:var(--chart-line-5)]/15 overflow-hidden"><div class="h-1.5 rounded-full" style="width: 98%; background: linear-gradient(to right, var(--primary), var(--secondary));"></div>
 </div>
-
 single color bar ->
 <div class="w-full h-2 rounded-full bg-[color:var(--border)] overflow-hidden"><div class="h-2 rounded-full transition-all" style="width: 20%; background: linear-gradient(to right, color-mix(in srgb, var(--risk-low) 20%, transparent), var(--risk-low));"></div></div>
 
