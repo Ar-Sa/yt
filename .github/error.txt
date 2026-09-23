@@ -50,16 +50,19 @@ correct colorful gradient score bars ->
 single color bar ->
 <div class="w-full h-2 rounded-full bg-[color:var(--border)] overflow-hidden"><div class="h-2 rounded-full transition-all" style="width: 20%; background: linear-gradient(to right, color-mix(in srgb, var(--risk-low) 20%, transparent), var(--risk-low));"></div></div>
 
-   Linting and checking validity of types ...
-Failed to compile.
-./components/admin/sections/SkillIdentitiesSection.tsx:25:45
-Type error: Cannot find name 'FALLBACK_IDENTITIES'.
-  23 | export default function SkillIdentitiesSection() {
-  24 |   const [refreshing, setRefreshing] = useState(false)
-> 25 |   const [items] = useState<SkillIdentity[]>(FALLBACK_IDENTITIES)
-     |                                             ^
-  26 |
-  27 |   const stats = useMemo(() => ({
-  28 |     verified: items.filter(item => item.proof_level === 'verified').length,
-Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
+  Run npm run lint
+
+> skillbridge-v2@0.1.0 lint
+> next lint
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+
+./components/UpgradeNudge.tsx
+159:15  Error: Parsing error: ')' expected.
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+Error: Process completed with exit code 1.
