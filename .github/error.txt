@@ -50,19 +50,6 @@ correct colorful gradient score bars ->
 single color bar ->
 <div class="w-full h-2 rounded-full bg-[color:var(--border)] overflow-hidden"><div class="h-2 rounded-full transition-all" style="width: 20%; background: linear-gradient(to right, color-mix(in srgb, var(--risk-low) 20%, transparent), var(--risk-low));"></div></div>
 
-  Run npm run lint
-
-> skillbridge-v2@0.1.0 lint
-> next lint
-
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
-
-./components/UpgradeNudge.tsx
-159:15  Error: Parsing error: ')' expected.
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-Error: Process completed with exit code 1.
+Run npx tsc --noEmit
+Error: pages/api/admin/recalculate-ai-spend.ts(94,69): error TS2554: Expected 2 arguments, but got 5.
+Error: Process completed with exit code 2.
