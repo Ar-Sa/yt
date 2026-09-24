@@ -20,7 +20,7 @@ AI features are temporarily paused: this month's AI spend cap of $70.00 has been
 -tools-> tagged menu bar popup box is still aligned right and some of the portion is outside of the screen so change box alignment to center.
 scan page - get my skill risk score button gradient color was much better then current just blue. what do u think? can we revert button color? make it same for all buttons.
 - top right profile icon -> my skill -  this my skills suppos to be personilised individual skills (same format as /skill) and not pointing to generic /skill, fix it 
-- skill gap analysis - it doesnt store last (last 1) Gap Analysis and show when next time person visit the gap analysis page, also doesnt show last uploaded jd.
+- skill gap analysis - it doesnt store last (last 1) Gap Analysis full result and show when next time person visit the gap analysis page, also doesnt show last uploaded jd (exactly same as right side resume box shows - which is 100% perfect and same for jd pls).
 - skill gap analysis -  Rising Skills and Declining Skills, Recommended Next Skills, Skills Trajectory Timeline all needs to be updated and made personalized once the skill gap analysis is done (before skill gap analysis we can show generic stuff).
 - AI fluency score - is pointing to home page same as AI risk scan and i told you to remove this 
 -/burnout-check - its good but i dont like the wizard stype, make it premium style and layout.
@@ -34,7 +34,7 @@ scan page - get my skill risk score button gradient color was much better then c
 Admin center ->
 -Seo & metadata - Organization Structured Data (JSON-LD) - why its empty? i told you that i need actual json-ld content implementsed and synced with pages and not just dummy text box.
 -Admin center -> Application Logs - should have all logs and not only login logs, including but not limited to cron logs, db schema migration logs, all app logs, all other logs.
-- Seo & metadata - when we already have "Company LinkedIn Page" then why we need seperate textbox for Company "LinkedIn Jobs Page" as its always gonna be <Company LinkedIn Page>/jobs so please use this kiid of smart logic and better user experience whereever applicable.
+- Seo & metadata - when we already have "Company LinkedIn Page" then why we need seperate textbox for Company "LinkedIn Jobs Page" as its always gonna be <Company LinkedIn Page>/jobs so no duplicate pls. remove all duplicate records/config from admin cen ter
 - Seo & metadata - Company X / Twitter Profile and Twitter / X Handle both are same then why do we have 2 text boxes for that?
 -blog - why there is no autogenerate blog post (which will trigger cron) option on blog page ? smart logic and better user experience.
 
