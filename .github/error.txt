@@ -55,22 +55,16 @@ Run npx tsc --noEmit
 Error: pages/api/admin/recalculate-ai-spend.ts(94,69): error TS2554: Expected 2 arguments, but got 5.
 Error: Process completed with exit code 2.
 
-un npm run lint
-
-> skillbridge-v2@0.1.0 lint
-> next lint
-
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
-
-./app/password-reset/page.tsx
-60:19  Error: Parsing error: ')' expected.
-
-./app/signup/page.tsx
-159:15  Error: Parsing error: ')' expected.
-
-info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
-Error: Process completed with exit code 1.
+ Linting and checking validity of types ...
+Failed to compile.
+./lib/useUrlFilterState.ts:56:23
+Type error: 'searchParams' is possibly 'null'.
+  54 |     const out = { ...stableDefaults }
+  55 |     for (const key of Object.keys(stableDefaults) as (keyof T & string)[]) {
+> 56 |       const fromUrl = searchParams.get(key)
+     |                       ^
+  57 |       if (fromUrl !== null) out[key] = fromUrl as T[keyof T]
+  58 |     }
+  59 |     return out
+Next.js build worker exited with code: 1 and signal: null
+Error: Command "npm run build" exited with 1
