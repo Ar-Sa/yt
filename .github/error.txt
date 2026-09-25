@@ -50,19 +50,988 @@ correct colorful gradient score bars ->
 </div>
 single color bar ->
 <div class="w-full h-2 rounded-full bg-[color:var(--border)] overflow-hidden"><div class="h-2 rounded-full transition-all" style="width: 20%; background: linear-gradient(to right, color-mix(in srgb, var(--risk-low) 20%, transparent), var(--risk-low));"></div></div>
-
 Run npx tsc --noEmit
-Error: lib/useUrlFilterState.ts(63,29): error TS2322: Type 'T[keyof T]' is not assignable to type 'T[keyof T & string]'.
-  Type 'keyof T' is not assignable to type 'keyof T & string'.
-    Type 'string | number | symbol' is not assignable to type 'keyof T & string'.
-      Type 'number' is not assignable to type 'keyof T & string'.
-        Type 'number' is not assignable to type 'keyof T'.
-          Type 'number' is not assignable to type 'string'.
-            Type 'keyof T' is not assignable to type 'string'.
-              Type 'string | number | symbol' is not assignable to type 'string'.
-                Type 'number' is not assignable to type 'string'.
-Error: lib/useUrlFilterState.ts(79,22): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
-  Type 'null' is not assignable to type 'string'.
-Error: lib/useUrlFilterState.ts(93,20): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
-  Type 'null' is not assignable to type 'string'.
+Error: app/admin/login/page.tsx(29,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/admin/page.tsx(2,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/admin/page.tsx(41,45): error TS2345: Argument of type 'SbSessionIdentity | null' is not assignable to parameter of type 'SbSessionIdentity'.
+  Type 'null' is not assignable to type 'SbSessionIdentity'.
+Error: app/admin/setup/page.tsx(175,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/admin/setup/page.tsx(267,20): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: app/admin/setup/page.tsx(278,21): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: app/blog/[slug]/page.tsx(3,10): error TS2305: Module '"next/navigation"' has no exported member 'notFound'.
+Error: app/blog/[slug]/page.tsx(202,27): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(202,48): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(203,38): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(211,15): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(212,18): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(213,20): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(214,19): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(215,40): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(218,9): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(218,37): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(219,9): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(219,41): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(222,44): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(231,72): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(236,18): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(237,21): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(243,14): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(248,71): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(262,39): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(269,82): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(277,30): error TS18047: 'post' is possibly 'null'.
+Error: app/blog/[slug]/page.tsx(284,26): error TS18047: 'post' is possibly 'null'.
+Error: app/card/[token]/page.tsx(5,10): error TS2305: Module '"next/navigation"' has no exported member 'notFound'.
+Error: app/card/[token]/page.tsx(65,7): error TS18047: 'data' is possibly 'null'.
+Error: app/card/[token]/page.tsx(65,37): error TS18047: 'data' is possibly 'null'.
+Error: app/card/[token]/page.tsx(69,7): error TS18047: 'data' is possibly 'null'.
+Error: app/card/[token]/page.tsx(71,37): error TS18047: 'data' is possibly 'null'.
+Error: app/card/[token]/page.tsx(71,66): error TS18047: 'data' is possibly 'null'.
+Error: app/card/[token]/page.tsx(197,15): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/card/[token]/page.tsx(245,35): error TS2345: Argument of type 'Row | null' is not assignable to parameter of type 'RawScanRow'.
+  Type 'null' is not assignable to type 'RawScanRow'.
+Error: app/career-forecast/page.tsx(51,55): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/career-forecast/page.tsx(93,73): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/changelog/layout.tsx(1,15): error TS2305: Module '"react"' has no exported member 'ReactNode'.
+Error: app/compensation/page.tsx(56,68): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/compensation/page.tsx(425,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/compensation/page.tsx(434,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/compensation/page.tsx(443,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/compensation/page.tsx(452,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/compensation/page.tsx(465,22): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/compensation/page.tsx(487,22): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/compensation/page.tsx(807,26): error TS7006: Parameter 'text' implicitly has an 'any' type.
+Error: app/compensation/page.tsx(809,25): error TS7006: Parameter 'message' implicitly has an 'any' type.
+Error: app/compensation/page.tsx(820,26): error TS7006: Parameter 'text' implicitly has an 'any' type.
+Error: app/compensation/page.tsx(822,25): error TS7006: Parameter 'message' implicitly has an 'any' type.
+Error: app/contact/page.tsx(30,15): error TS2694: Namespace '"react"' has no exported member 'ElementType'.
+Error: app/contact/page.tsx(144,34): error TS2694: Namespace '"react"' has no exported member 'ChangeEvent'.
+Error: app/contact/page.tsx(161,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/contact/page.tsx(280,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/cookie-policy/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/cookie-preferences/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/copyright/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/corp/employed/page.tsx(141,26): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/corp/employed/page.tsx(142,26): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/corp/employed/page.tsx(143,26): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/corp/layout.tsx(10,68): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/dashboard/page.tsx(152,53): error TS2694: Namespace '"react"' has no exported member 'CSSProperties'.
+Error: app/dashboard/page.tsx(612,51): error TS2694: Namespace '"react"' has no exported member 'ElementType'.
+Error: app/data-request/page.tsx(126,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/data-request/page.tsx(140,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/data-request/page.tsx(153,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/data-request/page.tsx(172,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/deadline-guard/page.tsx(57,68): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/design-preview/DesignPreviewClient.tsx(360,19): error TS7006: Parameter 'field' implicitly has an 'any' type.
+Error: app/design-preview/DesignPreviewClient.tsx(363,19): error TS7006: Parameter 'field' implicitly has an 'any' type.
+Error: app/design-preview/DesignPreviewClient.tsx(366,19): error TS7006: Parameter 'field' implicitly has an 'any' type.
+Error: app/design-preview/DesignPreviewClient.tsx(369,19): error TS7006: Parameter 'field' implicitly has an 'any' type.
+Error: app/design-preview/DesignPreviewClient.tsx(382,19): error TS7006: Parameter 'field' implicitly has an 'any' type.
+Error: app/design-preview/DesignPreviewClient.tsx(447,22): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/design-preview/DesignPreviewClient.tsx(448,22): error TS2322: Type '{ children: string; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/design-preview/DesignPreviewClient.tsx(452,22): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/design-preview/DesignPreviewClient.tsx(453,22): error TS2322: Type '{ children: string; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/design-preview/DesignPreviewClient.tsx(457,22): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/design-preview/DesignPreviewClient.tsx(458,22): error TS2322: Type '{ children: string; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/design-preview/DesignPreviewClient.tsx(462,22): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/design-preview/DesignPreviewClient.tsx(463,22): error TS2322: Type '{ children: string; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/design-preview/DesignPreviewClient.tsx(765,19): error TS7006: Parameter 'field' implicitly has an 'any' type.
+Error: app/design-preview/page.tsx(2,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/design-preview/page.tsx(39,45): error TS2345: Argument of type 'SbSessionIdentity | null' is not assignable to parameter of type 'SbSessionIdentity'.
+  Type 'null' is not assignable to type 'SbSessionIdentity'.
+Error: app/disclaimer/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/earn/page.tsx(206,45): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/earn/page.tsx(239,50): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/earn/page.tsx(273,55): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/earn/page.tsx(496,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/earn/page.tsx(506,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/earn/page.tsx(535,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/earn/page.tsx(560,32): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/earn/page.tsx(698,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/earn/page.tsx(708,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/earn/page.tsx(720,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/earn/page.tsx(732,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/earn/page.tsx(760,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/earn/page.tsx(771,32): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/emergency/page.tsx(239,31): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/forum/[id]/page.tsx(3,10): error TS2305: Module '"next/navigation"' has no exported member 'notFound'.
+Error: app/forum/[id]/page.tsx(233,11): error TS2339: Property 'post' does not exist on type '{ post: any; replies: any[]; } | null'.
+Error: app/forum/[id]/page.tsx(233,17): error TS2339: Property 'replies' does not exist on type '{ post: any; replies: any[]; } | null'.
+Error: app/forum/new/page.tsx(57,48): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLInputElement'.
+Error: app/forum/new/page.tsx(90,38): error TS2694: Namespace '"react"' has no exported member 'KeyboardEvent'.
+Error: app/forum/new/page.tsx(101,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/forum/new/page.tsx(202,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/forum/new/page.tsx(223,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/forum/new/page.tsx(239,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/forum/new/page.tsx(262,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/forum/page.tsx(459,71): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/hire-odds/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/hr/ai-impact/page.tsx(156,18): error TS2322: Type '{ children: number; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/ai-impact/page.tsx(157,18): error TS2322: Type '{ children: (string | number)[]; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/ai-impact/page.tsx(158,18): error TS2322: Type '{ children: number; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/ai-impact/page.tsx(159,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/api-settings/page.tsx(110,46): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/hr/api-settings/page.tsx(130,39): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/hr/api-settings/page.tsx(249,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/hr/api-settings/page.tsx(261,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/hr/api-settings/page.tsx(270,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/hr/api-settings/page.tsx(308,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/hr/board-deck/page.tsx(202,63): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: app/hr/board-deck/page.tsx(202,94): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: app/hr/certs/page.tsx(167,20): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/certs/page.tsx(168,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/layout.tsx(10,66): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/hr/mobility/page.tsx(96,34): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/hr/mobility/page.tsx(152,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/hr/mobility/page.tsx(278,20): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/mobility/page.tsx(279,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/mobility/page.tsx(288,20): error TS2322: Type '{ children: Element[]; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/onboarding/page.tsx(63,44): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLInputElement'.
+Error: app/hr/onboarding/page.tsx(133,38): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/hr/onboarding/page.tsx(158,36): error TS2694: Namespace '"react"' has no exported member 'DragEvent'.
+Error: app/hr/onboarding/page.tsx(170,38): error TS2694: Namespace '"react"' has no exported member 'ChangeEvent'.
+Error: app/hr/onboarding/page.tsx(333,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/hr/onboarding/page.tsx(343,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/hr/onboarding/page.tsx(353,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/hr/onboarding/page.tsx(361,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/hr/onboarding/page.tsx(451,20): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/onboarding/page.tsx(452,20): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/onboarding/page.tsx(453,20): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/onboarding/page.tsx(454,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/onboarding/page.tsx(459,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/reports/page.tsx(17,15): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/hr/reports/page.tsx(353,20): error TS2322: Type '{ children: string; nowrap: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/reports/page.tsx(354,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/reports/page.tsx(357,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/team-skills/page.tsx(121,32): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/hr/team-skills/page.tsx(220,20): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: app/hr/team-skills/page.tsx(223,21): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: app/hr/team-skills/page.tsx(274,20): error TS2322: Type '{ children: number; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/team-skills/page.tsx(275,20): error TS2322: Type '{ children: (string | number)[]; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/team-skills/page.tsx(276,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/team-skills/page.tsx(282,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/team-skills/page.tsx(287,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/top-talent/page.tsx(176,20): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/top-talent/page.tsx(177,20): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/top-talent/page.tsx(178,20): error TS2322: Type '{ children: number; align: "right"; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/top-talent/page.tsx(179,20): error TS2322: Type '{ children: (string | number)[]; align: "right"; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/hr/top-talent/page.tsx(180,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/interview/page.tsx(387,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/job-search-doctor/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/job-search/page.tsx(3,17): error TS2305: Module '"react"' has no exported member 'Suspense'.
+Error: app/job-search/page.tsx(66,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/job-search/page.tsx(68,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/job-search/page.tsx(761,69): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/job-tracker/page.tsx(76,42): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/job-tracker/page.tsx(184,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/job-tracker/page.tsx(197,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/job-tracker/page.tsx(210,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/job-tracker/page.tsx(276,38): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/jobs-board/layout.tsx(10,73): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/know-your-rights/page.tsx(194,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/know-your-rights/page.tsx(208,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/layoff-predictor/LayoffPredictorClient.tsx(435,19): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/layoff-predictor/LayoffPredictorClient.tsx(435,20): error TS2786: 'XAxis' cannot be used as a JSX component.
+  Its type 'typeof XAxis' is not a valid JSX element type.
+    Type 'typeof XAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'XAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/layoff-predictor/LayoffPredictorClient.tsx(436,19): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/layoff-predictor/LayoffPredictorClient.tsx(436,20): error TS2786: 'YAxis' cannot be used as a JSX component.
+  Its type 'typeof YAxis' is not a valid JSX element type.
+    Type 'typeof YAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'YAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/layoff-predictor/LayoffPredictorClient.tsx(437,36): error TS7006: Parameter 'v' implicitly has an 'any' type.
+Error: app/layoff-predictor/LayoffPredictorClient.tsx(439,19): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/layoff-predictor/LayoffPredictorClient.tsx(439,20): error TS2786: 'Tooltip' cannot be used as a JSX component.
+  Its type 'typeof Tooltip' is not a valid JSX element type.
+    Type 'typeof Tooltip' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Tooltip<ValueType, NameType>' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/layoff-predictor/LayoffPredictorClient.tsx(447,19): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/layoff-predictor/LayoffPredictorClient.tsx(447,20): error TS2786: 'Bar' cannot be used as a JSX component.
+  Its type 'typeof Bar' is not a valid JSX element type.
+    Type 'typeof Bar' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Bar' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, refs
+Error: app/layoff-predictor/[slug]/page.tsx(3,10): error TS2305: Module '"next/navigation"' has no exported member 'notFound'.
+Error: app/layoff-predictor/[slug]/page.tsx(176,30): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(181,14): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(182,43): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(182,65): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(182,89): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(182,210): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(189,13): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(194,98): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(194,132): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(194,156): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(195,92): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(200,84): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(228,20): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(229,18): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(230,21): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(230,49): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(240,16): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(247,46): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(247,80): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(247,104): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(267,49): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(279,32): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(280,36): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(282,36): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(295,93): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(304,18): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(304,67): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(306,17): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(308,20): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(308,57): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(317,18): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(318,30): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(331,14): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(349,73): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(349,93): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(360,14): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(368,89): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(374,10): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(377,94): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(379,70): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(384,10): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(390,16): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(398,39): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(411,22): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(415,14): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(470,91): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoff-predictor/[slug]/page.tsx(483,89): error TS18047: 'pred' is possibly 'null'.
+Error: app/layoffs/[slug]/page.tsx(3,10): error TS2305: Module '"next/navigation"' has no exported member 'notFound'.
+Error: app/layout.tsx(158,74): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/legal/page.tsx(242,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(243,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(247,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(248,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(252,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(253,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(274,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(275,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(276,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(280,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(281,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(282,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(286,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(287,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(288,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(309,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(310,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(311,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(315,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(316,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/legal/page.tsx(317,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/linkedin-audit/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/linkedin-makeover/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/linkedin/page.tsx(321,21): error TS7006: Parameter 'message' implicitly has an 'any' type.
+Error: app/linkedin/page.tsx(343,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/login/page.tsx(129,44): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/login/page.tsx(150,43): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/login/page.tsx(174,49): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/login/page.tsx(279,33): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/login/page.tsx(308,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/login/page.tsx(314,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/login/page.tsx(349,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/market-value/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/newsletter/page.tsx(114,19): error TS7006: Parameter 'field' implicitly has an 'any' type.
+Error: app/newsletter/page.tsx(120,31): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/offer-comparer/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/og/badge/[token]/route.ts(12,17): error TS2339: Property 'createElement' does not exist on type 'typeof import("react")'.
+Error: app/og/blog/[slug]/route.ts(11,17): error TS2339: Property 'createElement' does not exist on type 'typeof import("react")'.
+Error: app/og/blog/[slug]/route.ts(109,25): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/og/card/[token]/route.ts(10,17): error TS2339: Property 'createElement' does not exist on type 'typeof import("react")'.
+Error: app/og/scan/[token]/route.ts(11,17): error TS2339: Property 'createElement' does not exist on type 'typeof import("react")'.
+Error: app/org/integrations/page.tsx(107,41): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/org/integrations/page.tsx(325,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/integrations/page.tsx(392,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/integrations/page.tsx(427,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/page.tsx(193,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/org/page.tsx(236,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/page.tsx(323,18): error TS2322: Type '{ children: (string | false | Element)[]; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/page.tsx(330,18): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/page.tsx(336,33): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/page.tsx(346,18): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/page.tsx(348,20): error TS2559: Type '{ children: false | Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/page.tsx(377,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/org/page.tsx(417,23): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/page.tsx(424,23): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/page.tsx(449,38): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/org/page.tsx(487,23): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/security/page.tsx(105,36): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/org/security/page.tsx(159,36): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/org/security/page.tsx(257,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/security/page.tsx(265,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/security/page.tsx(273,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/security/page.tsx(362,23): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/security/page.tsx(368,23): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/org/team/page.tsx(324,20): error TS2322: Type '{ children: number; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/team/page.tsx(325,20): error TS2322: Type '{ children: (string | number)[]; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/team/page.tsx(326,20): error TS2559: Type '{ children: "rising" | "stable" | "declining"; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/team/page.tsx(327,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/team/page.tsx(406,20): error TS2322: Type '{ children: (string | number)[]; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/team/page.tsx(407,20): error TS2322: Type '{ children: (string | number)[]; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/org/team/page.tsx(408,20): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/outreach-writer/page.tsx(331,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/outreach-writer/page.tsx(342,34): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/outreach-writer/page.tsx(357,32): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/outreach-writer/page.tsx(463,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/outreach-writer/page.tsx(476,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/outreach-writer/page.tsx(495,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/outreach-writer/page.tsx(510,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/password-reset/page.tsx(14,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/password-reset/page.tsx(71,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/password-reset/update/page.tsx(2,17): error TS2305: Module '"react"' has no exported member 'Suspense'.
+Error: app/password-reset/update/page.tsx(41,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/password-reset/update/page.tsx(117,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/password-reset/update/page.tsx(149,29): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/pay-raise-coach/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/portfolio/page.tsx(541,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/portfolio/page.tsx(657,32): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/portfolio/page.tsx(667,32): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/portfolio/page.tsx(680,32): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/portfolio/page.tsx(692,32): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/pricing/page.tsx(197,24): error TS2322: Type '{ children: Element; key: PlanKey; align: "center"; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/privacy-control/page.tsx(353,31): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/privacy-terms/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/progress-tracker/page.tsx(102,55): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/progress-tracker/page.tsx(298,17): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(298,18): error TS2786: 'XAxis' cannot be used as a JSX component.
+  Its type 'typeof XAxis' is not a valid JSX element type.
+    Type 'typeof XAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'XAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/progress-tracker/page.tsx(299,17): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(299,18): error TS2786: 'Tooltip' cannot be used as a JSX component.
+  Its type 'typeof Tooltip' is not a valid JSX element type.
+    Type 'typeof Tooltip' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Tooltip<ValueType, NameType>' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/progress-tracker/page.tsx(303,17): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(303,18): error TS2786: 'Line' cannot be used as a JSX component.
+  Its type 'typeof Line' is not a valid JSX element type.
+    Type 'typeof Line' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Line' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, refs
+Error: app/progress-tracker/page.tsx(336,21): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(336,22): error TS2786: 'XAxis' cannot be used as a JSX component.
+  Its type 'typeof XAxis' is not a valid JSX element type.
+    Type 'typeof XAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'XAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/progress-tracker/page.tsx(337,21): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(337,22): error TS2786: 'Tooltip' cannot be used as a JSX component.
+  Its type 'typeof Tooltip' is not a valid JSX element type.
+    Type 'typeof Tooltip' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Tooltip<ValueType, NameType>' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/progress-tracker/page.tsx(341,21): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(341,22): error TS2786: 'Line' cannot be used as a JSX component.
+  Its type 'typeof Line' is not a valid JSX element type.
+    Type 'typeof Line' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Line' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, refs
+Error: app/progress-tracker/page.tsx(371,17): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(371,18): error TS2786: 'XAxis' cannot be used as a JSX component.
+  Its type 'typeof XAxis' is not a valid JSX element type.
+    Type 'typeof XAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'XAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/progress-tracker/page.tsx(372,17): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(372,18): error TS2786: 'Tooltip' cannot be used as a JSX component.
+  Its type 'typeof Tooltip' is not a valid JSX element type.
+    Type 'typeof Tooltip' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Tooltip<ValueType, NameType>' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/progress-tracker/page.tsx(375,17): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(375,18): error TS2786: 'Legend' cannot be used as a JSX component.
+  Its type 'typeof Legend' is not a valid JSX element type.
+    Type 'typeof Legend' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Legend' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: app/progress-tracker/page.tsx(376,17): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(376,18): error TS2786: 'Bar' cannot be used as a JSX component.
+  Its type 'typeof Bar' is not a valid JSX element type.
+    Type 'typeof Bar' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Bar' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, refs
+Error: app/progress-tracker/page.tsx(377,17): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: app/progress-tracker/page.tsx(377,18): error TS2786: 'Bar' cannot be used as a JSX component.
+  Its type 'typeof Bar' is not a valid JSX element type.
+    Type 'typeof Bar' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Bar' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, refs
+Error: app/progress-tracker/page.tsx(543,38): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/progress-tracker/page.tsx(638,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(681,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(694,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(855,37): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/progress-tracker/page.tsx(945,59): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(952,66): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(963,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(972,69): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(1005,86): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(1009,93): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(1017,35): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/progress-tracker/page.tsx(1024,90): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/referral-finder/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/referrals/page.tsx(100,48): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/refund-policy/page.tsx(1,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/resume/page.tsx(521,29): error TS7006: Parameter 'message' implicitly has an 'any' type.
+Error: app/resume/page.tsx(543,22): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/resume/page.tsx(786,29): error TS7006: Parameter 'message' implicitly has an 'any' type.
+Error: app/resume/page.tsx(808,22): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/risk-index/page.tsx(39,124): error TS2694: Namespace '"react"' has no exported member 'CSSProperties'.
+Error: app/saved-searches/page.tsx(62,37): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/saved-searches/page.tsx(138,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/saved-searches/page.tsx(145,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/saved-searches/page.tsx(151,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/saved-searches/page.tsx(157,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/saved-searches/page.tsx(162,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/saved-searches/page.tsx(172,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/saved-searches/page.tsx(182,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/saved/page.tsx(15,78): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/scan/[token]/page.tsx(4,10): error TS2305: Module '"next/navigation"' has no exported member 'notFound'.
+Error: app/scan/[token]/page.tsx(70,7): error TS18047: 'data' is possibly 'null'.
+Error: app/scan/[token]/page.tsx(70,37): error TS18047: 'data' is possibly 'null'.
+Error: app/scan/[token]/page.tsx(158,119): error TS2694: Namespace '"react"' has no exported member 'CSSProperties'.
+Error: app/scan/[token]/page.tsx(261,15): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/scan/[token]/page.tsx(277,96): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/scan/[token]/page.tsx(847,38): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: app/scan/[token]/page.tsx(850,39): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: app/settings/page.tsx(99,51): error TS2694: Namespace '"react"' has no exported member 'FC'.
+Error: app/settings/page.tsx(257,39): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/settings/page.tsx(296,37): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/settings/page.tsx(386,53): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/settings/page.tsx(457,49): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/settings/page.tsx(483,44): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/settings/page.tsx(632,57): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/settings/page.tsx(662,35): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/settings/page.tsx(667,36): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/settings/page.tsx(691,58): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/settings/page.tsx(918,37): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/settings/page.tsx(949,31): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/settings/page.tsx(1164,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/severance/page.tsx(140,58): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/severance/page.tsx(242,47): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/severance/page.tsx(733,22): error TS7006: Parameter 'text' implicitly has an 'any' type.
+Error: app/severance/page.tsx(734,21): error TS7006: Parameter 'message' implicitly has an 'any' type.
+Error: app/signup/page.tsx(3,38): error TS2305: Module '"react"' has no exported member 'Suspense'.
+Error: app/signup/page.tsx(107,42): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/signup/page.tsx(178,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/signup/page.tsx(184,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/signup/page.tsx(190,27): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/skill-card-lite/page.tsx(3,10): error TS2305: Module '"next/navigation"' has no exported member 'notFound'.
+Error: app/skill-card-lite/page.tsx(56,7): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-card-lite/page.tsx(56,37): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-card-lite/page.tsx(65,7): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-card-lite/page.tsx(66,71): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-card-lite/page.tsx(68,7): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-card-lite/page.tsx(74,5): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-card-lite/page.tsx(137,34): error TS2694: Namespace '"react"' has no exported member 'CSSProperties'.
+Error: app/skill-picker/page.tsx(154,28): error TS2322: Type '{ children: number; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/skill-picker/page.tsx(155,28): error TS2322: Type '{ children: Element; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/skill-picker/page.tsx(156,28): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/skill-picker/page.tsx(161,28): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/skill-picker/page.tsx(162,28): error TS2322: Type '{ children: Element; numeric: true; nowrap: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/skill-widget/[token]/JobsWidgetClient.tsx(55,17): error TS2694: Namespace '"react"' has no exported member 'CSSProperties'.
+Error: app/skill-widget/[token]/JobsWidgetClient.tsx(56,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: app/skill-widget/[token]/page.tsx(4,10): error TS2305: Module '"next/navigation"' has no exported member 'notFound'.
+Error: app/skill-widget/[token]/page.tsx(67,7): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(67,37): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(71,7): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(73,37): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(73,66): error TS18047: 'data' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(122,42): error TS2345: Argument of type 'Row | null' is not assignable to parameter of type 'Record<string, any>'.
+  Type 'null' is not assignable to type 'Record<string, any>'.
+Error: app/skill-widget/[token]/page.tsx(162,32): error TS2322: Type 'Row | null' is not assignable to type 'Record<string, any>'.
+  Type 'null' is not assignable to type 'Record<string, any>'.
+Error: app/skill-widget/[token]/page.tsx(165,31): error TS18047: 'scan' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(167,48): error TS18047: 'scan' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(167,65): error TS18047: 'scan' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(169,33): error TS18047: 'scan' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(199,12): error TS18047: 'scan' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(203,8): error TS18047: 'scan' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(205,12): error TS18047: 'scan' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(241,12): error TS18047: 'scan' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(241,29): error TS18047: 'scan' is possibly 'null'.
+Error: app/skill-widget/[token]/page.tsx(241,70): error TS18047: 'scan' is possibly 'null'.
+Error: app/skills-heatmap/layout.tsx(2,15): error TS2305: Module '"react"' has no exported member 'ReactNode'.
+Error: app/skills-heatmap/page.tsx(282,45): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLInputElement'.
+Error: app/skills-heatmap/page.tsx(330,35): error TS2694: Namespace '"react"' has no exported member 'KeyboardEvent'.
+Error: app/skills-heatmap/page.tsx(732,23): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/skills-heatmap/page.tsx(740,23): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/skills-heatmap/page.tsx(748,23): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/skills/[slug]/page.tsx(3,10): error TS2305: Module '"next/navigation"' has no exported member 'redirect'.
+Error: app/skills/page.tsx(463,24): error TS2322: Type '{ children: number; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/skills/page.tsx(464,24): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/skills/page.tsx(465,24): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: app/skills/page.tsx(482,24): error TS2322: Type '{ children: string; nowrap: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/skills/page.tsx(485,24): error TS2322: Type '{ children: Element; numeric: true; nowrap: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: app/stealth-job-monitor/page.tsx(54,39): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: app/stealth-job-monitor/page.tsx(113,31): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/stealth-job-monitor/page.tsx(120,31): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/stealth-job-monitor/page.tsx(126,31): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/visa-guide/page.tsx(173,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/visa-guide/page.tsx(187,32): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/visa-guide/page.tsx(200,32): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/visa-guide/page.tsx(213,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/visa-guide/page.tsx(225,28): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/voice-coach/page.tsx(252,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/voice-coach/page.tsx(263,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/voice-coach/page.tsx(274,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/voice-coach/page.tsx(288,26): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: app/whats-new/page.tsx(14,78): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/AdSenseScript.tsx(19,7): error TS2322: Type '{ id: string; strategy: "lazyOnload"; src: string; crossOrigin: string; }' is not assignable to type 'IntrinsicAttributes & ScriptProps'.
+  Property 'src' does not exist on type 'IntrinsicAttributes & ScriptProps'.
+Error: components/ClarityScript.tsx(18,7): error TS2322: Type '{ id: string; strategy: "afterInteractive"; dangerouslySetInnerHTML: { __html: string; }; }' is not assignable to type 'IntrinsicAttributes & ScriptProps'.
+  Property 'dangerouslySetInnerHTML' does not exist on type 'IntrinsicAttributes & ScriptProps'.
+Error: components/CorporateGate.tsx(10,71): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/EnterpriseContactForm.tsx(32,34): error TS2694: Namespace '"react"' has no exported member 'ChangeEvent'.
+Error: components/EnterpriseContactForm.tsx(37,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: components/FeatureGate.tsx(10,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/FeatureGate.tsx(11,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/FileOrPasteInput.tsx(19,17): error TS2305: Module '"react"' has no exported member 'useImperativeHandle'.
+Error: components/FileOrPasteInput.tsx(19,56): error TS2305: Module '"react"' has no exported member 'forwardRef'.
+Error: components/FileOrPasteInput.tsx(64,7): error TS7031: Binding element 'value' implicitly has an 'any' type.
+Error: components/FileOrPasteInput.tsx(65,7): error TS7031: Binding element 'onChange' implicitly has an 'any' type.
+Error: components/FileOrPasteInput.tsx(66,7): error TS7031: Binding element 'onLoadingChange' implicitly has an 'any' type.
+Error: components/FileOrPasteInput.tsx(67,7): error TS7031: Binding element 'onError' implicitly has an 'any' type.
+Error: components/FileOrPasteInput.tsx(68,7): error TS7031: Binding element 'onFileMeta' implicitly has an 'any' type.
+Error: components/FileOrPasteInput.tsx(74,5): error TS7006: Parameter 'ref' implicitly has an 'any' type.
+Error: components/FileOrPasteInput.tsx(80,51): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLInputElement'.
+Error: components/FileOrPasteInput.tsx(132,46): error TS2694: Namespace '"react"' has no exported member 'ChangeEvent'.
+Error: components/Footer.tsx(69,76): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/Footer.tsx(111,43): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: components/GtagConsent.tsx(15,9): error TS2322: Type '{ strategy: "afterInteractive"; src: string; }' is not assignable to type 'IntrinsicAttributes & ScriptProps'.
+  Property 'src' does not exist on type 'IntrinsicAttributes & ScriptProps'.
+Error: components/GtagConsent.tsx(20,9): error TS2322: Type '{ id: string; strategy: "afterInteractive"; dangerouslySetInnerHTML: { __html: string; }; }' is not assignable to type 'IntrinsicAttributes & ScriptProps'.
+  Property 'dangerouslySetInnerHTML' does not exist on type 'IntrinsicAttributes & ScriptProps'.
+Error: components/HomePage.tsx(26,15): error TS2694: Namespace '"react"' has no exported member 'ElementType'.
+Error: components/HomePage.tsx(190,38): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/HomePage.tsx(267,57): error TS2345: Argument of type 'null' is not assignable to parameter of type 'FileOrPasteInputHandle'.
+Error: components/HomePage.tsx(312,32): error TS2694: Namespace '"react"' has no exported member 'DragEvent'.
+Error: components/HomePage.tsx(318,38): error TS2694: Namespace '"react"' has no exported member 'DragEvent'.
+Error: components/HomePage.tsx(327,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: components/HrAdminGate.tsx(19,69): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/MarketingPixels.tsx(27,11): error TS2322: Type '{ id: string; strategy: "lazyOnload"; dangerouslySetInnerHTML: { __html: string; }; }' is not assignable to type 'IntrinsicAttributes & ScriptProps'.
+  Property 'dangerouslySetInnerHTML' does not exist on type 'IntrinsicAttributes & ScriptProps'.
+Error: components/MarketingPixels.tsx(44,11): error TS2322: Type '{ id: string; strategy: "lazyOnload"; dangerouslySetInnerHTML: { __html: string; }; }' is not assignable to type 'IntrinsicAttributes & ScriptProps'.
+  Property 'dangerouslySetInnerHTML' does not exist on type 'IntrinsicAttributes & ScriptProps'.
+Error: components/Navbar.tsx(24,53): error TS2694: Namespace '"react"' has no exported member 'ComponentType'.
+Error: components/Navbar.tsx(24,103): error TS2694: Namespace '"react"' has no exported member 'CSSProperties'.
+Error: components/Navbar.tsx(135,38): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/Navbar.tsx(136,47): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLButtonElement'.
+Error: components/Navbar.tsx(213,38): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/Navbar.tsx(214,47): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLButtonElement'.
+Error: components/Navbar.tsx(222,43): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/Navbar.tsx(228,46): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/Navbar.tsx(392,46): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/Navbar.tsx(393,44): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/Navbar.tsx(394,54): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLButtonElement'.
+Error: components/Navbar.tsx(395,56): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLButtonElement'.
+Error: components/NotificationBell.tsx(23,47): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/OnboardingWizard.tsx(125,47): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/OnboardingWizard.tsx(147,57): error TS2345: Argument of type 'null' is not assignable to parameter of type 'FileOrPasteInputHandle'.
+Error: components/PageBanner.tsx(13,15): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/PageHero.tsx(20,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/PageHero.tsx(22,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/PageHero.tsx(23,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/PageHero.tsx(29,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/RevealSection.tsx(21,38): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/ReviewSection.tsx(42,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: components/ReviewSection.tsx(113,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/ReviewSection.tsx(139,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/SaveButton.tsx(60,34): error TS2694: Namespace '"react"' has no exported member 'MouseEvent'.
+Error: components/ScanHeroDial.tsx(3,21): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/SearchModal.tsx(20,45): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLInputElement'.
+Error: components/SearchModal.tsx(21,47): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/SearchModal.tsx(150,35): error TS2694: Namespace '"react"' has no exported member 'KeyboardEvent'.
+Error: components/SkillGapCheckWidget.tsx(68,19): error TS2694: Namespace '"react"' has no exported member 'Dispatch'.
+Error: components/SkillGapCheckWidget.tsx(68,34): error TS2694: Namespace '"react"' has no exported member 'SetStateAction'.
+Error: components/SkillGapCheckWidget.tsx(70,49): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLInputElement'.
+Error: components/SkillGapCheckWidget.tsx(81,27): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(82,28): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(83,38): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(85,14): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(91,20): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(93,20): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(100,20): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(102,20): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(111,16): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(113,16): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(117,32): error TS2694: Namespace '"react"' has no exported member 'DragEvent'.
+Error: components/SkillGapCheckWidget.tsx(119,67): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(120,47): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(123,38): error TS2694: Namespace '"react"' has no exported member 'DragEvent'.
+Error: components/SkillGapCheckWidget.tsx(125,14): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(127,26): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(130,44): error TS2694: Namespace '"react"' has no exported member 'ChangeEvent'.
+Error: components/SkillGapCheckWidget.tsx(168,39): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(201,43): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(248,41): error TS7006: Parameter 's' implicitly has an 'any' type.
+Error: components/SkillGapCheckWidget.tsx(442,40): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: components/SkillGapCheckWidget.tsx(556,29): error TS7006: Parameter 'message' implicitly has an 'any' type.
+Error: components/SkillLink.tsx(19,23): error TS2694: Namespace '"react"' has no exported member 'MouseEvent'.
+Error: components/ThemeToggle.tsx(16,38): error TS2694: Namespace '"react"' has no exported member 'ComponentType'.
+Error: components/Turnstile.tsx(18,47): error TS2345: Argument of type 'null' is not assignable to parameter of type 'HTMLDivElement'.
+Error: components/__tests__/PageHero.test.ts(17,11): error TS2339: Property 'createElement' does not exist on type 'typeof import("react")'.
+Error: components/__tests__/PageHero.test.ts(17,50): error TS2694: Namespace '"react"' has no exported member 'ComponentProps'.
+Error: components/__tests__/PageHero.test.ts(22,30): error TS2339: Property 'createElement' does not exist on type 'typeof import("react")'.
+Error: components/admin/AdminConsole.tsx(56,43): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/admin/AdminConsole.tsx(155,34): error TS2694: Namespace '"react"' has no exported member 'FormEvent'.
+Error: components/admin/sections/AiCostBreakdownSection.tsx(132,20): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/AiCostBreakdownSection.tsx(133,20): error TS2322: Type '{ children: number; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/AiCostBreakdownSection.tsx(134,20): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/BlogSection.tsx(286,18): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/BlogSection.tsx(287,18): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/BlogSection.tsx(290,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/BlogSection.tsx(291,18): error TS2322: Type '{ children: number; align: "right"; numeric: true; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/BlogSection.tsx(292,18): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/BlogSection.tsx(293,18): error TS2322: Type '{ children: Element; align: "right"; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/CareersSection.tsx(180,18): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/CareersSection.tsx(181,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/CareersSection.tsx(182,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/CareersSection.tsx(183,18): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/CareersSection.tsx(186,18): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/CareersSection.tsx(187,18): error TS2322: Type '{ children: Element; align: "right"; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ConfigFieldsSection.tsx(103,21): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(137,35): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(143,35): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(218,68): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/admin/sections/ConfigFieldsSection.tsx(782,21): error TS2694: Namespace '"react"' has no exported member 'Dispatch'.
+Error: components/admin/sections/ConfigFieldsSection.tsx(782,36): error TS2694: Namespace '"react"' has no exported member 'SetStateAction'.
+Error: components/admin/sections/ConfigFieldsSection.tsx(783,25): error TS2694: Namespace '"react"' has no exported member 'Dispatch'.
+Error: components/admin/sections/ConfigFieldsSection.tsx(783,40): error TS2694: Namespace '"react"' has no exported member 'SetStateAction'.
+Error: components/admin/sections/ConfigFieldsSection.tsx(814,25): error TS2694: Namespace '"react"' has no exported member 'Dispatch'.
+Error: components/admin/sections/ConfigFieldsSection.tsx(814,40): error TS2694: Namespace '"react"' has no exported member 'SetStateAction'.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1020,37): error TS2322: Type '{ children: Element[]; key: number; size: "sm"; className: string; }' is not assignable to type 'IntrinsicAttributes & CardProps'.
+  Property 'className' does not exist on type 'IntrinsicAttributes & CardProps'.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1181,41): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1187,62): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1195,62): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1208,41): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1211,57): error TS7006: Parameter 'ex' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1212,53): error TS7006: Parameter 'ex' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1219,57): error TS7006: Parameter 'v' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1435,37): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1435,57): error TS7006: Parameter 'f' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1445,37): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/ConfigFieldsSection.tsx(1445,57): error TS7006: Parameter 'f' implicitly has an 'any' type.
+Error: components/admin/sections/FreshnessEventsSection.tsx(137,20): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/FreshnessEventsSection.tsx(139,22): error TS2322: Type '{ children: number; key: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/IncidentReportSection.tsx(77,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/IncidentReportSection.tsx(86,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+Error: components/admin/sections/NewsletterSection.tsx(187,18): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/NewsletterSection.tsx(188,18): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/NewsletterSection.tsx(189,18): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/NewsletterSection.tsx(190,18): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/NewsletterSection.tsx(191,18): error TS2322: Type '{ children: Element; align: "right"; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/OverviewSection.tsx(434,45): error TS2322: Type '{ children: Element[]; accent: "zinc"; size: "lg"; className: string; }' is not assignable to type 'IntrinsicAttributes & CardProps'.
+  Property 'className' does not exist on type 'IntrinsicAttributes & CardProps'.
+Error: components/admin/sections/ReferralCommissionsSection.tsx(157,18): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralCommissionsSection.tsx(158,18): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralCommissionsSection.tsx(159,18): error TS2322: Type '{ children: (string | number)[]; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralCommissionsSection.tsx(160,18): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralCommissionsSection.tsx(161,18): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralCommissionsSection.tsx(162,18): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralCommissionsSection.tsx(163,18): error TS2322: Type '{ children: (false | Element)[]; align: "right"; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralsSection.tsx(154,18): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralsSection.tsx(155,18): error TS2322: Type '{ children: string; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralsSection.tsx(156,18): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralsSection.tsx(157,18): error TS2559: Type '{ children: Element; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralsSection.tsx(158,18): error TS2559: Type '{ children: string; }' has no properties in common with type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralsSection.tsx(159,18): error TS2322: Type '{ children: string; nowrap: true; className: string; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/ReferralsSection.tsx(160,18): error TS2322: Type '{ children: false | Element; align: "right"; }' is not assignable to type 'IntrinsicAttributes & TableCellProps'.
+  Property 'children' does not exist on type 'IntrinsicAttributes & TableCellProps'.
+Error: components/admin/sections/SiteTemplatesSection.tsx(176,37): error TS2322: Type '{ children: null; key: number; size: "sm"; className: string; }' is not assignable to type 'IntrinsicAttributes & CardProps'.
+  Property 'className' does not exist on type 'IntrinsicAttributes & CardProps'.
+Error: components/admin/sections/SiteTemplatesSection.tsx(186,87): error TS2322: Type '{ children: Element[]; key: string; accent: "violet" | "zinc"; size: "sm"; className: string; }' is not assignable to type 'IntrinsicAttributes & CardProps'.
+  Property 'className' does not exist on type 'IntrinsicAttributes & CardProps'.
+Error: components/admin/ui/Button.tsx(21,26): error TS2724: '"react"' has no exported member named 'ButtonHTMLAttributes'. Did you mean 'HTMLAttributes'?
+Error: components/admin/ui/Button.tsx(26,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/admin/ui/Button.tsx(61,16): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type 'Record<ButtonVariant, "primary" | "danger" | "outline" | "ghost">'.
+Error: components/admin/ui/Button.tsx(65,21): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type 'Partial<Record<ButtonVariant, string>>'.
+Error: components/admin/ui/Card.tsx(43,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/admin/ui/Card.tsx(46,54): error TS2339: Property 'className' does not exist on type 'CardProps'.
+Error: components/admin/ui/SectionHeader.tsx(17,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/admin/ui/SectionHeader.tsx(20,18): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/charts/DashboardTrendChart.tsx(3,10): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/charts/DashboardTrendChart.tsx(29,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/DashboardTrendChart.tsx(29,10): error TS2786: 'XAxis' cannot be used as a JSX component.
+  Its type 'typeof XAxis' is not a valid JSX element type.
+    Type 'typeof XAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'XAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/DashboardTrendChart.tsx(30,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/DashboardTrendChart.tsx(30,10): error TS2786: 'Tooltip' cannot be used as a JSX component.
+  Its type 'typeof Tooltip' is not a valid JSX element type.
+    Type 'typeof Tooltip' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Tooltip<ValueType, NameType>' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/DashboardTrendChart.tsx(34,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/DashboardTrendChart.tsx(34,10): error TS2786: 'Line' cannot be used as a JSX component.
+  Its type 'typeof Line' is not a valid JSX element type.
+    Type 'typeof Line' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Line' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, refs
+Error: components/charts/HrMoraleTrendChart.tsx(27,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/HrMoraleTrendChart.tsx(27,10): error TS2786: 'XAxis' cannot be used as a JSX component.
+  Its type 'typeof XAxis' is not a valid JSX element type.
+    Type 'typeof XAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'XAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/HrMoraleTrendChart.tsx(28,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/HrMoraleTrendChart.tsx(28,10): error TS2786: 'YAxis' cannot be used as a JSX component.
+  Its type 'typeof YAxis' is not a valid JSX element type.
+    Type 'typeof YAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'YAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/HrMoraleTrendChart.tsx(29,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/HrMoraleTrendChart.tsx(29,10): error TS2786: 'Tooltip' cannot be used as a JSX component.
+  Its type 'typeof Tooltip' is not a valid JSX element type.
+    Type 'typeof Tooltip' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Tooltip<ValueType, NameType>' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/HrMoraleTrendChart.tsx(34,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/HrMoraleTrendChart.tsx(34,10): error TS2786: 'Line' cannot be used as a JSX component.
+  Its type 'typeof Line' is not a valid JSX element type.
+    Type 'typeof Line' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Line' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, refs
+Error: components/charts/HrSkillDistributionChart.tsx(27,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/HrSkillDistributionChart.tsx(27,10): error TS2786: 'XAxis' cannot be used as a JSX component.
+  Its type 'typeof XAxis' is not a valid JSX element type.
+    Type 'typeof XAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'XAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/HrSkillDistributionChart.tsx(28,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/HrSkillDistributionChart.tsx(28,10): error TS2786: 'YAxis' cannot be used as a JSX component.
+  Its type 'typeof YAxis' is not a valid JSX element type.
+    Type 'typeof YAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'YAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/HrSkillDistributionChart.tsx(29,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/HrSkillDistributionChart.tsx(29,10): error TS2786: 'Tooltip' cannot be used as a JSX component.
+  Its type 'typeof Tooltip' is not a valid JSX element type.
+    Type 'typeof Tooltip' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Tooltip<ValueType, NameType>' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/HrSkillDistributionChart.tsx(34,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/HrSkillDistributionChart.tsx(34,10): error TS2786: 'Bar' cannot be used as a JSX component.
+  Its type 'typeof Bar' is not a valid JSX element type.
+    Type 'typeof Bar' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Bar' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, refs
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(59,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(59,10): error TS2786: 'XAxis' cannot be used as a JSX component.
+  Its type 'typeof XAxis' is not a valid JSX element type.
+    Type 'typeof XAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'XAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(60,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(60,10): error TS2786: 'YAxis' cannot be used as a JSX component.
+  Its type 'typeof YAxis' is not a valid JSX element type.
+    Type 'typeof YAxis' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'YAxis' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(62,26): error TS7006: Parameter 'v' implicitly has an 'any' type.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(67,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(67,10): error TS2786: 'Tooltip' cannot be used as a JSX component.
+  Its type 'typeof Tooltip' is not a valid JSX element type.
+    Type 'typeof Tooltip' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Tooltip<ValueType, NameType>' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(68,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(68,10): error TS2786: 'ReferenceLine' cannot be used as a JSX component.
+  Its type 'typeof ReferenceLine' is not a valid JSX element type.
+    Type 'typeof ReferenceLine' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'ReferenceLine' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, and 2 more.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(70,9): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+Error: components/charts/LayoffMonthlyVolumeChart.tsx(70,10): error TS2786: 'Bar' cannot be used as a JSX component.
+  Its type 'typeof Bar' is not a valid JSX element type.
+    Type 'typeof Bar' is not assignable to type 'new (props: any, deprecatedLegacyContext?: any) => Component<any, any, any>'.
+      Type 'Bar' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, refs
+Error: components/jobs/JobCard.tsx(139,26): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: components/jobs/JobCard.tsx(142,27): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: components/jobs/JobCard.tsx(153,26): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: components/jobs/JobCard.tsx(156,27): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: components/patterns/FilterBar.tsx(42,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/patterns/WizardShell.tsx(46,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/scan/DimensionRow.tsx(33,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/scan/GapCard.tsx(3,17): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/scan/GapCard.tsx(131,15): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/scan/LayoffSignal.tsx(123,22): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: components/scan/LayoffSignal.tsx(126,23): error TS2339: Property 'Fragment' does not exist on type 'typeof import("react")'.
+Error: components/scan/PrimaryCta.tsx(60,15): error TS2694: Namespace '"react"' has no exported member 'ComponentType'.
+Error: components/scan/ValueUpgradePrompt.tsx(3,28): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/ui/Alert.tsx(96,17): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Alert.tsx(98,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Alert.tsx(100,18): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Badge.tsx(27,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Button.tsx(7,26): error TS2724: '"react"' has no exported member named 'ButtonHTMLAttributes'. Did you mean 'HTMLAttributes'?
+Error: components/ui/Button.tsx(87,72): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type 'Record<ButtonVariant, string>'.
+Error: components/ui/Button.tsx(91,35): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type 'Record<ButtonSize, string>'.
+Error: components/ui/Card.tsx(4,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Checkbox.tsx(3,17): error TS2305: Module '"react"' has no exported member 'forwardRef'.
+Error: components/ui/Checkbox.tsx(3,40): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/ui/Checkbox.tsx(36,22): error TS2724: '"react"' has no exported member named 'InputHTMLAttributes'. Did you mean 'HTMLAttributes'?
+Error: components/ui/Checkbox.tsx(38,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Checkbox.tsx(40,23): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Checkbox.tsx(50,5): error TS7031: Binding element 'label' implicitly has an 'any' type.
+Error: components/ui/Checkbox.tsx(51,5): error TS7031: Binding element 'description' implicitly has an 'any' type.
+Error: components/ui/Checkbox.tsx(54,5): error TS7031: Binding element 'disabled' implicitly has an 'any' type.
+Error: components/ui/Checkbox.tsx(55,5): error TS7031: Binding element 'required' implicitly has an 'any' type.
+Error: components/ui/Checkbox.tsx(56,5): error TS7031: Binding element 'id' implicitly has an 'any' type.
+Error: components/ui/Checkbox.tsx(61,3): error TS7006: Parameter 'ref' implicitly has an 'any' type.
+Error: components/ui/Checkbox.tsx(78,33): error TS2694: Namespace '"react"' has no exported member 'MutableRefObject'.
+Error: components/ui/Dialog.tsx(3,41): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/ui/Dialog.tsx(119,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Dialog.tsx(121,23): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Dialog.tsx(130,27): error TS2694: Namespace '"react"' has no exported member 'RefObject'.
+Error: components/ui/Dialog.tsx(132,18): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Dialog.tsx(136,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Dialog.tsx(310,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Dialog.tsx(312,23): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Dialog.tsx(324,29): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Dialog.tsx(326,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Dialog.tsx(405,60): error TS2694: Namespace '"react"' has no exported member 'RefObject'.
+Error: components/ui/EmptyState.tsx(18,15): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/FormField.tsx(3,17): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/ui/FormField.tsx(65,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/FormField.tsx(73,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/FormField.tsx(78,17): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/FormField.tsx(89,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/FormField.tsx(89,71): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/FormField.tsx(177,17): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/FormField.tsx(179,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/FormField.tsx(180,17): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/FormField.tsx(183,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Input.tsx(3,17): error TS2305: Module '"react"' has no exported member 'forwardRef'.
+Error: components/ui/Input.tsx(50,22): error TS2724: '"react"' has no exported member named 'InputHTMLAttributes'. Did you mean 'HTMLAttributes'?
+Error: components/ui/Input.tsx(55,23): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Input.tsx(57,25): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Input.tsx(68,5): error TS7031: Binding element 'leadingIcon' implicitly has an 'any' type.
+Error: components/ui/Input.tsx(69,5): error TS7031: Binding element 'trailingAddon' implicitly has an 'any' type.
+Error: components/ui/Input.tsx(71,5): error TS7031: Binding element 'disabled' implicitly has an 'any' type.
+Error: components/ui/Input.tsx(72,5): error TS7031: Binding element 'required' implicitly has an 'any' type.
+Error: components/ui/Input.tsx(78,3): error TS7006: Parameter 'ref' implicitly has an 'any' type.
+Error: components/ui/Input.tsx(95,9): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Record<InputSize, string>'.
+  No index signature with a parameter of type 'string' was found on type 'Record<InputSize, string>'.
+Error: components/ui/Progress.tsx(66,55): error TS2694: Namespace '"react"' has no exported member 'CSSProperties'.
+Error: components/ui/Progress.tsx(74,55): error TS2694: Namespace '"react"' has no exported member 'CSSProperties'.
+Error: components/ui/Progress.tsx(104,17): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Progress.tsx(120,23): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Progress.tsx(150,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Progress.tsx(151,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Progress.tsx(152,22): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Progress.tsx(154,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Radio.tsx(3,17): error TS2305: Module '"react"' has no exported member 'forwardRef'.
+Error: components/ui/Radio.tsx(3,29): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/ui/Radio.tsx(38,22): error TS2724: '"react"' has no exported member named 'InputHTMLAttributes'. Did you mean 'HTMLAttributes'?
+Error: components/ui/Radio.tsx(39,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Radio.tsx(40,23): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Radio.tsx(48,5): error TS7031: Binding element 'label' implicitly has an 'any' type.
+Error: components/ui/Radio.tsx(49,5): error TS7031: Binding element 'description' implicitly has an 'any' type.
+Error: components/ui/Radio.tsx(51,5): error TS7031: Binding element 'disabled' implicitly has an 'any' type.
+Error: components/ui/Radio.tsx(52,5): error TS7031: Binding element 'required' implicitly has an 'any' type.
+Error: components/ui/Radio.tsx(53,5): error TS7031: Binding element 'id' implicitly has an 'any' type.
+Error: components/ui/Radio.tsx(58,3): error TS7006: Parameter 'ref' implicitly has an 'any' type.
+Error: components/ui/Radio.tsx(130,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Radio.tsx(131,23): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Radio.tsx(139,17): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Radio.tsx(147,16): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Radio.tsx(149,17): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Radio.tsx(233,24): error TS7006: Parameter 'event' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(3,17): error TS2305: Module '"react"' has no exported member 'forwardRef'.
+Error: components/ui/Select.tsx(59,22): error TS2724: '"react"' has no exported member named 'SelectHTMLAttributes'. Did you mean 'StyleHTMLAttributes'?
+Error: components/ui/Select.tsx(73,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Select.tsx(80,5): error TS7031: Binding element 'options' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(81,5): error TS7031: Binding element 'groups' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(82,5): error TS7031: Binding element 'placeholder' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(85,5): error TS7031: Binding element 'disabled' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(86,5): error TS7031: Binding element 'required' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(89,5): error TS7031: Binding element 'children' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(92,3): error TS7006: Parameter 'ref' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(101,26): error TS7006: Parameter 'group' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(103,31): error TS7006: Parameter 'option' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(111,33): error TS7006: Parameter 'option' implicitly has an 'any' type.
+Error: components/ui/Select.tsx(128,11): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'Record<SelectSize, string>'.
+  No index signature with a parameter of type 'string' was found on type 'Record<SelectSize, string>'.
+Error: components/ui/Skeleton.tsx(91,22): error TS2694: Namespace '"react"' has no exported member 'CSSProperties'.
+Error: components/ui/Table.tsx(73,18): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Table.tsx(91,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Table.tsx(154,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Table.tsx(187,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Table.tsx(218,22): error TS2724: '"react"' has no exported member named 'ThHTMLAttributes'. Did you mean 'HTMLAttributes'?
+Error: components/ui/Table.tsx(257,17): error TS2724: '"react"' has no exported member named 'TdHTMLAttributes'. Did you mean 'HTMLAttributes'?
+Error: components/ui/Table.tsx(269,3): error TS2339: Property 'className' does not exist on type 'TableCellProps'.
+Error: components/ui/Table.tsx(270,3): error TS2339: Property 'children' does not exist on type 'TableCellProps'.
+Error: components/ui/Table.tsx(296,20): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Tabs.tsx(4,3): error TS2305: Module '"react"' has no exported member 'createContext'.
+Error: components/ui/Tabs.tsx(6,3): error TS2305: Module '"react"' has no exported member 'useContext'.
+Error: components/ui/Tabs.tsx(8,3): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/ui/Tabs.tsx(71,16): error TS2694: Namespace '"react"' has no exported member 'MutableRefObject'.
+Error: components/ui/Tabs.tsx(72,16): error TS2694: Namespace '"react"' has no exported member 'MutableRefObject'.
+Error: components/ui/Tabs.tsx(96,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Tabs.tsx(170,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Tabs.tsx(187,19): error TS2694: Namespace '"react"' has no exported member 'KeyboardEvent'.
+Error: components/ui/Tabs.tsx(188,45): error TS7006: Parameter 't' implicitly has an 'any' type.
+Error: components/ui/Tabs.tsx(192,45): error TS7006: Parameter 't' implicitly has an 'any' type.
+Error: components/ui/Tabs.tsx(193,66): error TS7006: Parameter 't' implicitly has an 'any' type.
+Error: components/ui/Tabs.tsx(252,17): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Tabs.tsx(254,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Tabs.tsx(327,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Textarea.tsx(3,62): error TS2694: Namespace '"react"' has no exported member 'TextareaHTMLAttributes'.
+Error: components/ui/Toast.tsx(4,3): error TS2305: Module '"react"' has no exported member 'createContext'.
+Error: components/ui/Toast.tsx(6,3): error TS2305: Module '"react"' has no exported member 'useContext'.
+Error: components/ui/Toast.tsx(175,19): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Tooltip.tsx(3,41): error TS2305: Module '"react"' has no exported member 'useId'.
+Error: components/ui/Tooltip.tsx(63,18): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: components/ui/Tooltip.tsx(65,19): error TS2694: Namespace '"react"' has no exported member 'ReactElement'.
+Error: components/ui/Tooltip.tsx(146,14): error TS7053: Element implicitly has an 'any' type because expression of type '"aria-describedby"' can't be used to index type 'HTMLAttributes<HTMLElement>'.
+  Property 'aria-describedby' does not exist on type 'HTMLAttributes<HTMLElement>'.
+Error: components/ui/Tooltip.tsx(148,5): error TS2322: Type '{ onMouseEnter: (event: any) => void; onMouseLeave: (event: any) => void; onFocus: (event: any) => void; onBlur: (event: any) => void; 'aria-labelledby': string; } | { onMouseEnter: (event: any) => void; onMouseLeave: (event: any) => void; onFocus: (event: any) => void; onBlur: (event: any) => void; 'aria-describedb...' is not assignable to type 'HTMLAttributes<HTMLElement>'.
+  Object literal may only specify known properties, and 'onMouseEnter' does not exist in type 'HTMLAttributes<HTMLElement>'.
+Error: components/ui/Tooltip.tsx(148,20): error TS7006: Parameter 'event' implicitly has an 'any' type.
+Error: components/ui/Tooltip.tsx(149,18): error TS2339: Property 'onMouseEnter' does not exist on type 'HTMLAttributes<HTMLElement>'.
+Error: components/ui/Tooltip.tsx(152,20): error TS7006: Parameter 'event' implicitly has an 'any' type.
+Error: components/ui/Tooltip.tsx(153,18): error TS2339: Property 'onMouseLeave' does not exist on type 'HTMLAttributes<HTMLElement>'.
+Error: components/ui/Tooltip.tsx(156,15): error TS7006: Parameter 'event' implicitly has an 'any' type.
+Error: components/ui/Tooltip.tsx(157,18): error TS2339: Property 'onFocus' does not exist on type 'HTMLAttributes<HTMLElement>'.
+Error: components/ui/Tooltip.tsx(160,14): error TS7006: Parameter 'event' implicitly has an 'any' type.
+Error: components/ui/Tooltip.tsx(161,18): error TS2339: Property 'onBlur' does not exist on type 'HTMLAttributes<HTMLElement>'.
+Error: components/ui/Tooltip.tsx(166,25): error TS2339: Property 'cloneElement' does not exist on type 'typeof import("react")'.
+Error: lib/featureAccess.tsx(3,17): error TS2305: Module '"react"' has no exported member 'createContext'.
+Error: lib/featureAccess.tsx(3,32): error TS2305: Module '"react"' has no exported member 'useContext'.
+Error: lib/featureAccess.tsx(27,69): error TS2694: Namespace '"react"' has no exported member 'ReactNode'.
+Error: lib/jobsData/__tests__/e2eApplyPath.test.ts(41,37): error TS2339: Property 'createElement' does not exist on type 'typeof import("react")'.
 Error: Process completed with exit code 2.
