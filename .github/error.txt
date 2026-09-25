@@ -52,5 +52,4 @@ single color bar ->
 <div class="w-full h-2 rounded-full bg-[color:var(--border)] overflow-hidden"><div class="h-2 rounded-full transition-all" style="width: 20%; background: linear-gradient(to right, color-mix(in srgb, var(--risk-low) 20%, transparent), var(--risk-low));"></div></div>
 
 
-Something went wrong
-An unexpected error occurred. Our team has been notified. Please try again or return home.
+Upgrade to Shield to quietly monitor new postings for your target roles and companies.
