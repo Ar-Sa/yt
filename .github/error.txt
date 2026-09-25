@@ -52,19 +52,17 @@ single color bar ->
 <div class="w-full h-2 rounded-full bg-[color:var(--border)] overflow-hidden"><div class="h-2 rounded-full transition-all" style="width: 20%; background: linear-gradient(to right, color-mix(in srgb, var(--risk-low) 20%, transparent), var(--risk-low));"></div></div>
 
 Run npx tsc --noEmit
-Error: pages/api/admin/recalculate-ai-spend.ts(94,69): error TS2554: Expected 2 arguments, but got 5.
+Error: lib/useUrlFilterState.ts(63,29): error TS2322: Type 'T[keyof T]' is not assignable to type 'T[keyof T & string]'.
+  Type 'keyof T' is not assignable to type 'keyof T & string'.
+    Type 'string | number | symbol' is not assignable to type 'keyof T & string'.
+      Type 'number' is not assignable to type 'keyof T & string'.
+        Type 'number' is not assignable to type 'keyof T'.
+          Type 'number' is not assignable to type 'string'.
+            Type 'keyof T' is not assignable to type 'string'.
+              Type 'string | number | symbol' is not assignable to type 'string'.
+                Type 'number' is not assignable to type 'string'.
+Error: lib/useUrlFilterState.ts(79,22): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
+Error: lib/useUrlFilterState.ts(93,20): error TS2345: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+  Type 'null' is not assignable to type 'string'.
 Error: Process completed with exit code 2.
-
- Linting and checking validity of types ...
-Failed to compile.
-./lib/useUrlFilterState.ts:56:23
-Type error: 'searchParams' is possibly 'null'.
-  54 |     const out = { ...stableDefaults }
-  55 |     for (const key of Object.keys(stableDefaults) as (keyof T & string)[]) {
-> 56 |       const fromUrl = searchParams.get(key)
-     |                       ^
-  57 |       if (fromUrl !== null) out[key] = fromUrl as T[keyof T]
-  58 |     }
-  59 |     return out
-Next.js build worker exited with code: 1 and signal: null
-Error: Command "npm run build" exited with 1
